@@ -1,0 +1,86 @@
+/* ============ Learning Portal ============ */
+
+.portal-shell{ background:var(--light); min-height:70vh; }
+.portal-layout{ display:grid; grid-template-columns:320px 1fr; gap:0; border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; background:#fff; box-shadow:var(--shadow-card); min-height:640px; }
+
+/* progress header */
+.portal-progress-bar{ height:8px; background:var(--border); border-radius:100px; overflow:hidden; margin:10px 0; }
+.portal-progress-fill{ height:100%; background:var(--grad-brand); border-radius:100px; transition:width .4s ease; width:0%; }
+.portal-progress-label{ font-size:.78rem; color:var(--ink-3); font-weight:600; }
+
+/* sidebar */
+.portal-sidebar{ background:var(--light); border-right:1px solid var(--border); overflow-y:auto; max-height:780px; }
+.portal-sidebar-head{ padding:20px; border-bottom:1px solid var(--border); }
+.portal-sidebar-head h4{ font-size:1rem; margin-bottom:2px; }
+.portal-phase{ border-bottom:1px solid var(--border); }
+.portal-phase-head{ display:flex; align-items:center; justify-content:space-between; padding:14px 20px; cursor:pointer; font-weight:700; font-size:.88rem; }
+.portal-phase-head:hover{ background:rgba(214,58,255,.05); }
+.portal-phase-head .pweeks-mini{ font-weight:500; font-size:.72rem; color:var(--ink-3); }
+.portal-phase-num{ width:22px; height:22px; border-radius:50%; background:var(--grad-brand); color:#fff; font-size:.68rem; font-weight:800; display:inline-flex; align-items:center; justify-content:center; margin-right:8px; flex-shrink:0; }
+.portal-lessons{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.portal-phase.open .portal-lessons{ max-height:600px; }
+.portal-phase.open .portal-chevron{ transform:rotate(90deg); }
+.portal-chevron{ transition:transform .25s ease; color:var(--ink-3); flex-shrink:0; }
+.portal-lesson{ display:flex; align-items:center; gap:10px; padding:10px 20px 10px 44px; font-size:.84rem; cursor:pointer; color:var(--ink-2); border-left:3px solid transparent; }
+.portal-lesson:hover{ background:rgba(214,58,255,.06); }
+.portal-lesson.is-active{ background:rgba(214,58,255,.1); border-left-color:var(--purple); color:var(--ink-1); font-weight:700; }
+.portal-lesson.is-mission{ font-weight:700; color:var(--ink-1); }
+.portal-check{ width:17px; height:17px; border-radius:50%; border:2px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:.6rem; color:#fff; }
+.portal-lesson.is-done .portal-check{ background:#0E9F63; border-color:#0E9F63; }
+.portal-lesson.is-done{ color:var(--ink-3); }
+.portal-lesson.is-done .portal-lesson-title{ text-decoration:line-through; text-decoration-color:var(--border); }
+
+/* main content */
+.portal-main{ padding:36px 40px; }
+.portal-crumb{ font-size:.76rem; color:var(--ink-3); font-family:'JetBrains Mono',monospace,monospace; margin-bottom:10px; text-transform:uppercase; letter-spacing:.05em; }
+.portal-lesson-header{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+.portal-lesson-header h2{ font-size:1.6rem; margin-bottom:6px; }
+.portal-meta-row{ display:flex; gap:14px; flex-wrap:wrap; font-size:.8rem; color:var(--ink-3); margin-bottom:24px; }
+.portal-video-block{ aspect-ratio:16/9; background:var(--grad-dark); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; color:#fff; margin-bottom:26px; position:relative; overflow:hidden; }
+.portal-video-block .pv-play{ width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3); display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+.portal-video-note{ position:absolute; bottom:14px; left:16px; font-size:.74rem; color:rgba(255,255,255,.7); }
+.portal-body p{ font-size:.95rem; line-height:1.7; }
+.portal-objectives{ background:var(--light); border-radius:var(--radius-md); padding:20px 22px; margin:22px 0; }
+.portal-objectives h5{ font-size:.8rem; text-transform:uppercase; letter-spacing:.05em; color:var(--purple); margin:0 0 12px; }
+.portal-objectives ul{ margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px; }
+.portal-objectives li{ font-size:.88rem; color:var(--ink-2); }
+.portal-tools-used{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 26px; }
+.portal-actions{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; padding-top:22px; border-top:1px solid var(--border); }
+.portal-mark-btn{ display:inline-flex; align-items:center; gap:8px; }
+.portal-mark-btn.is-done{ background:#0E9F63; color:#fff; border-color:#0E9F63; }
+.portal-nav-btns{ margin-left:auto; display:flex; gap:10px; }
+
+/* mission callout */
+.portal-mission-block{ background:var(--grad-dark); color:#fff; border-radius:var(--radius-md); padding:24px; margin-bottom:24px; }
+.portal-mission-block h5{ color:var(--amber); font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; margin:0 0 8px; }
+.portal-mission-block p{ color:#EBD9E6; margin:0; }
+
+/* empty / complete states */
+.portal-complete-banner{ text-align:center; padding:48px 24px; }
+.portal-complete-banner .big-check{ width:70px; height:70px; border-radius:50%; background:var(--grad-brand); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin:0 auto 18px; }
+
+@media (max-width:900px){
+  .portal-layout{ grid-template-columns:1fr; }
+  .portal-sidebar{ max-height:340px; border-right:none; border-bottom:1px solid var(--border); }
+  .portal-main{ padding:26px 20px; }
+}
+
+/* ============ Dashboard ============ */
+.dash-hero{ background:var(--grad-dark); color:#fff; padding:56px 0 40px; }
+.dash-hero h1{ color:#fff; }
+.dash-hero p{ color:#EBD9E6; }
+.dash-stats{ display:flex; gap:32px; flex-wrap:wrap; margin-top:24px; }
+.dash-stat{ }
+.dash-stat .num{ font-family:'Poppins',sans-serif; font-weight:800; font-size:1.8rem; background:var(--grad-brand-3); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+.dash-stat .lbl{ font-size:.78rem; color:#C6A8C0; }
+
+.dash-grid{ gap:22px; }
+.dash-card{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-card); transition:transform .25s ease, box-shadow .25s ease; }
+.dash-card:hover{ transform:translateY(-4px); }
+.dash-card-top{ display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+.dash-ic{ width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
+.dash-card h4{ font-size:1.02rem; margin:0; }
+.dash-card .weeks-tag{ font-size:.74rem; color:var(--ink-3); }
+.dash-card-progress{ margin:14px 0; }
+.dash-card-progress .plabel{ display:flex; justify-content:space-between; font-size:.76rem; color:var(--ink-3); margin-bottom:6px; }
+.dash-card .btn{ width:100%; margin-top:6px; }

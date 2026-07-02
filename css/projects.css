@@ -1,0 +1,48 @@
+/* ============ Student projects page specific ============ */
+
+.projects-hero{ padding-top:56px; }
+.projects-hero-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; margin-bottom:28px; }
+.projects-hero-top h1{ font-size:2.1rem; }
+.projects-hero-top p{ max-width:480px; }
+.upload-card{ background:var(--light); border:1px solid var(--border); border-radius:var(--radius-md); padding:18px; text-align:center; min-width:220px; }
+
+.filter-row{ margin-bottom:28px; }
+.filter-row .pill{ cursor:pointer; }
+
+.featured-project{ display:grid; grid-template-columns:1.2fr .8fr; gap:0; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-card); border:1px solid var(--border); margin-bottom:8px; }
+.featured-media{ background:var(--grad-dark); position:relative; min-height:340px; display:flex; align-items:center; justify-content:center; }
+.feat-badge{ position:absolute; top:16px; left:16px; }
+.feat-play{ width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+.feat-selection{ position:absolute; bottom:16px; left:16px; color:#fff; font-size:.78rem; font-weight:600; background:rgba(0,0,0,.35); padding:6px 12px; border-radius:100px; }
+.featured-info{ background:#fff; padding:32px; display:flex; flex-direction:column; gap:10px; }
+.featured-info h3{ font-size:1.5rem; margin:6px 0 2px; }
+.feat-author{ display:flex; align-items:center; gap:10px; margin:8px 0; }
+.feat-author strong{ font-size:.88rem; display:block; }
+.feat-stats{ display:flex; gap:16px; flex-wrap:wrap; font-size:.8rem; color:var(--ink-2); font-weight:600; }
+.feat-awards{ display:flex; flex-direction:column; gap:6px; margin:6px 0 10px; }
+.award{ font-size:.76rem; color:var(--ink-3); }
+@media (max-width:900px){ .featured-project{ grid-template-columns:1fr; } }
+
+/* top picks */
+.pick-grid{ gap:16px; margin-bottom:44px; }
+.pick-card{ }
+.pick-thumb{ aspect-ratio:1/0.85; border-radius:12px; position:relative; display:flex; align-items:flex-end; justify-content:flex-end; padding:10px; color:#fff; font-size:.85rem; margin-bottom:10px; }
+.pick-tag{ position:absolute; top:10px; left:10px; background:rgba(0,0,0,.45)!important; color:#fff!important; }
+.pick-card strong{ font-size:.86rem; display:block; margin-bottom:2px; }
+
+.proj-stats{ background:var(--dark); border-radius:var(--radius-lg); padding:26px 10px; text-align:center; color:#fff; }
+.proj-stats .num{ font-family:'Poppins',sans-serif; font-weight:800; font-size:1.4rem; }
+.proj-stats .lbl{ font-size:.72rem; color:#9297AB; }
+
+/* impact */
+.impact-section{ background:var(--light-wash); }
+.impact-grid{ gap:16px; }
+.impact-item{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px; text-align:center; font-size:1.5rem; }
+.impact-item strong{ display:block; font-size:.82rem; margin:10px 0 4px; font-family:'Poppins',sans-serif; }
+.impact-item p{ font-size:.76rem; margin:0; color:var(--ink-3); }
+
+/* closing cta */
+.closing-cta{ background:var(--grad-brand); }
+.closing-cta-inner{ display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; color:#fff; }
+.closing-cta-inner strong{ font-size:1.15rem; display:block; margin-bottom:4px; }
+.closing-cta-inner p{ color:rgba(255,255,255,.85); margin:0; }

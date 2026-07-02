@@ -1,0 +1,56 @@
+/* ============ Mentors page specific ============ */
+
+.mentors-hero{ padding-top:56px; }
+.mentors-grid-top{ display:grid; grid-template-columns:.85fr 1.15fr; gap:48px; align-items:start; }
+.mentors-copy h1{ font-size:2.1rem; margin-bottom:16px; }
+.mentor-features{ display:flex; flex-direction:column; gap:16px; margin:26px 0; }
+.mf{ display:flex; gap:12px; align-items:flex-start; }
+.mf-ic{ font-size:1.3rem; width:40px; height:40px; border-radius:10px; background:var(--light); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.mf strong{ font-size:.95rem; }
+.mf p{ font-size:.85rem; margin:2px 0 0; }
+
+.mentor-grid{ gap:16px; }
+.mentor-card{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; box-shadow:var(--shadow-card); }
+.mtag{ margin-bottom:10px; display:inline-block; }
+.mentor-photo{ width:100%; aspect-ratio:1/0.85; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Poppins',sans-serif; font-weight:800; font-size:2rem; margin-bottom:10px; }
+.mentor-card h5{ margin:0 0 2px; font-size:.92rem; font-family:'Poppins',sans-serif; font-weight:700; }
+.verified{ color:var(--purple); font-size:.7rem; }
+.mentor-card p{ margin:0 0 6px; font-size:.8rem; color:var(--ink-2); }
+.mentor-card .exp{ font-size:.72rem; color:var(--ink-3); font-weight:600; }
+@media (max-width:900px){ .mentors-grid-top{ grid-template-columns:1fr; } }
+
+/* no campus */
+.no-campus{ background:var(--light-wash); }
+.no-campus-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:48px; align-items:center; }
+.nc-visual{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:28px; box-shadow:var(--shadow-card); }
+.nc-tabs{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+.nc-tab{ padding:8px 14px; border-radius:100px; background:var(--light); font-size:.8rem; font-weight:600; border:1px solid var(--border); }
+.nc-tab.is-active{ background:var(--grad-brand); color:#fff; border-color:transparent; }
+.nc-globe{ position:relative; height:200px; display:flex; align-items:center; justify-content:center; }
+.nc-globe-core{ width:70px; height:70px; border-radius:16px; background:var(--grad-dark); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.6rem; z-index:2; box-shadow:0 12px 30px rgba(26,11,46,.25); }
+.nc-node{ position:absolute; width:42px; height:42px; border-radius:50%; background:#fff; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-card); }
+.n1{ top:0; left:15%; } .n2{ top:0; right:15%; } .n3{ bottom:0; left:20%; } .n4{ bottom:0; right:20%; }
+.nc-feats{ margin-top:24px; }
+@media (max-width:900px){ .no-campus-grid{ grid-template-columns:1fr; } }
+
+/* portfolio to profession */
+.portfolio-path{ background:var(--grad-dark); color:#fff; text-align:center; overflow:hidden; }
+.portfolio-path h2, .portfolio-path p{ color:#fff; }
+.portfolio-path p{ color:#B7BBD1; max-width:560px; margin:0 auto 36px; }
+.pp-stats{ margin-bottom:44px; gap:14px; }
+.pp-stats > div{ background:rgba(255,255,255,0.07); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(255,255,255,0.14); border-radius:14px; padding:16px; transition:background .25s ease, transform .25s ease; }
+.pp-stats > div:hover{ background:rgba(255,255,255,0.12); transform:translateY(-2px); }
+.pp-stats .num{ font-family:'Poppins',sans-serif; font-weight:800; font-size:1.7rem; }
+.pp-stats .lbl{ color:#E8CFE0; font-size:.82rem; }
+.pp-flow{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; font-size:.82rem; font-weight:600; color:#C6C9D8; margin-bottom:40px; }
+.pp-flow .arr{ color:#5B6178; }
+.pp-cards{ text-align:left; }
+.pp-card strong{ display:block; margin-bottom:2px; font-size:.92rem; }
+.pp-card p{ color:#9297AB; font-size:.8rem; margin:0; }
+.pp-thumb{ aspect-ratio:1/0.7; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.3rem; margin-bottom:10px; }
+
+/* ecosystem */
+.eco-grid{ gap:18px; }
+.eco-item{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:22px 18px; text-align:center; font-size:1.6rem; }
+.eco-item strong{ display:block; font-size:.88rem; margin:10px 0 4px; font-family:'Poppins',sans-serif; }
+.eco-item p{ font-size:.76rem; margin:0; color:var(--ink-3); }

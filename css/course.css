@@ -1,0 +1,88 @@
+/* ============ Course detail page specific ============ */
+
+.course-hero{ padding-top:56px; background:radial-gradient(circle at 90% 0%, rgba(214,58,255,.06), transparent 50%); }
+.course-hero-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; margin-bottom:40px; }
+.course-copy h1{ font-size:2rem; margin:14px 0 6px; }
+.course-tag{ font-weight:700; color:var(--purple); font-size:1rem; }
+.course-meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0 26px; }
+.cm{ background:var(--light); border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px; font-size:1.2rem; }
+.cm strong{ display:block; font-size:.86rem; margin-top:4px; }
+.cm span{ font-size:.72rem; color:var(--ink-3); }
+@media (max-width:700px){ .course-meta{ grid-template-columns:repeat(2,1fr); } }
+
+.course-visual{ position:relative; }
+.course-window{ background:var(--grad-dark); border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 24px 50px rgba(26,11,46,.25); }
+.laptop-note{ text-align:center; margin-top:14px; font-size:.85rem; font-weight:600; color:var(--ink-2); }
+@media (max-width:900px){ .course-hero-grid{ grid-template-columns:1fr; } }
+
+.course-highlights{ gap:10px; }
+.course-highlights .fitem{ justify-content:center; text-align:center; font-size:.8rem; }
+
+/* phases */
+.phase-list{ display:flex; flex-direction:column; gap:16px; }
+.phase{ display:flex; gap:18px; background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:20px 22px; align-items:flex-start; }
+.pnum{ width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-family:'Poppins',sans-serif; font-weight:800; flex-shrink:0; }
+.p1{background:#0E9F63;} .p2{background:var(--orange);} .p3{background:#8A6BFF;} .p4{background:#1F8FFF;} .p5{background:#FF6B6B;} .p6{background:var(--purple);}
+.phase h4{ font-size:1.02rem; margin-bottom:6px; }
+.pweeks{ font-weight:500; font-size:.76rem; color:var(--ink-3); margin-left:8px; }
+.phase p{ font-size:.86rem; margin-bottom:8px; }
+.mission{ display:inline-block; font-size:.78rem; font-weight:700; color:var(--purple); background:rgba(214,58,255,.08); padding:6px 12px; border-radius:100px; }
+
+/* create thumbs */
+.create-section{ background:var(--light-wash); }
+.create-thumbs{ gap:12px; margin-bottom:56px; }
+.ct-thumb{ aspect-ratio:1/1.15; border-radius:12px; display:flex; align-items:flex-end; padding:12px; color:#fff; font-size:.78rem; font-weight:700; }
+
+.tools-portfolio{ gap:40px; align-items:start; }
+.tools-portfolio h3{ font-size:1.2rem; margin-bottom:18px; }
+.tools-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
+.tools-cols h5{ font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-3); margin-bottom:10px; }
+.tool-list li{ font-size:.85rem; padding:7px 0; border-bottom:1px solid var(--border); }
+@media (max-width:640px){ .tools-cols{ grid-template-columns:1fr; } }
+.laptop-specs{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.laptop-specs > div{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px; }
+.laptop-specs strong{ font-size:.85rem; }
+@media (max-width:640px){ .laptop-specs{ grid-template-columns:1fr; } }
+
+.portfolio-grid{ gap:10px; margin-bottom:20px; }
+.pg-item{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-sm); padding:14px; text-align:center; }
+.pg-item strong{ font-family:'Poppins',sans-serif; font-weight:800; font-size:1.3rem; color:var(--purple); display:block; }
+.pg-item span{ font-size:.72rem; color:var(--ink-2); }
+.portfolio-note{ background:var(--grad-brand); color:#fff; border-radius:var(--radius-sm); padding:12px 16px; font-size:.85rem; font-weight:600; text-align:center; }
+
+/* AI + careers */
+.ai-careers-section h3{ font-size:1.2rem; margin-bottom:18px; }
+.ai-careers-grid{ gap:44px; align-items:start; }
+.ai-box{ background:var(--grad-dark); border-radius:var(--radius-lg); padding:30px; color:#fff; border:1px solid rgba(255,255,255,0.10); overflow:hidden; }
+.ai-box h3{ color:#fff; }
+.ai-caps{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+.aic{ display:flex; align-items:baseline; gap:10px; font-size:1.1rem; }
+.aic span{ font-weight:700; font-size:.9rem; font-family:'Poppins',sans-serif; }
+.aic p{ font-size:.78rem; color:#9297AB; margin:0; }
+.career-grid{ gap:14px; }
+.career-item{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; font-size:1.3rem; }
+.career-item span{ display:block; font-size:.85rem; font-weight:700; font-family:'Poppins',sans-serif; margin:8px 0 3px; }
+.career-item p{ font-size:.76rem; margin:0; color:var(--ink-3); }
+
+/* pricing */
+.course-pricing{ background:var(--light-wash); }
+.course-price-grid{ margin-bottom:32px; }
+.cprice{ padding:28px; position:relative; display:flex; flex-direction:column; }
+.cprice.is-popular{ border:2px solid var(--purple); transform:translateY(-8px); }
+.cprice .price{ font-family:'Poppins',sans-serif; font-weight:800; font-size:1.7rem; margin:8px 0 4px; }
+.cprice .price span{ font-size:.85rem; font-weight:500; color:var(--ink-3); }
+.cprice .check-list{ margin:16px 0 22px; flex:1; }
+.price-trust .fitem{ justify-content:center; text-align:center; font-size:.8rem; }
+
+/* faq */
+.faq-grid{ gap:44px; align-items:start; }
+.faq-list{ display:flex; flex-direction:column; gap:12px; margin-top:20px; }
+.faq-item{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; }
+.faq-q{ width:100%; text-align:left; background:none; border:none; padding:16px 18px; font-weight:700; font-size:.92rem; display:flex; justify-content:space-between; align-items:center; }
+.faq-q span{ color:var(--purple); font-size:1.2rem; }
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; padding:0 18px; font-size:.86rem; color:var(--ink-2); }
+.faq-item.open .faq-a{ max-height:200px; padding-bottom:16px; }
+.faq-item.open .faq-q span{ transform:rotate(45deg); }
+.ready-card{ background:var(--grad-dark); color:#fff; border-radius:var(--radius-lg); padding:32px; margin-top:20px; border:1px solid rgba(255,255,255,0.10); overflow:hidden; }
+.ready-card h3{ color:#fff; }
+.ready-card p{ color:#C6C9D8; }
