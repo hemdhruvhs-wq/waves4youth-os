@@ -49,7 +49,7 @@
 <div id="gate" class="glass">
   <div style="font-size:17px;font-weight:600;margin-bottom:6px">Founder login</div>
   <div class="muted">Only the admin account can open this dashboard.</div>
-  <input id="adEmail" type="email" placeholder="Admin email" />
+  <input id="adEmail" type="email" placeholder="waves4youth@gmail.com" />
   <input id="adPass" type="password" placeholder="Password" />
   <button onclick="doLogin()">Open dashboard</button>
   <div class="err" id="gateErr"></div>
@@ -81,7 +81,7 @@ import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from
 import { getFirestore, collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ⭐ ADMIN EMAIL — change this to YOUR founder email (must match the account you create)
-const ADMIN_EMAILS = ["waves4youth@gmail.com "];
+const ADMIN_EMAILS = ["waves4youth@gmail.com"];
 
 const firebaseConfig = {
   apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
