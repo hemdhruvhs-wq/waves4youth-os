@@ -1,3 +1,4 @@
+
 # Waves4Youth — Full Curriculum Design (All 6 Tracks)
 
 This folder contains the complete self-learning curriculum design for Waves4Youth, benchmarked against MAAC India, with AI-mentor integration, pricing, and visual/video asset planning for all 6 tracks.
