@@ -21,12 +21,35 @@
  * Check your Deno Deploy logs for the exact error — that will confirm which of these it is.
  */
 
-const MENTOR_PROXY_URL = "https://solar-armadillo-4814.waves4youth.deno.net/chat"; // ADJUST to match your real proxy route
+const MENTOR_PROXY_URL = "https://solar-armadillo-4814.waves4youth.deno.net";
+// Confirmed request/response contract from the actual Deno proxy source:
+//   POST body: { system: string, messages: [{role, content}], max_tokens?: number }
+//   Response:  raw Anthropic Messages API response — reply text is in data.content[0].text
 
 const LANGUAGES = [
   "English", "Hindi", "Marathi", "Tamil", "Telugu", "Bengali",
   "Gujarati", "Kannada", "Malayalam", "Punjabi", "Urdu"
 ];
+
+// Maps our language names to browser speech-synthesis locale codes.
+// Note: actual voice availability depends on the user's device/browser —
+// not all languages have a built-in voice on every device, especially on
+// older Android phones. Falls back to the browser's default voice if a
+// specific language voice isn't installed.
+const SPEECH_LOCALES = {
+  "English": "en-IN", "Hindi": "hi-IN", "Marathi": "mr-IN", "Tamil": "ta-IN",
+  "Telugu": "te-IN", "Bengali": "bn-IN", "Gujarati": "gu-IN", "Kannada": "kn-IN",
+  "Malayalam": "ml-IN", "Punjabi": "pa-IN", "Urdu": "ur-IN"
+};
+
+function speak(text, language){
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel(); // stop any current speech first
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = SPEECH_LOCALES[language] || "en-IN";
+  utter.rate = 0.95;
+  window.speechSynthesis.speak(utter);
+}
 
 function buildMentorChatHTML(mentorName){
   return `
@@ -40,6 +63,7 @@ function buildMentorChatHTML(mentorName){
         <select class="mentor-lang-select" id="mentorLangSelect" title="Choose the language ${mentorName} replies in">
           ${LANGUAGES.map(l => `<option value="${l}">${l}</option>`).join("")}
         </select>
+        <button class="mentor-speak-toggle" id="mentorSpeakToggle" title="Turn on speaking mode" aria-pressed="false">🔊</button>
       </div>
       <div class="mentor-chat-log" id="mentorChatLog"></div>
       <div class="mentor-chat-status" id="mentorChatStatus"></div>
@@ -58,6 +82,10 @@ const MENTOR_CHAT_CSS = `
 .mentor-name{font-weight:800;font-family:Poppins,sans-serif}
 .mentor-sub{font-size:.75rem;color:var(--muted)}
 .mentor-lang-select{margin-left:auto;font-size:.8rem;border-radius:8px;border:1px solid var(--border);padding:4px 8px}
+.mentor-speak-toggle{font-size:1rem;border:1px solid var(--border);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;flex-shrink:0}
+.mentor-speak-toggle[aria-pressed="true"]{background:var(--grad,linear-gradient(90deg,#FF6B6B,#D63AFF));color:#fff;border-color:transparent}
+.mentor-msg-replay{background:none;border:0;cursor:pointer;font-size:.85rem;opacity:.6;margin-left:6px;vertical-align:middle}
+.mentor-msg-replay:hover{opacity:1}
 .mentor-chat-log{max-height:280px;min-height:80px;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .mentor-msg{max-width:85%;padding:9px 13px;border-radius:14px;font-size:.88rem;line-height:1.4}
 .mentor-msg.student{align-self:flex-end;background:var(--grad);color:#fff;border-bottom-right-radius:4px}
@@ -88,13 +116,31 @@ function initMentorChat(containerEl, getContext){
   const sendBtn = containerEl.querySelector("#mentorChatSend");
   const status = containerEl.querySelector("#mentorChatStatus");
   const langSelect = containerEl.querySelector("#mentorLangSelect");
+  const speakToggle = containerEl.querySelector("#mentorSpeakToggle");
+  let speakingModeOn = false;
+
+  speakToggle.addEventListener("click", () => {
+    speakingModeOn = !speakingModeOn;
+    speakToggle.setAttribute("aria-pressed", String(speakingModeOn));
+    speakToggle.title = speakingModeOn ? "Turn off speaking mode" : "Turn on speaking mode";
+    if (!speakingModeOn && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+  });
 
   function appendMsg(role, text){
     const div = document.createElement("div");
     div.className = "mentor-msg " + role;
     div.textContent = text;
+    if (role === "mentor") {
+      const replay = document.createElement("button");
+      replay.className = "mentor-msg-replay";
+      replay.title = "Play this out loud";
+      replay.textContent = "🔊";
+      replay.onclick = () => speak(text, langSelect.value);
+      div.appendChild(replay);
+    }
     log.appendChild(div);
     log.scrollTop = log.scrollHeight;
+    if (role === "mentor" && speakingModeOn) speak(text, langSelect.value);
   }
 
   async function fetchMentorReply(message, ctx, language){
@@ -106,11 +152,17 @@ function initMentorChat(containerEl, getContext){
     const resp = await fetch(MENTOR_PROXY_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ systemPrompt, message, mentor: ctx.mentorName })
+      body: JSON.stringify({
+        system: systemPrompt,
+        messages: [{ role: "user", content: message }],
+        max_tokens: 500
+      })
     });
-    if (!resp.ok) throw new Error("Mentor proxy returned " + resp.status);
     const data = await resp.json();
-    return data.reply || data.message || data.text; // tolerate a couple of likely response shapes
+    if (!resp.ok) throw new Error(data.error || ("Mentor proxy returned " + resp.status));
+    // Anthropic Messages API shape: { content: [{ type: "text", text: "..." }], ... }
+    const textBlock = (data.content || []).find(b => b.type === "text");
+    return textBlock ? textBlock.text : null;
   }
 
   async function send(){
