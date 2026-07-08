@@ -42,12 +42,50 @@ const SPEECH_LOCALES = {
   "Malayalam": "ml-IN", "Punjabi": "pa-IN", "Urdu": "ur-IN"
 };
 
-function speak(text, language){
+// Consistent gender per mentor character, so switching languages doesn't
+// flip Neel from a male-sounding voice to a female one or vice versa.
+const MENTOR_GENDER = {
+  Neel: "male", Vikram: "male", Aarav: "male",
+  Asha: "female", Meera: "female", Diya: "female", Kiran: "female"
+};
+
+// Strips markdown/formatting symbols and emoji before speaking, so the
+// voice doesn't literally read out "asterisk asterisk" or "hash".
+function cleanForSpeech(text){
+  return text
+    .replace(/\*\*/g, "")
+    .replace(/\*/g, "")
+    .replace(/#/g, "")
+    .replace(/_/g, "")
+    .replace(/`/g, "")
+    .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}]/gu, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+function pickVoice(locale, genderPref){
+  if (!('speechSynthesis' in window)) return null;
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) return null;
+  const langPrefix = locale.split("-")[0].toLowerCase();
+  const localeVoices = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(langPrefix));
+  const pool = localeVoices.length ? localeVoices : voices; // fall back to any voice if none match the locale
+  if (genderPref) {
+    const genderMatch = pool.find(v => v.name.toLowerCase().includes(genderPref));
+    if (genderMatch) return genderMatch;
+  }
+  return pool[0] || null;
+}
+
+function speak(text, language, mentorName){
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel(); // stop any current speech first
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = SPEECH_LOCALES[language] || "en-IN";
+  const locale = SPEECH_LOCALES[language] || "en-IN";
+  const utter = new SpeechSynthesisUtterance(cleanForSpeech(text));
+  utter.lang = locale;
   utter.rate = 0.95;
+  const voice = pickVoice(locale, MENTOR_GENDER[mentorName]);
+  if (voice) utter.voice = voice;
   window.speechSynthesis.speak(utter);
 }
 
@@ -139,12 +177,12 @@ function initMentorChat(containerEl, getContext){
       replay.className = "mentor-msg-replay";
       replay.title = "Play this out loud";
       replay.textContent = "🔊";
-      replay.onclick = () => speak(text, langSelect.value);
+      replay.onclick = () => speak(text, langSelect.value, getContext().mentorName);
       div.appendChild(replay);
     }
     log.appendChild(div);
     log.scrollTop = log.scrollHeight;
-    if (role === "mentor" && speakingModeOn) speak(text, langSelect.value);
+    if (role === "mentor" && speakingModeOn) speak(text, langSelect.value, getContext().mentorName);
   }
 
   async function fetchMentorReply(message, ctx, language){
