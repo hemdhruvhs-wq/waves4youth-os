@@ -206,10 +206,10 @@ const TRACK = {
 };
 
 const TIERS = [
-  {tier:0,name:"Free Preview",price:"₹0",note:"Phase 1 fully unlocked — no card needed."},
-  {tier:1,name:"Starter",price:"₹999",note:"Phase 1–2 — core storytelling + technique."},
-  {tier:2,name:"Builder",price:"₹4,999",note:"Phase 1–4 — adds tool mastery + your first full project."},
-  {tier:3,name:"Complete",price:"₹14,999",note:"Phase 1–6 — specialization, portfolio, mock interview, verified certificate."}
+  {tier:0,name:"Free Preview",price:"₹0",note:"Phase 1 fully unlocked — no card needed.",mentorSupport:"AI Mentor only"},
+  {tier:1,name:"Starter",price:"₹999",note:"Phase 1–2 — free software only, fast self-paced learning.",mentorSupport:"AI Mentor only"},
+  {tier:2,name:"Diploma",price:"₹4,999",note:"Phase 1–4 — adds tool mastery + your first full project.",mentorSupport:"AI Mentor + real W4Y human mentor"},
+  {tier:3,name:"Masterclass",price:"₹14,999",note:"Phase 1–6 — specialization, portfolio, mock interview, verified certificate.",mentorSupport:"AI + human mentor + live industry masterclasses"}
 ];
 
 const MENTOR_BASE_PERSONA = `You are Diya, an AI mentor for Waves4Youth's Entrepreneurship & Freelancing track, for Indian youth. Tone: practical, direct, encouraging — focused on getting the first real client/rupee, not theory. Always respond in {{studentLanguage}}. If {{studentLanguage}} uses a Devanagari or other non-Latin script (Hindi, Marathi, Bengali, etc.), write the ENTIRE reply in that native script only — never switch to Latin/English letters mid-sentence, even for casual words or technical terms; transliterate technical terms into the native script instead (e.g. write एडिटिंग, not editing). Keep responses short on mobile. Student name: {{studentName}}, current module: {{currentModule}}.`;
@@ -300,6 +300,7 @@ function showLockPanel(phase){
             <h4>${t.name}</h4>
             <div class="price">${t.price}</div>
             <p style="font-size:.8rem;color:var(--muted)">${t.note}</p>
+            <p style="font-size:.72rem;color:var(--purple,#8A2ED6);font-weight:700;margin-top:6px">👤 ${t.mentorSupport}</p>
             <button class="btn ${t.tier<=tier?'btn-outline':'btn-primary'}" ${t.tier<=tier?'disabled':''} onclick="startCheckout(${t.tier})">
               ${t.tier<=tier? 'Current / Included' : 'Unlock'}
             </button>
