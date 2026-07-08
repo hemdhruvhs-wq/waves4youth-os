@@ -20,7 +20,7 @@
       <span class="brand-text"><span class="name">WAVES<span>4</span>YOUTH</span><span class="tag">India's Digital Creator Campus</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="course-video-editing.html">Programs</a>
+      <a href="index.html#schools">Programs</a>
       <a href="learn.html" class="active">My Learning</a>
       <a href="mentors.html">Student Life</a>
       <a href="student-projects.html">Projects Corner</a>
@@ -29,7 +29,7 @@
     </nav>
     <div class="nav-actions">
       <button class="icon-btn" aria-label="Search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-      <a href="login.html" class="nav-login">Login</a>
+      <a href="login.html" class="nav-login" id="navLoginLink">Login</a>
       <a href="course-video-editing.html#pricing" class="btn btn-primary btn-sm">Apply Now</a>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
     </div>
@@ -148,7 +148,7 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -194,6 +194,7 @@ function localProgressMap(){
 }
 
 onAuthStateChanged(auth, async function(user){
+  const navLink = document.getElementById('navLoginLink');
   if (!user) {
     // Guest/demo mode — show banner, fall back to this-device-only progress
     document.getElementById('guestBanner').style.display = 'block';
@@ -201,7 +202,18 @@ onAuthStateChanged(auth, async function(user){
     return;
   }
 
-  // Logged-in student — pull real progress from Firestore (synced across devices)
+  // Logged-in student — show Logout in the nav
+  if (navLink) {
+    navLink.textContent = 'Logout';
+    navLink.href = '#';
+    navLink.addEventListener('click', async function(e){
+      e.preventDefault();
+      await signOut(auth);
+      window.location.href = 'login.html';
+    });
+  }
+
+  // Pull real progress from Firestore (synced across devices)
   try {
     const snap = await getDoc(doc(db, "students", user.uid));
     if (snap.exists()) {
