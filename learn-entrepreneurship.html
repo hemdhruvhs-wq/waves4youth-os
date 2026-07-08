@@ -155,7 +155,7 @@ window.W4Y_AUTH_READY = new Promise((resolve) => {
   });
 });
 </script>
-<script src="js/mentor-chat.js"></script>
+<script src="mentor-chat.js"></script>
 <script>
 const TRACK = {
   id: "entrepreneurship",
@@ -373,7 +373,7 @@ async function renderModule(mod, phase){
 
   window.W4Y_initMentorChat(document.getElementById("mentorChatContainer"), () => ({
     mentorName: TRACK.mentor,
-    mentorImageUrl: "assets/mentors/diya.png",
+    mentorImageUrl: "/diya.png",
     mentorBasePersona: MENTOR_BASE_PERSONA,
     currentModuleTitle: mod.title,
     studentName: AUTH_STATE.name
@@ -401,9 +401,11 @@ async function render(){
   updateProgressBar();
 }
 
-window.W4Y_AUTH_READY.then((state) => {
-  AUTH_STATE = state;
-  render();
+document.addEventListener('DOMContentLoaded', function(){
+  window.W4Y_AUTH_READY.then((state) => {
+    AUTH_STATE = state;
+    render();
+  });
 });
 </script>
 </body>
