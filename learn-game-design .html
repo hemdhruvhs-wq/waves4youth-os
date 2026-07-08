@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Design & Development — My Learning | Waves4Youth</title>
+<meta name="description" content="Self-paced Game Design & Development track with Vikram, your AI mentor. Foundation to career-ready, at your own pace.">
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+<style>
+:root{--purple:#D63AFF;--pink:#FF6B6B;--orange:#FF9F5A;--amber:#FFB347;--dark:#1A0B2E;--light:#FDF3E7;--ink:#241233;--muted:#6B5A72;--border:#F0E0D0;--grad:linear-gradient(90deg,#FF6B6B,#D63AFF)}
+.portal-wrap{max-width:1280px;margin:0 auto;padding:32px 24px 80px}
+.portal-head{margin-bottom:8px}
+.portal-eyebrow{font-size:.76rem;color:var(--purple);font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.portal-head h1{font:800 clamp(1.8rem,3vw,2.6rem) Poppins,sans-serif;margin:.2em 0}
+.portal-sub{color:var(--muted);max-width:640px}
+.portal-grid{display:grid;grid-template-columns:340px 1fr;gap:28px;margin-top:28px;align-items:start}
+@media(max-width:900px){.portal-grid{grid-template-columns:1fr}}
+.sidebar{border:1px solid var(--border);border-radius:20px;background:#fff;padding:20px;position:sticky;top:20px}
+.sidebar h3{font:700 1.05rem Poppins,sans-serif;margin:0 0 4px}
+.progress-track{height:8px;border-radius:99px;background:#F0E0D0;margin:10px 0 4px;overflow:hidden}
+.progress-fill{height:100%;background:var(--grad);width:0%;transition:width .3s}
+.progress-label{font-size:.8rem;color:var(--muted);margin-bottom:16px}
+.phase{border-top:1px solid var(--border);padding:10px 0}
+.phase:first-of-type{border-top:none}
+.phase-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-weight:700;font-size:.92rem}
+.phase-head .badge{width:24px;height:24px;border-radius:50%;background:var(--grad);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;margin-right:8px}
+.phase-head.locked .badge{background:#D8CBD2}
+.phase-weeks{font-size:.72rem;color:var(--muted);font-weight:500}
+.module-list{list-style:none;margin:8px 0 0;padding:0 0 0 32px;display:none}
+.module-list.open{display:block}
+.module-list li{padding:6px 0;font-size:.85rem;color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:6px}
+.module-list li:hover{color:var(--purple)}
+.module-list li.active{color:var(--purple);font-weight:700}
+.module-list li .dot{width:7px;height:7px;border-radius:50%;background:var(--border);flex-shrink:0}
+.module-list li.done .dot{background:#2ecc71}
+.module-list li.locked{color:#B9ABB0;cursor:not-allowed}
+.content-pane{border:1px solid var(--border);border-radius:20px;background:#fff;padding:32px;min-height:400px}
+.crumb{font:800 .7rem Inter,sans-serif;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.content-pane h2{font:800 1.7rem Poppins,sans-serif;margin:.3em 0}
+.meta-row{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;margin-bottom:20px}
+.meta-row span{display:flex;align-items:center;gap:5px}
+.video-slot{background:var(--light);border:1px dashed var(--border);border-radius:16px;padding:40px 20px;text-align:center;color:var(--muted);margin-bottom:20px}
+.task-box{background:var(--light);border-radius:16px;padding:20px;margin-bottom:20px}
+.task-box b{color:var(--ink)}
+.btn{border:0;border-radius:999px;padding:12px 22px;font-weight:800;cursor:pointer;font-size:.9rem}
+.btn-primary{background:var(--grad);color:#fff}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--ink)}
+.actions-row{display:flex;gap:12px;flex-wrap:wrap}
+.lock-panel{text-align:center;padding:40px 20px}
+.lock-panel h2{font:800 1.5rem Poppins,sans-serif}
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
+@media(max-width:800px){.tier-grid{grid-template-columns:1fr 1fr}}
+.tier-card{border:1px solid var(--border);border-radius:16px;padding:18px;text-align:left}
+.tier-card.current{border-color:var(--purple);box-shadow:0 0 0 2px rgba(214,58,255,.15)}
+.tier-card h4{margin:0 0 6px;font:700 1rem Poppins,sans-serif}
+.tier-card .price{font:800 1.3rem Poppins,sans-serif;margin-bottom:8px}
+.tier-card ul{margin:0;padding-left:18px;font-size:.8rem;color:var(--muted)}
+.tier-card button{margin-top:12px;width:100%}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar container">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-mark.png" alt="Waves4Youth logo">
+      <span class="brand-text"><span class="name">WAVES<span>4</span>YOUTH</span><span class="tag">India's Digital Creator Campus</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="course-video-editing.html">Programs</a>
+      <a href="Future-Studio/">Future Studio</a>
+      <a href="learn.html">My Learning</a>
+      <a href="mentors.html">Student Life</a>
+      <a href="student-projects.html">Projects Corner</a>
+      <a href="index.html#about">About Us</a>
+      <a href="welcome-kit.html">Resources</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="nav-login">Login</a>
+      <a href="course-video-editing.html" class="btn btn-primary btn-sm">Apply Now</a>
+    </div>
+  </div>
+</header>
+
+<div class="portal-wrap">
+  <div class="portal-head">
+    <span class="portal-eyebrow">My Learning Portal</span>
+    <h1>Game Design & Development</h1>
+    <p class="portal-sub">Work through each phase at your own pace, with Vikram as your AI mentor. Ask questions in any language you're comfortable with.</p>
+  </div>
+
+  <div class="portal-grid">
+    <aside class="sidebar">
+      <h3>Game Design & Development</h3>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-label" id="progressLabel">0 / 29 lessons · 0% complete</div>
+      <div id="phaseContainer"></div>
+    </aside>
+    <main class="content-pane" id="contentPane"></main>
+  </div>
+
+  <div id="mentorChatContainer"></div>
+</div>
+
+<script src="js/script.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+window.__w4yDb = db;
+window.__w4yDoc = doc;
+window.__w4yGetDoc = getDoc;
+window.__w4yUpdateDoc = updateDoc;
+window.__w4yArrayUnion = arrayUnion;
+
+window.W4Y_AUTH_READY = new Promise((resolve) => {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) { resolve({ loggedIn:false, uid:null, tier:0 }); return; }
+    try {
+      const snap = await getDoc(doc(db, "students", user.uid));
+      const data = snap.exists() ? snap.data() : {};
+      const tier = (data.unlockedTiers && typeof data.unlockedTiers["game-design"] === "number")
+        ? data.unlockedTiers["game-design"] : 0;
+      resolve({ loggedIn:true, uid:user.uid, tier, name:data.name||"", progress:data.progress||{} });
+    } catch(e){
+      console.error("Could not verify tier:", e);
+      resolve({ loggedIn:true, uid:user.uid, tier:0 });
+    }
+  });
+});
+</script>
+<script src="js/mentor-chat.js"></script>
+<script>
+const TRACK = {
+  id: "game-design",
+  mentor: "Vikram",
+  phases: [
+    { id:"p1", name:"Foundation", weeks:"Weeks 1-4", tier:0, tierName:"Free Preview", modules:[
+        {id:"1.1",title:"Welcome to Game Design",mins:"45",desc:"Industry overview, genres, career map, and meet Vikram.",task:"Reflection."},
+        {id:"1.2",title:"How Games Work",mins:"45",desc:"Core loops, player motivation, and fun theory basics.",task:"Quiz."},
+        {id:"1.3",title:"Genres & Inspiration",mins:"40",desc:"A quick tour of platformers, puzzle, RPG, and hyper-casual games.",task:"Pick a favorite genre and explain why."},
+        {id:"1.4",title:"Tools Landscape",mins:"35",desc:"Unity (free) vs Unreal, plus no-code options like GDevelop for low-end devices.",task:"Choose your tool path."},
+        {id:"1.5",title:"Your First Creation",mins:"60",desc:"A paper prototype of a simple game concept.",task:"Upload a photo of your paper prototype."}
+      ]},
+    { id:"p2", name:"Core Technique", weeks:"Weeks 5-8", tier:1, tierName:"Starter · ₹999", modules:[
+        {id:"2.1",title:"Game Mechanics & Rules",mins:"45"},
+        {id:"2.2",title:"Level Design Basics",mins:"50"},
+        {id:"2.3",title:"World & Narrative Basics",mins:"40"},
+        {id:"2.4",title:"UI/UX for Games",mins:"45"},
+        {id:"2.5",title:"Critique Workshop",mins:"30"}
+      ]},
+    { id:"p3", name:"Tool Mastery", weeks:"Weeks 9-13", tier:2, tierName:"Builder · ₹4,999", modules:[
+        {id:"3.1",title:"Unity Interface & Navigation",mins:"60"},
+        {id:"3.2",title:"Basic Visual Scripting",mins:"55"},
+        {id:"3.3",title:"Asset Import & Sprites",mins:"40"},
+        {id:"3.4",title:"Simple 2D Game Build",mins:"60"},
+        {id:"3.5",title:"Basic Audio & Feedback",mins:"40"}
+      ]},
+    { id:"p4", name:"Applied Production", weeks:"Weeks 14-18", tier:2, tierName:"Builder · ₹4,999", modules:[
+        {id:"4.1",title:"Player Controls",mins:"55"},
+        {id:"4.2",title:"Scoring & Win/Lose Logic",mins:"50"},
+        {id:"4.3",title:"Level Polish",mins:"45"},
+        {id:"4.4",title:"Publish & Share",mins:"40"},
+        {id:"4.5",title:"Production Checkpoint",mins:"30"}
+      ]},
+    { id:"p5", name:"Portfolio & Specialization", weeks:"Weeks 19-22", tier:3, tierName:"Complete · ₹14,999", modules:[
+        {id:"5.1",title:"Choose Your Lane",mins:"30"},
+        {id:"5.2",title:"Specialization Deep-Dive",mins:"90"},
+        {id:"5.3",title:"Building Your Hero Game",mins:"120"},
+        {id:"5.4",title:"Peer/AI Review Loop",mins:"45"}
+      ]},
+    { id:"p6", name:"Career Readiness", weeks:"Weeks 23-24", tier:3, tierName:"Complete · ₹14,999", modules:[
+        {id:"6.1",title:"Gameplay Reel Assembly",mins:"60"},
+        {id:"6.2",title:"Resume & itch.io/LinkedIn Profile",mins:"45"},
+        {id:"6.3",title:"Mock Interview with Vikram",mins:"30"},
+        {id:"6.4",title:"Certificate & Parent Future Letter",mins:"5"},
+        {id:"6.5",title:"Freelance/Indie Kit",mins:"40"}
+      ]}
+  ]
+};
+
+const TIERS = [
+  {tier:0,name:"Free Preview",price:"₹0",note:"Phase 1 fully unlocked — no card needed."},
+  {tier:1,name:"Starter",price:"₹999",note:"Phase 1–2 — core storytelling + technique."},
+  {tier:2,name:"Builder",price:"₹4,999",note:"Phase 1–4 — adds tool mastery + your first full project."},
+  {tier:3,name:"Complete",price:"₹14,999",note:"Phase 1–6 — specialization, portfolio, mock interview, verified certificate."}
+];
+
+const MENTOR_BASE_PERSONA = `You are Vikram, an AI mentor for Waves4Youth's Game Design track, for Indian youth learners. Tone: energetic, systems-thinker — explain everything in terms of \"player experience\". Always respond in {{studentLanguage}}. Keep responses short on mobile (3-5 sentences unless grading). Student name: {{studentName}}, current module: {{currentModule}}.`;
+
+const STORE_KEY = "w4y_progress_" + TRACK.id;
+let AUTH_STATE = { loggedIn:false, uid:null, tier:0 };
+const moduleContentCache = {};
+
+function getProgress(){
+  if (AUTH_STATE.loggedIn) {
+    const arr = (AUTH_STATE.progress && AUTH_STATE.progress[TRACK.id]) || [];
+    const map = {};
+    arr.forEach(id => { map[id] = true; });
+    return map;
+  }
+  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }catch(e){ return {}; }
+}
+function getTier(){ return AUTH_STATE.tier; }
+
+let currentModuleId = null;
+
+function allModules(){ return TRACK.phases.flatMap(p => p.modules.map(m => ({...m, phaseId:p.id, phaseName:p.name, phaseTier:p.tier}))); }
+
+function updateProgressBar(){
+  const total = allModules().length;
+  const done = Object.values(getProgress()).filter(Boolean).length;
+  document.getElementById("progressFill").style.width = (done/total*100) + "%";
+  document.getElementById("progressLabel").textContent = `${done} / ${total} lessons · ${Math.round(done/total*100)}% complete`;
+}
+
+function renderSidebar(){
+  const tier = getTier();
+  const progress = getProgress();
+  const container = document.getElementById("phaseContainer");
+  container.innerHTML = "";
+  TRACK.phases.forEach((phase, idx) => {
+    const locked = phase.tier > tier;
+    const wrap = document.createElement("div");
+    wrap.className = "phase";
+    wrap.innerHTML = `
+      <div class="phase-head ${locked ? 'locked' : ''}" data-phase="${phase.id}">
+        <span><span class="badge">${locked ? '\uD83D\uDD12' : idx+1}</span>${phase.name}</span>
+        <span class="phase-weeks">${phase.weeks}</span>
+      </div>
+      <ul class="module-list" id="list-${phase.id}"></ul>
+    `;
+    container.appendChild(wrap);
+    const list = wrap.querySelector(`#list-${phase.id}`);
+    phase.modules.forEach(m => {
+      const li = document.createElement("li");
+      const done = !!progress[m.id];
+      li.className = (locked ? "locked " : "") + (done ? "done " : "") + (currentModuleId === m.id ? "active" : "");
+      li.innerHTML = `<span class="dot"></span>${m.id} ${m.title}`;
+      li.onclick = () => { if(!locked){ currentModuleId = m.id; render(); } else { showLockPanel(phase); } };
+      list.appendChild(li);
+    });
+    wrap.querySelector(".phase-head").onclick = () => { list.classList.toggle("open"); };
+  });
+  if (currentModuleId) {
+    const mod = allModules().find(m => m.id === currentModuleId);
+    if (mod) { const el = document.getElementById(`list-${mod.phaseId}`); if (el) el.classList.add("open"); }
+  } else {
+    document.getElementById(`list-${TRACK.phases[0].id}`).classList.add("open");
+  }
+}
+
+function showLockPanel(phase){
+  const tier = getTier();
+  if (!AUTH_STATE.loggedIn) {
+    document.getElementById("contentPane").innerHTML = `
+      <div class="lock-panel">
+        <span class="crumb">${TRACK.mentor} · ${phase.name}</span>
+        <h2>Log in to unlock ${phase.name}</h2>
+        <p style="color:var(--muted)">Phase 1 is free for everyone. From here on, you'll need a Waves4Youth account so we can save your progress and unlock the phases you've paid for.</p>
+        <a class="btn btn-primary" href="login.html">Log in / Create free account</a>
+      </div>
+    `;
+    return;
+  }
+  document.getElementById("contentPane").innerHTML = `
+    <div class="lock-panel">
+      <span class="crumb">${TRACK.mentor} · ${phase.name}</span>
+      <h2>Unlock ${phase.name} to keep going</h2>
+      <p style="color:var(--muted)">You've reached content in the <b>${phase.tierName}</b> tier. Upgrade below to unlock this phase and keep building with ${TRACK.mentor}.</p>
+      <div class="tier-grid">
+        ${TIERS.map(t => `
+          <div class="tier-card ${t.tier===tier?'current':''}">
+            <h4>${t.name}</h4>
+            <div class="price">${t.price}</div>
+            <p style="font-size:.8rem;color:var(--muted)">${t.note}</p>
+            <button class="btn ${t.tier<=tier?'btn-outline':'btn-primary'}" ${t.tier<=tier?'disabled':''} onclick="startCheckout(${t.tier})">
+              ${t.tier<=tier? 'Current / Included' : 'Unlock'}
+            </button>
+          </div>`).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function startCheckout(tier){
+  if (!AUTH_STATE.loggedIn) { window.location.href = "login.html"; return; }
+  alert("This will open Razorpay checkout once payment gating is wired up. Simulating unlock for now.");
+  try {
+    await window.__w4yUpdateDoc(window.__w4yDoc(window.__w4yDb, "students", AUTH_STATE.uid), {
+      [`unlockedTiers.${TRACK.id}`]: tier
+    });
+    AUTH_STATE.tier = tier;
+    render();
+  } catch(e) { console.error("Could not update tier:", e); }
+}
+
+async function markComplete(id){
+  if (AUTH_STATE.loggedIn) {
+    if (!AUTH_STATE.progress) AUTH_STATE.progress = {};
+    if (!AUTH_STATE.progress[TRACK.id]) AUTH_STATE.progress[TRACK.id] = [];
+    if (!AUTH_STATE.progress[TRACK.id].includes(id)) AUTH_STATE.progress[TRACK.id].push(id);
+    try {
+      await window.__w4yUpdateDoc(window.__w4yDoc(window.__w4yDb, "students", AUTH_STATE.uid), {
+        [`progress.${TRACK.id}`]: window.__w4yArrayUnion(id)
+      });
+    } catch(e) { console.error("Could not save progress:", e); }
+  } else {
+    const p = getProgress();
+    p[id] = true;
+    localStorage.setItem(STORE_KEY, JSON.stringify(p));
+  }
+  updateProgressBar();
+  renderSidebar();
+}
+
+async function fetchModuleContent(mod){
+  if (moduleContentCache[mod.id]) return moduleContentCache[mod.id];
+  try {
+    const snap = await window.__w4yGetDoc(window.__w4yDoc(window.__w4yDb, "phaseContent", `${TRACK.id}_${mod.id}`));
+    const content = snap.exists() ? snap.data() : { desc:"Content coming soon.", task:"\u2014" };
+    moduleContentCache[mod.id] = content;
+    return content;
+  } catch(e) {
+    console.error("Could not load lesson content:", e);
+    return { desc:"Could not load this lesson right now — please refresh.", task:"\u2014" };
+  }
+}
+
+async function renderModule(mod, phase){
+  let content = (mod.desc !== undefined) ? mod : await fetchModuleContent(mod);
+  document.getElementById("contentPane").innerHTML = `
+    <span class="crumb">Game Design & Development → ${phase.name}</span>
+    <h2>${mod.title}</h2>
+    <div class="meta-row">
+      <span>\u23F1 ~${mod.mins} min</span>
+      <span>\uD83D\uDCCD ${phase.weeks}</span>
+      <span>\uD83D\uDCD8 Lesson</span>
+    </div>
+    <div class="video-slot">\uD83C\uDFAC Video / screen-recording goes here<br><small>(embed a YouTube-unlisted video via its ID once produced)</small></div>
+    <p>${content.desc}</p>
+    <div class="task-box"><b>Your task:</b> ${content.task}</div>
+    <div class="actions-row">
+      <button class="btn btn-primary" onclick="markComplete('${mod.id}')">Mark Complete</button>
+    </div>
+  `;
+
+  window.W4Y_initMentorChat(document.getElementById("mentorChatContainer"), () => ({
+    mentorName: TRACK.mentor,
+    mentorBasePersona: MENTOR_BASE_PERSONA,
+    currentModuleTitle: mod.title,
+    studentName: AUTH_STATE.name
+  }));
+}
+
+async function render(){
+  const tier = getTier();
+  let mod = null, phase = null;
+  if (currentModuleId) {
+    mod = allModules().find(m => m.id === currentModuleId);
+    phase = TRACK.phases.find(p => p.id === mod.phaseId);
+  } else {
+    phase = TRACK.phases[0];
+    mod = phase.modules[0];
+    currentModuleId = mod.id;
+  }
+  if (phase.tier > tier) {
+    showLockPanel(phase);
+    document.getElementById("mentorChatContainer").innerHTML = "";
+  } else {
+    await renderModule(mod, phase);
+  }
+  renderSidebar();
+  updateProgressBar();
+}
+
+window.W4Y_AUTH_READY.then((state) => {
+  AUTH_STATE = state;
+  render();
+});
+</script>
+</body>
+</html>

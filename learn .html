@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Learning — Waves4Youth</title>
+<meta name="description" content="Your Waves4Youth learning dashboard — track progress across all your creator programs.">
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="navbar container">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-mark.png" alt="Waves4Youth logo">
+      <span class="brand-text"><span class="name">WAVES<span>4</span>YOUTH</span><span class="tag">India's Digital Creator Campus</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="course-video-editing.html">Programs</a>
+      <a href="learn.html" class="active">My Learning</a>
+      <a href="mentors.html">Student Life</a>
+      <a href="student-projects.html">Projects Corner</a>
+      <a href="index.html#about">About Us</a>
+      <a href="welcome-kit.html">Resources</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" aria-label="Search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      <a href="login.html" class="nav-login">Login</a>
+      <a href="course-video-editing.html#pricing" class="btn btn-primary btn-sm">Apply Now</a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<section class="dash-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--pink)">My Learning</span>
+    <h1 id="dashGreeting">Welcome back, Creator.</h1>
+    <p id="dashSubtext">Pick up where you left off — your progress is saved automatically on this device.</p>
+    <div id="guestBanner" style="display:none;background:rgba(255,111,97,.12);border:1px solid rgba(255,111,97,.35);border-radius:12px;padding:10px 16px;margin:10px 0;font-size:14px;">
+      You're viewing in guest/demo mode. <a href="login.html" style="color:var(--pink);font-weight:600;">Log in or create an account</a> to save your progress across devices.
+    </div>
+    <div class="dash-stats">
+      <div class="dash-stat"><div class="num" id="statPrograms">0</div><div class="lbl">Programs Started</div></div>
+      <div class="dash-stat"><div class="num" id="statLessons">0</div><div class="lbl">Lessons Completed</div></div>
+      <div class="dash-stat"><div class="num" id="statPct">0%</div><div class="lbl">Overall Progress</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">Your Programs</span><h2>Continue Where You Left Off</h2></div>
+    <div class="grid grid-3 dash-grid">
+      <div class="card dash-card">
+        <div class="dash-card-top">
+          <div class="dash-ic" style="background:linear-gradient(135deg,#D63AFF,#8A6BFF)">🎬</div>
+          <div><h4>Video Editing &amp; AI Content Creation</h4><span class="weeks-tag">24 weeks · self-paced</span></div>
+        </div>
+        <div class="dash-card-progress">
+          <div class="plabel"><span>Progress</span><span class="dash-pct" data-slug="video-editing">0%</span></div>
+          <div class="portal-progress-bar"><div class="portal-progress-fill dash-fill" data-slug="video-editing" style="width:0%"></div></div>
+        </div>
+        <a href="learn-video-editing.html" class="btn btn-primary">Continue Learning →</a>
+      </div>
+      <div class="card dash-card">
+        <div class="dash-card-top">
+          <div class="dash-ic" style="background:linear-gradient(135deg,#FF6B6B,#FF8AC6)">🎨</div>
+          <div><h4>Animation &amp; VFX</h4><span class="weeks-tag">28 weeks · self-paced</span></div>
+        </div>
+        <div class="dash-card-progress">
+          <div class="plabel"><span>Progress</span><span class="dash-pct" data-slug="animation-vfx">0%</span></div>
+          <div class="portal-progress-bar"><div class="portal-progress-fill dash-fill" data-slug="animation-vfx" style="width:0%"></div></div>
+        </div>
+        <a href="learn-animation-vfx.html" class="btn btn-primary">Continue Learning →</a>
+      </div>
+      <div class="card dash-card">
+        <div class="dash-card-top">
+          <div class="dash-ic" style="background:linear-gradient(135deg,#12C48B,#5FE2B9)">🎮</div>
+          <div><h4>Game Design &amp; Development</h4><span class="weeks-tag">26 weeks · self-paced</span></div>
+        </div>
+        <div class="dash-card-progress">
+          <div class="plabel"><span>Progress</span><span class="dash-pct" data-slug="game-design">0%</span></div>
+          <div class="portal-progress-bar"><div class="portal-progress-fill dash-fill" data-slug="game-design" style="width:0%"></div></div>
+        </div>
+        <a href="learn-game-design.html" class="btn btn-primary">Continue Learning →</a>
+      </div>
+      <div class="card dash-card">
+        <div class="dash-card-top">
+          <div class="dash-ic" style="background:linear-gradient(135deg,#FF9F5A,#FFB347)">📱</div>
+          <div><h4>Digital Content Creation</h4><span class="weeks-tag">20 weeks · self-paced</span></div>
+        </div>
+        <div class="dash-card-progress">
+          <div class="plabel"><span>Progress</span><span class="dash-pct" data-slug="digital-content">0%</span></div>
+          <div class="portal-progress-bar"><div class="portal-progress-fill dash-fill" data-slug="digital-content" style="width:0%"></div></div>
+        </div>
+        <a href="learn-digital-content.html" class="btn btn-primary">Continue Learning →</a>
+      </div>
+      <div class="card dash-card">
+        <div class="dash-card-top">
+          <div class="dash-ic" style="background:linear-gradient(135deg,#FF6B6B,#D63AFF)">🤖</div>
+          <div><h4>AI &amp; Creative Technology</h4><span class="weeks-tag">18 weeks · self-paced</span></div>
+        </div>
+        <div class="dash-card-progress">
+          <div class="plabel"><span>Progress</span><span class="dash-pct" data-slug="ai-creative-tech">0%</span></div>
+          <div class="portal-progress-bar"><div class="portal-progress-fill dash-fill" data-slug="ai-creative-tech" style="width:0%"></div></div>
+        </div>
+        <a href="learn-ai-creative-tech.html" class="btn btn-primary">Continue Learning →</a>
+      </div>
+      <div class="card dash-card">
+        <div class="dash-card-top">
+          <div class="dash-ic" style="background:linear-gradient(135deg,#D63AFF,#12C48B)">🚀</div>
+          <div><h4>Entrepreneurship &amp; Freelancing</h4><span class="weeks-tag">16 weeks · self-paced</span></div>
+        </div>
+        <div class="dash-card-progress">
+          <div class="plabel"><span>Progress</span><span class="dash-pct" data-slug="entrepreneurship">0%</span></div>
+          <div class="portal-progress-bar"><div class="portal-progress-fill dash-fill" data-slug="entrepreneurship" style="width:0%"></div></div>
+        </div>
+        <a href="learn-entrepreneurship.html" class="btn btn-primary">Continue Learning →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="about">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/logo-mark.png" alt="Waves4Youth logo">
+          <span class="brand-text"><span class="name">WAVES<span>4</span>YOUTH</span><span class="tag">India's Digital Creator Campus</span></span>
+        </a>
+        <p>Empowering a new generation of creators through accessible, affordable and future-ready education.</p>
+        <div class="social-row"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="YouTube">▶</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">✕</a></div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="course-video-editing.html">All Programs</a></li><li><a href="mentors.html">Career Missions</a></li><li><a href="learn.html">My Learning</a></li><li><a href="#">Creator Accelerator</a></li></ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul><li><a href="welcome-kit.html">Welcome Kit</a></li><li><a href="student-projects.html">Student Projects</a></li><li><a href="#">Blog</a></li><li><a href="#">Help Center</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="index.html#about">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Partners</a></li><li><a href="#">Contact Us</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="terms.html">Terms of Use</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="refund.html">Refund Policy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year></span> Waves4Youth. All rights reserved.</span><span>Made with ❤️ in India 🇮🇳</span></div>
+  </div>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+var LESSON_COUNTS = {"video-editing": 29, "animation-vfx": 29, "game-design": 29, "digital-content": 29, "ai-creative-tech": 29, "entrepreneurship": 29};
+var slugs = Object.keys(LESSON_COUNTS);
+
+function renderProgress(progressMap){
+  var totalLessons = 0, doneLessons = 0, programsStarted = 0;
+  slugs.forEach(function(slug){
+    var done = (progressMap && progressMap[slug]) ? progressMap[slug] : [];
+    var total = LESSON_COUNTS[slug];
+    totalLessons += total;
+    doneLessons += done.length;
+    if (done.length > 0) programsStarted++;
+    var pct = total ? Math.round((done.length/total)*100) : 0;
+    document.querySelectorAll('.dash-pct[data-slug="'+slug+'"]').forEach(function(el){ el.textContent = pct + '%'; });
+    document.querySelectorAll('.dash-fill[data-slug="'+slug+'"]').forEach(function(el){ el.style.width = pct + '%'; });
+  });
+  document.getElementById('statPrograms').textContent = programsStarted;
+  document.getElementById('statLessons').textContent = doneLessons;
+  document.getElementById('statPct').textContent = (totalLessons ? Math.round((doneLessons/totalLessons)*100) : 0) + '%';
+}
+
+function localProgressMap(){
+  var map = {};
+  slugs.forEach(function(slug){
+    var raw = null;
+    try { raw = localStorage.getItem('w4y_progress_' + slug); } catch(e) {}
+    map[slug] = raw ? JSON.parse(raw) : [];
+  });
+  return map;
+}
+
+onAuthStateChanged(auth, async function(user){
+  if (!user) {
+    // Guest/demo mode — show banner, fall back to this-device-only progress
+    document.getElementById('guestBanner').style.display = 'block';
+    renderProgress(localProgressMap());
+    return;
+  }
+
+  // Logged-in student — pull real progress from Firestore (synced across devices)
+  try {
+    const snap = await getDoc(doc(db, "students", user.uid));
+    if (snap.exists()) {
+      const data = snap.data();
+      document.getElementById('dashGreeting').textContent = 'Welcome back, ' + (data.name ? data.name.split(' ')[0] : 'Creator') + '.';
+      document.getElementById('dashSubtext').textContent = 'Pick up where you left off — your progress is saved to your account.';
+      renderProgress(data.progress || {});
+    } else {
+      renderProgress({});
+    }
+  } catch (e) {
+    console.error('Could not load progress:', e);
+    renderProgress(localProgressMap());
+  }
+});
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>
