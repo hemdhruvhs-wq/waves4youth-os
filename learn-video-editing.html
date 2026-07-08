@@ -188,7 +188,7 @@ const TRACK = {
     { id:"p1", name:"Foundation", weeks:"Weeks 1-4", tier:0, tierName:"Free Preview",
       modules:[
         {id:"1.1",title:"Welcome to Video Editing",mins:"45-60",desc:"Industry overview (film/OTT/social), career map, and meet Neel, your AI mentor for this track.",task:"Reflection: what kind of editing excites you most?"},
-        {id:"1.2",title:"The Language of Cuts",mins:"45-60",desc:"Cut types, pacing, and why editing is invisible storytelling.",task:"Quiz: identify cut types in sample clips."},
+        {id:"1.2",title:"The Language of Cuts",mins:"45-60",desc:"Cut types, pacing, and why editing is invisible storytelling.",task:"Quiz: identify cut types in sample clips.",image:"/lesson-cuts-diagram.png"},
         {id:"1.3",title:"Story Structure in Editing",mins:"40-50",desc:"3-act structure applied to editing choices, using example scene breakdowns.",task:"Outline a 3-shot mini-story."},
         {id:"1.4",title:"Tools Landscape",mins:"30-40",desc:"CapCut (free, phone) vs DaVinci Resolve (free, pro) vs Premiere Pro — pick your tool path based on your device.",task:"Choose your tool path (phone-first or desktop-pro)."},
         {id:"1.5",title:"Your First Creation",mins:"60",desc:"Cut together 3 phone clips into one 15-second edit, using any tool including your phone.",task:"Upload your first edit."}
@@ -405,7 +405,10 @@ async function renderModule(mod, phase){
       <span>📍 ${phase.weeks}</span>
       <span>📘 Lesson</span>
     </div>
-    <div class="video-slot">🎬 Video / screen-recording goes here<br><small>(embed a YouTube-unlisted video via its ID once produced)</small></div>
+    ${content.image
+      ? `<img src="${content.image}" alt="${mod.title} diagram" style="width:100%;border-radius:16px;margin-bottom:20px;display:block">`
+      : `<div class="video-slot">🎬 Video / screen-recording goes here<br><small>(embed a YouTube-unlisted video via its ID once produced)</small></div>`
+    }
     <p>${content.desc}</p>
     <div class="task-box"><b>Your task:</b> ${content.task}</div>
     <div class="actions-row">
