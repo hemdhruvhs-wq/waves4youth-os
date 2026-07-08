@@ -118,7 +118,12 @@ function buildMentorChatHTML(mentorName, mentorImageUrl){
 
 const MENTOR_CHAT_CSS = `
 .mentor-chat-panel{border:1px solid var(--border);border-radius:16px;background:#fff;margin-top:20px;display:flex;flex-direction:column;overflow:hidden}
-.mentor-chat-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border)}
+.mentor-chat-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+@media(max-width:420px){
+  .mentor-chat-head{gap:8px}
+  .mentor-lang-select{margin-left:0;order:3;flex:1;min-width:120px}
+  .mentor-speak-toggle{order:4}
+}
 .mentor-avatar{font-size:22px}
 .mentor-avatar-img{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0}
 .mentor-name{font-weight:800;font-family:Poppins,sans-serif}
