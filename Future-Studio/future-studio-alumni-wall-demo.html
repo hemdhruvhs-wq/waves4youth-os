@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenview Public School — Alumni Wall | Waves4Youth</title>
+<meta name="description" content="A school's growing wall of Future Studio alumni — every student's journey, remembered.">
+<link rel="icon" href="assets/logo-mark.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--coral:#FF6F61;--magenta:#D6336C;--orange:#FF9349;--gold:#F5C453;--plum:#4A1942;--plumdeep:#2E0F2A;--cream:#FFF6EC;--ink:#241233;--muted:#6B5A72;--border:#F0E0D0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:#FDF3E7}
+
+  .topbar{padding:18px 24px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(160deg,var(--plumdeep),var(--plum) 70%);color:var(--cream)}
+  .brand{font:800 15px Poppins,sans-serif}
+  .brand span{background:linear-gradient(90deg,var(--gold),var(--coral));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .exit{color:var(--cream);opacity:.7;text-decoration:none;font-size:13px;border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px}
+
+  .hero{background:linear-gradient(160deg,var(--plumdeep),var(--plum) 70%);color:var(--cream);text-align:center;padding:30px 20px 46px}
+  .hero .eyebrow{font:800 11px Poppins,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+  .hero h1{font:800 clamp(1.5rem,5vw,2.1rem) Poppins,sans-serif;margin:.3em 0}
+  .hero p{color:rgba(255,246,236,.75);max-width:460px;margin:0 auto;font-size:14px}
+  .hero .stat-row{display:flex;justify-content:center;gap:28px;margin-top:20px;flex-wrap:wrap}
+  .hero .stat b{display:block;font:800 1.5rem Poppins,sans-serif;color:var(--gold)}
+  .hero .stat span{font-size:11.5px;color:rgba(255,246,236,.65)}
+
+  .wall{max-width:900px;margin:-26px auto 50px;padding:0 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.wall{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.wall{grid-template-columns:1fr}}
+
+  .alumni-card{background:#fff;border-radius:18px;padding:20px 16px;text-align:center;box-shadow:0 8px 22px rgba(36,18,51,.1);border:1px solid var(--border);text-decoration:none;color:var(--ink);display:block}
+  .alumni-card .avatar{width:64px;height:64px;border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff}
+  .alumni-card h4{font:800 .95rem Poppins,sans-serif;margin-bottom:2px}
+  .alumni-card .path{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .alumni-card .class-tag{display:inline-block;background:var(--border);font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:999px}
+  .alumni-card.featured{border:2px solid var(--gold);box-shadow:0 10px 28px rgba(245,196,83,.3)}
+  .alumni-card.featured .tag{background:linear-gradient(90deg,var(--gold),var(--coral));color:#fff;font-size:9.5px;font-weight:800;padding:3px 10px;border-radius:999px;display:inline-block;margin-bottom:8px}
+
+  .cta-strip{max-width:640px;margin:0 auto 50px;text-align:center;padding:0 20px}
+  .cta-strip p{color:var(--muted);font-size:13px;margin-bottom:14px}
+  .btn{border:0;border-radius:999px;padding:12px 24px;font-weight:800;font-size:13.5px;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,var(--orange),var(--coral));color:#fff;text-decoration:none;display:inline-block}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">WAVES<span>4</span>YOUTH · School Wall</div>
+  <a href="index.html" class="exit">Exit ✕</a>
+</div>
+
+<div class="hero">
+  <span class="eyebrow">Alumni Wall</span>
+  <h1>Greenview Public School, Bhopal</h1>
+  <p>Every Future Studio journey from this school, remembered in one place — a growing record for annual functions, admissions, and alumni pride.</p>
+  <div class="stat-row">
+    <div class="stat"><b>47</b><span>Journeys recorded</span></div>
+    <div class="stat"><b>6</b><span>Years partnered</span></div>
+    <div class="stat"><b>12</b><span>Career paths discovered</span></div>
+  </div>
+</div>
+
+<div class="wall">
+
+  <a href="future-studio-legacy-book-dhruv.html" class="alumni-card featured">
+    <span class="tag">✨ Featured Journey</span>
+    <div class="avatar" style="background:linear-gradient(135deg,#FF9349,#FF6F61)">🚀</div>
+    <h4>Dhruv Sharma</h4>
+    <div class="path">Wanted: Doctor → Chose: Space Science</div>
+    <span class="class-tag">Class of 2026</span>
+  </a>
+
+  <a href="#" class="alumni-card">
+    <div class="avatar" style="background:linear-gradient(135deg,#12C48B,#5FE2B9)">🎮</div>
+    <h4>Ananya Verma</h4>
+    <div class="path">Wanted: Engineer → Chose: Game Design</div>
+    <span class="class-tag">Class of 2025</span>
+  </a>
+
+  <a href="#" class="alumni-card">
+    <div class="avatar" style="background:linear-gradient(135deg,#D63AFF,#8A6BFF)">🎬</div>
+    <h4>Rohan Mehta</h4>
+    <div class="path">Wanted: Businessman → Chose: Film Editing</div>
+    <span class="class-tag">Class of 2025</span>
+  </a>
+
+  <a href="#" class="alumni-card">
+    <div class="avatar" style="background:linear-gradient(135deg,#FF6B6B,#FF8AC6)">🎨</div>
+    <h4>Priya Nair</h4>
+    <div class="path">Wanted: Teacher → Chose: Animation</div>
+    <span class="class-tag">Class of 2024</span>
+  </a>
+
+  <a href="#" class="alumni-card">
+    <div class="avatar" style="background:linear-gradient(135deg,#FF9F5A,#FFB347)">📱</div>
+    <h4>Kabir Singh</h4>
+    <div class="path">Wanted: Pilot → Chose: Content Creation</div>
+    <span class="class-tag">Class of 2024</span>
+  </a>
+
+  <a href="#" class="alumni-card">
+    <div class="avatar" style="background:linear-gradient(135deg,#8A2ED6,#D63AFF)">🤖</div>
+    <h4>Sara Iyer</h4>
+    <div class="path">Wanted: Doctor → Chose: AI &amp; Creative Tech</div>
+    <span class="class-tag">Class of 2024</span>
+  </a>
+
+</div>
+
+<div class="cta-strip">
+  <p>This wall updates automatically every year as new students complete their Std 10 journey — no extra work for the school.</p>
+  <a href="#" class="btn">📤 Download Annual Day Reel</a>
+</div>
+
+</body>
+</html>
