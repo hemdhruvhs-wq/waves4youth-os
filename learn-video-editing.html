@@ -48,6 +48,12 @@
 .meta-row{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:.85rem;margin-bottom:20px}
 .meta-row span{display:flex;align-items:center;gap:5px}
 .video-slot{background:var(--light);border:1px dashed var(--border);border-radius:16px;padding:40px 20px;text-align:center;color:var(--muted);margin-bottom:20px}
+.checkpoint-card{background:#fff;border:2px solid var(--gold,#F5C453);border-radius:20px;padding:26px 22px;max-width:560px}
+.checkpoint-badge{font-size:40px;margin-bottom:10px}
+.checkpoint-q{display:block;font-weight:700;font-size:.85rem;margin:14px 0 6px}
+.checkpoint-input{width:100%;border:2px solid var(--border);border-radius:12px;padding:10px 14px;font-family:inherit;font-size:.9rem;margin-bottom:6px}
+.checkpoint-neel-reply{background:var(--light);border-radius:14px;padding:14px 16px;margin-top:14px;font-size:.9rem;line-height:1.6}
+.checkpoint-coin{margin-top:10px;font-weight:800;color:#D97706;font-size:.9rem}
 .task-box{background:var(--light);border-radius:16px;padding:20px;margin-bottom:20px}
 .task-box b{color:var(--ink)}
 .btn{border:0;border-radius:999px;padding:12px 22px;font-weight:800;cursor:pointer;font-size:.9rem}
@@ -362,6 +368,16 @@ async function startCheckout(tier){
   } catch(e) { console.error("Could not update tier:", e); }
 }
 
+const PHASE_CHECKPOINTS = {
+  p1: {
+    title: "Phase 1 Checkpoint",
+    questions: [
+      "In your own words — what's one thing that makes a cut feel 'invisible' rather than jarring?",
+      "Which lesson so far did you enjoy the most, and why?"
+    ]
+  }
+};
+
 async function markComplete(id){
   if (AUTH_STATE.loggedIn) {
     if (!AUTH_STATE.progress) AUTH_STATE.progress = {};
@@ -379,6 +395,58 @@ async function markComplete(id){
   }
   updateProgressBar();
   renderSidebar();
+
+  // Check if this completed the last module of its phase — if so, offer a soft checkpoint (never blocks progress)
+  const phase = TRACK.phases.find(ph => ph.modules.some(m => m.id === id));
+  if (phase && PHASE_CHECKPOINTS[phase.id]) {
+    const progressMap = getProgress();
+    const allDone = phase.modules.every(m => progressMap[m.id]);
+    if (allDone) showPhaseCheckpoint(phase);
+  }
+}
+
+function showPhaseCheckpoint(phase){
+  const cp = PHASE_CHECKPOINTS[phase.id];
+  const pane = document.getElementById("contentPane");
+  pane.innerHTML = `
+    <div class="checkpoint-card">
+      <div class="checkpoint-badge">🎯</div>
+      <span class="eyebrow">${cp.title}</span>
+      <h2>Nice work finishing ${phase.name}!</h2>
+      <p>Two quick reflections — Neel would love to hear your own words. This is just for you; there's no pass or fail, and you can continue whenever you're ready.</p>
+      ${cp.questions.map((q,i) => `
+        <label class="checkpoint-q">${q}</label>
+        <textarea class="checkpoint-input" id="cpAnswer${i}" rows="2" placeholder="Type a sentence or two..."></textarea>
+      `).join("")}
+      <button class="btn btn-primary" onclick="submitCheckpoint('${phase.id}')">Share With Neel →</button>
+      <div id="checkpointResponse"></div>
+      <button class="btn btn-outline" style="margin-top:10px" onclick="render()">Skip for now, continue →</button>
+    </div>
+  `;
+}
+
+async function submitCheckpoint(phaseId){
+  const cp = PHASE_CHECKPOINTS[phaseId];
+  const answers = cp.questions.map((q,i) => `Q: ${q}\nA: ${document.getElementById('cpAnswer'+i).value || "(no answer given)"}`).join("\n\n");
+  const responseEl = document.getElementById('checkpointResponse');
+  responseEl.innerHTML = `<p style="color:var(--muted);font-size:.85rem">Neel is reading your reflections...</p>`;
+  try {
+    const resp = await fetch("https://solar-armadillo-4814.waves4youth.deno.net", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        system: "You are Neel, warm video-editing mentor. The student just finished a phase and shared two short reflections. Respond with genuine, brief (2-3 sentence) encouragement referencing something specific they said. Never grade, judge or say they're wrong — this is a celebration checkpoint, not a test.",
+        messages: [{ role: "user", content: answers }],
+        max_tokens: 200
+      })
+    });
+    const data = await resp.json();
+    const textBlock = (data.content || []).find(b => b.type === "text");
+    responseEl.innerHTML = `<div class="checkpoint-neel-reply">${textBlock ? textBlock.text : "Great reflections — keep going!"}</div>
+      <div class="checkpoint-coin">🪙 +30 W4Y Coins earned for reflecting!</div>`;
+  } catch(e) {
+    responseEl.innerHTML = `<p style="color:var(--muted);font-size:.85rem">Couldn't reach Neel right now, but your reflection is saved. 🪙 +30 W4Y Coins earned!</p>`;
+  }
 }
 
 async function fetchModuleContent(mod){
