@@ -10,26 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/projects.css">
-<style>
-/* Idle motion so thumbnails feel alive even before tapping play */
-.pick-thumb, .featured-media{background-size:220% 220% !important;animation:w4yShimmer 9s ease-in-out infinite;cursor:pointer;position:relative;overflow:hidden}
-.pick-thumb:hover, .featured-media:hover{filter:brightness(1.08)}
-@keyframes w4yShimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.pick-thumb::after, .featured-media::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.10),transparent 60%);pointer-events:none}
-
-/* Preview lightbox */
-#w4yPreviewOverlay{position:fixed;inset:0;background:rgba(8,6,16,.92);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px}
-#w4yPreviewOverlay.active{display:flex}
-.w4y-preview-box{width:100%;max-width:720px;border-radius:20px;overflow:hidden;background:#12101C;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.w4y-preview-canvas-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#0c0a14}
-.w4y-preview-canvas-wrap canvas{width:100%;height:100%;display:block}
-.w4y-preview-label{position:absolute;left:14px;bottom:12px;color:#fff;font-family:Inter,sans-serif;font-size:13px;background:rgba(0,0,0,.35);padding:5px 12px;border-radius:999px;backdrop-filter:blur(4px)}
-.w4y-preview-badge{position:absolute;right:14px;top:12px;color:#fff;font-family:Inter,sans-serif;font-size:11px;font-weight:600;letter-spacing:.03em;background:rgba(255,255,255,.14);padding:5px 10px;border-radius:999px}
-.w4y-preview-footer{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;font-family:Inter,sans-serif;color:#fff}
-.w4y-preview-title{font-family:Poppins,sans-serif;font-weight:700;font-size:16px}
-.w4y-preview-close{background:rgba(255,255,255,.1);border:none;color:#fff;width:34px;height:34px;border-radius:999px;cursor:pointer;font-size:16px;line-height:1}
-.w4y-preview-close:hover{background:rgba(255,255,255,.22)}
-</style>
 </head>
 <body>
 
@@ -87,9 +67,9 @@
   <!-- ============ FEATURED PROJECT ============ -->
   <div class="container">
     <div class="featured-project">
-      <div class="featured-media" data-category="film">
+      <div class="featured-media" style="background-image:url('https://images.unsplash.com/photo-1757845366142-e5929f71c7bb?auto=format&fit=crop&w=1400&q=85');background-size:cover;background-position:center">
         <span class="badge badge-purple feat-badge">★ Featured Project</span>
-        <div class="feat-play" onclick="openPreview('film','Beyond the Frame')">▶</div>
+        <div class="feat-play">▶</div>
         <div class="feat-selection">🏆 Official Selection · MIFF 2026</div>
       </div>
       <div class="featured-info">
@@ -119,12 +99,12 @@
   <div class="container">
     <div class="section-head"><span class="eyebrow">Top Picks Across Categories</span><h2>Handpicked Projects By Our Faculty</h2></div>
     <div class="grid grid-6 pick-grid">
-      <div class="pick-card" data-filter-item="animation"><div class="pick-thumb" data-category="animation" onclick="openPreview('animation','The Little Dreamer')" style="background:linear-gradient(135deg,#502350,#FF6B6B)"><span class="badge badge-pink pick-tag">Animation</span>▶ 2:45</div><strong>The Little Dreamer</strong><p class="small muted">Diya Nair · ♥ 4.2K</p></div>
-      <div class="pick-card" data-filter-item="games"><div class="pick-thumb" data-category="games" onclick="openPreview('games','Eclipse Warriors')" style="background:linear-gradient(135deg,#233c50,#1F8FFF)"><span class="badge badge-blue pick-tag">Gaming</span>▶ 1:12</div><strong>Eclipse Warriors</strong><p class="small muted">Rohan Singh · ♥ 6.7K</p></div>
-      <div class="pick-card" data-filter-item="vfx"><div class="pick-thumb" data-category="vfx" onclick="openPreview('vfx','Dragon\'s Awakening')" style="background:linear-gradient(135deg,#504623,#FF9F5A)"><span class="badge badge-orange pick-tag">VFX</span>▶ 1:08</div><strong>Dragon's Awakening</strong><p class="small muted">Karan Verma · ♥ 5.9K</p></div>
-      <div class="pick-card" data-filter-item="content"><div class="pick-thumb" data-category="content" onclick="openPreview('content','Travel With Me – Kyoto')" style="background:linear-gradient(135deg,#502350,#FF6B6B)"><span class="badge badge-pink pick-tag">Content</span>▶ 3:21</div><strong>Travel With Me – Kyoto</strong><p class="small muted">Ananya Rao · ♥ 8.9K</p></div>
-      <div class="pick-card" data-filter-item="photography"><div class="pick-thumb" data-category="photography" onclick="openPreview('photography','Through My Lens')" style="background:linear-gradient(135deg,#504623,#FFB347)"><span class="badge badge-amber pick-tag">Photography</span>▶ 0:58</div><strong>Through My Lens</strong><p class="small muted">Kabir Joshi · ♥ 3.1K</p></div>
-      <div class="pick-card" data-filter-item="ai"><div class="pick-thumb" data-category="ai" onclick="openPreview('ai','Echoes of Tomorrow')" style="background:linear-gradient(135deg,#3b2350,#8A6BFF)"><span class="badge badge-purple pick-tag">AI Project</span>▶ 2:15</div><strong>Echoes of Tomorrow</strong><p class="small muted">Meera Iyer · ♥ 4.6K</p></div>
+      <div class="pick-card" data-filter-item="animation"><div class="pick-thumb" style="background-image:url('assets/project-thumbs/animation.png');background-size:cover;background-position:center"><span class="badge badge-pink pick-tag">Animation</span>▶ 2:45</div><strong>The Little Dreamer</strong><p class="small muted">Diya Nair · ♥ 4.2K</p></div>
+      <div class="pick-card" data-filter-item="games"><div class="pick-thumb" style="background-image:url('assets/project-thumbs/gaming.png');background-size:cover;background-position:center"><span class="badge badge-blue pick-tag">Gaming</span>▶ 1:12</div><strong>Eclipse Warriors</strong><p class="small muted">Rohan Singh · ♥ 6.7K</p></div>
+      <div class="pick-card" data-filter-item="vfx"><div class="pick-thumb" style="background-image:url('assets/project-thumbs/vfx.png');background-size:cover;background-position:center"><span class="badge badge-orange pick-tag">VFX</span>▶ 1:08</div><strong>Dragon's Awakening</strong><p class="small muted">Karan Verma · ♥ 5.9K</p></div>
+      <div class="pick-card" data-filter-item="content"><div class="pick-thumb" style="background-image:url('assets/project-thumbs/content.png');background-size:cover;background-position:center"><span class="badge badge-pink pick-tag">Content</span>▶ 3:21</div><strong>Travel With Me – Kyoto</strong><p class="small muted">Ananya Rao · ♥ 8.9K</p></div>
+      <div class="pick-card" data-filter-item="photography"><div class="pick-thumb" style="background-image:url('assets/project-thumbs/photography.png');background-size:cover;background-position:center"><span class="badge badge-amber pick-tag">Photography</span>▶ 0:58</div><strong>Through My Lens</strong><p class="small muted">Kabir Joshi · ♥ 3.1K</p></div>
+      <div class="pick-card" data-filter-item="ai"><div class="pick-thumb" style="background-image:url('assets/project-thumbs/ai.png');background-size:cover;background-position:center"><span class="badge badge-purple pick-tag">AI Project</span>▶ 2:15</div><strong>Echoes of Tomorrow</strong><p class="small muted">Meera Iyer · ♥ 4.6K</p></div>
     </div>
 
     <div class="grid grid-6 proj-stats">
@@ -180,154 +160,6 @@
     <div class="footer-bottom"><span>© <span data-year></span> Waves4Youth. All rights reserved.</span><span>Made with ❤️ in India 🇮🇳</span></div>
   </div>
 </footer>
-
-<div id="w4yPreviewOverlay" onclick="if(event.target===this)closePreview()">
-  <div class="w4y-preview-box">
-    <div class="w4y-preview-canvas-wrap">
-      <canvas id="w4yPreviewCanvas"></canvas>
-      <span class="w4y-preview-badge">ANIMATED PREVIEW · NOT ACTUAL FOOTAGE</span>
-      <span class="w4y-preview-label" id="w4yPreviewLabel"></span>
-    </div>
-    <div class="w4y-preview-footer">
-      <span class="w4y-preview-title" id="w4yPreviewTitle"></span>
-      <button class="w4y-preview-close" onclick="closePreview()" aria-label="Close">✕</button>
-    </div>
-  </div>
-</div>
-
-<script>
-// Lightweight themed canvas animations used as placeholder previews
-// for student project cards until real video uploads are wired in.
-(function(){
-  const THEMES = {
-    film:        { hues:[280,320], mode:'bokeh',   label:'Film' },
-    animation:   { hues:[330,10],  mode:'blobs',    label:'Animation' },
-    games:       { hues:[210,195], mode:'grid',     label:'Gaming' },
-    vfx:         { hues:[25,40],   mode:'embers',   label:'VFX' },
-    content:     { hues:[330,10],  mode:'pulse',    label:'Content' },
-    photography: { hues:[38,48],   mode:'aperture', label:'Photography' },
-    ai:          { hues:[265,280], mode:'network',  label:'AI Project' }
-  };
-
-  let raf, particles = [], t = 0, canvas, ctx, theme;
-
-  function resize(){
-    const wrap = canvas.parentElement;
-    canvas.width = wrap.clientWidth * 2;
-    canvas.height = wrap.clientHeight * 2;
-  }
-
-  function initParticles(mode){
-    particles = [];
-    const W = canvas.width, H = canvas.height;
-    const count = mode === 'network' ? 22 : mode === 'grid' ? 30 : 26;
-    for(let i=0;i<count;i++){
-      particles.push({
-        x: Math.random()*W, y: Math.random()*H,
-        r: 6 + Math.random()*22,
-        vx: (Math.random()-0.5)*0.6, vy: (Math.random()-0.5)*0.6,
-        phase: Math.random()*Math.PI*2,
-        speed: 0.4 + Math.random()*0.8
-      });
-    }
-  }
-
-  function hueAt(i){
-    const [a,b] = theme.hues;
-    return a + (b-a) * (i / 6 % 1);
-  }
-
-  function draw(){
-    const W = canvas.width, H = canvas.height;
-    ctx.clearRect(0,0,W,H);
-    const bg = ctx.createLinearGradient(0,0,W,H);
-    bg.addColorStop(0, `hsl(${theme.hues[0]},55%,10%)`);
-    bg.addColorStop(1, `hsl(${theme.hues[1]},55%,16%)`);
-    ctx.fillStyle = bg; ctx.fillRect(0,0,W,H);
-    t += 1;
-
-    if(theme.mode === 'network'){
-      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
-      for(let i=0;i<particles.length;i++){
-        for(let j=i+1;j<particles.length;j++){
-          const p=particles[i], q=particles[j];
-          const d = Math.hypot(p.x-q.x, p.y-q.y);
-          if(d < W*0.18){
-            ctx.globalAlpha = 1 - d/(W*0.18);
-            ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
-          }
-        }
-      }
-      ctx.globalAlpha = 1;
-    }
-
-    particles.forEach((p,i)=>{
-      p.x += p.vx; p.y += p.vy;
-      if(p.x<0||p.x>W) p.vx*=-1;
-      if(p.y<0||p.y>H) p.vy*=-1;
-      const h = hueAt(i);
-      let alpha = 0.55 + 0.35*Math.sin(t*0.02*p.speed + p.phase);
-
-      ctx.save();
-      if(theme.mode === 'embers'){
-        p.y -= 1.4; if(p.y < -20) p.y = H+20;
-        ctx.fillStyle = `hsla(${h},90%,60%,${alpha})`;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r*0.35,0,Math.PI*2); ctx.fill();
-      } else if(theme.mode === 'grid'){
-        ctx.fillStyle = `hsla(${h},80%,60%,${alpha*0.8})`;
-        ctx.shadowColor = `hsla(${h},90%,60%,0.8)`; ctx.shadowBlur = 18;
-        ctx.fillRect(p.x-p.r*0.4,p.y-p.r*0.4,p.r*0.8,p.r*0.8);
-      } else if(theme.mode === 'pulse'){
-        const pr = p.r*0.6 + (t*1.2 + p.phase*30) % 90;
-        ctx.strokeStyle = `hsla(${h},85%,65%,${Math.max(0,1-pr/90)})`;
-        ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(p.x,p.y,pr,0,Math.PI*2); ctx.stroke();
-      } else if(theme.mode === 'aperture'){
-        ctx.translate(W/2,H/2); ctx.rotate(t*0.004 + i);
-        ctx.fillStyle = `hsla(${h},70%,55%,0.18)`;
-        ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,W*0.32,i*0.9,i*0.9+0.35); ctx.fill();
-      } else if(theme.mode === 'network'){
-        ctx.fillStyle = `hsla(${h},80%,70%,${alpha})`;
-        ctx.beginPath(); ctx.arc(p.x,p.y,4,0,Math.PI*2); ctx.fill();
-      } else if(theme.mode === 'bokeh'){
-        const grd = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
-        grd.addColorStop(0, `hsla(${h},80%,70%,${alpha*0.5})`);
-        grd.addColorStop(1, 'hsla(0,0%,0%,0)');
-        ctx.fillStyle = grd;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-      } else { // blobs
-        ctx.fillStyle = `hsla(${h},75%,68%,${alpha*0.55})`;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r*(0.8+0.2*Math.sin(t*0.03+p.phase)),0,Math.PI*2); ctx.fill();
-      }
-      ctx.restore();
-    });
-
-    raf = requestAnimationFrame(draw);
-  }
-
-  window.openPreview = function(category, title){
-    const overlay = document.getElementById('w4yPreviewOverlay');
-    canvas = document.getElementById('w4yPreviewCanvas');
-    ctx = canvas.getContext('2d');
-    theme = THEMES[category] || THEMES.film;
-    document.getElementById('w4yPreviewTitle').textContent = title;
-    document.getElementById('w4yPreviewLabel').textContent = theme.label;
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    resize();
-    initParticles(theme.mode);
-    cancelAnimationFrame(raf);
-    draw();
-  };
-
-  window.closePreview = function(){
-    cancelAnimationFrame(raf);
-    document.getElementById('w4yPreviewOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-  };
-
-  window.addEventListener('resize', ()=>{ if(canvas && document.getElementById('w4yPreviewOverlay').classList.contains('active')){ resize(); } });
-})();
-</script>
 
 <script src="js/script.js"></script>
 </body>
