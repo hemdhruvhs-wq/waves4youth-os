@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XR & Immersive Design — Waves4Youth</title>
+<meta name="description" content="Learn XR & Immersive Design with Rey, your AI mentor. A 4-week short course, Std 8-12, from your first 3D scene to an interactive AR/VR experience.">
+<style>
+  :root{
+    --bg-0:#13101B;
+    --bg-1:#1D1626;
+    --bg-2:#241C30;
+    --amber:#D99A5B;
+    --rose:#C97B72;
+    --plum:#8B6FA8;
+    --cream:#F2EAD9;
+    --text-dim:rgba(242,234,217,0.62);
+    --glass:rgba(255,255,255,0.045);
+    --glass-border:rgba(255,255,255,0.09);
+    --glass-strong:rgba(255,255,255,0.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Poppins','Segoe UI',sans-serif;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(201,123,114,0.16) 0%, transparent 38%),
+      radial-gradient(circle at 90% 5%, rgba(217,154,91,0.13) 0%, transparent 35%),
+      linear-gradient(165deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);
+    background-attachment:fixed;
+    color:var(--cream);
+    min-height:100vh;
+    line-height:1.5;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+
+  /* Header */
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;
+    background:rgba(19,16,27,0.75);
+    backdrop-filter:blur(14px);
+    position:sticky;top:0;z-index:50;
+    border-bottom:1px solid var(--glass-border);
+  }
+  .logo{font-weight:700;font-size:15px;letter-spacing:0.5px;display:flex;gap:8px;align-items:center;color:var(--cream);}
+  nav{display:none;}
+  .header-cta{display:flex;gap:10px;}
+  .btn-ghost{padding:8px 14px;border:1px solid var(--glass-border);border-radius:20px;font-size:13px;color:var(--text-dim);}
+  .btn-solid{
+    padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;
+    background:linear-gradient(90deg,var(--amber),var(--rose));
+    color:#1B1420;
+  }
+
+  /* Hero */
+  .hero{padding:52px 20px 36px;text-align:left;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--glass-strong);border:1px solid var(--glass-border);
+    padding:6px 14px;border-radius:20px;font-size:12px;color:var(--text-dim);
+    backdrop-filter:blur(10px);margin-bottom:16px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);}
+  .track-label{font-size:13px;color:var(--amber);font-weight:600;letter-spacing:0.6px;text-transform:uppercase;margin-bottom:12px;}
+  h1{font-size:clamp(30px,7vw,44px);font-weight:700;line-height:1.32;margin-bottom:18px;color:var(--cream);}
+  h1 .accent{color:var(--rose);}
+  .hero p{font-size:15px;color:var(--text-dim);max-width:520px;margin-bottom:28px;}
+
+  .stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:28px;}
+  .stat-card{
+    background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;
+    padding:16px 12px;text-align:center;backdrop-filter:blur(10px);
+  }
+  .stat-card .num{font-size:21px;font-weight:700;color:var(--amber);}
+  .stat-card .lbl{font-size:11px;color:var(--text-dim);margin-top:4px;}
+
+  .hero-ctas{display:flex;flex-direction:column;gap:10px;}
+  .cta-primary{
+    text-align:center;padding:14px;border-radius:14px;font-weight:600;font-size:14px;
+    background:linear-gradient(90deg,var(--amber),var(--rose));
+    color:#1B1420;
+  }
+  .cta-secondary{
+    text-align:center;padding:14px;border-radius:14px;font-weight:600;font-size:14px;
+    border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(10px);
+    color:var(--cream);
+  }
+
+  .price-badge{
+    margin-top:24px;background:var(--glass);border:1px solid var(--glass-border);
+    border-radius:16px;padding:18px;backdrop-filter:blur(10px);
+  }
+  .price-badge .price{font-size:26px;font-weight:700;color:var(--amber);}
+  .price-badge .sub{font-size:12px;color:var(--text-dim);margin-top:2px;}
+
+  /* Section headers */
+  .section{padding:44px 20px;}
+  .section-label{font-size:13px;color:var(--amber);font-weight:600;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;}
+  .section h2{font-size:23px;font-weight:700;margin-bottom:26px;color:var(--cream);}
+
+  /* Curriculum */
+  .week-card{
+    display:flex;gap:16px;
+    background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;
+    padding:18px;margin-bottom:14px;backdrop-filter:blur(10px);
+  }
+  .week-num{
+    flex-shrink:0;width:40px;height:40px;border-radius:12px;
+    background:linear-gradient(135deg,var(--amber),var(--rose));
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#1B1420;
+  }
+  .week-card h3{font-size:16px;margin-bottom:5px;color:var(--cream);}
+  .week-card .tag{font-size:11px;color:var(--amber);font-weight:600;margin-bottom:6px;display:block;}
+  .week-card p{font-size:13px;color:var(--text-dim);}
+
+  .ext-note{
+    background:rgba(139,111,168,0.14);border:1px solid var(--glass-border);
+    border-radius:16px;padding:18px;margin-top:12px;font-size:13px;color:var(--text-dim);
+  }
+  .ext-note strong{color:var(--cream);}
+
+  /* Mentor */
+  .mentor-card{
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;
+    background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;
+    padding:30px 20px;backdrop-filter:blur(10px);
+  }
+  .mentor-avatar{
+    width:84px;height:84px;border-radius:50%;
+    background:linear-gradient(135deg,var(--rose),var(--plum));
+    display:flex;align-items:center;justify-content:center;font-size:30px;
+    border:2px solid var(--glass-border);
+  }
+  .mentor-card h3{font-size:18px;color:var(--cream);}
+  .mentor-card p{font-size:13px;color:var(--text-dim);max-width:400px;}
+
+  /* Free teasers */
+  .teaser-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  .teaser-card{
+    background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;
+    padding:18px;backdrop-filter:blur(10px);
+  }
+  .teaser-card .free-tag{
+    display:inline-block;background:rgba(217,154,91,0.14);color:var(--amber);
+    font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:9px;
+  }
+  .teaser-card h4{font-size:15px;margin-bottom:6px;color:var(--cream);}
+  .teaser-card p{font-size:13px;color:var(--text-dim);}
+
+  /* Pricing */
+  .price-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  .price-card{
+    background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;
+    padding:22px;backdrop-filter:blur(10px);position:relative;
+  }
+  .price-card.popular{border:1px solid rgba(217,154,91,0.5);}
+  .popular-badge{
+    position:absolute;top:-11px;left:20px;
+    background:linear-gradient(90deg,var(--amber),var(--rose));
+    color:#1B1420;font-size:11px;font-weight:700;padding:4px 12px;border-radius:12px;
+  }
+  .price-card .tier{font-size:13px;color:var(--amber);font-weight:600;text-transform:uppercase;margin-bottom:8px;}
+  .price-card .amount{font-size:27px;font-weight:700;margin-bottom:14px;color:var(--cream);}
+  .price-card ul{list-style:none;margin-bottom:18px;}
+  .price-card li{font-size:13px;color:var(--text-dim);margin-bottom:7px;padding-left:18px;position:relative;}
+  .price-card li::before{content:"✓";position:absolute;left:0;color:var(--amber);}
+  .price-card .cta{
+    display:block;text-align:center;padding:12px;border-radius:12px;font-weight:600;font-size:13px;
+    background:var(--glass);border:1px solid var(--glass-border);color:var(--cream);
+  }
+  .price-card.popular .cta{background:linear-gradient(90deg,var(--amber),var(--rose));color:#1B1420;border:none;}
+
+  footer{
+    padding:34px 20px;text-align:center;font-size:12px;color:var(--text-dim);
+    border-top:1px solid var(--glass-border);margin-top:24px;
+  }
+
+  @media(min-width:720px){
+    nav{display:flex;gap:22px;font-size:13px;color:var(--text-dim);}
+    .stats-row{grid-template-columns:repeat(4,1fr);}
+    .hero-ctas{flex-direction:row;}
+    .cta-primary,.cta-secondary{flex:1;}
+    .teaser-grid{grid-template-columns:1fr 1fr;}
+    .price-grid{grid-template-columns:repeat(3,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">WAVES4YOUTH</div>
+  <nav>
+    <a href="https://waves4youth.in/index.html#schools">Programs</a>
+    <a href="https://waves4youth.in/Future-Studio/">Future Studio</a>
+    <a href="https://waves4youth.in/learn.html">My Learning</a>
+    <a href="https://waves4youth.in/mentors.html">Student Life</a>
+  </nav>
+  <div class="header-cta">
+    <a class="btn-ghost" href="https://waves4youth.in/login.html">Login</a>
+    <a class="btn-solid" href="#pricing">Apply Now</a>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="eyebrow"><span class="dot"></span> AI Mentor: Rey</div>
+  <div class="track-label">Short Course · Immersive Tech Electives</div>
+  <h1>XR & <span class="accent">Immersive Design</span></h1>
+  <p>Build in AR, VR and XR — the exact frontier India's new AVGC-XR school labs are being built around. 4 weeks, from your first 3D scene to an interactive experience, with Rey guiding every step.</p>
+
+  <div class="stats-row">
+    <div class="stat-card"><div class="num">4</div><div class="lbl">Weeks</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="lbl">Phases</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="lbl">Capstone</div></div>
+    <div class="stat-card"><div class="num">Std 8–12</div><div class="lbl">Grade Band</div></div>
+  </div>
+
+  <div class="hero-ctas">
+    <a class="cta-primary" href="#pricing">Explore Pricing →</a>
+    <a class="cta-secondary" href="#teasers">Try a Free Lesson</a>
+  </div>
+
+  <div class="price-badge">
+    <div class="price">₹199</div>
+    <div class="sub">Trial tier — full Week 1 · Free preview lesson available, no card needed</div>
+  </div>
+</section>
+
+<section class="section wrap" id="curriculum">
+  <div class="section-label">Curriculum</div>
+  <h2>Four weeks, one real XR experience</h2>
+
+  <div class="week-card">
+    <div class="week-num">1</div>
+    <div>
+      <span class="tag">Week 1 · XR Fundamentals</span>
+      <h3>Think in 3D space</h3>
+      <p>What AR, VR and XR actually are, spatial thinking, and real examples from gaming and film. Map your own room as a potential AR scene idea.</p>
+    </div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-num">2</div>
+    <div>
+      <span class="tag">Week 2 · Building with AI</span>
+      <h3>Create your first 3D scene</h3>
+      <p>Intro to no-code, AI-assisted 3D and XR creation tools. Build a simple 3D object or scene from scratch.</p>
+    </div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-num">3</div>
+    <div>
+      <span class="tag">Week 3 · Interactivity & Storytelling</span>
+      <h3>Make it interactive</h3>
+      <p>Add interaction and narrative to your XR scene, so it responds instead of just sitting there.</p>
+    </div>
+  </div>
+
+  <div class="week-card">
+    <div class="week-num">4</div>
+    <div>
+      <span class="tag">Week 4 · Capstone</span>
+      <h3>Present your XR experience</h3>
+      <p>Build and present a mini XR experience — an AR filter, a VR room tour, or an interactive 3D story.</p>
+    </div>
+  </div>
+
+  <div class="ext-note">
+    <strong>Std 11–12 Advanced Extension (Weeks 5–6):</strong> an advanced XR project plus a 1:1 career-mapping session with Rey — pointed toward India's AVGC-XR Content Creator Labs and game/VFX studios.
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-label">Your Mentor</div>
+  <div class="mentor-card">
+    <div class="mentor-avatar">🥽</div>
+    <h3>Meet Rey, your AI mentor</h3>
+    <p>Rey explains 3D space and interactivity like a level designer would — practical, visual, and patient with anyone picking up XR for the first time. Available in Hindi, Tamil, Bengali and 8 more languages — Rey teaches every lesson in whichever language you think best in.</p>
+  </div>
+</section>
+
+<section class="section wrap" id="teasers">
+  <div class="section-label">Start Free</div>
+  <h2>Try it before you commit</h2>
+  <div class="teaser-grid">
+    <div class="teaser-card">
+      <span class="free-tag">FREE</span>
+      <h4>Build Your First AR Filter in 20 Minutes</h4>
+      <p>One guided mini-session with Rey — go from idea to a working AR filter concept. No sign-up friction beyond email.</p>
+    </div>
+    <div class="teaser-card">
+      <span class="free-tag">FREE</span>
+      <h4>Explore a Virtual World</h4>
+      <p>A free guided walkthrough of an existing VR/3D space — see what's possible before you build your own.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2>Choose your plan</h2>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="tier">Free Teaser</div>
+      <div class="amount">₹0</div>
+      <ul>
+        <li>One free mini-lesson</li>
+        <li>Meet Rey, your AI mentor</li>
+        <li>No card required</li>
+      </ul>
+      <a class="cta" href="#teasers">Start Free</a>
+    </div>
+    <div class="price-card popular">
+      <div class="popular-badge">Most Popular</div>
+      <div class="tier">Trial</div>
+      <div class="amount">₹199</div>
+      <ul>
+        <li>Full Week 1 (Foundations)</li>
+        <li>Mentor intro with Rey</li>
+        <li>Low-commitment single week</li>
+      </ul>
+      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+    </div>
+    <div class="price-card">
+      <div class="tier">Starter</div>
+      <div class="amount">₹999</div>
+      <ul>
+        <li>Weeks 2–4 + capstone</li>
+        <li>AI-graded feedback</li>
+        <li>No certificate</li>
+      </ul>
+      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+    </div>
+    <div class="price-card">
+      <div class="tier">Diploma</div>
+      <div class="amount">₹4,999</div>
+      <ul>
+        <li>Full 4-week course</li>
+        <li>1:1 mentor feedback on capstone</li>
+        <li>Certificate</li>
+      </ul>
+      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+    </div>
+    <div class="price-card">
+      <div class="tier">Masterclass</div>
+      <div class="amount">₹9,999</div>
+      <ul>
+        <li>Diploma + Std 11–12 Extension</li>
+        <li>Live portfolio review</li>
+        <li>Career mapping session</li>
+      </ul>
+      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo" style="justify-content:center;margin-bottom:8px;">WAVES4YOUTH</div>
+  © Waves4Youth. All rights reserved. Made with ❤️ in India 🇮🇳
+</footer>
+
+</body>
+</html>
