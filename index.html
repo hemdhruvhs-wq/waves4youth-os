@@ -8,6 +8,7 @@
 <link rel="icon" href="assets/logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
 </head>
@@ -748,6 +749,7 @@ document.getElementById('applyFormWrap').style.display = '';
 document.getElementById('applySuccess').style.display = 'none';
 document.getElementById('applyForm').reset();
 }
+emailjs.init("YOUR_PUBLIC_KEY");
 async function submitApplication(e){
 e.preventDefault();
 const form = e.target;
@@ -766,6 +768,11 @@ appId: "1:828101805925:web:f4cd245254aed07ec9438c"
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 await addDoc(collection(db, "studentApplications"), { ...payload, status: "new", submittedAt: serverTimestamp() });
+emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+  form_type: "New Application", name: payload.studentName, email: payload.parentEmail,
+  phone: payload.parentPhone, track: payload.program, grade: payload.grade,
+  extra: "Parent/Guardian: " + payload.parentName
+}).catch(err => console.error("EmailJS error:", err));
 }catch(err){
 console.error("Could not save application to Firestore:", err);
 localStorage.setItem('w4y_pending_application', JSON.stringify(payload));
