@@ -56,6 +56,8 @@ background:linear-gradient(135deg,var(--orange),var(--coral));color:#fff;font-fa
 <input id="suName" type="text" placeholder="Your name" />
 <label>Email</label>
 <input id="suEmail" type="email" placeholder="you@example.com" />
+<label>Phone number</label>
+<input id="suPhone" type="tel" placeholder="+91 98765 43210" />
 <label>Password (min 6 characters)</label>
 <input id="suPass" type="password" placeholder="Create a password" />
 <label>Choose your track</label>
@@ -139,15 +141,15 @@ $("liBtn").disabled = false;
 
 window.doSignup = async () => {
 setMsg("");
-const name=$("suName").value.trim(), email=$("suEmail").value.trim(), pass=$("suPass").value, track=$("suSchool").value;
-if(!name||!email||!pass||!track){ setMsg("Please fill every field, including your track."); return; }
+const name=$("suName").value.trim(), email=$("suEmail").value.trim(), phone=$("suPhone").value.trim(), pass=$("suPass").value, track=$("suSchool").value;
+if(!name||!email||!phone||!pass||!track){ setMsg("Please fill every field, including your phone number and track."); return; }
 $("suBtn").disabled = true;
 try {
 const cred = await createUserWithEmailAndPassword(auth, email, pass);
 // Student ID: W4Y- + counter-free unique suffix from uid
 const sid = "W4Y-" + cred.user.uid.slice(0,6).toUpperCase();
 await setDoc(doc(db, "students", cred.user.uid), {
-name, email, track,
+name, email, phone, track,
 studentId: sid,
 progress: { [track]: [] }, // { "animation-vfx": ["lesson-1", ...] } — matches learn.html's lesson-id arrays
 paymentStatus: "Pending",
@@ -161,7 +163,7 @@ emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
   form_type: "New Student Signup",
   name: name,
   email: email,
-  phone: "",
+  phone: phone,
   track: track,
   grade: "",
   extra: "Student ID: " + sid
