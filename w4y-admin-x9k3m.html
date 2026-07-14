@@ -7,215 +7,285 @@
 <meta name="robots" content="noindex, nofollow">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--coral:#FF6F61;--magenta:#D6336C;--ink:#241233;--muted:#6B5A72;--border:#F0E0D0;--cream:#FFF6EC}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);min-height:100vh}
-
-  .gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-  .gate-card{background:#fff;border-radius:20px;padding:34px 28px;max-width:360px;width:100%;box-shadow:0 12px 30px rgba(36,18,51,.12);text-align:center}
-  .gate-card h2{font:800 1.3rem Poppins,sans-serif;margin-bottom:8px}
-  .gate-card p{color:var(--muted);font-size:.85rem;margin-bottom:18px}
-  .gate-card input{width:100%;border:2px solid var(--border);border-radius:12px;padding:12px 14px;font-size:.95rem;margin-bottom:12px;font-family:inherit}
-  .gate-card button{width:100%;border:0;border-radius:999px;padding:12px;font-weight:800;background:linear-gradient(135deg,#FF9349,var(--coral));color:#fff;cursor:pointer;font-family:inherit}
-  .gate-error{color:var(--magenta);font-size:.8rem;margin-top:10px;display:none}
-
-  .dash{display:none;max-width:900px;margin:0 auto;padding:24px 18px 60px}
-  .dash.active{display:block}
-  .dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
-  .dash-top h1{font:800 1.3rem Poppins,sans-serif}
-  .logout{background:none;border:1px solid var(--border);border-radius:999px;padding:7px 16px;font-size:.8rem;cursor:pointer;color:var(--muted)}
-
-  .panel{background:#fff;border-radius:18px;padding:20px;margin-bottom:20px;box-shadow:0 6px 18px rgba(36,18,51,.06)}
-  .panel h3{font:700 1rem Poppins,sans-serif;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
-  .panel h3 span{font-size:.75rem;font-weight:700;color:var(--coral);background:#fff2ee;padding:3px 10px;border-radius:999px}
-  .row{border-top:1px solid var(--border);padding:12px 0;font-size:.85rem}
-  .row:first-child{border-top:0}
-  .row b{display:block;margin-bottom:2px}
-  .row .meta{color:var(--muted);font-size:.78rem}
-  .empty{color:var(--muted);font-size:.85rem;text-align:center;padding:20px 0}
-  .refresh{background:none;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.75rem;cursor:pointer;color:var(--ink);margin-bottom:16px}
+:root{--coral:#FF6F61;--magenta:#D6336C;--ink:#241233;--muted:#6B5A72;--border:#F0E0D0;--cream:#FFF6EC;--green:#1F9D55}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);min-height:100vh}
+.gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.gate-card{background:#fff;border-radius:20px;padding:34px 28px;max-width:360px;width:100%;box-shadow:0 12px 30px rgba(36,18,51,.12);text-align:center}
+.gate-card h2{font:800 1.3rem Poppins,sans-serif;margin-bottom:8px}
+.gate-card p{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+.gate-card input{width:100%;border:2px solid var(--border);border-radius:12px;padding:12px 14px;font-size:.95rem;margin-bottom:12px;font-family:inherit}
+.gate-card button{width:100%;border:0;border-radius:999px;padding:12px;font-weight:800;background:linear-gradient(135deg,#FF9349,var(--coral));color:#fff;cursor:pointer;font-family:inherit}
+.gate-error{color:var(--magenta);font-size:.8rem;margin-top:10px;display:none}
+.dash{display:none;max-width:900px;margin:0 auto;padding:24px 18px 60px}
+.dash.active{display:block}
+.dash-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.dash-top h1{font:800 1.3rem Poppins,sans-serif}
+.logout{background:none;border:1px solid var(--border);border-radius:999px;padding:7px 16px;font-size:.8rem;cursor:pointer;color:var(--muted)}
+.panel{background:#fff;border-radius:18px;padding:20px;margin-bottom:20px;box-shadow:0 6px 18px rgba(36,18,51,.06)}
+.panel h3{font:700 1rem Poppins,sans-serif;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.panel h3 span{font-size:.75rem;font-weight:700;color:var(--coral);background:#fff2ee;padding:3px 10px;border-radius:999px}
+.row{border-top:1px solid var(--border);padding:12px 0;font-size:.85rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.row:first-child{border-top:0}
+.row b{display:block;margin-bottom:2px}
+.row .meta{color:var(--muted);font-size:.78rem}
+.empty{color:var(--muted);font-size:.85rem;text-align:center;padding:20px 0}
+.refresh{background:none;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.75rem;cursor:pointer;color:var(--ink);margin-bottom:16px}
+.approve-btn{flex-shrink:0;background:var(--green);color:#fff;border:0;border-radius:999px;padding:8px 16px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit}
+.approve-btn:disabled{background:#B8D9C4;cursor:default}
+.status-badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px}
+.status-pending{background:#FFF2CC;color:#8A6D00}
+.status-approved{background:#DDF5E4;color:#1F9D55}
 </style>
 </head>
 <body>
 
 <div class="gate" id="gate">
-  <div class="gate-card">
-    <h2>🔒 W4Y Console</h2>
-    <p>Authorized access only.</p>
-    <input type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()">
-    <button onclick="checkPassword()">Enter</button>
-    <p class="gate-error" id="gateError">Incorrect password.</p>
-  </div>
+<div class="gate-card">
+<h2>🔒 W4Y Console</h2>
+<p>Authorized access only.</p>
+<input type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()">
+<button onclick="checkPassword()">Enter</button>
+<p class="gate-error" id="gateError">Incorrect password.</p>
+</div>
 </div>
 
 <div class="dash" id="dash">
-  <div class="dash-top">
-    <h1>W4Y Admin Console</h1>
-    <div style="display:flex;gap:8px">
-      <button class="logout" onclick="openChangePassword()">Change password</button>
-      <button class="logout" onclick="logout()">Log out</button>
-    </div>
-  </div>
+<div class="dash-top">
+<h1>W4Y Admin Console</h1>
+<div style="display:flex;gap:8px">
+<button class="logout" onclick="openChangePassword()">Change password</button>
+<button class="logout" onclick="logout()">Log out</button>
+</div>
+</div>
 
-  <div class="gate" id="pwChangeOverlay" style="display:none;position:fixed;background:rgba(36,18,51,.5);z-index:999">
-    <div class="gate-card">
-      <h2>🔑 Change Password</h2>
-      <input type="password" id="currentPwInput" placeholder="Current password">
-      <input type="password" id="newPwInput" placeholder="New password">
-      <input type="password" id="confirmPwInput" placeholder="Confirm new password">
-      <button onclick="submitPasswordChange()">Save New Password</button>
-      <button style="background:none;color:var(--muted);margin-top:8px;font-weight:600" onclick="closeChangePassword()">Cancel</button>
-      <p class="gate-error" id="pwChangeError"></p>
-    </div>
-  </div>
+<div class="gate" id="pwChangeOverlay" style="display:none;position:fixed;background:rgba(36,18,51,.5);z-index:999">
+<div class="gate-card">
+<h2>🔑 Change Password</h2>
+<input type="password" id="currentPwInput" placeholder="Current password">
+<input type="password" id="newPwInput" placeholder="New password">
+<input type="password" id="confirmPwInput" placeholder="Confirm new password">
+<button onclick="submitPasswordChange()">Save New Password</button>
+<button style="background:none;color:var(--muted);margin-top:8px;font-weight:600" onclick="closeChangePassword()">Cancel</button>
+<p class="gate-error" id="pwChangeError"></p>
+</div>
+</div>
 
-  <button class="refresh" onclick="loadData()">↻ Refresh data</button>
+<button class="refresh" onclick="loadData()">↻ Refresh data</button>
 
-  <div class="panel">
-    <h3>Student Applications <span id="appCount">—</span></h3>
-    <div id="applicationsList" class="empty">Loading...</div>
-  </div>
+<div class="panel">
+<h3>Student Accounts — Pending Approval <span id="pendingCount">—</span></h3>
+<div id="pendingList" class="empty">Loading...</div>
+</div>
 
-  <div class="panel">
-    <h3>School Partner Leads <span id="leadCount">—</span></h3>
-    <div id="leadsList" class="empty">Loading...</div>
-  </div>
+<div class="panel">
+<h3>Student Accounts — Approved <span id="approvedCount">—</span></h3>
+<div id="approvedList" class="empty">Loading...</div>
+</div>
+
+<div class="panel">
+<h3>Student Applications <span id="appCount">—</span></h3>
+<div id="applicationsList" class="empty">Loading...</div>
+</div>
+
+<div class="panel">
+<h3>School Partner Leads <span id="leadCount">—</span></h3>
+<div id="leadsList" class="empty">Loading...</div>
+</div>
 </div>
 
 <script>
 // Default password used only until one is saved in Firestore via "Change password"
 const DEFAULT_ADMIN_PASSWORD = "W4Y@Admin2026";
-let firebaseDb = null;
 
+let firebaseDb = null;
 async function getFirebaseDb(){
-  if (firebaseDb) return firebaseDb;
-  const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-  const { getFirestore } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-  const firebaseConfig = {
-    apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
-    authDomain: "waves4youth-4f239.firebaseapp.com",
-    projectId: "waves4youth-4f239",
-    storageBucket: "waves4youth-4f239.firebasestorage.app",
-    messagingSenderId: "828101805925",
-    appId: "1:828101805925:web:f4cd245254aed07ec9438c"
-  };
-  const app = initializeApp(firebaseConfig);
-  firebaseDb = getFirestore(app);
-  return firebaseDb;
+if (firebaseDb) return firebaseDb;
+const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+const { getFirestore } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const firebaseConfig = {
+apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+authDomain: "waves4youth-4f239.firebaseapp.com",
+projectId: "waves4youth-4f239",
+storageBucket: "waves4youth-4f239.firebasestorage.app",
+messagingSenderId: "828101805925",
+appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+const app = initializeApp(firebaseConfig);
+firebaseDb = getFirestore(app);
+return firebaseDb;
 }
 
 async function getStoredPassword(){
-  try {
-    const { doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-    const db = await getFirebaseDb();
-    const snap = await getDoc(doc(db, "adminConfig", "console"));
-    if (snap.exists() && snap.data().password) return snap.data().password;
-  } catch(e) { console.error("Could not read stored password, using default:", e); }
-  return DEFAULT_ADMIN_PASSWORD;
+try {
+const { doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const db = await getFirebaseDb();
+const snap = await getDoc(doc(db, "adminConfig", "console"));
+if (snap.exists() && snap.data().password) return snap.data().password;
+} catch(e) { console.error("Could not read stored password, using default:", e); }
+return DEFAULT_ADMIN_PASSWORD;
 }
 
 async function checkPassword(){
-  const val = document.getElementById('pwInput').value;
-  const realPassword = await getStoredPassword();
-  if (val === realPassword) {
-    sessionStorage.setItem('w4y_admin_ok', '1');
-    document.getElementById('gate').style.display = 'none';
-    document.getElementById('dash').classList.add('active');
-    loadData();
-  } else {
-    document.getElementById('gateError').style.display = 'block';
-  }
+const val = document.getElementById('pwInput').value;
+const realPassword = await getStoredPassword();
+if (val === realPassword) {
+sessionStorage.setItem('w4y_admin_ok', '1');
+document.getElementById('gate').style.display = 'none';
+document.getElementById('dash').classList.add('active');
+loadData();
+} else {
+document.getElementById('gateError').style.display = 'block';
+}
 }
 
 function openChangePassword(){
-  document.getElementById('pwChangeOverlay').style.display = 'flex';
-  document.getElementById('pwChangeOverlay').style.inset = '0';
-  document.getElementById('pwChangeOverlay').style.alignItems = 'center';
-  document.getElementById('pwChangeOverlay').style.justifyContent = 'center';
+document.getElementById('pwChangeOverlay').style.display = 'flex';
+document.getElementById('pwChangeOverlay').style.inset = '0';
+document.getElementById('pwChangeOverlay').style.alignItems = 'center';
+document.getElementById('pwChangeOverlay').style.justifyContent = 'center';
 }
+
 function closeChangePassword(){
-  document.getElementById('pwChangeOverlay').style.display = 'none';
-  document.getElementById('currentPwInput').value = '';
-  document.getElementById('newPwInput').value = '';
-  document.getElementById('confirmPwInput').value = '';
-  document.getElementById('pwChangeError').style.display = 'none';
+document.getElementById('pwChangeOverlay').style.display = 'none';
+document.getElementById('currentPwInput').value = '';
+document.getElementById('newPwInput').value = '';
+document.getElementById('confirmPwInput').value = '';
+document.getElementById('pwChangeError').style.display = 'none';
 }
+
 async function submitPasswordChange(){
-  const current = document.getElementById('currentPwInput').value;
-  const next = document.getElementById('newPwInput').value;
-  const confirm = document.getElementById('confirmPwInput').value;
-  const errEl = document.getElementById('pwChangeError');
-
-  const realPassword = await getStoredPassword();
-  if (current !== realPassword) {
-    errEl.textContent = "Current password is incorrect."; errEl.style.display = 'block'; return;
-  }
-  if (next.length < 6) {
-    errEl.textContent = "New password must be at least 6 characters."; errEl.style.display = 'block'; return;
-  }
-  if (next !== confirm) {
-    errEl.textContent = "New passwords don't match."; errEl.style.display = 'block'; return;
-  }
-
-  try {
-    const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-    const db = await getFirebaseDb();
-    await setDoc(doc(db, "adminConfig", "console"), { password: next, updatedAt: new Date().toISOString() });
-    alert("Password updated. Use your new password next time you log in.");
-    closeChangePassword();
-  } catch(e) {
-    errEl.textContent = "Could not save new password — check your connection and try again.";
-    errEl.style.display = 'block';
-    console.error(e);
-  }
+const current = document.getElementById('currentPwInput').value;
+const next = document.getElementById('newPwInput').value;
+const confirm = document.getElementById('confirmPwInput').value;
+const errEl = document.getElementById('pwChangeError');
+const realPassword = await getStoredPassword();
+if (current !== realPassword) {
+errEl.textContent = "Current password is incorrect."; errEl.style.display = 'block'; return;
 }
+if (next.length < 6) {
+errEl.textContent = "New password must be at least 6 characters."; errEl.style.display = 'block'; return;
+}
+if (next !== confirm) {
+errEl.textContent = "New passwords don't match."; errEl.style.display = 'block'; return;
+}
+try {
+const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const db = await getFirebaseDb();
+await setDoc(doc(db, "adminConfig", "console"), { password: next, updatedAt: new Date().toISOString() });
+alert("Password updated. Use your new password next time you log in.");
+closeChangePassword();
+} catch(e) {
+errEl.textContent = "Could not save new password — check your connection and try again.";
+errEl.style.display = 'block';
+console.error(e);
+}
+}
+
 function logout(){
-  sessionStorage.removeItem('w4y_admin_ok');
-  location.reload();
+sessionStorage.removeItem('w4y_admin_ok');
+location.reload();
 }
+
 if (sessionStorage.getItem('w4y_admin_ok') === '1') {
-  document.getElementById('gate').style.display = 'none';
-  document.getElementById('dash').classList.add('active');
+document.getElementById('gate').style.display = 'none';
+document.getElementById('dash').classList.add('active');
 }
+
+async function approveStudent(uid, btnEl){
+btnEl.disabled = true;
+btnEl.textContent = "Approving...";
+try {
+const { doc, updateDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const db = await getFirebaseDb();
+await updateDoc(doc(db, "students", uid), { approvalStatus: "Approved" });
+loadData(); // refresh both lists so the student moves from Pending to Approved
+} catch(e) {
+console.error("Could not approve student:", e);
+alert("Could not approve — check your connection and try again.");
+btnEl.disabled = false;
+btnEl.textContent = "Approve";
+}
+}
+window.approveStudent = approveStudent;
 
 async function loadData(){
-  try {
-    const { collection, getDocs, query, orderBy, limit } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-    const db = await getFirebaseDb();
+try {
+const { collection, getDocs, query, orderBy, limit } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const db = await getFirebaseDb();
 
-    const appsSnap = await getDocs(query(collection(db, "studentApplications"), orderBy("submittedAt", "desc"), limit(50)));
-    const appsEl = document.getElementById('applicationsList');
-    document.getElementById('appCount').textContent = appsSnap.size;
-    if (appsSnap.empty) {
-      appsEl.className = 'empty'; appsEl.textContent = 'No applications yet.';
-    } else {
-      appsEl.className = '';
-      appsEl.innerHTML = appsSnap.docs.map(d => {
-        const a = d.data();
-        return `<div class="row"><b>${a.studentName || '—'} · ${a.grade || '—'}</b>
-          <span class="meta">${a.program || '—'} · Parent: ${a.parentName || '—'} · ${a.parentPhone || ''} · ${a.parentEmail || ''}</span></div>`;
-      }).join('');
-    }
+// ——— Student Accounts (pending vs approved) ———
+let studentsSnap;
+try {
+studentsSnap = await getDocs(query(collection(db, "students"), orderBy("createdAt", "desc"), limit(100)));
+} catch(e) {
+// Fallback without orderBy in case some older docs lack createdAt
+studentsSnap = await getDocs(collection(db, "students"));
+}
 
-    const leadsSnap = await getDocs(query(collection(db, "schoolPartnerLeads"), orderBy("submittedAt", "desc"), limit(50)));
-    const leadsEl = document.getElementById('leadsList');
-    document.getElementById('leadCount').textContent = leadsSnap.size;
-    if (leadsSnap.empty) {
-      leadsEl.className = 'empty'; leadsEl.textContent = 'No school partner leads yet.';
-    } else {
-      leadsEl.className = '';
-      leadsEl.innerHTML = leadsSnap.docs.map(d => {
-        const l = d.data();
-        const fields = Object.entries(l).filter(([k]) => !['submittedAt','status'].includes(k));
-        return `<div class="row"><b>${fields.map(([k,v])=>v).slice(0,2).join(' · ') || '—'}</b>
-          <span class="meta">${fields.map(([k,v])=>`${k}: ${v}`).join(' · ')}</span></div>`;
-      }).join('');
-    }
-  } catch(err) {
-    console.error("Could not load admin data:", err);
-    document.getElementById('applicationsList').textContent = 'Could not load — check console for details.';
-    document.getElementById('leadsList').textContent = 'Could not load — check console for details.';
-  }
+const pendingEl = document.getElementById('pendingList');
+const approvedEl = document.getElementById('approvedList');
+const pendingRows = [];
+const approvedRows = [];
+
+studentsSnap.docs.forEach(d => {
+const s = d.data();
+const isApproved = s.approvalStatus === "Approved";
+const rowHtml = `<div class="row">
+<div>
+<b>${s.name || '—'} ${isApproved ? '<span class="status-badge status-approved">Approved</span>' : '<span class="status-badge status-pending">Pending</span>'}</b>
+<span class="meta">${s.email || '—'} · ${s.phone || '—'} · Track: ${s.track || '—'} · ID: ${s.studentId || '—'}</span>
+</div>
+${isApproved ? '' : `<button class="approve-btn" onclick="approveStudent('${d.id}', this)">Approve</button>`}
+</div>`;
+if (isApproved) approvedRows.push(rowHtml); else pendingRows.push(rowHtml);
+});
+
+document.getElementById('pendingCount').textContent = pendingRows.length;
+document.getElementById('approvedCount').textContent = approvedRows.length;
+pendingEl.className = pendingRows.length ? '' : 'empty';
+pendingEl.innerHTML = pendingRows.length ? pendingRows.join('') : 'No students waiting for approval. 🎉';
+approvedEl.className = approvedRows.length ? '' : 'empty';
+approvedEl.innerHTML = approvedRows.length ? approvedRows.join('') : 'No approved students yet.';
+
+// ——— Student Applications (unchanged) ———
+const appsSnap = await getDocs(query(collection(db, "studentApplications"), orderBy("submittedAt", "desc"), limit(50)));
+const appsEl = document.getElementById('applicationsList');
+document.getElementById('appCount').textContent = appsSnap.size;
+if (appsSnap.empty) {
+appsEl.className = 'empty'; appsEl.textContent = 'No applications yet.';
+} else {
+appsEl.className = '';
+appsEl.innerHTML = appsSnap.docs.map(d => {
+const a = d.data();
+return `<div class="row"><div><b>${a.studentName || '—'} · ${a.grade || '—'}</b>
+<span class="meta">${a.program || '—'} · Parent: ${a.parentName || '—'} · ${a.parentPhone || ''} · ${a.parentEmail || ''}</span></div></div>`;
+}).join('');
+}
+
+// ——— School Partner Leads (unchanged) ———
+const leadsSnap = await getDocs(query(collection(db, "schoolPartnerLeads"), orderBy("submittedAt", "desc"), limit(50)));
+const leadsEl = document.getElementById('leadsList');
+document.getElementById('leadCount').textContent = leadsSnap.size;
+if (leadsSnap.empty) {
+leadsEl.className = 'empty'; leadsEl.textContent = 'No school partner leads yet.';
+} else {
+leadsEl.className = '';
+leadsEl.innerHTML = leadsSnap.docs.map(d => {
+const l = d.data();
+const fields = Object.entries(l).filter(([k]) => !['submittedAt','status'].includes(k));
+return `<div class="row"><div><b>${fields.map(([k,v])=>v).slice(0,2).join(' · ') || '—'}</b>
+<span class="meta">${fields.map(([k,v])=>`${k}: ${v}`).join(' · ')}</span></div></div>`;
+}).join('');
+}
+
+} catch(err) {
+console.error("Could not load admin data:", err);
+document.getElementById('pendingList').textContent = 'Could not load — check console for details.';
+document.getElementById('approvedList').textContent = 'Could not load — check console for details.';
+document.getElementById('applicationsList').textContent = 'Could not load — check console for details.';
+document.getElementById('leadsList').textContent = 'Could not load — check console for details.';
+}
 }
 </script>
 </body>

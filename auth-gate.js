@@ -1,5 +1,5 @@
 /*
-  W4Y AUTH GATE
+  W4Y AUTH GATE  (v2 — adds mandatory admin-approval gate)
   ==============
   Drop this script into any learn-*.html page (right before the closing </body>,
   after your existing Firebase imports) OR link it as an external file:
@@ -8,15 +8,19 @@
   What it does:
   1. Blocks guest access — if nobody is logged in, redirects to login.html immediately.
   2. Fetches the student's Firestore doc (students/{uid}) and exposes it as window.w4yStudent.
-  3. Exposes window.w4yHasAccess(trackSlug, phaseNumber) — call this before rendering
+  3. NEW — Blocks ALL content (even free Phase 1) until an admin has approved the account
+     in the W4Y Console. Signup no longer means instant access; approvalStatus must be
+     "Approved" first. Shows a friendly "pending approval" screen instead of the page content.
+  4. Exposes window.w4yHasAccess(trackSlug, phaseNumber) — call this before rendering
      any phase/lesson content to decide whether to show it or show a locked state.
 
   ACCESS RULES (matches your existing 4-tier pricing model):
-  - Not logged in            -> redirected to login.html (no exceptions)
-  - Logged in, no payment    -> Phase 1 only (Free Preview) on every track
-  - paymentStatus === "Paid" + plan === "starter"    -> Phases 1-2
-  - paymentStatus === "Paid" + plan === "diploma"     -> Phases 1-4
-  - paymentStatus === "Paid" + plan === "masterclass" -> Phases 1-6 (all)
+  - Not logged in                       -> redirected to login.html (no exceptions)
+  - Logged in, approvalStatus !== "Approved" -> full-page "pending approval" screen, nothing else loads
+  - Approved, no payment                -> Phase 1 only (Free Preview) on every track
+  - Approved + paymentStatus === "Paid" + plan === "starter"    -> Phases 1-2
+  - Approved + paymentStatus === "Paid" + plan === "diploma"     -> Phases 1-4
+  - Approved + paymentStatus === "Paid" + plan === "masterclass" -> Phases 1-6 (all)
 
   HOW TO LOCK CONTENT ON A PAGE:
   Wrap any phase-locked content in a container with a data attribute, e.g.:
@@ -57,11 +61,14 @@ const PLAN_PHASE_LIMIT = {
 };
 
 window.w4yStudent = null;
+window.w4yApproved = false;
 window.w4yReady = new Promise((resolve) => { window._w4yResolveReady = resolve; });
 
 window.w4yHasAccess = function (trackSlug, phaseNumber) {
+  // Hard rule: unapproved accounts get nothing, not even Phase 1.
+  if (!window.w4yApproved) return false;
   const s = window.w4yStudent;
-  if (!s) return phaseNumber <= 1; // not loaded yet, only allow Phase 1
+  if (!s) return false;
   const paid = s.paymentStatus === "Paid";
   const plan = paid ? (s.plan || "") : "";
   const limit = PLAN_PHASE_LIMIT[plan] !== undefined ? PLAN_PHASE_LIMIT[plan] : 1;
@@ -78,6 +85,30 @@ window.w4yLockedHTML = function (phaseNumber) {
     </div>`;
 };
 
+function showPendingApprovalScreen(studentName) {
+  // Replaces the entire visible page with a calm, honest waiting screen.
+  // Deliberately does NOT touch <head> so page title/meta stay intact.
+  document.body.innerHTML = `
+    <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;
+      font-family:'Inter',sans-serif;background:linear-gradient(160deg,#2E0F2A,#4A1942 55%,#611D45 100%);
+      padding:24px;">
+      <div style="max-width:400px;width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,246,236,.15);
+        border-radius:20px;padding:32px 26px;text-align:center;color:#FFF6EC;">
+        <div style="font-size:40px;margin-bottom:14px;">⏳</div>
+        <h2 style="font:800 1.3rem Poppins,'Inter',sans-serif;margin-bottom:10px;">
+          ${studentName ? "Hi " + studentName + "! " : ""}Your account is pending approval
+        </h2>
+        <p style="color:#C7BCC9;font-size:.9rem;line-height:1.55;margin-bottom:18px;">
+          Thanks for signing up! A W4Y team member reviews every new account before content unlocks —
+          this usually takes up to 24 hours. We'll notify you by email as soon as you're approved.
+        </p>
+        <a href="index.html" style="display:inline-block;padding:12px 22px;border-radius:999px;
+          background:linear-gradient(90deg,#FF6B6B,#FFB347);color:#1A0B2E;font-weight:700;
+          text-decoration:none;font-size:.9rem;">← Back to Home</a>
+      </div>
+    </div>`;
+}
+
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     // HARD BLOCK: no guest mode. Send them to login, remember where they were headed.
@@ -88,10 +119,21 @@ onAuthStateChanged(auth, async (user) => {
 
   try {
     const snap = await getDoc(doc(db, "students", user.uid));
-    window.w4yStudent = snap.exists() ? snap.data() : { paymentStatus: "Pending", plan: "" };
+    window.w4yStudent = snap.exists() ? snap.data() : { approvalStatus: "Pending", paymentStatus: "Pending", plan: "" };
   } catch (e) {
     console.error("w4y auth-gate: could not load student doc", e);
-    window.w4yStudent = { paymentStatus: "Pending", plan: "" };
+    window.w4yStudent = { approvalStatus: "Pending", paymentStatus: "Pending", plan: "" };
+  }
+
+  const approved = window.w4yStudent.approvalStatus === "Approved";
+  window.w4yApproved = approved;
+
+  if (!approved) {
+    // Stop here — don't let the page's own content ever render.
+    showPendingApprovalScreen(window.w4yStudent.name);
+    window._w4yResolveReady(window.w4yStudent);
+    document.dispatchEvent(new CustomEvent("w4yStudentReady", { detail: window.w4yStudent }));
+    return;
   }
 
   window._w4yResolveReady(window.w4yStudent);

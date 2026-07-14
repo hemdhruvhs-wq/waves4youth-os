@@ -101,7 +101,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-emailjs.init("YOUR_PUBLIC_KEY");
+emailjs.init("rb-XZqTETko14iPVN");
 
 const $ = (id) => document.getElementById(id);
 
@@ -152,6 +152,7 @@ await setDoc(doc(db, "students", cred.user.uid), {
 name, email, phone, track,
 studentId: sid,
 progress: { [track]: [] }, // { "animation-vfx": ["lesson-1", ...] } — matches learn.html's lesson-id arrays
+approvalStatus: "Pending", // NEW: admin must approve before ANY content (even free Phase 1) unlocks
 paymentStatus: "Pending",
 plan: "",
 createdAt: serverTimestamp(),
@@ -159,7 +160,7 @@ lastActive: serverTimestamp()
 });
 
 // Notify waves4youth@gmail.com of the new signup
-emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+emailjs.send("service_k75nhha", "template_1mddaec", {
   form_type: "New Student Signup",
   name: name,
   email: email,
