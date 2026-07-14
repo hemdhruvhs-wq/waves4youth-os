@@ -102,7 +102,7 @@ function showPendingApprovalScreen(studentName) {
           Thanks for signing up! A W4Y team member reviews every new account before content unlocks —
           this usually takes up to 24 hours. We'll notify you by email as soon as you're approved.
         </p>
-        <a href="index.html" style="display:inline-block;padding:12px 22px;border-radius:999px;
+        <a href="/index.html" style="display:inline-block;padding:12px 22px;border-radius:999px;
           background:linear-gradient(90deg,#FF6B6B,#FFB347);color:#1A0B2E;font-weight:700;
           text-decoration:none;font-size:.9rem;">← Back to Home</a>
       </div>
@@ -113,7 +113,7 @@ onAuthStateChanged(auth, async (user) => {
   if (!user) {
     // HARD BLOCK: no guest mode. Send them to login, remember where they were headed.
     const redirectTo = encodeURIComponent(window.location.pathname + window.location.search);
-    window.location.href = "login.html?next=" + redirectTo;
+    window.location.href = "/login.html?next=" + redirectTo;
     return;
   }
 
