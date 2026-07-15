@@ -281,10 +281,11 @@ return `<div class="row"><div><b>${fields.map(([k,v])=>v).slice(0,2).join(' · '
 
 } catch(err) {
 console.error("Could not load admin data:", err);
-document.getElementById('pendingList').textContent = 'Could not load — check console for details.';
-document.getElementById('approvedList').textContent = 'Could not load — check console for details.';
-document.getElementById('applicationsList').textContent = 'Could not load — check console for details.';
-document.getElementById('leadsList').textContent = 'Could not load — check console for details.';
+var errMsg = 'Could not load — ' + (err && err.message ? err.message : String(err));
+document.getElementById('pendingList').textContent = errMsg;
+document.getElementById('approvedList').textContent = errMsg;
+document.getElementById('applicationsList').textContent = errMsg;
+document.getElementById('leadsList').textContent = errMsg;
 }
 }
 </script>
