@@ -34,6 +34,8 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);min
 .refresh{background:none;border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.75rem;cursor:pointer;color:var(--ink);margin-bottom:16px}
 .approve-btn{flex-shrink:0;background:var(--green);color:#fff;border:0;border-radius:999px;padding:8px 16px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit}
 .approve-btn:disabled{background:#B8D9C4;cursor:default}
+.resend-btn{flex-shrink:0;background:none;color:var(--coral);border:1.5px solid var(--coral);border-radius:999px;padding:7px 15px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;font-family:inherit}
+.resend-btn:disabled{color:var(--muted);border-color:var(--border);cursor:default}
 .status-badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px}
 .status-pending{background:#FFF2CC;color:#8A6D00}
 .status-approved{background:#DDF5E4;color:#1F9D55}
@@ -184,6 +186,26 @@ btnEl.textContent = "Approve";
 }
 window.approveStudent = approveStudent;
 
+async function resendApprovalEmail(name, email, btnEl){
+if (!email) { alert("This student has no email on file — can't resend."); return; }
+btnEl.disabled = true;
+btnEl.textContent = "Sending...";
+try {
+await emailjs.send("service_k75nhha", "template_graje1s", {
+  to_email: email,
+  student_name: name || "there"
+});
+btnEl.textContent = "Sent ✓";
+setTimeout(() => { btnEl.disabled = false; btnEl.textContent = "Resend Email"; }, 3000);
+} catch(e) {
+console.error("Resend failed:", e);
+alert("Could not send — check your connection and try again.");
+btnEl.disabled = false;
+btnEl.textContent = "Resend Email";
+}
+}
+window.resendApprovalEmail = resendApprovalEmail;
+
 async function loadData(){
 try {
 const { collection, getDocs, query, orderBy, limit } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
@@ -211,7 +233,9 @@ const rowHtml = `<div class="row">
 <b>${s.name || '—'} ${isApproved ? '<span class="status-badge status-approved">Approved</span>' : '<span class="status-badge status-pending">Pending</span>'}</b>
 <span class="meta">${s.email || '—'} · ${s.phone || '—'} · Track: ${s.track || '—'} · ID: ${s.studentId || '—'}</span>
 </div>
-${isApproved ? '' : `<button class="approve-btn" onclick="approveStudent('${d.id}', ${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Approve</button>`}
+${isApproved
+  ? `<button class="resend-btn" onclick="resendApprovalEmail(${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Resend Email</button>`
+  : `<button class="approve-btn" onclick="approveStudent('${d.id}', ${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Approve</button>`}
 </div>`;
 if (isApproved) approvedRows.push(rowHtml); else pendingRows.push(rowHtml);
 });
