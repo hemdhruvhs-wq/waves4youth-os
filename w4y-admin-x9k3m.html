@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>W4Y Console</title>
@@ -155,13 +156,24 @@ async function getFirebaseDb(){
 return window._w4yDb;
 }
 
-async function approveStudent(uid, btnEl){
+emailjs.init("rb-XZqTETko14iPVN");
+
+async function approveStudent(uid, name, email, btnEl){
 btnEl.disabled = true;
 btnEl.textContent = "Approving...";
 try {
 const { doc, updateDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
 const db = await getFirebaseDb();
 await updateDoc(doc(db, "students", uid), { approvalStatus: "Approved" });
+
+// Notify the student their account is now active
+if (email) {
+emailjs.send("service_k75nhha", "template_graje1s", {
+  to_email: email,
+  student_name: name || "there"
+}).catch(err => console.error("Approval email failed to send:", err));
+}
+
 loadData(); // refresh both lists so the student moves from Pending to Approved
 } catch(e) {
 console.error("Could not approve student:", e);
@@ -199,7 +211,7 @@ const rowHtml = `<div class="row">
 <b>${s.name || '—'} ${isApproved ? '<span class="status-badge status-approved">Approved</span>' : '<span class="status-badge status-pending">Pending</span>'}</b>
 <span class="meta">${s.email || '—'} · ${s.phone || '—'} · Track: ${s.track || '—'} · ID: ${s.studentId || '—'}</span>
 </div>
-${isApproved ? '' : `<button class="approve-btn" onclick="approveStudent('${d.id}', this)">Approve</button>`}
+${isApproved ? '' : `<button class="approve-btn" onclick="approveStudent('${d.id}', ${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Approve</button>`}
 </div>`;
 if (isApproved) approvedRows.push(rowHtml); else pendingRows.push(rowHtml);
 });
