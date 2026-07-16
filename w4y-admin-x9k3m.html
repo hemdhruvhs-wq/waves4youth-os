@@ -44,9 +44,11 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);min
 <div class="gate-card">
 <h2>🔒 W4Y Console</h2>
 <p>Authorized access only.</p>
-<input type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()">
-<button onclick="checkPassword()">Enter</button>
-<p class="gate-error" id="gateError">Incorrect password.</p>
+<input type="email" id="emailInput" placeholder="Admin email" value="waves4youth@gmail.com" autocomplete="username">
+<input type="password" id="pwInput" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter') doLogin()">
+<button onclick="doLogin()">Log In</button>
+<p class="gate-error" id="gateError"></p>
+<p style="margin-top:14px"><a href="#" onclick="doForgotPassword();return false;" style="color:var(--muted);font-size:.8rem">Forgot password?</a></p>
 </div>
 </div>
 
@@ -54,20 +56,7 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);min
 <div class="dash-top">
 <h1>W4Y Admin Console</h1>
 <div style="display:flex;gap:8px">
-<button class="logout" onclick="openChangePassword()">Change password</button>
 <button class="logout" onclick="logout()">Log out</button>
-</div>
-</div>
-
-<div class="gate" id="pwChangeOverlay" style="display:none;position:fixed;background:rgba(36,18,51,.5);z-index:999">
-<div class="gate-card">
-<h2>🔑 Change Password</h2>
-<input type="password" id="currentPwInput" placeholder="Current password">
-<input type="password" id="newPwInput" placeholder="New password">
-<input type="password" id="confirmPwInput" placeholder="Confirm new password">
-<button onclick="submitPasswordChange()">Save New Password</button>
-<button style="background:none;color:var(--muted);margin-top:8px;font-weight:600" onclick="closeChangePassword()">Cancel</button>
-<p class="gate-error" id="pwChangeError"></p>
 </div>
 </div>
 
@@ -94,15 +83,11 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);min
 </div>
 </div>
 
-<script>
-// Default password used only until one is saved in Firestore via "Change password"
-const DEFAULT_ADMIN_PASSWORD = "W4Y@Admin2026";
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-let firebaseDb = null;
-async function getFirebaseDb(){
-if (firebaseDb) return firebaseDb;
-const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-const { getFirestore } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
 const firebaseConfig = {
 apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
 authDomain: "waves4youth-4f239.firebaseapp.com",
@@ -112,84 +97,62 @@ messagingSenderId: "828101805925",
 appId: "1:828101805925:web:f4cd245254aed07ec9438c"
 };
 const app = initializeApp(firebaseConfig);
-firebaseDb = getFirestore(app);
-return firebaseDb;
+const auth = getAuth(app);
+window._w4yDb = getFirestore(app);
+window._w4yAuth = auth;
+
+function friendlyAuthError(e){
+const c = (e && e.code) || "";
+if (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found")) return "Email or password is incorrect.";
+if (c.includes("too-many-requests")) return "Too many attempts — wait a minute and try again.";
+if (c.includes("invalid-email")) return "Please enter a valid email address.";
+return "Could not log in — check your connection and try again.";
 }
 
-async function getStoredPassword(){
+window.doLogin = async function(){
+const email = document.getElementById('emailInput').value.trim();
+const pw = document.getElementById('pwInput').value;
+const errEl = document.getElementById('gateError');
+errEl.style.display = 'none';
 try {
-const { doc, getDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-const db = await getFirebaseDb();
-const snap = await getDoc(doc(db, "adminConfig", "console"));
-if (snap.exists() && snap.data().password) return snap.data().password;
-} catch(e) { console.error("Could not read stored password, using default:", e); }
-return DEFAULT_ADMIN_PASSWORD;
-}
-
-async function checkPassword(){
-const val = document.getElementById('pwInput').value;
-const realPassword = await getStoredPassword();
-if (val === realPassword) {
-sessionStorage.setItem('w4y_admin_ok', '1');
-document.getElementById('gate').style.display = 'none';
-document.getElementById('dash').classList.add('active');
-loadData();
-} else {
-document.getElementById('gateError').style.display = 'block';
-}
-}
-
-function openChangePassword(){
-document.getElementById('pwChangeOverlay').style.display = 'flex';
-document.getElementById('pwChangeOverlay').style.inset = '0';
-document.getElementById('pwChangeOverlay').style.alignItems = 'center';
-document.getElementById('pwChangeOverlay').style.justifyContent = 'center';
-}
-
-function closeChangePassword(){
-document.getElementById('pwChangeOverlay').style.display = 'none';
-document.getElementById('currentPwInput').value = '';
-document.getElementById('newPwInput').value = '';
-document.getElementById('confirmPwInput').value = '';
-document.getElementById('pwChangeError').style.display = 'none';
-}
-
-async function submitPasswordChange(){
-const current = document.getElementById('currentPwInput').value;
-const next = document.getElementById('newPwInput').value;
-const confirm = document.getElementById('confirmPwInput').value;
-const errEl = document.getElementById('pwChangeError');
-const realPassword = await getStoredPassword();
-if (current !== realPassword) {
-errEl.textContent = "Current password is incorrect."; errEl.style.display = 'block'; return;
-}
-if (next.length < 6) {
-errEl.textContent = "New password must be at least 6 characters."; errEl.style.display = 'block'; return;
-}
-if (next !== confirm) {
-errEl.textContent = "New passwords don't match."; errEl.style.display = 'block'; return;
-}
-try {
-const { doc, setDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-const db = await getFirebaseDb();
-await setDoc(doc(db, "adminConfig", "console"), { password: next, updatedAt: new Date().toISOString() });
-alert("Password updated. Use your new password next time you log in.");
-closeChangePassword();
+await signInWithEmailAndPassword(auth, email, pw);
+// onAuthStateChanged below handles showing the dashboard once signed in
 } catch(e) {
-errEl.textContent = "Could not save new password — check your connection and try again.";
+errEl.textContent = friendlyAuthError(e);
 errEl.style.display = 'block';
-console.error(e);
 }
-}
+};
 
-function logout(){
-sessionStorage.removeItem('w4y_admin_ok');
-location.reload();
+window.doForgotPassword = async function(){
+const email = document.getElementById('emailInput').value.trim();
+if (!email) { alert("Enter your admin email above first, then tap 'Forgot password?' again."); return; }
+try {
+await sendPasswordResetEmail(auth, email);
+alert("Password reset link sent to " + email + " — check that inbox.");
+} catch(e) {
+alert(friendlyAuthError(e));
 }
+};
 
-if (sessionStorage.getItem('w4y_admin_ok') === '1') {
+window.logout = function(){
+signOut(auth);
+};
+
+onAuthStateChanged(auth, (user) => {
+if (user) {
 document.getElementById('gate').style.display = 'none';
 document.getElementById('dash').classList.add('active');
+if (window.loadData) window.loadData();
+} else {
+document.getElementById('gate').style.display = 'flex';
+document.getElementById('dash').classList.remove('active');
+}
+});
+</script>
+
+<script>
+async function getFirebaseDb(){
+return window._w4yDb;
 }
 
 async function approveStudent(uid, btnEl){
