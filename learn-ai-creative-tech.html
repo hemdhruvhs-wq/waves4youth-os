@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="module" src="auth-gate.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI & Creative Technology — My Learning | Waves4Youth</title>
@@ -313,14 +312,11 @@ function showLockPanel(phase){
 
 async function startCheckout(tier){
   if (!AUTH_STATE.loggedIn) { window.location.href = "login.html"; return; }
-  alert("This will open Razorpay checkout once payment gating is wired up. Simulating unlock for now.");
-  try {
-    await window.__w4yUpdateDoc(window.__w4yDoc(window.__w4yDb, "students", AUTH_STATE.uid), {
-      [`unlockedTiers.${TRACK.id}`]: tier
-    });
-    AUTH_STATE.tier = tier;
-    render();
-  } catch(e) { console.error("Could not update tier:", e); }
+  // No self-service unlock, on purpose. A student can no longer grant themselves
+  // a tier by clicking a button — unlockedTiers is only ever written by an admin
+  // from the W4Y Console, after payment is actually confirmed. This just sends
+  // them to the real enrollment flow on the course's own pricing section.
+  window.location.href = `course-${TRACK.id}.html#pricing`;
 }
 
 async function markComplete(id){

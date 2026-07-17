@@ -17,16 +17,15 @@
   ACCESS RULES (per-course, not global — this is the critical part):
   - Not logged in                            -> redirected to login.html (no exceptions)
   - Logged in, approvalStatus !== "Approved" -> full-page "pending approval" screen, nothing else loads
-  - Approved, no enrollment for THIS course   -> Phase 1 only (Free Preview) on THIS track
-  - Approved + enrollments[track].paymentStatus === "Paid" + plan === "starter"    -> Phases 1-2 on THIS track only
-  - Approved + enrollments[track].paymentStatus === "Paid" + plan === "diploma"     -> Phases 1-4 on THIS track only
-  - Approved + enrollments[track].paymentStatus === "Paid" + plan === "masterclass" -> Phases 1-6 on THIS track only
+  - Approved, no unlockedTiers entry for THIS course -> Phase 1 only (Free Preview) on THIS track
+  - Approved + unlockedTiers[track] === 1 (Starter)    -> Phases 1-2 on THIS track only
+  - Approved + unlockedTiers[track] === 2 (Diploma)     -> Phases 1-4 on THIS track only
+  - Approved + unlockedTiers[track] === 3 (Masterclass) -> Phases 1-6 on THIS track only
   Paying for one course NEVER unlocks a different course — each track has its own
-  entry in students/{uid}.enrollments, e.g.:
-    enrollments: {
-      "entrepreneurship": { paymentStatus: "Paid", plan: "starter" },
-      "game-design": { paymentStatus: "Pending", plan: "" }
-    }
+  entry in students/{uid}.unlockedTiers, e.g.:
+    unlockedTiers: { "entrepreneurship": 1, "game-design": 0 }
+  This is the SAME field your learn-*.html pages already read directly — auth-gate.js
+  and the lesson pages now agree on one single source of truth instead of two.
 
   HOW TO LOCK CONTENT ON A PAGE:
   Wrap any phase-locked content in a container with a data attribute, e.g.:
@@ -58,12 +57,12 @@ const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Plan -> highest phase number unlocked
+// Tier number (matching your learn-*.html pages: 0-3) -> highest phase number unlocked
 const PLAN_PHASE_LIMIT = {
-  "": 1,              // no plan yet, just Free Preview
-  "starter": 2,
-  "diploma": 4,
-  "masterclass": 6
+  0: 1,  // Free Preview -> Phase 1 only
+  1: 2,  // Starter -> Phases 1-2
+  2: 4,  // Diploma -> Phases 1-4
+  3: 6   // Masterclass -> Phases 1-6 (all)
 };
 
 window.w4yStudent = null;
@@ -76,28 +75,13 @@ window.w4yHasAccess = function (trackSlug, phaseNumber) {
   const s = window.w4yStudent;
   if (!s) return false;
 
-  // Per-track enrollment lookup — this is the actual fix. Payment status and
-  // plan are no longer read from one global field on the student record;
-  // they're read from enrollments[trackSlug] specifically, so paying for one
-  // course's Starter tier never unlocks a different course.
-  const enrollment = (s.enrollments && s.enrollments[trackSlug]) || null;
+  // unlockedTiers is the REAL system your learn-*.html pages already use
+  // (0 = Free Preview, 1 = Starter, 2 = Diploma, 3 = Masterclass), read
+  // per-course so paying for one course never unlocks a different one.
+  const tier = (s.unlockedTiers && typeof s.unlockedTiers[trackSlug] === "number")
+    ? s.unlockedTiers[trackSlug] : 0;
 
-  let paid, plan;
-  if (enrollment) {
-    paid = enrollment.paymentStatus === "Paid";
-    plan = paid ? (enrollment.plan || "") : "";
-  } else if (s.track === trackSlug) {
-    // Backward compatibility ONLY for a student's original signup track,
-    // for accounts created before per-track enrollments existed.
-    paid = s.paymentStatus === "Paid";
-    plan = paid ? (s.plan || "") : "";
-  } else {
-    // No enrollment record for this track at all -> Free Preview only.
-    paid = false;
-    plan = "";
-  }
-
-  const limit = PLAN_PHASE_LIMIT[plan] !== undefined ? PLAN_PHASE_LIMIT[plan] : 1;
+  const limit = PLAN_PHASE_LIMIT[tier] !== undefined ? PLAN_PHASE_LIMIT[tier] : 1;
   return phaseNumber <= limit;
 };
 
