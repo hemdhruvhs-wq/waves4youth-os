@@ -320,7 +320,7 @@
         <li>Mentor intro with Tara</li>
         <li>Low-commitment single week</li>
       </ul>
-      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+      <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'Space & Astro-Tech',courseSlug:'space-astro-tech',tier:'Trial',price:'₹199',merch:''})">Enroll Now</button>
     </div>
     <div class="price-card">
       <div class="tier">Starter</div>
@@ -330,7 +330,7 @@
         <li>AI-graded feedback</li>
         <li>No certificate</li>
       </ul>
-      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+      <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'Space & Astro-Tech',courseSlug:'space-astro-tech',tier:'Starter',price:'₹999',merch:''})">Enroll Now</button>
     </div>
     <div class="price-card">
       <div class="tier">Diploma</div>
@@ -340,7 +340,8 @@
         <li>1:1 mentor feedback on capstone</li>
         <li>Certificate</li>
       </ul>
-      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+<div class="merch-line" style="background:linear-gradient(135deg,rgba(255,179,71,.2),rgba(255,107,107,.15));border:1px solid rgba(255,179,71,.4);border-radius:10px;padding:8px 10px;font-size:.74rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.4">🎁 Free merchandise worth ₹1,499</div>
+      <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'Space & Astro-Tech',courseSlug:'space-astro-tech',tier:'Diploma',price:'₹4,999',merch:'🎁 Free merchandise worth ₹1,499'})">Enroll Now</button>
     </div>
     <div class="price-card">
       <div class="tier">Masterclass</div>
@@ -350,7 +351,8 @@
         <li>Live portfolio review</li>
         <li>Career mapping session</li>
       </ul>
-      <a class="cta" href="mailto:hello@waves4youth.in">Enroll Now</a>
+<div class="merch-line" style="background:linear-gradient(135deg,rgba(255,179,71,.2),rgba(255,107,107,.15));border:1px solid rgba(255,179,71,.4);border-radius:10px;padding:8px 10px;font-size:.74rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.4">🎁 Free merchandise worth ₹2,999</div>
+      <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'Space & Astro-Tech',courseSlug:'space-astro-tech',tier:'Masterclass',price:'₹9,999',merch:'🎁 Free merchandise worth ₹2,999'})">Enroll Now</button>
     </div>
   </div>
 </section>
@@ -360,6 +362,169 @@
   © Waves4Youth. All rights reserved. Made with ❤️ in India 🇮🇳
 </footer>
 
-<script type="module" src="auth-gate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init("rb-XZqTETko14iPVN");
+</script>
+<!-- ============================================================
+     W4Y ENROLL NOW WIDGET
+     ============================================================
+     Paste this whole block once, right before </body>, on every
+     course page. It replaces plain "Enroll Now" / "Start Free" links
+     with a proper interest form — matching your existing Apply Now
+     modal pattern, with merchandise messaging built in.
+
+     HOW TO WIRE UP EACH PRICING CARD BUTTON:
+     Replace the existing <a href="learn-xxx.html" class="btn ...">Enroll Now</a>
+     with a button that calls openEnrollModal(), like this:
+
+       <button class="btn btn-outline" onclick="openEnrollModal({
+         course: 'Game Design & Development',
+         courseSlug: 'game-design',
+         tier: 'Diploma',
+         price: '₹4,999',
+         merch: '🎁 Free merchandise worth ₹1,499 (hoodie, notebook, sticker pack)'
+       })">Enroll Now</button>
+
+     For Free Preview and Starter tiers, just omit "merch" entirely (or set it to ""):
+
+       <button class="btn btn-outline" onclick="openEnrollModal({
+         course: 'Game Design & Development',
+         courseSlug: 'game-design',
+         tier: 'Starter',
+         price: '₹999',
+         merch: ''
+       })">Enroll Now</button>
+
+     Masterclass example:
+       merch: '🎁 Free merchandise worth ₹2,999 (premium hoodie, tote/backpack, notebook, stickers, certificate frame)'
+
+     The "Start Free" button on Free Preview can either open this same modal
+     (merch: '') or keep linking straight to the learn-xxx.html page — your call,
+     since Free tier has no payment step to confirm anyway.
+     ============================================================ -->
+
+<div class="enroll-overlay" id="enrollOverlay">
+<div class="enroll-modal">
+<button class="enroll-close" onclick="closeEnrollModal()">✕</button>
+
+<div id="enrollFormWrap">
+<h3 id="enrollTitle">Enroll in this program</h3>
+<p class="enroll-sub" id="enrollSub"></p>
+<div class="enroll-merch" id="enrollMerch" style="display:none"></div>
+
+<form id="enrollForm" onsubmit="submitEnrollment(event)">
+<label>Student's Name</label>
+<input type="text" name="studentName" required>
+<label>Parent/Guardian Phone</label>
+<input type="tel" name="parentPhone" required>
+<label>Parent/Guardian Email</label>
+<input type="email" name="parentEmail" required>
+<button type="submit" class="btn btn-primary btn-block" style="margin-top:16px">Confirm Interest →</button>
+</form>
+</div>
+
+<div id="enrollSuccess" style="display:none;text-align:center;padding:20px 0">
+<div style="font-size:44px;margin-bottom:10px">🎉</div>
+<h3>Got it!</h3>
+<p class="enroll-sub">We'll reach out within 24 hours to confirm payment<span id="enrollSuccessMerch"></span>.</p>
+<button class="btn btn-outline" onclick="closeEnrollModal()">Close</button>
+</div>
+
+</div>
+</div>
+
+<style>
+.enroll-overlay{position:fixed;inset:0;background:rgba(36,18,51,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.enroll-overlay.active{display:flex}
+.enroll-modal{background:#fff;border-radius:20px;padding:28px 24px;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.enroll-close{position:absolute;top:14px;right:14px;background:none;border:0;font-size:18px;cursor:pointer;color:var(--muted,#6B5A72)}
+.enroll-modal h3{font:800 1.3rem Poppins,sans-serif;margin-bottom:6px;color:var(--ink,#241233)}
+.enroll-sub{color:var(--muted,#6B5A72);font-size:.85rem;margin-bottom:14px}
+.enroll-merch{
+  background:linear-gradient(135deg,rgba(255,179,71,.15),rgba(255,107,107,.12));
+  border:1px solid #FFD9A0;border-radius:12px;padding:12px 14px;font-size:.85rem;
+  color:var(--ink,#241233);font-weight:600;margin-bottom:16px;line-height:1.5;
+}
+.enroll-modal label{display:block;font-weight:700;font-size:.8rem;margin:12px 0 5px;color:var(--ink,#241233)}
+.enroll-modal input{width:100%;border:2px solid var(--border,#F0E0D0);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:.9rem}
+</style>
+
+<script>
+let _enrollCurrent = null;
+
+function openEnrollModal(opts){
+_enrollCurrent = opts;
+document.getElementById('enrollTitle').textContent = `Enroll — ${opts.tier} (${opts.price})`;
+document.getElementById('enrollSub').textContent = `${opts.course} · We'll confirm payment details with your parent/guardian before anything is charged.`;
+const merchEl = document.getElementById('enrollMerch');
+if (opts.merch) {
+  merchEl.textContent = opts.merch;
+  merchEl.style.display = 'block';
+} else {
+  merchEl.style.display = 'none';
+}
+document.getElementById('enrollOverlay').classList.add('active');
+}
+
+function closeEnrollModal(){
+document.getElementById('enrollOverlay').classList.remove('active');
+document.getElementById('enrollForm').style.display = '';
+document.getElementById('enrollFormWrap').style.display = '';
+document.getElementById('enrollSuccess').style.display = 'none';
+document.getElementById('enrollForm').reset();
+}
+
+async function submitEnrollment(e){
+e.preventDefault();
+const form = e.target;
+const payload = Object.fromEntries(new FormData(form).entries());
+const opts = _enrollCurrent || {};
+
+try{
+const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const firebaseConfig = {
+apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+authDomain: "waves4youth-4f239.firebaseapp.com",
+projectId: "waves4youth-4f239",
+storageBucket: "waves4youth-4f239.firebasestorage.app",
+messagingSenderId: "828101805925",
+appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getFirestore(app);
+await addDoc(collection(db, "enrollmentInterest"), {
+  ...payload,
+  course: opts.course || "",
+  courseSlug: opts.courseSlug || "",
+  tier: opts.tier || "",
+  price: opts.price || "",
+  merch: opts.merch || "",
+  status: "new",
+  submittedAt: serverTimestamp()
+});
+
+if (window.emailjs) {
+  emailjs.send("service_k75nhha", "template_1mddaec", {
+    form_type: "Enrollment Interest — " + (opts.tier || ""),
+    name: payload.studentName,
+    email: payload.parentEmail,
+    phone: payload.parentPhone,
+    track: opts.courseSlug || "",
+    grade: "",
+    extra: `Tier: ${opts.tier} (${opts.price})` + (opts.merch ? ` · ${opts.merch}` : "")
+  }).catch(err => console.error("EmailJS error:", err));
+}
+}catch(err){
+console.error("Could not save enrollment interest to Firestore:", err);
+}
+
+document.getElementById('enrollFormWrap').style.display = 'none';
+const merchNote = opts.merch ? " and merchandise shipping" : "";
+document.getElementById('enrollSuccessMerch').textContent = merchNote;
+document.getElementById('enrollSuccess').style.display = 'block';
+}
+</script>
 </body>
 </html>
