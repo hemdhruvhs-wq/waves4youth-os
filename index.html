@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Waves4Youth — India's Digital Creator Campus</title>
-<meta name="description" content="India's first digital university for the creator economy. Learn Film, Animation, Gaming, AI & more from industry mentors. Learn. Create. Graduate. Lead.">
+<meta name="description" content="India's first digital university for the creator economy. Learn Film, Animation, Gaming, AI & more from industry mentors. Learn. Create. Launch. Lead.">
 <link rel="icon" href="assets/logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -45,11 +45,22 @@
 </div>
 </header>
 <!-- ============ HERO ============ -->
+<style>
+.hero-film-preview{position:relative;width:100%;height:100%;min-height:300px;border-radius:20px;overflow:hidden;cursor:pointer}
+.hero-film-preview img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.hero-panel:hover .hero-film-preview img{transform:scale(1.04)}
+.hero-film-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(20,10,30,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.85);transition:transform .25s ease}
+.hero-film-play svg{margin-left:3px}
+.hero-panel:hover .hero-film-play{transform:translate(-50%,-50%) scale(1.1)}
+.hero-film-caption{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;background:linear-gradient(0deg,rgba(10,4,20,.85),transparent)}
+.hero-film-tag{display:inline-block;font-size:.75rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#FF6B6B,#8A6BFF);padding:4px 11px;border-radius:999px;margin-bottom:8px;letter-spacing:.02em}
+.hero-film-caption p{margin:0;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.92);line-height:1.4}
+</style>
 <section class="hero">
 <div class="container hero-grid">
 <div class="hero-copy">
 <span class="eyebrow">India's First &amp; Largest Digital University</span>
-<h1>Learn. Create.<br>Graduate. <span class="text-gradient">Lead.</span></h1>
+<h1>Learn. Create.<br>Launch. <span class="text-gradient">Lead.</span></h1>
 <p class="hero-sub">From Class 5 to career launch — future-ready programs in Film, Animation, Gaming, AI &amp; Content Creation. Industry-aligned curriculum, expert mentors and a portfolio that gets you hired.</p>
 <div class="hero-ctas">
 <a href="#schools" class="btn btn-primary">Explore Programs
@@ -57,7 +68,7 @@
 </a>
 <a href="#" class="btn btn-outline" onclick="openW4YJourney(); return false;">
 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></svg>
-Watch University Film
+Watch Our Story
 </a>
 </div>
 <div class="hero-trust">
@@ -76,19 +87,16 @@ Watch University Film
 </div>
 </div>
 <div class="hero-visual" style="position:relative">
-<div class="hero-panel">
+<div class="hero-panel" onclick="openW4YJourney()">
 <div class="hero-panel-glow"></div>
-<div class="hero-panel-grid">
-<div class="hero-window">
-<div class="hero-window-bar"><span></span><span></span><span></span></div>
-<div class="hero-window-body">
-<div class="clip-bar" style="width:78%"></div>
-<div class="clip-bar accent" style="width:52%"></div>
-<div class="clip-bar" style="width:64%"></div>
-<div class="waveform">
-<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+<div class="hero-film-preview">
+<img src="assets/w4y-journey/scene1.png" alt="Watch Our Story — the W4Y journey">
+<div class="hero-film-play">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="6 3 20 12 6 21"/></svg>
 </div>
-</div>
+<div class="hero-film-caption">
+<span class="hero-film-tag">▶ Watch Our Story</span>
+<p>Every creator started with one spark of curiosity.</p>
 </div>
 </div>
 </div>
@@ -814,12 +822,12 @@ Images expected at: assets/w4y-journey/scene1.png ... scene6.png
 <div id="w4yJourneyOverlay" onclick="if(event.target===this)closeW4YJourney()">
 <div class="w4yj-box">
 <div class="w4yj-stage" id="w4yjStage">
-<div class="w4yj-frame active" data-dur="10"><img src="assets/w4y-journey/scene1.png" alt="Curiosity Begins"></div>
-<div class="w4yj-frame" data-dur="20"><img src="assets/w4y-journey/scene2.png" alt="Learning With AI Mentor"></div>
-<div class="w4yj-frame" data-dur="20"><img src="assets/w4y-journey/scene3.png" alt="First Project, First Pride"></div>
-<div class="w4yj-frame" data-dur="20"><img src="assets/w4y-journey/scene4.png" alt="Time Skip - Growing Dreams"></div>
-<div class="w4yj-frame" data-dur="15"><img src="assets/w4y-journey/scene5.png" alt="Recognition & Impact"></div>
-<div class="w4yj-frame" data-dur="5"><img src="assets/w4y-journey/scene6.png" alt="Your Journey Starts Here"></div>
+<div class="w4yj-frame active" data-dur="7"><img src="assets/w4y-journey/scene1.png" alt="Curiosity Begins"></div>
+<div class="w4yj-frame" data-dur="14"><img src="assets/w4y-journey/scene2.png" alt="Learning With AI Mentor"></div>
+<div class="w4yj-frame" data-dur="14"><img src="assets/w4y-journey/scene3.png" alt="First Project, First Pride"></div>
+<div class="w4yj-frame" data-dur="14"><img src="assets/w4y-journey/scene4.png" alt="Time Skip - Growing Dreams"></div>
+<div class="w4yj-frame" data-dur="10"><img src="assets/w4y-journey/scene5.png" alt="Recognition & Impact"></div>
+<div class="w4yj-frame" data-dur="4"><img src="assets/w4y-journey/scene6.png" alt="Your Journey Starts Here"></div>
 </div>
 <div class="w4yj-progress-row" id="w4yjProgressRow"></div>
 <div class="w4yj-footer">
