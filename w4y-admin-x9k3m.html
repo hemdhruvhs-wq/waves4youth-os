@@ -82,9 +82,33 @@ body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);min
 
 <div class="panel">
 <h3>School Partner Leads <span id="leadCount">—</span></h3>
+<div id="leadFilters" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
+<button class="lead-filter-btn active" data-filter="all" style="border:1px solid var(--border);background:#fff;border-radius:999px;padding:5px 13px;font-size:.75rem;cursor:pointer;font-family:inherit">All</button>
+<button class="lead-filter-btn" data-filter="high" style="border:1px solid var(--border);background:#fff;border-radius:999px;padding:5px 13px;font-size:.75rem;cursor:pointer;font-family:inherit">High</button>
+<button class="lead-filter-btn" data-filter="medium" style="border:1px solid var(--border);background:#fff;border-radius:999px;padding:5px 13px;font-size:.75rem;cursor:pointer;font-family:inherit">Medium</button>
+<button class="lead-filter-btn" data-filter="low" style="border:1px solid var(--border);background:#fff;border-radius:999px;padding:5px 13px;font-size:.75rem;cursor:pointer;font-family:inherit">Low</button>
+</div>
 <div id="leadsList" class="empty">Loading...</div>
 </div>
 </div>
+
+<style>
+.lead-filter-btn.active{background:var(--ink) !important;color:#fff !important;border-color:var(--ink) !important}
+.lead-card{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:10px;border-left:5px solid #ccc;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.lead-card.high{border-left-color:#D6336C}
+.lead-card.medium{border-left-color:#FF9349}
+.lead-card.low{border-left-color:#9ca3af}
+.lead-card.unscored{border-left-color:#e5e7eb}
+.lead-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.lead-badge{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.03em}
+.lead-badge.high{background:#FDE8EF;color:#D6336C}
+.lead-badge.medium{background:#FFF1E6;color:#FF9349}
+.lead-badge.low{background:#F3F4F6;color:#6b7280}
+.lead-badge.unscored{background:#F3F4F6;color:#9ca3af}
+.lead-meta{font-size:.78rem;color:#555;margin-top:5px;line-height:1.5}
+.lead-summary{font-size:.78rem;margin-top:6px;color:var(--ink)}
+.lead-next{font-size:.75rem;margin-top:5px;color:#8b5cf6;font-weight:600}
+</style>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -260,6 +284,47 @@ btnEl.textContent = "Resend Email";
 }
 window.resendApprovalEmail = resendApprovalEmail;
 
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function renderLeads(filter){
+  const leadsEl = document.getElementById('leadsList');
+  const all = window._w4yAllLeads || [];
+  const leads = filter === 'all' ? all : all.filter(l => l.qualification_priority === filter);
+  if (leads.length === 0) {
+    leadsEl.className = 'empty';
+    leadsEl.textContent = 'No leads to show yet.';
+    return;
+  }
+  leadsEl.className = '';
+  leadsEl.innerHTML = leads.map(l => {
+    const priority = l.qualification_priority || 'unscored';
+    return `
+      <div class="lead-card ${priority}">
+        <div class="lead-top">
+          <span style="font-weight:700;font-size:.9rem">${escapeHtml(l.school_name || 'Unnamed school')}</span>
+          <span class="lead-badge ${priority}">${priority}${l.qualification_score != null ? ' · ' + l.qualification_score : ''}</span>
+        </div>
+        <div class="lead-meta">
+          ${escapeHtml(l.principal_name || '')} · ${escapeHtml(l.city || '')}, ${escapeHtml(l.state || '')}<br>
+          ${escapeHtml(l.contact_number || '')} · ${escapeHtml(l.email || '')}
+        </div>
+        ${l.qualification_summary ? `<div class="lead-summary">${escapeHtml(l.qualification_summary)}</div>` : ''}
+        ${l.qualification_next_step ? `<div class="lead-next">→ ${escapeHtml(l.qualification_next_step)}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('.lead-filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.lead-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLeads(btn.dataset.filter);
+});
+
 async function loadData(){
 try {
 const { collection, getDocs, query, orderBy, limit } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
@@ -364,21 +429,17 @@ return `<div class="row"><div><b>${a.studentName || '—'} · ${a.grade || '—'
 }).join('');
 }
 
-// ——— School Partner Leads (unchanged) ———
-const leadsSnap = await getDocs(query(collection(db, "schoolPartnerLeads"), orderBy("submittedAt", "desc"), limit(50)));
-const leadsEl = document.getElementById('leadsList');
-document.getElementById('leadCount').textContent = leadsSnap.size;
-if (leadsSnap.empty) {
-leadsEl.className = 'empty'; leadsEl.textContent = 'No school partner leads yet.';
-} else {
-leadsEl.className = '';
-leadsEl.innerHTML = leadsSnap.docs.map(d => {
-const l = d.data();
-const fields = Object.entries(l).filter(([k]) => !['submittedAt','status'].includes(k));
-return `<div class="row"><div><b>${fields.map(([k,v])=>v).slice(0,2).join(' · ') || '—'}</b>
-<span class="meta">${fields.map(([k,v])=>`${k}: ${v}`).join(' · ')}</span></div></div>`;
-}).join('');
-}
+// ——— School Partner Leads (priority-sorted, filterable) ———
+const leadsSnap = await getDocs(query(collection(db, "schoolPartnerLeads"), orderBy("submittedAt", "desc")));
+window._w4yAllLeads = leadsSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+const priorityRank = { high: 0, medium: 1, low: 2, unscored: 3 };
+window._w4yAllLeads.sort((a, b) => {
+  const pa = priorityRank[a.qualification_priority] ?? 3;
+  const pb = priorityRank[b.qualification_priority] ?? 3;
+  return pa - pb;
+});
+document.getElementById('leadCount').textContent = window._w4yAllLeads.length;
+renderLeads('all');
 
 } catch(err) {
 console.error("Could not load admin data:", err);
