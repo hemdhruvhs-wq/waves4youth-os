@@ -42,7 +42,7 @@
 */
 
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -164,4 +164,35 @@ onAuthStateChanged(auth, async (user) => {
 
   window._w4yResolveReady(window.w4yStudent);
   document.dispatchEvent(new CustomEvent("w4yStudentReady", { detail: window.w4yStudent }));
+
+  // ——— Floating logout button, injected automatically on every page ———
+  // (No page markup needed — this appears the moment access is confirmed.)
+  const logoutBtn = document.createElement("button");
+  logoutBtn.textContent = "Log out";
+  logoutBtn.setAttribute("aria-label", "Log out of your W4Y account");
+  Object.assign(logoutBtn.style, {
+    position: "fixed", bottom: "16px", right: "16px", zIndex: "9998",
+    background: "rgba(26,11,46,.85)", color: "#FFF6EC", border: "1px solid rgba(255,246,236,.25)",
+    borderRadius: "999px", padding: "10px 18px", fontSize: "13px", fontWeight: "700",
+    fontFamily: "'Poppins', sans-serif", cursor: "pointer", boxShadow: "0 6px 20px rgba(0,0,0,.25)"
+  });
+  logoutBtn.onclick = () => { signOut(auth); window.location.href = "/login.html"; };
+  document.body.appendChild(logoutBtn);
+
+  // ——— Auto-logout after 20 minutes of inactivity ———
+  // Resets on any click, keypress, scroll, or touch. Protects shared/public
+  // devices where a student might walk away without manually logging out.
+  const IDLE_LIMIT_MS = 20 * 60 * 1000; // 20 minutes
+  let idleTimer = null;
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      signOut(auth);
+      window.location.href = "/login.html?next=" + encodeURIComponent(window.location.pathname) + "&idle=1";
+    }, IDLE_LIMIT_MS);
+  }
+  ["click", "keydown", "scroll", "touchstart", "mousemove"].forEach(evt =>
+    document.addEventListener(evt, resetIdleTimer, { passive: true })
+  );
+  resetIdleTimer();
 });
