@@ -104,6 +104,11 @@ const auth = getAuth(app);
 window._w4yDb = getFirestore(app);
 window._w4yAuth = auth;
 
+// Only these emails may open this console — even if a student happens to
+// already be signed in on this device. Add more emails here to approve
+// additional admins later.
+const ADMIN_EMAILS = ["waves4youth@gmail.com"];
+
 function friendlyAuthError(e){
 const c = (e && e.code) || "";
 if (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found")) return "Email or password is incorrect.";
@@ -143,6 +148,13 @@ signOut(auth);
 
 onAuthStateChanged(auth, (user) => {
 if (user) {
+if (!ADMIN_EMAILS.includes((user.email || "").toLowerCase())) {
+// Signed in, but not an approved admin — kick them straight back out.
+document.getElementById('gateError').textContent = "This account isn't approved for admin access.";
+document.getElementById('gateError').style.display = 'block';
+signOut(auth);
+return;
+}
 document.getElementById('gate').style.display = 'none';
 document.getElementById('dash').classList.add('active');
 if (window.loadData) window.loadData();
