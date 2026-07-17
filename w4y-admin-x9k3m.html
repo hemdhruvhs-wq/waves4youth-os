@@ -186,6 +186,27 @@ btnEl.textContent = "Approve";
 }
 window.approveStudent = approveStudent;
 
+async function markPaid(uid, track, plan, btnEl){
+btnEl.disabled = true;
+const originalText = btnEl.textContent;
+btnEl.textContent = "Saving...";
+try {
+const { doc, updateDoc } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const db = await getFirebaseDb();
+await updateDoc(doc(db, "students", uid), {
+  [`enrollments.${track}`]: { paymentStatus: "Paid", plan: plan }
+});
+btnEl.textContent = "Saved ✓";
+setTimeout(() => loadData(), 800); // refresh so the new enrollment badge shows
+} catch(e) {
+console.error("Could not mark paid:", e);
+alert("Could not save — check your connection and try again.");
+btnEl.disabled = false;
+btnEl.textContent = originalText;
+}
+}
+window.markPaid = markPaid;
+
 async function resendApprovalEmail(name, email, btnEl){
 if (!email) { alert("This student has no email on file — can't resend."); return; }
 btnEl.disabled = true;
@@ -225,17 +246,52 @@ const approvedEl = document.getElementById('approvedList');
 const pendingRows = [];
 const approvedRows = [];
 
+const ALL_TRACKS = [
+  ["video-editing","Video Editing & AI Content Creation"],
+  ["animation-vfx","Animation & VFX"],
+  ["game-design","Game Design & Development"],
+  ["digital-content","Digital Content Creation"],
+  ["ai-creative-tech","AI & Creative Technology"],
+  ["entrepreneurship","Entrepreneurship & Freelancing"],
+  ["interior-design","Interior Design"],
+  ["fashion-design","Fashion Design"],
+  ["xr-immersive-design","XR & Immersive Design"],
+  ["applied-ai-agents","Applied AI & Agent Building"],
+  ["robotics-drones","Robotics & Drone Tech"],
+  ["space-astro-tech","Space & Astro-Tech"],
+  ["climate-sustainability-tech","Climate & Sustainability Tech"],
+  ["esports-streaming","Esports & Live Streaming"]
+];
+const trackOptionsHtml = (selected) => ALL_TRACKS.map(([slug,label]) =>
+  `<option value="${slug}" ${slug===selected?'selected':''}>${label}</option>`).join('');
+
 studentsSnap.docs.forEach(d => {
 const s = d.data();
 const isApproved = s.approvalStatus === "Approved";
-const rowHtml = `<div class="row">
+const enrollments = s.enrollments || {};
+const enrollBadges = Object.entries(enrollments)
+  .filter(([,e]) => e && e.paymentStatus === "Paid")
+  .map(([track,e]) => `<span class="status-badge status-approved">${track}: ${e.plan || 'starter'}</span>`)
+  .join(' ');
+const rowHtml = `<div class="row" style="flex-direction:column;align-items:stretch;gap:10px">
+<div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
 <div>
-<b>${s.name || '—'} ${isApproved ? '<span class="status-badge status-approved">Approved</span>' : '<span class="status-badge status-pending">Pending</span>'}</b>
-<span class="meta">${s.email || '—'} · ${s.phone || '—'} · Track: ${s.track || '—'} · ID: ${s.studentId || '—'}</span>
+<b>${s.name || '—'} ${isApproved ? '<span class="status-badge status-approved">Approved</span>' : '<span class="status-badge status-pending">Pending</span>'} ${enrollBadges}</b>
+<span class="meta">${s.email || '—'} · ${s.phone || '—'} · Signup track: ${s.track || '—'} · ID: ${s.studentId || '—'}</span>
 </div>
 ${isApproved
   ? `<button class="resend-btn" onclick="resendApprovalEmail(${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Resend Email</button>`
   : `<button class="approve-btn" onclick="approveStudent('${d.id}', ${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Approve</button>`}
+</div>
+<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:#F7F6FC;border-radius:10px;padding:8px">
+<select id="track-${d.id}" style="font-size:.75rem;padding:5px;border-radius:6px;border:1px solid var(--border)">${trackOptionsHtml(s.track)}</select>
+<select id="plan-${d.id}" style="font-size:.75rem;padding:5px;border-radius:6px;border:1px solid var(--border)">
+<option value="starter">Starter</option>
+<option value="diploma">Diploma</option>
+<option value="masterclass">Masterclass</option>
+</select>
+<button class="approve-btn" style="padding:6px 12px;font-size:.72rem" onclick="markPaid('${d.id}', document.getElementById('track-${d.id}').value, document.getElementById('plan-${d.id}').value, this)">Mark Paid for this course</button>
+</div>
 </div>`;
 if (isApproved) approvedRows.push(rowHtml); else pendingRows.push(rowHtml);
 });

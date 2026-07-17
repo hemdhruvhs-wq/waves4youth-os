@@ -14,13 +14,19 @@
   4. Exposes window.w4yHasAccess(trackSlug, phaseNumber) — call this before rendering
      any phase/lesson content to decide whether to show it or show a locked state.
 
-  ACCESS RULES (matches your existing 4-tier pricing model):
-  - Not logged in                       -> redirected to login.html (no exceptions)
+  ACCESS RULES (per-course, not global — this is the critical part):
+  - Not logged in                            -> redirected to login.html (no exceptions)
   - Logged in, approvalStatus !== "Approved" -> full-page "pending approval" screen, nothing else loads
-  - Approved, no payment                -> Phase 1 only (Free Preview) on every track
-  - Approved + paymentStatus === "Paid" + plan === "starter"    -> Phases 1-2
-  - Approved + paymentStatus === "Paid" + plan === "diploma"     -> Phases 1-4
-  - Approved + paymentStatus === "Paid" + plan === "masterclass" -> Phases 1-6 (all)
+  - Approved, no enrollment for THIS course   -> Phase 1 only (Free Preview) on THIS track
+  - Approved + enrollments[track].paymentStatus === "Paid" + plan === "starter"    -> Phases 1-2 on THIS track only
+  - Approved + enrollments[track].paymentStatus === "Paid" + plan === "diploma"     -> Phases 1-4 on THIS track only
+  - Approved + enrollments[track].paymentStatus === "Paid" + plan === "masterclass" -> Phases 1-6 on THIS track only
+  Paying for one course NEVER unlocks a different course — each track has its own
+  entry in students/{uid}.enrollments, e.g.:
+    enrollments: {
+      "entrepreneurship": { paymentStatus: "Paid", plan: "starter" },
+      "game-design": { paymentStatus: "Pending", plan: "" }
+    }
 
   HOW TO LOCK CONTENT ON A PAGE:
   Wrap any phase-locked content in a container with a data attribute, e.g.:
@@ -69,8 +75,28 @@ window.w4yHasAccess = function (trackSlug, phaseNumber) {
   if (!window.w4yApproved) return false;
   const s = window.w4yStudent;
   if (!s) return false;
-  const paid = s.paymentStatus === "Paid";
-  const plan = paid ? (s.plan || "") : "";
+
+  // Per-track enrollment lookup — this is the actual fix. Payment status and
+  // plan are no longer read from one global field on the student record;
+  // they're read from enrollments[trackSlug] specifically, so paying for one
+  // course's Starter tier never unlocks a different course.
+  const enrollment = (s.enrollments && s.enrollments[trackSlug]) || null;
+
+  let paid, plan;
+  if (enrollment) {
+    paid = enrollment.paymentStatus === "Paid";
+    plan = paid ? (enrollment.plan || "") : "";
+  } else if (s.track === trackSlug) {
+    // Backward compatibility ONLY for a student's original signup track,
+    // for accounts created before per-track enrollments existed.
+    paid = s.paymentStatus === "Paid";
+    plan = paid ? (s.plan || "") : "";
+  } else {
+    // No enrollment record for this track at all -> Free Preview only.
+    paid = false;
+    plan = "";
+  }
+
   const limit = PLAN_PHASE_LIMIT[plan] !== undefined ? PLAN_PHASE_LIMIT[plan] : 1;
   return phaseNumber <= limit;
 };

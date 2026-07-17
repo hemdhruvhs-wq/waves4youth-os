@@ -152,8 +152,9 @@ await setDoc(doc(db, "students", cred.user.uid), {
 name, email, phone, track,
 studentId: sid,
 progress: { [track]: [] }, // { "animation-vfx": ["lesson-1", ...] } — matches learn.html's lesson-id arrays
-approvalStatus: "Pending", // NEW: admin must approve before ANY content (even free Phase 1) unlocks
-paymentStatus: "Pending",
+approvalStatus: "Pending", // admin must approve before ANY content (even free Phase 1) unlocks
+enrollments: { [track]: { paymentStatus: "Pending", plan: "" } }, // NEW: per-course payment, so paying for one course never unlocks another
+paymentStatus: "Pending", // kept for backward compatibility with older admin-console views; enrollments above is now the source of truth
 plan: "",
 createdAt: serverTimestamp(),
 lastActive: serverTimestamp()
