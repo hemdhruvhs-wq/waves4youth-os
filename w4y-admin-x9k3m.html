@@ -207,6 +207,27 @@ btnEl.textContent = originalText;
 }
 window.markPaid = markPaid;
 
+// Single delegated listener for all student-row buttons — reads data-*
+// attributes instead of embedding values in inline onclick strings, which
+// is what caused "Resend Email" (and potentially "Approve") to silently
+// fail whenever a student's name or email contained a character that broke
+// the surrounding HTML attribute quoting.
+document.addEventListener("click", function(e){
+  const btn = e.target.closest("[data-action]");
+  if (!btn) return;
+  const action = btn.dataset.action;
+  const uid = btn.dataset.uid;
+  if (action === "approve") {
+    approveStudent(uid, btn.dataset.name, btn.dataset.email, btn);
+  } else if (action === "resend") {
+    resendApprovalEmail(btn.dataset.name, btn.dataset.email, btn);
+  } else if (action === "markpaid") {
+    const track = document.getElementById(`track-${uid}`).value;
+    const tier = document.getElementById(`plan-${uid}`).value;
+    markPaid(uid, track, tier, btn);
+  }
+});
+
 async function resendApprovalEmail(name, email, btnEl){
 if (!email) { alert("This student has no email on file — can't resend."); return; }
 btnEl.disabled = true;
@@ -267,6 +288,15 @@ const trackOptionsHtml = (selected) => ALL_TRACKS.map(([slug,label]) =>
 
 const TIER_NAMES = {1:"Starter",2:"Diploma",3:"Masterclass"};
 
+function escapeHtmlAttr(str){
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 studentsSnap.docs.forEach(d => {
 const s = d.data();
 const isApproved = s.approvalStatus === "Approved";
@@ -275,6 +305,8 @@ const enrollBadges = Object.entries(unlockedTiers)
   .filter(([,tier]) => tier > 0)
   .map(([track,tier]) => `<span class="status-badge status-approved">${track}: ${TIER_NAMES[tier] || tier}</span>`)
   .join(' ');
+const safeName = escapeHtmlAttr(s.name || '');
+const safeEmail = escapeHtmlAttr(s.email || '');
 const rowHtml = `<div class="row" style="flex-direction:column;align-items:stretch;gap:10px">
 <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
 <div>
@@ -282,8 +314,8 @@ const rowHtml = `<div class="row" style="flex-direction:column;align-items:stret
 <span class="meta">${s.email || '—'} · ${s.phone || '—'} · Signup track: ${s.track || '—'} · ID: ${s.studentId || '—'}</span>
 </div>
 ${isApproved
-  ? `<button class="resend-btn" onclick="resendApprovalEmail(${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Resend Email</button>`
-  : `<button class="approve-btn" onclick="approveStudent('${d.id}', ${JSON.stringify(s.name || '')}, ${JSON.stringify(s.email || '')}, this)">Approve</button>`}
+  ? `<button class="resend-btn" data-uid="${d.id}" data-name="${safeName}" data-email="${safeEmail}" data-action="resend">Resend Email</button>`
+  : `<button class="approve-btn" data-uid="${d.id}" data-name="${safeName}" data-email="${safeEmail}" data-action="approve">Approve</button>`}
 </div>
 <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;background:#F7F6FC;border-radius:10px;padding:8px">
 <select id="track-${d.id}" style="font-size:.75rem;padding:5px;border-radius:6px;border:1px solid var(--border)">${trackOptionsHtml(s.track)}</select>
@@ -292,7 +324,7 @@ ${isApproved
 <option value="2">Diploma</option>
 <option value="3">Masterclass</option>
 </select>
-<button class="approve-btn" style="padding:6px 12px;font-size:.72rem" onclick="markPaid('${d.id}', document.getElementById('track-${d.id}').value, document.getElementById('plan-${d.id}').value, this)">Mark Paid for this course</button>
+<button class="approve-btn" style="padding:6px 12px;font-size:.72rem" data-uid="${d.id}" data-action="markpaid">Mark Paid for this course</button>
 </div>
 </div>`;
 if (isApproved) approvedRows.push(rowHtml); else pendingRows.push(rowHtml);
