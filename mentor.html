@@ -180,7 +180,13 @@ onAuthStateChanged(getAuth(fbApp), async (user)=>{
 if(!user){ $("gateMsg").innerHTML = 'Please <a href="login.html" style="color:var(--gold)">log in to your student account</a> to meet your mentor.'; return; }
 try{
 const snap = await getDoc(doc(db,"students",user.uid));
-const status = snap.exists() ? (snap.data().paymentStatus||"Pending") : "Pending";
+const studentData = snap.exists() ? snap.data() : {};
+const approval = studentData.approvalStatus || "Pending";
+if(approval !== "Approved"){
+$("gateMsg").innerHTML = '⏳ <b>Your account is pending approval.</b><br><br>A W4Y team member reviews every new account before your mentor unlocks — this usually takes up to 24 hours.<br><br>We\'ll notify you by email as soon as you\'re approved. 🌊';
+return;
+}
+const status = studentData.paymentStatus||"Pending";
 if(status !== "Paid"){
 $("gateMsg").innerHTML = '🔒 <b>Your mentor is waiting!</b><br><br>AI mentor access unlocks once your enrollment payment is confirmed.<br>Status: <b style="color:var(--gold)">'+status+'</b><br><br>Paid already? Confirmation can take up to 24 hours.<br>Questions? WhatsApp us — we\'ll sort it quickly. 🌊';
 return;
