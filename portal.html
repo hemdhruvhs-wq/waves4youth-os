@@ -106,8 +106,26 @@ onAuthStateChanged(auth, async (user) => {
   uid = user.uid;
   const snap = await getDoc(doc(db,"students",uid));
   data = snap.exists()? snap.data() : {name:user.email, studentId:"W4Y-"+uid.slice(0,6).toUpperCase(), school:"", progress:{}};
-  render();
   updateDoc(doc(db,"students",uid), { lastActive: serverTimestamp() }).catch(()=>{});
+
+  if (data.approvalStatus !== "Approved") {
+    $("loading").style.display = "none";
+    document.body.innerHTML = `
+      <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
+        <div class="glass" style="max-width:400px;width:100%;border-radius:20px;padding:32px 26px;text-align:center;">
+          <div style="font-size:40px;margin-bottom:14px;">⏳</div>
+          <h2 style="margin:0 0 10px;">${data.name ? "Hi " + data.name + "! " : ""}Your account is pending approval</h2>
+          <p style="color:#C7BCC9;font-size:.9rem;line-height:1.55;margin-bottom:18px;">
+            A W4Y team member reviews every new account before your campus unlocks — this usually takes up to 24 hours.
+            We'll notify you by email as soon as you're approved.
+          </p>
+          <a href="index.html" class="pill" style="display:inline-block;text-decoration:none;background:linear-gradient(90deg,var(--coral),var(--magenta));border:none;font-weight:700;">← Back to Home</a>
+        </div>
+      </div>`;
+    return;
+  }
+
+  render();
 });
 
 function render(){
