@@ -818,6 +818,13 @@ Images expected at: assets/w4y-journey/scene1.png ... scene6.png
 .w4yj-replay{display:none}
 .w4yj-trigger{display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:rgba(255,255,255,.9);border-radius:999px;padding:8px 16px;font-family:Inter,sans-serif;font-weight:600;font-size:13px;color:#1a1330;box-shadow:0 10px 26px rgba(0,0,0,.25);animation:w4yjBob 2.4s ease-in-out infinite}
 @keyframes w4yjBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.w4yj-caption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent);color:#fff;font-family:Inter,sans-serif;font-size:13.5px;font-weight:600;line-height:1.5;text-align:center;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.w4yj-caption.visible{opacity:1}
+.w4yj-narration-row{display:flex;align-items:center;gap:8px;padding:12px 16px 0}
+.w4yj-mute-btn{width:32px;height:32px;font-size:13px}
+.w4yj-lang-select{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px;font-size:12px;font-family:Inter,sans-serif;cursor:pointer;outline:none}
+.w4yj-lang-select option{color:#1a1330}
+.w4yj-voice-note{font-size:10.5px;color:rgba(255,255,255,.45);font-family:Inter,sans-serif;margin-left:auto}
 </style>
 <div id="w4yJourneyOverlay" onclick="if(event.target===this)closeW4YJourney()">
 <div class="w4yj-box">
@@ -828,8 +835,21 @@ Images expected at: assets/w4y-journey/scene1.png ... scene6.png
 <div class="w4yj-frame" data-dur="14"><img src="assets/w4y-journey/scene4.png" alt="Time Skip - Growing Dreams"></div>
 <div class="w4yj-frame" data-dur="10"><img src="assets/w4y-journey/scene5.png" alt="Recognition & Impact"></div>
 <div class="w4yj-frame" data-dur="4"><img src="assets/w4y-journey/scene6.png" alt="Your Journey Starts Here"></div>
+<div class="w4yj-caption" id="w4yjCaption"></div>
 </div>
 <div class="w4yj-progress-row" id="w4yjProgressRow"></div>
+<div class="w4yj-narration-row">
+<button class="w4yj-btn w4yj-mute-btn" id="w4yjMuteBtn" onclick="toggleW4YMute()" aria-label="Toggle narration voice">🔊</button>
+<select id="w4yjLangSelect" class="w4yj-lang-select" onchange="changeW4YLang(this.value)" aria-label="Narration language">
+<option value="en">English</option>
+<option value="hi">हिंदी</option>
+<option value="ta">தமிழ்</option>
+<option value="bn">বাংলা</option>
+<option value="kn">ಕನ್ನಡ</option>
+<option value="ml">മലയാളം</option>
+</select>
+<span class="w4yj-voice-note" id="w4yjVoiceNote"></span>
+</div>
 <div class="w4yj-footer">
 <span class="w4yj-title">The W4Y Journey</span>
 <div class="w4yj-controls">
@@ -845,6 +865,116 @@ Images expected at: assets/w4y-journey/scene1.png ... scene6.png
 const frames = Array.from(document.querySelectorAll('#w4yjStage .w4yj-frame'));
 const progressRow = document.getElementById('w4yjProgressRow');
 let current = 0, timer = null, segStart = null, paused = false, remaining = 0;
+
+// ---- AI Voiceover: narration script per language (native-speaker review recommended before launch) ----
+const NARRATION = {
+en: [
+"Every creator starts with one spark of curiosity.",
+"With the right mentor, curiosity turns into real skill, one guided step at a time.",
+"The first project you finish is never really the first version of you. It's proof that you can build.",
+"Skills stack quietly, month after month, until one day the dream stops feeling so far away.",
+"Recognition finds the ones who kept building, long before they ever expected it.",
+"This is where your journey starts."
+],
+hi: [
+"हर क्रिएटर की शुरुआत जिज्ञासा की एक चिंगारी से होती है।",
+"सही मेंटर के साथ, जिज्ञासा असली हुनर में बदल जाती है, एक-एक कदम करके।",
+"जो पहला प्रोजेक्ट आप पूरा करते हैं, वही असल में आपकी पहली पहचान होती है। यह साबित करता है कि आप बना सकते हैं।",
+"हुनर चुपचाप जुड़ता जाता है, महीने दर महीने, जब तक सपना दूर नहीं लगता।",
+"पहचान उन्हें मिलती है जो बनाते रहते हैं, उससे कहीं पहले जितना उन्हें उम्मीद होती है।",
+"यहीं से आपकी यात्रा शुरू होती है।"
+],
+ta: [
+"ஒவ்வொரு படைப்பாளியும் ஒரு ஆர்வத்தின் தீப்பொறியில் தொடங்குகிறார்.",
+"சரியான வழிகாட்டியுடன், ஆர்வம் உண்மையான திறமையாக மாறுகிறது, ஒவ்வொரு படியாக.",
+"நீங்கள் முடிக்கும் முதல் திட்டம் உண்மையில் உங்கள் முதல் வடிவம் அல்ல. அது நீங்கள் உருவாக்க முடியும் என்பதற்கான சான்று.",
+"திறமைகள் அமைதியாக அடுக்கி வளர்கின்றன, மாதம் தோறும், கனவு தூரமாக தெரியாத வரை.",
+"தொடர்ந்து உருவாக்குபவர்களைத்தான் அங்கீகாரம் தேடி வரும், அவர்கள் எதிர்பார்ப்பதற்கு முன்பே.",
+"இங்குதான் உங்கள் பயணம் தொடங்குகிறது."
+],
+bn: [
+"প্রতিটি স্রষ্টার শুরু হয় কৌতূহলের একটি স্ফুলিঙ্গ দিয়ে।",
+"সঠিক মেন্টরের সাথে, কৌতূহল প্রকৃত দক্ষতায় পরিণত হয়, ধাপে ধাপে।",
+"আপনি যে প্রথম প্রজেক্ট শেষ করেন, তা আসলে আপনার প্রথম রূপ। এটাই প্রমাণ যে আপনি তৈরি করতে পারেন।",
+"দক্ষতা নীরবে জমা হতে থাকে, মাসের পর মাস, যতক্ষণ না স্বপ্নটা আর দূরে মনে হয়।",
+"স্বীকৃতি তাদেরই খোঁজে, যারা তৈরি করতে থাকে, আশা করার অনেক আগেই।",
+"এখান থেকেই আপনার যাত্রা শুরু।"
+],
+kn: [
+"ಪ್ರತಿ ಸೃಷ್ಟಿಕರ್ತನ ಆರಂಭ ಕುತೂಹಲದ ಒಂದು ಕಿಡಿಯಿಂದ.",
+"ಸರಿಯಾದ ಮಾರ್ಗದರ್ಶಕರೊಂದಿಗೆ, ಕುತೂಹಲ ನಿಜವಾದ ಕೌಶಲ್ಯವಾಗಿ ಬದಲಾಗುತ್ತದೆ, ಒಂದೊಂದೇ ಹೆಜ್ಜೆಯಲ್ಲಿ.",
+"ನೀವು ಮುಗಿಸುವ ಮೊದಲ ಪ್ರಾಜೆಕ್ಟ್ ನಿಜವಾಗಿಯೂ ನಿಮ್ಮ ಮೊದಲ ರೂಪ. ನೀವು ನಿರ್ಮಿಸಬಲ್ಲಿರಿ ಎಂಬುದಕ್ಕೆ ಅದೇ ಸಾಕ್ಷಿ.",
+"ಕೌಶಲ್ಯಗಳು ಮೌನವಾಗಿ ಶೇಖರಣೆಯಾಗುತ್ತವೆ, ತಿಂಗಳಿಂದ ತಿಂಗಳಿಗೆ, ಕನಸು ದೂರ ಎನಿಸದಂತಾಗುವವರೆಗೆ.",
+"ನಿರಂತರವಾಗಿ ನಿರ್ಮಿಸುವವರನ್ನೇ ಗುರುತಿಸುವಿಕೆ ಹುಡುಕಿಕೊಂಡು ಬರುತ್ತದೆ, ಅವರು ನಿರೀಕ್ಷಿಸುವ ಮೊದಲೇ.",
+"ಇಲ್ಲಿಂದಲೇ ನಿಮ್ಮ ಪಯಣ ಆರಂಭ."
+],
+ml: [
+"ഓരോ സ്രഷ്ടാവും തുടങ്ങുന്നത് ജിജ്ഞാസയുടെ ഒരു തീപ്പൊരിയിൽ നിന്നാണ്.",
+"ശരിയായ മെന്റർക്കൊപ്പം, ജിജ്ഞാസ യഥാർത്ഥ വൈദഗ്ധ്യമായി മാറുന്നു, ഓരോ ചുവടിലും.",
+"നിങ്ങൾ പൂർത്തിയാക്കുന്ന ആദ്യ പ്രോജക്റ്റ് യഥാർത്ഥത്തിൽ നിങ്ങളുടെ ആദ്യ രൂപമാണ്. നിങ്ങൾക്ക് നിർമ്മിക്കാൻ കഴിയുമെന്നതിന്റെ തെളിവാണത്.",
+"വൈദഗ്ധ്യങ്ങൾ നിശബ്ദമായി കൂടിച്ചേരുന്നു, മാസങ്ങളോളം, സ്വപ്നം അകലെയല്ലെന്ന് തോന്നുന്നത് വരെ.",
+"തുടർച്ചയായി നിർമ്മിക്കുന്നവരെയാണ് അംഗീകാരം തേടിയെത്തുന്നത്, അവർ പ്രതീക്ഷിക്കുന്നതിനും മുൻപ്.",
+"ഇവിടെ നിന്നാണ് നിങ്ങളുടെ യാത്ര ആരംഭിക്കുന്നത്."
+]
+};
+const FEMALE_VOICE_HINTS = ['female','woman','heera','lekha','swara','veena','kalpana','shreya','priya','divya','neha','zira','samantha','susan','victoria','google'];
+const LANG_PREFIX = { en:'en', hi:'hi', ta:'ta', bn:'bn', kn:'kn', ml:'ml' };
+let currentLang = 'en';
+let muted = false;
+let voicesCache = [];
+function loadVoices(){ voicesCache = ('speechSynthesis' in window) ? window.speechSynthesis.getVoices() : []; }
+if('speechSynthesis' in window){
+loadVoices();
+window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+function pickVoice(langCode){
+if(!voicesCache.length) return null;
+const prefix = LANG_PREFIX[langCode] || 'en';
+const matches = voicesCache.filter(v => v.lang && v.lang.toLowerCase().startsWith(prefix));
+if(!matches.length) return null;
+const female = matches.find(v => FEMALE_VOICE_HINTS.some(h => v.name.toLowerCase().includes(h)));
+return female || matches[0];
+}
+function speakLine(i){
+if(!('speechSynthesis' in window) || muted) return;
+window.speechSynthesis.cancel();
+const lines = NARRATION[currentLang] || NARRATION.en;
+const text = lines[i];
+if(!text) return;
+const u = new SpeechSynthesisUtterance(text);
+const v = pickVoice(currentLang);
+if(v){ u.voice = v; u.lang = v.lang; } else { u.lang = currentLang === 'en' ? 'en-IN' : LANG_PREFIX[currentLang]; }
+u.rate = 0.98;
+u.pitch = 1.05;
+window.speechSynthesis.speak(u);
+}
+function updateCaption(i){
+const cap = document.getElementById('w4yjCaption');
+if(!cap) return;
+const lines = NARRATION[currentLang] || NARRATION.en;
+cap.textContent = lines[i] || '';
+cap.classList.add('visible');
+}
+function updateVoiceNote(){
+const note = document.getElementById('w4yjVoiceNote');
+if(!note) return;
+if(!('speechSynthesis' in window)){ note.textContent = 'Voice not supported on this device'; return; }
+const v = pickVoice(currentLang);
+note.textContent = v ? '' : 'Voice unavailable here — captions shown instead';
+}
+window.toggleW4YMute = function(){
+muted = !muted;
+const btn = document.getElementById('w4yjMuteBtn');
+if(btn) btn.textContent = muted ? '🔇' : '🔊';
+if(muted && 'speechSynthesis' in window){ window.speechSynthesis.cancel(); }
+else { speakLine(current); }
+};
+window.changeW4YLang = function(lang){
+currentLang = lang;
+updateVoiceNote();
+updateCaption(current);
+if(!muted) speakLine(current);
+};
 frames.forEach(()=>{
 const seg = document.createElement('div');
 seg.className = 'w4yj-progress-seg';
@@ -864,6 +994,8 @@ fills().forEach((fl,idx)=>{ fl.style.width = idx < i ? '100%' : '0%'; fl.style.t
 function playSegment(i){
 current = i;
 showFrame(i);
+updateCaption(i);
+speakLine(i);
 const dur = parseFloat(frames[i].dataset.dur) * 1000;
 remaining = dur;
 segStart = Date.now();
@@ -885,11 +1017,17 @@ document.body.style.overflow = 'hidden';
 document.getElementById('w4yjReplayBtn').style.display = 'none';
 document.getElementById('w4yjPauseBtn').style.display = 'flex';
 document.getElementById('w4yjPauseBtn').textContent = '❚❚';
+const langSelect = document.getElementById('w4yjLangSelect');
+if(langSelect) langSelect.value = currentLang;
+updateVoiceNote();
 paused = false;
 playSegment(0);
 };
 window.closeW4YJourney = function(){
 clearTimeout(timer);
+if('speechSynthesis' in window) window.speechSynthesis.cancel();
+const cap = document.getElementById('w4yjCaption');
+if(cap) cap.classList.remove('visible');
 document.getElementById('w4yJourneyOverlay').classList.remove('active');
 document.body.style.overflow = '';
 };
@@ -902,6 +1040,7 @@ window.toggleW4YJourney = function(){
 const btn = document.getElementById('w4yjPauseBtn');
 if(!paused){
 clearTimeout(timer);
+if('speechSynthesis' in window) window.speechSynthesis.pause();
 const fill = fills()[current];
 const computed = getComputedStyle(fill).width;
 fill.style.transition = 'none';
@@ -912,6 +1051,7 @@ btn.textContent = '▶';
 } else {
 paused = false;
 btn.textContent = '❚❚';
+if('speechSynthesis' in window) window.speechSynthesis.resume();
 segStart = Date.now();
 const fill = fills()[current];
 requestAnimationFrame(()=>{
