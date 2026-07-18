@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Cadet Program — Waves4Youth</title>
+<meta name="description" content="A monthly space-mission program for Std 7-12 students, guided by AI mentor Nova. Starting at Rs 1,999/year.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#080B1A; --panel:#111832; --panel-2:#161F45; --nebula:#B45CFF; --thrust:#FF7A33;
+  --signal:#4FD8E3; --star:#F5F7FF; --muted:#8C93B8; --gold:#FFD166; --good:#4FD878; --bad:#FF5757;
+  --border:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif; background:var(--ink); color:var(--star); overflow-x:hidden;}
+.display{font-family:'Space Grotesk',sans-serif;}
+.mono{font-family:'JetBrains Mono',monospace;}
+a{color:inherit;}
+.wrap{max-width:1040px; margin:0 auto; padding:0 22px;}
+section{position:relative; padding:70px 0;}
+
+#stars{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;}
+.star{position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.25} 50%{opacity:1}}
+
+.planet{position:fixed; border-radius:50%; z-index:0; pointer-events:none; filter:blur(0.3px);}
+.planet-a{width:220px; height:220px; top:8%; right:-70px; background:radial-gradient(circle at 35% 30%,#8A6BFF,#3a1f7a 70%); box-shadow:0 0 90px rgba(138,107,255,.35); animation:driftA 26s ease-in-out infinite;}
+.planet-b{width:130px; height:130px; bottom:6%; left:-40px; background:radial-gradient(circle at 35% 30%,#FF7A33,#7a2f0a 70%); box-shadow:0 0 60px rgba(255,122,51,.3); animation:driftB 22s ease-in-out infinite;}
+@keyframes driftA{0%,100%{transform:translateY(0)} 50%{transform:translateY(30px)}}
+@keyframes driftB{0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)}}
+
+.sat-orbit{position:fixed; top:14%; right:8%; width:180px; height:180px; z-index:0; pointer-events:none; animation:spin 16s linear infinite;}
+@keyframes spin{from{transform:rotate(0deg)} to{transform:rotate(360deg)}}
+.sat-orbit svg{position:absolute; top:0; left:50%; transform:translateX(-50%);}
+
+.asteroid{position:fixed; z-index:0; pointer-events:none; opacity:.7;}
+.ast1{width:22px; top:30%; left:-40px; animation:driftAcross1 34s linear infinite;}
+.ast2{width:14px; top:70%; left:-30px; animation:driftAcross2 46s linear infinite;}
+.ast3{width:18px; top:50%; left:-36px; animation:driftAcross1 40s linear infinite 8s;}
+@keyframes driftAcross1{0%{transform:translate(0,0) rotate(0deg)} 100%{transform:translate(110vw,60px) rotate(360deg)}}
+@keyframes driftAcross2{0%{transform:translate(0,0) rotate(0deg)} 100%{transform:translate(115vw,-40px) rotate(-360deg)}}
+
+.bg-rocket{position:fixed; bottom:-40px; left:6%; z-index:0; pointer-events:none; opacity:.5; animation:bobRocket 5s ease-in-out infinite;}
+@keyframes bobRocket{0%,100%{transform:translateY(0) rotate(-6deg)} 50%{transform:translateY(-14px) rotate(-6deg)}}
+
+@media (prefers-reduced-motion: reduce){
+  .star,.planet-a,.planet-b,.sat-orbit,.asteroid,.bg-rocket{animation:none !important;}
+}
+
+.nova-row{display:flex; gap:14px; align-items:flex-start; position:relative; z-index:1;}
+.nova-avatar{width:64px; height:91px; flex-shrink:0; animation:float 3s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}}
+.nova-bubble{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px 16px; font-size:13.5px; line-height:1.6; color:var(--star); flex:1; min-height:50px;}
+.nova-bubble .cursor{opacity:.5;}
+.nova-label{font-size:10.5px; font-weight:700; color:var(--nebula); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; display:block;}
+
+.hero{padding-top:60px; text-align:center; position:relative; z-index:1;}
+.eyebrow{font-size:11.5px; font-weight:700; color:var(--signal); letter-spacing:.08em; text-transform:uppercase;}
+.hero h1{font-size:clamp(30px,5vw,50px); font-weight:700; margin:14px 0 16px; line-height:1.15;}
+.hero p.sub{color:var(--muted); max-width:560px; margin:0 auto 30px; font-size:15px; line-height:1.6;}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:999px; font-weight:700; font-size:14px; text-decoration:none; border:none; cursor:pointer; font-family:inherit;}
+.btn-primary{background:linear-gradient(90deg,var(--nebula),var(--signal)); color:#080B1A;}
+.btn-outline{background:transparent; border:1px solid var(--border); color:var(--star);}
+
+.timeline{display:flex; gap:10px; overflow-x:auto; padding:26px 4px 8px; margin-top:10px;}
+.tl-node{flex:0 0 auto; min-width:128px; background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px; text-align:center;}
+.tl-node .grade{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px;}
+.tl-node .lbl{font-size:11px; color:var(--muted); margin-top:4px;}
+.tl-node .dot{width:8px; height:8px; border-radius:50%; margin:10px auto 0;}
+
+.rule-box{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:22px 24px; margin-top:30px; display:flex; gap:16px; flex-wrap:wrap;}
+.rule{flex:1; min-width:220px;}
+.rule .num{font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; color:var(--gold);}
+.rule p{font-size:12.5px; color:var(--muted); margin-top:4px; line-height:1.5;}
+
+.grade-tabs{display:flex; gap:8px; flex-wrap:wrap; margin:24px 0 22px;}
+.grade-tab{padding:8px 16px; border-radius:999px; border:1px solid var(--border); background:var(--panel); color:var(--muted); font-size:12.5px; font-weight:700; cursor:pointer; font-family:inherit;}
+.grade-tab.active{background:linear-gradient(90deg,var(--nebula),var(--signal)); color:#080B1A; border-color:transparent;}
+
+.fuel-wrap{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px 18px; display:flex; align-items:center; gap:14px; margin-bottom:22px;}
+.fuel-bar{flex:1; height:10px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden;}
+.fuel-fill{height:100%; background:linear-gradient(90deg,var(--thrust),var(--gold)); width:0%; transition:width .5s ease;}
+.fuel-label{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--gold); white-space:nowrap;}
+
+.task-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+@media (max-width:640px){ .task-grid{grid-template-columns:1fr;} }
+.task-card{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px 18px; cursor:pointer; transition:border-color .2s ease, background .2s ease;}
+.task-card.done{border-color:var(--good); background:rgba(79,216,120,.08);}
+.task-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+.task-icon{font-size:20px;}
+.task-type{font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em;}
+.task-title{font-size:13.5px; font-weight:700; margin:8px 0 4px;}
+.task-desc{font-size:12px; color:var(--muted); line-height:1.5;}
+.task-check{width:20px; height:20px; border-radius:50%; border:2px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px;}
+.task-card.done .task-check{background:var(--good); border-color:var(--good); color:#080B1A;}
+
+.qualify-banner{margin-top:18px; background:linear-gradient(120deg,rgba(255,122,51,.15),rgba(180,92,255,.15)); border:1px solid var(--gold); border-radius:14px; padding:16px 18px; display:none; align-items:center; gap:12px;}
+.qualify-banner.show{display:flex;}
+
+.price-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px;}
+@media (max-width:640px){ .price-grid{grid-template-columns:1fr;} }
+.price-card{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:26px 24px; position:relative;}
+.price-card.featured{border-color:var(--gold); background:linear-gradient(160deg,var(--panel),#1d1440);}
+.price-tag{position:absolute; top:-12px; right:20px; background:var(--gold); color:#1a1200; font-size:11px; font-weight:800; padding:4px 12px; border-radius:999px;}
+.price-name{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px;}
+.price-amount{font-size:32px; font-weight:700; margin:10px 0 2px;}
+.price-amount span{font-size:13px; font-weight:600; color:var(--muted);}
+.price-list{list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:9px;}
+.price-list li{font-size:12.5px; color:var(--muted); display:flex; gap:8px; align-items:flex-start;}
+.price-list li::before{content:"✓"; color:var(--good); font-weight:800; flex-shrink:0;}
+
+h2.section-title{font-family:'Space Grotesk',sans-serif; font-size:clamp(22px,3.5vw,30px); font-weight:700;}
+p.section-sub{color:var(--muted); font-size:14px; max-width:600px; margin-top:8px; line-height:1.6;}
+
+footer{padding:40px 0 60px; text-align:center; color:var(--muted); font-size:12px; position:relative; z-index:1;}
+
+/* ---------- Auth bar ---------- */
+.auth-bar{position:fixed; top:14px; right:14px; z-index:20; display:flex; gap:8px; align-items:center;}
+.auth-btn{padding:9px 16px; border-radius:999px; font-size:12px; font-weight:700; cursor:pointer; font-family:inherit; border:1px solid var(--border); background:rgba(8,11,26,.7); backdrop-filter:blur(6px); color:var(--star);}
+.auth-btn.primary{background:linear-gradient(90deg,var(--nebula),var(--signal)); color:#080B1A; border:none;}
+.auth-pill{padding:8px 14px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--border); font-size:11.5px; color:var(--muted); display:flex; align-items:center; gap:6px;}
+.auth-pill strong{color:var(--star);}
+
+/* ---------- Login modal ---------- */
+.modal-overlay{position:fixed; inset:0; z-index:50; background:rgba(4,6,16,.75); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; padding:20px;}
+.modal-overlay.show{display:flex;}
+.modal-card{background:var(--panel-2); border:1px solid var(--border); border-radius:20px; padding:28px 26px; max-width:360px; width:100%;}
+.modal-card h3{font-family:'Space Grotesk',sans-serif; font-size:18px; font-weight:700; margin-bottom:6px;}
+.modal-card p.hint{font-size:12.5px; color:var(--muted); margin-bottom:18px; line-height:1.5;}
+.modal-field{margin-bottom:14px;}
+.modal-field label{display:block; font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px;}
+.modal-field input, .modal-field select{width:100%; padding:11px 13px; border-radius:10px; border:1px solid var(--border); background:rgba(255,255,255,.05); color:var(--star); font-size:13px; font-family:inherit;}
+.modal-close{position:absolute; top:14px; right:16px; background:none; border:none; color:var(--muted); font-size:18px; cursor:pointer;}
+.modal-card{position:relative;}
+
+/* ---------- Task lock overlay ---------- */
+.task-grid-wrap{position:relative;}
+.lock-overlay{position:absolute; inset:0; background:rgba(8,11,26,.72); backdrop-filter:blur(2px); border-radius:16px; display:none; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding:20px; z-index:5;}
+.lock-overlay.show{display:flex;}
+.lock-overlay .lock-icon{font-size:26px;}
+.lock-overlay p{font-size:13px; color:var(--star); max-width:260px; line-height:1.5;}
+
+/* ---------- Grade briefing ---------- */
+.briefing{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:20px 22px; margin-top:20px; display:none;}
+.briefing.show{display:block;}
+.briefing-head{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+.briefing-head strong{font-family:'Space Grotesk',sans-serif; font-size:13.5px;}
+.briefing p{font-size:13px; color:var(--muted); line-height:1.6;}
+
+/* ---------- Coins ---------- */
+.coin-pill{padding:8px 14px; border-radius:999px; background:linear-gradient(90deg,rgba(255,209,102,.18),rgba(255,122,51,.18)); border:1px solid var(--gold); font-size:12px; font-weight:800; color:var(--gold); display:flex; align-items:center; gap:6px;}
+.coin-toast{position:fixed; z-index:60; top:70px; right:14px; background:var(--gold); color:#1a1200; font-weight:800; font-size:12.5px; padding:9px 16px; border-radius:999px; opacity:0; transform:translateY(-8px); transition:opacity .25s ease, transform .25s ease; pointer-events:none;}
+.coin-toast.show{opacity:1; transform:translateY(0);}
+.store-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:20px;}
+@media (max-width:720px){ .store-grid{grid-template-columns:repeat(2,1fr);} }
+.store-card{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px 14px; text-align:center;}
+.store-card.unlocked{border-color:var(--good);}
+.store-emoji{font-size:28px; margin-bottom:8px;}
+.store-name{font-size:12.5px; font-weight:700;}
+.store-cost{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gold); margin:6px 0 8px;}
+.store-status{font-size:10.5px; font-weight:700; padding:4px 10px; border-radius:999px; background:rgba(255,255,255,.08); color:var(--muted);}
+.store-status.ready{background:rgba(79,216,120,.15); color:var(--good);}
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="auth-bar" id="authBar"></div>
+<div class="coin-toast" id="coinToast">+10 🪙</div>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+    <h3 id="modalTitle">Enroll as a Space Cadet</h3>
+    <p class="hint" id="modalHint">Tell Nova your name and class, she'll brief you on what's ahead.</p>
+
+    <div class="modal-field" id="fieldName">
+      <label>Your Name</label>
+      <input type="text" id="loginName" placeholder="e.g. Aarav">
+    </div>
+    <div class="modal-field" id="fieldGrade">
+      <label>Your Class</label>
+      <select id="loginGrade">
+        <option value="0">Std 7</option>
+        <option value="1">Std 8</option>
+        <option value="2">Std 9</option>
+        <option value="3">Std 10</option>
+        <option value="4">Std 11</option>
+        <option value="5">Std 12</option>
+      </select>
+    </div>
+    <div class="modal-field">
+      <label>Email (parent's is fine)</label>
+      <input type="email" id="loginEmail" placeholder="name@example.com" autocomplete="username">
+    </div>
+    <div class="modal-field">
+      <label>Password</label>
+      <input type="password" id="loginPassword" placeholder="At least 6 characters" autocomplete="current-password">
+    </div>
+
+    <p class="modal-error" id="modalError" style="display:none;color:#FF5757;font-size:12px;margin-bottom:10px;"></p>
+
+    <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="handleModalSubmit()" id="modalSubmitBtn">Start My Mission Log</button>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px;">
+      <span id="modalToggleText">Already a cadet?</span>
+      <a href="#" onclick="toggleModalMode(); return false;" style="color:var(--signal);font-weight:700" id="modalToggleLink">Log in</a>
+    </p>
+  </div>
+</div>
+<div class="planet planet-a"></div>
+<div class="planet planet-b"></div>
+<div class="asteroid ast1"><svg viewBox="0 0 40 40"><polygon points="20,2 32,10 38,24 28,38 12,36 2,22 6,8" fill="#6B5A72"/></svg></div>
+<div class="asteroid ast2"><svg viewBox="0 0 40 40"><polygon points="20,2 32,10 38,24 28,38 12,36 2,22 6,8" fill="#8C93B8"/></svg></div>
+<div class="asteroid ast3"><svg viewBox="0 0 40 40"><polygon points="20,4 30,12 36,26 24,36 10,34 4,20" fill="#6B5A72"/></svg></div>
+<div class="sat-orbit"><svg width="26" height="26" viewBox="0 0 40 40"><rect x="6" y="16" width="10" height="8" rx="1" fill="#C9CEE8"/><rect x="0" y="17" width="5" height="6" fill="#4FD8E3"/><rect x="17" y="17" width="5" height="6" fill="#4FD8E3"/><line x1="20" y1="19" x2="26" y2="10" stroke="#C9CEE8" stroke-width="1.5"/></svg></div>
+<div class="bg-rocket">
+  <svg width="46" height="90" viewBox="0 0 46 90">
+    <path d="M23 0 C33 14 34 34 34 50 L12 50 C12 34 13 14 23 0 Z" fill="#E7EAF7"/>
+    <circle cx="23" cy="30" r="6" fill="#4FD8E3"/>
+    <path d="M12 50 L2 66 L14 60 Z" fill="#FF3D7A"/>
+    <path d="M34 50 L44 66 L32 60 Z" fill="#FF3D7A"/>
+    <path d="M16 50 L30 50 L26 66 L20 66 Z" fill="#B45CFF"/>
+    <ellipse cx="23" cy="72" rx="7" ry="16" fill="#FF7A33" opacity=".85"/>
+  </svg>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow" id="txt-eyebrow">Space & Astro-Tech Track</span>
+    <div id="langRow" style="display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:14px 0 6px;"></div>
+    <h1 class="display" id="txt-heroTitle">The Space Cadet Program</h1>
+    <p class="sub" id="txt-heroSub">A monthly mission system for Std 7-12 students, guided by your AI mission mentor, Nova. Four real missions a month. Clear them to advance.</p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:40px;">
+      <a href="#pricing" class="btn btn-primary" id="txt-ctaStart">Start at Rs 1,999/year</a>
+      <a href="#demo" class="btn btn-outline" id="txt-ctaDemo">Try a Sample Mission</a>
+    </div>
+
+    <div class="nova-row" style="max-width:560px;margin:0 auto;text-align:left">
+      <svg class="nova-avatar" viewBox="0 0 120 170" style="width:64px;height:91px">
+        <defs><linearGradient id="visorGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4FD8E3"/><stop offset="100%" stop-color="#B45CFF"/></linearGradient></defs>
+        <rect x="32" y="86" width="56" height="50" rx="12" fill="#C9CEE8"/>
+        <rect x="42" y="130" width="16" height="32" rx="7" fill="#E7EAF7"/>
+        <rect x="62" y="130" width="16" height="32" rx="7" fill="#E7EAF7"/>
+        <rect x="40" y="154" width="20" height="12" rx="5" fill="#8C93B8"/>
+        <rect x="60" y="154" width="20" height="12" rx="5" fill="#8C93B8"/>
+        <rect x="28" y="86" width="64" height="56" rx="20" fill="#F5F7FF"/>
+        <rect x="49" y="100" width="22" height="15" rx="4" fill="url(#visorGrad)" opacity="0.85"/>
+        <rect x="12" y="92" width="17" height="42" rx="8" fill="#F5F7FF"/>
+        <circle cx="20" cy="138" r="11" fill="#F5F7FF" stroke="#C9CEE8" stroke-width="2"/>
+        <rect x="91" y="92" width="17" height="42" rx="8" fill="#F5F7FF"/>
+        <circle cx="100" cy="138" r="11" fill="#F5F7FF" stroke="#C9CEE8" stroke-width="2"/>
+        <rect x="50" y="74" width="20" height="16" fill="#E7EAF7"/>
+        <circle cx="60" cy="52" r="34" fill="#E7EAF7"/>
+        <path d="M26 52 a34 34 0 0 1 68 0" fill="none" stroke="#C9CEE8" stroke-width="6"/>
+        <ellipse cx="60" cy="48" rx="22" ry="18" fill="#0d1128"/>
+        <ellipse cx="60" cy="48" rx="22" ry="18" fill="url(#visorGrad)" opacity="0.55"/>
+        <circle cx="52" cy="46" r="8" fill="#fff" opacity=".3"/>
+        <line x1="60" y1="18" x2="60" y2="6" stroke="#FF7A33" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="60" cy="5" r="3.5" fill="#FF7A33"/>
+      </svg>
+      <div class="nova-bubble" id="novaIntro">
+        <span class="nova-label" id="txt-novaLabel">Nova - Mission Guide</span>
+        <span id="novaIntroText"></span><span class="cursor">|</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="program">
+  <div class="wrap">
+    <h2 class="section-title" id="txt-programTitle">One Rank Per Month</h2>
+    <p class="section-sub" id="txt-programSub">Every class runs on the same rhythm: four missions a month, across all six years of school. Miss one, retry it. Clear all four, and the next month unlocks.</p>
+
+    <div class="rule-box">
+      <div class="rule"><div class="num mono">4</div><p id="txt-rule1">Missions every month - Observe, Quiz, Build, Watch & Reflect</p></div>
+      <div class="rule"><div class="num mono">4/4</div><p id="txt-rule2">Required to qualify for next month's missions</p></div>
+      <div class="rule"><div class="num mono">6</div><p id="txt-rule3">Classes covered - Std 7 through Std 12, one continuous mission log</p></div>
+    </div>
+
+    <div class="timeline" id="timelineRow"></div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <h2 class="section-title" id="txt-demoTitle">Try This Month's Missions</h2>
+    <p class="section-sub" id="txt-demoSub">Pick a class to see a real sample month. Complete all four to see what qualifying feels like.</p>
+
+    <div class="grade-tabs" id="gradeTabs"></div>
+    <div class="grade-tabs" id="monthTabs" style="margin-top:-10px"></div>
+
+    <div class="nova-row" style="margin-bottom:20px;">
+      <svg class="nova-avatar" viewBox="0 0 120 170" style="width:44px;height:62px">
+        <rect x="32" y="86" width="56" height="50" rx="12" fill="#C9CEE8"/>
+        <rect x="42" y="130" width="16" height="32" rx="7" fill="#E7EAF7"/>
+        <rect x="62" y="130" width="16" height="32" rx="7" fill="#E7EAF7"/>
+        <rect x="28" y="86" width="64" height="56" rx="20" fill="#F5F7FF"/>
+        <rect x="49" y="100" width="22" height="15" rx="4" fill="url(#visorGrad)" opacity="0.85"/>
+        <rect x="12" y="92" width="17" height="42" rx="8" fill="#F5F7FF"/>
+        <circle cx="20" cy="138" r="11" fill="#F5F7FF" stroke="#C9CEE8" stroke-width="2"/>
+        <rect x="91" y="92" width="17" height="42" rx="8" fill="#F5F7FF"/>
+        <circle cx="100" cy="138" r="11" fill="#F5F7FF" stroke="#C9CEE8" stroke-width="2"/>
+        <rect x="50" y="74" width="20" height="16" fill="#E7EAF7"/>
+        <circle cx="60" cy="52" r="34" fill="#E7EAF7"/>
+        <path d="M26 52 a34 34 0 0 1 68 0" fill="none" stroke="#C9CEE8" stroke-width="6"/>
+        <ellipse cx="60" cy="48" rx="22" ry="18" fill="#0d1128"/>
+        <ellipse cx="60" cy="48" rx="22" ry="18" fill="url(#visorGrad)" opacity="0.55"/>
+        <line x1="60" y1="18" x2="60" y2="6" stroke="#FF7A33" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="60" cy="5" r="3.5" fill="#FF7A33"/>
+      </svg>
+      <div class="nova-bubble" id="novaDemoBubble" style="font-size:12.5px">
+        <span id="novaDemoText"></span><span class="cursor">|</span>
+      </div>
+    </div>
+
+    <div class="briefing" id="briefingPanel">
+      <div class="briefing-head">🧑‍🚀 <strong id="txt-briefingHead">Nova's Briefing for You</strong></div>
+      <p id="briefingText"></p>
+    </div>
+
+    <div class="fuel-wrap">
+      <span class="fuel-label mono" id="txt-fuelLabel">FUEL</span>
+      <div class="fuel-bar"><div class="fuel-fill" id="fuelFill"></div></div>
+      <span class="fuel-label mono" id="fuelPct">0%</span>
+    </div>
+
+    <div class="task-grid-wrap">
+      <div class="task-grid" id="taskGrid"></div>
+      <div class="lock-overlay" id="lockOverlay">
+        <span class="lock-icon">🔒</span>
+        <p id="txt-lockText">Login to start tracking your missions and unlock your fuel gauge.</p>
+        <button class="btn btn-primary" onclick="openLoginModal()" id="txt-lockBtn">Login to Unlock</button>
+      </div>
+    </div>
+
+    <div class="qualify-banner" id="qualifyBanner">
+      <span style="font-size:22px">🚀</span> <div><strong style="color:var(--gold)" id="txt-qualifyTitle">Mission month cleared!</strong><div style="font-size:12.5px;color:var(--muted);margin-top:2px" id="txt-qualifyDesc">Next month's missions just unlocked.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="store">
+  <div class="wrap">
+    <h2 class="section-title">Earn Coins, Unlock Merch</h2>
+    <p class="section-sub">Every mission you clear earns W4Y Coins. Clear a full month and Nova throws in a bonus. Coins add up toward real W4Y merchandise.</p>
+    <div class="coin-pill" style="width:fit-content; margin-top:16px;" id="storeCoinBadge">🪙 0 coins</div>
+    <div class="store-grid" id="storeGrid"></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2 class="section-title" id="txt-pricingTitle">Join the Program</h2>
+    <p class="section-sub" id="txt-pricingSub">Simple annual pricing, one payment covers the full school year of missions.</p>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-name" id="txt-explorerName">Explorer</div>
+        <div class="price-amount">Rs 1,999<span id="txt-perYear1"> /year</span></div>
+        <ul class="price-list" id="txt-explorerList">
+          <li>10 months of missions (4 each), matched to your class</li>
+          <li>AI mission mentor Nova, chat + voice guidance</li>
+          <li>Digital mission badges after each cleared month</li>
+          <li>Curated space-agency videos & program alerts (YUVIKA, JEE dates, etc.)</li>
+        </ul>
+        <a href="#" class="btn btn-outline" style="width:100%; justify-content:center; margin-top:20px;" id="txt-startExplorer">Start Explorer</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-tag" id="txt-bestValue">BEST VALUE</span>
+        <div class="price-name" id="txt-crewName">Mission Crew</div>
+        <div class="price-amount">Rs 4,999<span id="txt-perYear2"> /year</span></div>
+        <ul class="price-list" id="txt-crewList">
+          <li>Everything in Explorer</li>
+          <li>Live monthly doubt-clearing session with a real space-industry mentor</li>
+          <li>Quarterly printable progress certificate</li>
+          <li>Parent progress snapshot each month</li>
+        </ul>
+        <a href="#" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:20px;" id="txt-startCrew">Start Mission Crew</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:22px" id="txt-groupPricing">Enrolling a whole class or school? <a href="#" style="color:var(--signal);font-weight:700">Ask about group pricing -&gt;</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" id="txt-footer">Waves4Youth - Space & Astro-Tech Track - Std 7 to Launch</div>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc, getDocs, collection, updateDoc, increment, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+const fbApp = initializeApp(firebaseConfig);
+const fbAuth = getAuth(fbApp);
+const db = getFirestore(fbApp);
+(function(){
+  var container = document.getElementById('stars');
+  var count = 130;
+  for(var i=0;i<count;i++){
+    var s = document.createElement('div');
+    s.className = 'star';
+    var size = Math.random()*2 + 1;
+    s.style.width = size+'px'; s.style.height = size+'px';
+    s.style.top = Math.random()*100+'%'; s.style.left = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*3)+'s';
+    s.style.animationDuration = (2+Math.random()*3)+'s';
+    container.appendChild(s);
+  }
+})();
+
+function typeInto(el, text, speed){
+  el.textContent = '';
+  var i = 0;
+  var iv = setInterval(function(){
+    i++; el.textContent = text.slice(0,i);
+    if(i>=text.length) clearInterval(iv);
+  }, speed || 16);
+}
+typeInto(document.getElementById('novaIntroText'),
+  "Hey, I'm Nova, your mission guide. Every month I'll give you four real space missions. Clear all four, and I'll clear you for the next one.", 14);
+
+// ---------- Language system ----------
+// NOTE: this translates the page chrome (headings, buttons, pricing) only.
+// The 40+ individual mission tasks stay in English for now and should get a
+// native-speaker review before being translated for real students.
+var LANGS = [
+  { code:'en', label:'English' },
+  { code:'hi', label:'हिंदी' },
+  { code:'ta', label:'தமிழ்' },
+  { code:'bn', label:'বাংলা' },
+  { code:'kn', label:'ಕನ್ನಡ' },
+  { code:'ml', label:'മലയാളം' },
+  { code:'mr', label:'मराठी' }
+];
+
+var I18N = {
+  en: {
+    eyebrow:"Space & Astro-Tech Track", heroTitle:"The Space Cadet Program",
+    heroSub:"A monthly mission system for Std 7-12 students, guided by your AI mission mentor, Nova. Four real missions a month. Clear them to advance.",
+    ctaStart:"Start at Rs 1,999/year", ctaDemo:"Try a Sample Mission", novaLabel:"Nova - Mission Guide",
+    novaIntro:"Hey, I'm Nova, your mission guide. Every month I'll give you four real space missions. Clear all four, and I'll clear you for the next one.",
+    programTitle:"One Rank Per Month",
+    programSub:"Every class runs on the same rhythm: four missions a month, across all six years of school. Miss one, retry it. Clear all four, and the next month unlocks.",
+    rule1:"Missions every month - Observe, Quiz, Build, Watch & Reflect", rule2:"Required to qualify for next month's missions",
+    rule3:"Classes covered - Std 7 through Std 12, one continuous mission log",
+    demoTitle:"Try This Month's Missions", demoSub:"Pick a class to see a real sample month. Complete all four to see what qualifying feels like.",
+    fuelLabel:"FUEL", qualifyTitle:"Mission month cleared!", qualifyDesc:"Next month's missions just unlocked.",
+    pricingTitle:"Join the Program", pricingSub:"Simple annual pricing, one payment covers the full school year of missions.",
+    explorerName:"Explorer", perYear:" /year",
+    explorerList:["10 months of missions (4 each), matched to your class","AI mission mentor Nova, chat + voice guidance","Digital mission badges after each cleared month","Curated space-agency videos & program alerts (YUVIKA, JEE dates, etc.)"],
+    startExplorer:"Start Explorer", bestValue:"BEST VALUE", crewName:"Mission Crew",
+    crewList:["Everything in Explorer","Live monthly doubt-clearing session with a real space-industry mentor","Quarterly printable progress certificate","Parent progress snapshot each month"],
+    startCrew:"Start Mission Crew",
+    groupHtml:'Enrolling a whole class or school? <a href="#" style="color:var(--signal);font-weight:700">Ask about group pricing -&gt;</a>',
+    footer:"Waves4Youth - Space & Astro-Tech Track - Std 7 to Launch"
+  },
+  hi: {
+    eyebrow:"स्पेस और एस्ट्रो-टेक ट्रैक", heroTitle:"स्पेस कैडेट प्रोग्राम",
+    heroSub:"कक्षा 7 से 12 के विद्यार्थियों के लिए मासिक मिशन प्रणाली, आपकी AI मिशन मार्गदर्शक नोवा के साथ। हर महीने चार असली स्पेस मिशन। सभी पूरे करें और आगे बढ़ें।",
+    ctaStart:"₹1,999/वर्ष से शुरू करें", ctaDemo:"एक नमूना मिशन आज़माएं", novaLabel:"नोवा - मिशन गाइड",
+    novaIntro:"नमस्ते, मैं नोवा हूं, आपकी मिशन गाइड। हर महीने मैं आपको चार असली स्पेस मिशन दूंगी। चारों पूरे करें, और मैं आपको अगले महीने के लिए योग्य कर दूंगी।",
+    programTitle:"हर महीने एक नई रैंक",
+    programSub:"हर कक्षा एक ही लय में चलती है: महीने में चार मिशन, स्कूल के सभी छह वर्षों में। एक छूट जाए तो दोबारा करें। चारों पूरे करें, और अगला महीना खुल जाएगा।",
+    rule1:"हर महीने मिशन - निरीक्षण करें, क्विज़, बनाएं, देखें और सोचें", rule2:"अगले महीने के लिए योग्य होने हेतु आवश्यक",
+    rule3:"शामिल कक्षाएं - कक्षा 7 से कक्षा 12 तक, एक सतत मिशन लॉग",
+    demoTitle:"इस महीने के मिशन आज़माएं", demoSub:"एक असली नमूना महीना देखने के लिए कक्षा चुनें। योग्य होने का अनुभव करने के लिए चारों पूरे करें।",
+    fuelLabel:"ईंधन", qualifyTitle:"मिशन महीना पूरा हुआ!", qualifyDesc:"अगले महीने के मिशन अभी खुले हैं।",
+    pricingTitle:"प्रोग्राम से जुड़ें", pricingSub:"सरल वार्षिक मूल्य, एक भुगतान से पूरे स्कूल वर्ष के मिशन शामिल।",
+    explorerName:"एक्सप्लोरर", perYear:" /वर्ष",
+    explorerList:["10 महीनों के मिशन (हर महीने 4), आपकी कक्षा के अनुसार","AI मिशन मार्गदर्शक नोवा - चैट + आवाज़ मार्गदर्शन","हर पूरे हुए महीने के बाद डिजिटल मिशन बैज","चुनिंदा स्पेस-एजेंसी वीडियो और कार्यक्रम अलर्ट (YUVIKA, JEE तारीखें, आदि)"],
+    startExplorer:"एक्सप्लोरर शुरू करें", bestValue:"सर्वश्रेष्ठ मूल्य", crewName:"मिशन क्रू",
+    crewList:["एक्सप्लोरर की सभी सुविधाएं","एक असली स्पेस-इंडस्ट्री मेंटर के साथ मासिक लाइव प्रश्नोत्तर सत्र","त्रैमासिक प्रिंट करने योग्य प्रगति प्रमाणपत्र","हर महीने अभिभावकों के लिए प्रगति सारांश"],
+    startCrew:"मिशन क्रू शुरू करें",
+    groupHtml:'पूरी कक्षा या स्कूल को शामिल करना चाहते हैं? <a href="#" style="color:var(--signal);font-weight:700">ग्रुप मूल्य के बारे में पूछें -&gt;</a>',
+    footer:"वेव्स4यूथ - स्पेस और एस्ट्रो-टेक ट्रैक - कक्षा 7 से लॉन्च तक"
+  },
+  ta: {
+    eyebrow:"விண்வெளி & வானியல்-தொழில்நுட்பப் பாதை", heroTitle:"விண்வெளி வீரர் திட்டம்",
+    heroSub:"7 முதல் 12 வகுப்பு மாணவர்களுக்கான மாதாந்திர பணித் திட்டம், உங்கள் AI வழிகாட்டி நோவாவுடன். மாதம் நான்கு உண்மையான விண்வெளி பணிகள். அனைத்தையும் முடித்து முன்னேறுங்கள்.",
+    ctaStart:"₹1,999/ஆண்டு முதல் தொடங்குங்கள்", ctaDemo:"ஒரு மாதிரி பணியை முயற்சிக்கவும்", novaLabel:"நோவா - பணி வழிகாட்டி",
+    novaIntro:"வணக்கம், நான் நோவா, உங்கள் பணி வழிகாட்டி. ஒவ்வொரு மாதமும் நான்கு உண்மையான விண்வெளி பணிகளை தருவேன். நான்கையும் முடித்தால், அடுத்த மாதத்திற்கு தகுதி பெறுவீர்கள்.",
+    programTitle:"மாதம் ஒரு படி முன்னேற்றம்",
+    programSub:"ஒவ்வொரு வகுப்பும் ஒரே தாளத்தில் இயங்குகிறது: மாதம் நான்கு பணிகள், பள்ளியின் ஆறு ஆண்டுகளிலும். ஒன்றை தவறவிட்டால் மீண்டும் முயற்சிக்கவும். நான்கையும் முடித்தால், அடுத்த மாதம் திறக்கும்.",
+    rule1:"ஒவ்வொரு மாதமும் பணிகள் - கவனிக்க, வினாடி வினா, உருவாக்க, பார்த்து சிந்திக்க", rule2:"அடுத்த மாத பணிகளுக்கு தகுதி பெற தேவை",
+    rule3:"உள்ளடக்கிய வகுப்புகள் - 7 முதல் 12 வகுப்பு வரை, ஒரே தொடர் பணிப் பதிவு",
+    demoTitle:"இந்த மாத பணிகளை முயற்சிக்கவும்", demoSub:"ஒரு உண்மையான மாதிரி மாதத்தைப் பார்க்க வகுப்பைத் தேர்ந்தெடுக்கவும். தகுதி பெறுவது எப்படி இருக்கும் எனப் பார்க்க நான்கையும் முடிக்கவும்.",
+    fuelLabel:"எரிபொருள்", qualifyTitle:"பணி மாதம் முடிந்தது!", qualifyDesc:"அடுத்த மாத பணிகள் இப்போது திறக்கப்பட்டுள்ளன.",
+    pricingTitle:"திட்டத்தில் இணையுங்கள்", pricingSub:"எளிய ஆண்டு கட்டணம், ஒரே கட்டணத்தில் முழு பள்ளி ஆண்டு பணிகள்.",
+    explorerName:"எக்ஸ்ப்ளோரர்", perYear:" /ஆண்டு",
+    explorerList:["10 மாத பணிகள் (ஒவ்வொரு மாதமும் 4), உங்கள் வகுப்புக்கு ஏற்ப","AI பணி வழிகாட்டி நோவா - அரட்டை + குரல் வழிகாட்டுதல்","ஒவ்வொரு முடிந்த மாதத்திற்கும் பிறகு டிஜிட்டல் பேட்ஜ்கள்","தேர்ந்தெடுக்கப்பட்ட விண்வெளி நிறுவன வீடியோக்கள் & நிகழ்ச்சி அறிவிப்புகள் (YUVIKA, JEE தேதிகள் போன்றவை)"],
+    startExplorer:"எக்ஸ்ப்ளோரரைத் தொடங்கு", bestValue:"சிறந்த மதிப்பு", crewName:"மிஷன் குரூ",
+    crewList:["எக்ஸ்ப்ளோரரின் அனைத்து அம்சங்களும்","உண்மையான விண்வெளித் துறை வழிகாட்டியுடன் மாதாந்திர நேரடி சந்தேக நிவர்த்தி அமர்வு","காலாண்டு அச்சிடக்கூடிய முன்னேற்ற சான்றிதழ்","ஒவ்வொரு மாதமும் பெற்றோருக்கான முன்னேற்ற சுருக்கம்"],
+    startCrew:"மிஷன் குரூவைத் தொடங்கு",
+    groupHtml:'முழு வகுப்பையும் அல்லது பள்ளியையும் சேர்க்க விரும்புகிறீர்களா? <a href="#" style="color:var(--signal);font-weight:700">குழு விலையைப் பற்றி கேளுங்கள் -&gt;</a>',
+    footer:"வேவ்ஸ்4யூத் - விண்வெளி & வானியல்-தொழில்நுட்பப் பாதை - 7ம் வகுப்பிலிருந்து ஏவுதள் வரை"
+  },
+  bn: {
+    eyebrow:"স্পেস ও অ্যাস্ট্রো-টেক ট্র্যাক", heroTitle:"স্পেস ক্যাডেট প্রোগ্রাম",
+    heroSub:"৭ম থেকে ১২শ শ্রেণির শিক্ষার্থীদের জন্য মাসিক মিশন ব্যবস্থা, আপনার AI মিশন গাইড নোভার সাথে। প্রতি মাসে চারটি বাস্তব স্পেস মিশন। সব কটি সম্পন্ন করে এগিয়ে যান।",
+    ctaStart:"₹১,৯৯৯/বছর থেকে শুরু করুন", ctaDemo:"একটি নমুনা মিশন চেষ্টা করুন", novaLabel:"নোভা - মিশন গাইড",
+    novaIntro:"হাই, আমি নোভা, তোমার মিশন গাইড। প্রতি মাসে আমি তোমাকে চারটি বাস্তব স্পেস মিশন দেব। চারটেই শেষ করলে, পরের মাসের জন্য তুমি যোগ্য হয়ে যাবে।",
+    programTitle:"প্রতি মাসে এক ধাপ",
+    programSub:"প্রতিটি শ্রেণি একই ছন্দে চলে: মাসে চারটি মিশন, স্কুলের ছয় বছর জুড়ে। একটা মিস হলে আবার চেষ্টা করো। চারটেই শেষ করলে, পরের মাস খুলে যাবে।",
+    rule1:"প্রতি মাসে মিশন - পর্যবেক্ষণ, কুইজ, তৈরি করা, দেখা ও ভাবা", rule2:"পরের মাসের জন্য যোগ্য হতে প্রয়োজনীয়",
+    rule3:"অন্তর্ভুক্ত শ্রেণি - ৭ম থেকে ১২শ শ্রেণি, একটানা মিশন লগ",
+    demoTitle:"এই মাসের মিশনগুলো চেষ্টা করুন", demoSub:"একটি বাস্তব নমুনা মাস দেখতে একটি শ্রেণি বেছে নিন। যোগ্য হওয়ার অনুভূতি বুঝতে চারটেই সম্পন্ন করুন।",
+    fuelLabel:"জ্বালানি", qualifyTitle:"মিশন মাস সম্পন্ন হয়েছে!", qualifyDesc:"পরের মাসের মিশন এইমাত্র আনলক হয়েছে।",
+    pricingTitle:"প্রোগ্রামে যোগ দিন", pricingSub:"সহজ বার্ষিক মূল্য, একটি পেমেন্টে পুরো স্কুল বছরের মিশন।",
+    explorerName:"এক্সপ্লোরার", perYear:" /বছর",
+    explorerList:["১০ মাসের মিশন (প্রতি মাসে ৪টি), তোমার শ্রেণি অনুযায়ী","AI মিশন গাইড নোভা - চ্যাট + ভয়েস গাইডেন্স","প্রতিটি সম্পন্ন মাসের পর ডিজিটাল মিশন ব্যাজ","নির্বাচিত স্পেস-এজেন্সি ভিডিও ও প্রোগ্রাম অ্যালার্ট (YUVIKA, JEE তারিখ ইত্যাদি)"],
+    startExplorer:"এক্সপ্লোরার শুরু করুন", bestValue:"সেরা মূল্য", crewName:"মিশন ক্রু",
+    crewList:["এক্সপ্লোরারের সব কিছু","একজন বাস্তব স্পেস-ইন্ডাস্ট্রি মেন্টরের সাথে মাসিক লাইভ প্রশ্নোত্তর সেশন","ত্রৈমাসিক প্রিন্টযোগ্য অগ্রগতি সার্টিফিকেট","প্রতি মাসে অভিভাবকদের জন্য অগ্রগতি সারাংশ"],
+    startCrew:"মিশন ক্রু শুরু করুন",
+    groupHtml:'পুরো ক্লাস বা স্কুল ভর্তি করতে চান? <a href="#" style="color:var(--signal);font-weight:700">গ্রুপ মূল্য সম্পর্কে জিজ্ঞাসা করুন -&gt;</a>',
+    footer:"ওয়েভস৪ইয়ুথ - স্পেস ও অ্যাস্ট্রো-টেক ট্র্যাক - ৭ম শ্রেণি থেকে লঞ্চ পর্যন্ত"
+  },
+  kn: {
+    eyebrow:"ಬಾಹ್ಯಾಕಾಶ ಮತ್ತು ಖಗೋಳ-ತಂತ್ರಜ್ಞಾನ ಟ್ರ್ಯಾಕ್", heroTitle:"ಸ್ಪೇಸ್ ಕೆಡೆಟ್ ಪ್ರೋಗ್ರಾಂ",
+    heroSub:"7 ರಿಂದ 12ನೇ ತರಗತಿ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಮಾಸಿಕ ಮಿಷನ್ ವ್ಯವಸ್ಥೆ, ನಿಮ್ಮ AI ಮಿಷನ್ ಮಾರ್ಗದರ್ಶಕ ನೋವಾ ಜೊತೆ. ತಿಂಗಳಿಗೆ ನಾಲ್ಕು ನಿಜವಾದ ಬಾಹ್ಯಾಕಾಶ ಮಿಷನ್‌ಗಳು. ಎಲ್ಲವನ್ನೂ ಪೂರ್ಣಗೊಳಿಸಿ ಮುಂದುವರಿಯಿರಿ.",
+    ctaStart:"₹1,999/ವರ್ಷದಿಂದ ಪ್ರಾರಂಭಿಸಿ", ctaDemo:"ಒಂದು ಮಾದರಿ ಮಿಷನ್ ಪ್ರಯತ್ನಿಸಿ", novaLabel:"ನೋವಾ - ಮಿಷನ್ ಗೈಡ್",
+    novaIntro:"ಹಾಯ್, ನಾನು ನೋವಾ, ನಿಮ್ಮ ಮಿಷನ್ ಗೈಡ್. ಪ್ರತಿ ತಿಂಗಳು ನಾನು ನಿಮಗೆ ನಾಲ್ಕು ನಿಜವಾದ ಬಾಹ್ಯಾಕಾಶ ಮಿಷನ್‌ಗಳನ್ನು ನೀಡುತ್ತೇನೆ. ನಾಲ್ಕನ್ನೂ ಪೂರ್ಣಗೊಳಿಸಿ, ಮುಂದಿನ ತಿಂಗಳಿಗೆ ನೀವು ಅರ್ಹರಾಗುತ್ತೀರಿ.",
+    programTitle:"ತಿಂಗಳಿಗೊಂದು ಶ್ರೇಣಿ",
+    programSub:"ಪ್ರತಿ ತರಗತಿ ಒಂದೇ ಲಯದಲ್ಲಿ ಸಾಗುತ್ತದೆ: ತಿಂಗಳಿಗೆ ನಾಲ್ಕು ಮಿಷನ್‌ಗಳು, ಶಾಲೆಯ ಎಲ್ಲಾ ಆರು ವರ್ಷಗಳಲ್ಲಿ. ಒಂದು ತಪ್ಪಿದರೆ, ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ. ನಾಲ್ಕನ್ನೂ ಪೂರ್ಣಗೊಳಿಸಿದರೆ, ಮುಂದಿನ ತಿಂಗಳು ತೆರೆದುಕೊಳ್ಳುತ್ತದೆ.",
+    rule1:"ಪ್ರತಿ ತಿಂಗಳ ಮಿಷನ್‌ಗಳು - ಗಮನಿಸಿ, ಕ್ವಿಜ್, ನಿರ್ಮಿಸಿ, ನೋಡಿ ಮತ್ತು ಚಿಂತಿಸಿ", rule2:"ಮುಂದಿನ ತಿಂಗಳ ಮಿಷನ್‌ಗಳಿಗೆ ಅರ್ಹತೆ ಪಡೆಯಲು ಅಗತ್ಯ",
+    rule3:"ಒಳಗೊಂಡ ತರಗತಿಗಳು - 7 ರಿಂದ 12ನೇ ತರಗತಿಯವರೆಗೆ, ಒಂದು ನಿರಂತರ ಮಿಷನ್ ದಾಖಲೆ",
+    demoTitle:"ಈ ತಿಂಗಳ ಮಿಷನ್‌ಗಳನ್ನು ಪ್ರಯತ್ನಿಸಿ", demoSub:"ನಿಜವಾದ ಮಾದರಿ ತಿಂಗಳನ್ನು ನೋಡಲು ಒಂದು ತರಗತಿ ಆಯ್ಕೆಮಾಡಿ. ಅರ್ಹತೆ ಪಡೆಯುವುದು ಹೇಗಿರುತ್ತದೆ ಎಂದು ನೋಡಲು ನಾಲ್ಕನ್ನೂ ಪೂರ್ಣಗೊಳಿಸಿ.",
+    fuelLabel:"ಇಂಧನ", qualifyTitle:"ಮಿಷನ್ ತಿಂಗಳು ಪೂರ್ಣಗೊಂಡಿದೆ!", qualifyDesc:"ಮುಂದಿನ ತಿಂಗಳ ಮಿಷನ್‌ಗಳು ಈಗಷ್ಟೇ ಅನ್‌ಲಾಕ್ ಆಗಿವೆ.",
+    pricingTitle:"ಪ್ರೋಗ್ರಾಂಗೆ ಸೇರಿ", pricingSub:"ಸರಳ ವಾರ್ಷಿಕ ಬೆಲೆ, ಒಂದು ಪಾವತಿಯಲ್ಲಿ ಸಂಪೂರ್ಣ ಶಾಲಾ ವರ್ಷದ ಮಿಷನ್‌ಗಳು.",
+    explorerName:"ಎಕ್ಸ್‌ಪ್ಲೋರರ್", perYear:" /ವರ್ಷ",
+    explorerList:["10 ತಿಂಗಳ ಮಿಷನ್‌ಗಳು (ತಿಂಗಳಿಗೆ 4), ನಿಮ್ಮ ತರಗತಿಗೆ ಅನುಗುಣವಾಗಿ","AI ಮಿಷನ್ ಮಾರ್ಗದರ್ಶಕ ನೋವಾ - ಚಾಟ್ + ಧ್ವನಿ ಮಾರ್ಗದರ್ಶನ","ಪ್ರತಿ ಪೂರ್ಣಗೊಂಡ ತಿಂಗಳ ನಂತರ ಡಿಜಿಟಲ್ ಮಿಷನ್ ಬ್ಯಾಡ್ಜ್‌ಗಳು","ಆಯ್ದ ಬಾಹ್ಯಾಕಾಶ ಸಂಸ್ಥೆ ವೀಡಿಯೊಗಳು ಮತ್ತು ಕಾರ್ಯಕ್ರಮ ಎಚ್ಚರಿಕೆಗಳು (YUVIKA, JEE ದಿನಾಂಕಗಳು ಇತ್ಯಾದಿ)"],
+    startExplorer:"ಎಕ್ಸ್‌ಪ್ಲೋರರ್ ಪ್ರಾರಂಭಿಸಿ", bestValue:"ಅತ್ಯುತ್ತಮ ಮೌಲ್ಯ", crewName:"ಮಿಷನ್ ಕ್ರ್ಯೂ",
+    crewList:["ಎಕ್ಸ್‌ಪ್ಲೋರರ್‌ನ ಎಲ್ಲವೂ","ನಿಜವಾದ ಬಾಹ್ಯಾಕಾಶ-ಉದ್ಯಮ ಮಾರ್ಗದರ್ಶಕರೊಂದಿಗೆ ಮಾಸಿಕ ಲೈವ್ ಸಂದೇಹ ಪರಿಹಾರ ಅವಧಿ","ತ್ರೈಮಾಸಿಕ ಮುದ್ರಿಸಬಹುದಾದ ಪ್ರಗತಿ ಪ್ರಮಾಣಪತ್ರ","ಪ್ರತಿ ತಿಂಗಳು ಪೋಷಕರಿಗೆ ಪ್ರಗತಿ ಸಾರಾಂಶ"],
+    startCrew:"ಮಿಷನ್ ಕ್ರ್ಯೂ ಪ್ರಾರಂಭಿಸಿ",
+    groupHtml:'ಇಡೀ ತರಗತಿ ಅಥವಾ ಶಾಲೆಯನ್ನು ಸೇರಿಸುತ್ತಿದ್ದೀರಾ? <a href="#" style="color:var(--signal);font-weight:700">ಗುಂಪು ಬೆಲೆಯ ಬಗ್ಗೆ ಕೇಳಿ -&gt;</a>',
+    footer:"ವೇವ್ಸ್4ಯೂತ್ - ಬಾಹ್ಯಾಕಾಶ ಮತ್ತು ಖಗೋಳ-ತಂತ್ರಜ್ಞಾನ ಟ್ರ್ಯಾಕ್ - 7ನೇ ತರಗತಿಯಿಂದ ಉಡಾವಣೆಯವರೆಗೆ"
+  },
+  ml: {
+    eyebrow:"സ്പേസ് & ആസ്ട്രോ-ടെക് ട്രാക്ക്", heroTitle:"സ്പേസ് കാഡറ്റ് പ്രോഗ്രാം",
+    heroSub:"7 മുതൽ 12 വരെ ക്ലാസുകളിലെ വിദ്യാർത്ഥികൾക്കായുള്ള പ്രതിമാസ ദൗത്യ സംവിധാനം, നിങ്ങളുടെ AI ദൗത്യ വഴികാട്ടി നോവയോടൊപ്പം. മാസത്തിൽ നാല് യഥാർത്ഥ ബഹിരാകാശ ദൗത്യങ്ങൾ. എല്ലാം പൂർത്തിയാക്കി മുന്നോട്ട് പോകൂ.",
+    ctaStart:"₹1,999/വർഷം മുതൽ ആരംഭിക്കൂ", ctaDemo:"ഒരു സാമ്പിൾ ദൗത്യം പരീക്ഷിക്കൂ", novaLabel:"നോവ - ദൗത്യ വഴികാട്ടി",
+    novaIntro:"ഹായ്, ഞാൻ നോവയാണ്, നിങ്ങളുടെ ദൗത്യ വഴികാട്ടി. എല്ലാ മാസവും ഞാൻ നിങ്ങൾക്ക് നാല് യഥാർത്ഥ ബഹിരാകാശ ദൗത്യങ്ങൾ നൽകും. നാലും പൂർത്തിയാക്കിയാൽ, അടുത്ത മാസത്തേക്ക് നിങ്ങൾ യോഗ്യത നേടും.",
+    programTitle:"ഓരോ മാസവും ഒരു പടി മുന്നോട്ട്",
+    programSub:"എല്ലാ ക്ലാസും ഒരേ താളത്തിലാണ് പോകുന്നത്: മാസത്തിൽ നാല് ദൗത്യങ്ങൾ, സ്കൂളിന്റെ ആറ് വർഷങ്ങളിലും. ഒന്ന് നഷ്ടമായാൽ വീണ്ടും ശ്രമിക്കൂ. നാലും പൂർത്തിയാക്കിയാൽ, അടുത്ത മാസം തുറക്കും.",
+    rule1:"എല്ലാ മാസവുമുള്ള ദൗത്യങ്ങൾ - നിരീക്ഷിക്കുക, ക്വിസ്, നിർമ്മിക്കുക, കാണുക & ചിന്തിക്കുക", rule2:"അടുത്ത മാസത്തെ ദൗത്യങ്ങൾക്ക് യോഗ്യത നേടാൻ ആവശ്യം",
+    rule3:"ഉൾപ്പെടുന്ന ക്ലാസുകൾ - 7 മുതൽ 12 വരെ, ഒരു തുടർച്ചയായ ദൗത്യ രേഖ",
+    demoTitle:"ഈ മാസത്തെ ദൗത്യങ്ങൾ പരീക്ഷിക്കൂ", demoSub:"ഒരു യഥാർത്ഥ സാമ്പിൾ മാസം കാണാൻ ഒരു ക്ലാസ് തിരഞ്ഞെടുക്കൂ. യോഗ്യത നേടുന്നത് എങ്ങനെയെന്ന് അറിയാൻ നാലും പൂർത്തിയാക്കൂ.",
+    fuelLabel:"ഇന്ധനം", qualifyTitle:"ദൗത്യ മാസം പൂർത്തിയായി!", qualifyDesc:"അടുത്ത മാസത്തെ ദൗത്യങ്ങൾ ഇപ്പോൾ അൺലോക്ക് ചെയ്തു.",
+    pricingTitle:"പ്രോഗ്രാമിൽ ചേരൂ", pricingSub:"ലളിതമായ വാർഷിക വില, ഒരു പേയ്‌മെന്റിൽ മുഴുവൻ സ്കൂൾ വർഷത്തെ ദൗത്യങ്ങളും.",
+    explorerName:"എക്സ്പ്ലോറർ", perYear:" /വർഷം",
+    explorerList:["10 മാസത്തെ ദൗത്യങ്ങൾ (മാസത്തിൽ 4 വീതം), നിങ്ങളുടെ ക്ലാസിന് അനുസരിച്ച്","AI ദൗത്യ വഴികാട്ടി നോവ - ചാറ്റ് + ശബ്ദ മാർഗ്ഗനിർദ്ദേശം","ഓരോ പൂർത്തിയായ മാസത്തിനും ശേഷം ഡിജിറ്റൽ ദൗത്യ ബാഡ്ജുകൾ","തിരഞ്ഞെടുത്ത ബഹിരാകാശ ഏജൻസി വീഡിയോകളും പ്രോഗ്രാം അലേർട്ടുകളും (YUVIKA, JEE തീയതികൾ etc.)"],
+    startExplorer:"എക്സ്പ്ലോറർ ആരംഭിക്കൂ", bestValue:"മികച്ച മൂല്യം", crewName:"മിഷൻ ക്രൂ",
+    crewList:["എക്സ്പ്ലോററിന്റെ എല്ലാം","യഥാർത്ഥ ബഹിരാകാശ വ്യവസായ വഴികാട്ടിയുമായി പ്രതിമാസ ലൈവ് സംശയനിവാരണ സെഷൻ","ത്രൈമാസ പ്രിന്റ് ചെയ്യാവുന്ന പുരോഗതി സർട്ടിഫിക്കറ്റ്","എല്ലാ മാസവും മാതാപിതാക്കൾക്ക് പുരോഗതി സംഗ്രഹം"],
+    startCrew:"മിഷൻ ക്രൂ ആരംഭിക്കൂ",
+    groupHtml:'ഒരു മുഴുവൻ ക്ലാസോ സ്കൂളോ ചേർക്കാൻ ആഗ്രഹിക്കുന്നുണ്ടോ? <a href="#" style="color:var(--signal);font-weight:700">ഗ്രൂപ്പ് വിലയെക്കുറിച്ച് ചോദിക്കൂ -&gt;</a>',
+    footer:"വേവ്സ്4യൂത്ത് - സ്പേസ് & ആസ്ട്രോ-ടെക് ട്രാക്ക് - 7-ാം ക്ലാസ് മുതൽ ലോഞ്ച് വരെ"
+  },
+  mr: {
+    eyebrow:"स्पेस आणि अ‍ॅस्ट्रो-टेक ट्रॅक", heroTitle:"स्पेस कॅडेट प्रोग्राम",
+    heroSub:"इयत्ता ७ ते १२ च्या विद्यार्थ्यांसाठी मासिक मिशन प्रणाली, तुमच्या AI मिशन मार्गदर्शक नोव्हासोबत. दर महिन्याला चार खरी स्पेस मिशन्स. सर्व पूर्ण करा आणि पुढे जा.",
+    ctaStart:"₹1,999/वर्षापासून सुरू करा", ctaDemo:"एक नमुना मिशन करून पहा", novaLabel:"नोव्हा - मिशन मार्गदर्शक",
+    novaIntro:"नमस्कार, मी नोव्हा, तुमची मिशन मार्गदर्शक. दर महिन्याला मी तुम्हाला चार खरी स्पेस मिशन्स देईन. चारही पूर्ण करा, म्हणजे पुढच्या महिन्यासाठी तुम्ही पात्र व्हाल.",
+    programTitle:"दर महिन्याला एक नवा टप्पा",
+    programSub:"प्रत्येक इयत्ता एकाच लयीत चालते: महिन्याला चार मिशन्स, शाळेच्या सहा वर्षांमध्ये. एखादे चुकले तर पुन्हा प्रयत्न करा. चारही पूर्ण केली की पुढचा महिना उघडतो.",
+    rule1:"दर महिन्याची मिशन्स - निरीक्षण करा, क्विझ, तयार करा, पहा आणि विचार करा", rule2:"पुढच्या महिन्यासाठी पात्र होण्यासाठी आवश्यक",
+    rule3:"समाविष्ट इयत्ता - इयत्ता ७ ते इयत्ता १२, एक सलग मिशन नोंद",
+    demoTitle:"या महिन्याची मिशन्स करून पहा", demoSub:"खरा नमुना महिना पाहण्यासाठी इयत्ता निवडा. पात्र होणे कसे वाटते हे पाहण्यासाठी चारही पूर्ण करा.",
+    fuelLabel:"इंधन", qualifyTitle:"मिशन महिना पूर्ण झाला!", qualifyDesc:"पुढच्या महिन्याची मिशन्स आत्ताच अनलॉक झाली.",
+    pricingTitle:"प्रोग्राममध्ये सामील व्हा", pricingSub:"सोपी वार्षिक किंमत, एका पेमेंटमध्ये संपूर्ण शालेय वर्षाची मिशन्स.",
+    explorerName:"एक्सप्लोरर", perYear:" /वर्ष",
+    explorerList:["१० महिन्यांची मिशन्स (दर महिन्याला ४), तुमच्या इयत्तेनुसार","AI मिशन मार्गदर्शक नोव्हा - चॅट + आवाज मार्गदर्शन","प्रत्येक पूर्ण झालेल्या महिन्यानंतर डिजिटल मिशन बॅज","निवडक स्पेस-एजन्सी व्हिडिओ आणि प्रोग्राम अलर्ट्स (YUVIKA, JEE तारखा, इ.)"],
+    startExplorer:"एक्सप्लोरर सुरू करा", bestValue:"सर्वोत्तम मूल्य", crewName:"मिशन क्रू",
+    crewList:["एक्सप्लोररमधील सर्व काही","खऱ्या स्पेस-इंडस्ट्री मार्गदर्शकासोबत मासिक थेट शंका-निरसन सत्र","त्रैमासिक छापण्यायोग्य प्रगती प्रमाणपत्र","दर महिन्याला पालकांसाठी प्रगती सारांश"],
+    startCrew:"मिशन क्रू सुरू करा",
+    groupHtml:'संपूर्ण वर्ग किंवा शाळा सामील करायची आहे? <a href="#" style="color:var(--signal);font-weight:700">गट किंमतीबद्दल विचारा -&gt;</a>',
+    footer:"वेव्ह्ज4यूथ - स्पेस आणि अ‍ॅस्ट्रो-टेक ट्रॅक - इयत्ता ७ पासून लाँचपर्यंत"
+  }
+};
+
+var currentLang = 'en';
+
+function setText(id, val){ var el = document.getElementById(id); if(el) el.textContent = val; }
+function setList(id, arr){
+  var el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = arr.map(function(item){ return '<li>'+item+'</li>'; }).join('');
+}
+
+function applyLanguage(lang){
+  currentLang = lang;
+  var t = I18N[lang];
+  setText('txt-eyebrow', t.eyebrow);
+  setText('txt-heroTitle', t.heroTitle);
+  setText('txt-heroSub', t.heroSub);
+  setText('txt-ctaStart', t.ctaStart);
+  setText('txt-ctaDemo', t.ctaDemo);
+  setText('txt-novaLabel', t.novaLabel);
+  setText('txt-programTitle', t.programTitle);
+  setText('txt-programSub', t.programSub);
+  setText('txt-rule1', t.rule1);
+  setText('txt-rule2', t.rule2);
+  setText('txt-rule3', t.rule3);
+  setText('txt-demoTitle', t.demoTitle);
+  setText('txt-demoSub', t.demoSub);
+  setText('txt-fuelLabel', t.fuelLabel);
+  setText('txt-qualifyTitle', t.qualifyTitle);
+  setText('txt-qualifyDesc', t.qualifyDesc);
+  setText('txt-pricingTitle', t.pricingTitle);
+  setText('txt-pricingSub', t.pricingSub);
+  setText('txt-explorerName', t.explorerName);
+  setText('txt-perYear1', t.perYear);
+  setText('txt-perYear2', t.perYear);
+  setList('txt-explorerList', t.explorerList);
+  setText('txt-startExplorer', t.startExplorer);
+  setText('txt-bestValue', t.bestValue);
+  setText('txt-crewName', t.crewName);
+  setList('txt-crewList', t.crewList);
+  setText('txt-startCrew', t.startCrew);
+  document.getElementById('txt-groupPricing').innerHTML = t.groupHtml;
+  document.getElementById('txt-footer').textContent = t.footer;
+  typeInto(document.getElementById('novaIntroText'), t.novaIntro, 14);
+  renderLangPills();
+}
+
+function renderLangPills(){
+  var row = document.getElementById('langRow');
+  row.innerHTML = '';
+  LANGS.forEach(function(l){
+    var btn = document.createElement('button');
+    btn.className = 'grade-tab' + (l.code === currentLang ? ' active' : '');
+    btn.style.fontSize = '11px';
+    btn.style.padding = '6px 12px';
+    btn.textContent = l.label;
+    btn.onclick = function(){ applyLanguage(l.code); };
+    row.appendChild(btn);
+  });
+}
+
+// ---------- Auth (front-end demo gate only - see note in chat) ----------
+var GRADE_INFO = [
+  { ncert:"Earth, Moon & the Sun", brief:"No pressure this year, just look up and notice. We'll track the Moon's phases together and see how Chandrayaan actually got there." },
+  { ncert:"Stars & the Solar System", brief:"This year you start naming what you see, constellations, planets, and the difference between a natural and an artificial satellite." },
+  { ncert:"Gravitation + YUVIKA", brief:"This is a big one. ISRO's YUVIKA program only takes Class 9 students, and I'll remind you before applications close. We'll also build and launch a real model rocket." },
+  { ncert:"Stream Compass", brief:"Your stream choice this year shapes which space careers stay open. I'll show you the engineering route and the non-engineering route, honestly, no pressure either way." },
+  { ncert:"Gravitation (full) + Entrance Landscape", brief:"Real employers enter the picture now, ISRO, NSIL, DRDO, and private space startups. We'll map JEE Advanced, IIST, and what each actually leads to." },
+  { ncert:"Communication Systems - Decision Year", brief:"This is the launch window. We'll turn everything from the last five years into one real 12-month plan for what comes next." }
+];
+
+var auth = { loggedIn:false, name:'', gradeIndex:0, coins:0, uid:null };
+var bonusAwarded = {}; // tracks which "gradeId-monthIndex" already got the qualify bonus, so toggling can't farm it
+var modalMode = 'enroll'; // 'enroll' | 'login'
+
+function renderAuthBar(){
+  var bar = document.getElementById('authBar');
+  if(auth.loggedIn){
+    bar.innerHTML =
+      '<div class="coin-pill">🪙 '+auth.coins+'</div>'+
+      '<div class="auth-pill">👋 <strong>'+auth.name+'</strong> &middot; '+GRADES[auth.gradeIndex].grade+'</div>'+
+      '<button class="auth-btn" onclick="doLogout()">Logout</button>';
+  } else {
+    bar.innerHTML =
+      '<button class="auth-btn" onclick="openLoginModal(\'login\')">Login</button>'+
+      '<button class="auth-btn primary" onclick="openLoginModal(\'enroll\')">Enroll Now</button>';
+  }
+  renderStore();
+}
+
+function showCoinToast(amount){
+  var t = document.getElementById('coinToast');
+  t.textContent = (amount > 0 ? '+' : '') + amount + ' 🪙';
+  t.classList.add('show');
+  clearTimeout(showCoinToast._tid);
+  showCoinToast._tid = setTimeout(function(){ t.classList.remove('show'); }, 1400);
+}
+
+var STORE_ITEMS = [
+  { emoji:'🎟️', name:'Sticker Pack', cost:150 },
+  { emoji:'🧢', name:'W4Y Cap', cost:400 },
+  { emoji:'👕', name:'W4Y T-Shirt', cost:800 },
+  { emoji:'🧥', name:'W4Y Hoodie', cost:1500 }
+];
+
+function renderStore(){
+  var grid = document.getElementById('storeGrid');
+  var badge = document.getElementById('storeCoinBadge');
+  if(!grid) return;
+  badge.textContent = '🪙 ' + auth.coins + ' coins';
+  grid.innerHTML = STORE_ITEMS.map(function(item){
+    var unlocked = auth.coins >= item.cost;
+    return '<div class="store-card'+(unlocked ? ' unlocked' : '')+'">'+
+      '<div class="store-emoji">'+item.emoji+'</div>'+
+      '<div class="store-name">'+item.name+'</div>'+
+      '<div class="store-cost">'+item.cost+' coins</div>'+
+      '<div class="store-status'+(unlocked ? ' ready' : '')+'">'+(unlocked ? 'Ready to redeem' : (item.cost - auth.coins)+' more needed')+'</div>'+
+    '</div>';
+  }).join('');
+}
+
+// ---------- Modal open/close + mode toggle ----------
+function openLoginModal(mode){
+  modalMode = mode || 'enroll';
+  applyModalMode();
+  document.getElementById('modalError').style.display = 'none';
+  document.getElementById('loginModal').classList.add('show');
+}
+function closeLoginModal(){ document.getElementById('loginModal').classList.remove('show'); }
+
+function toggleModalMode(){
+  modalMode = (modalMode === 'enroll') ? 'login' : 'enroll';
+  applyModalMode();
+}
+
+function applyModalMode(){
+  var isEnroll = modalMode === 'enroll';
+  document.getElementById('modalTitle').textContent = isEnroll ? 'Enroll as a Space Cadet' : 'Welcome back, cadet';
+  document.getElementById('modalHint').textContent = isEnroll
+    ? "Tell Nova your name and class, she'll brief you on what's ahead."
+    : 'Log in to pick up right where your mission log left off.';
+  document.getElementById('fieldName').style.display = isEnroll ? 'block' : 'none';
+  document.getElementById('fieldGrade').style.display = isEnroll ? 'block' : 'none';
+  document.getElementById('modalSubmitBtn').textContent = isEnroll ? 'Start My Mission Log' : 'Log In';
+  document.getElementById('modalToggleText').textContent = isEnroll ? 'Already a cadet?' : 'New here?';
+  document.getElementById('modalToggleLink').textContent = isEnroll ? 'Log in' : 'Enroll instead';
+}
+
+function showModalError(msg){
+  var el = document.getElementById('modalError');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function friendlyAuthError(e){
+  var c = (e && e.code) || '';
+  if(c.indexOf('email-already-in-use') !== -1) return 'That email is already enrolled, try logging in instead.';
+  if(c.indexOf('weak-password') !== -1) return 'Password should be at least 6 characters.';
+  if(c.indexOf('invalid-email') !== -1) return 'Please enter a valid email address.';
+  if(c.indexOf('wrong-password') !== -1 || c.indexOf('invalid-credential') !== -1) return 'Email or password is incorrect.';
+  if(c.indexOf('user-not-found') !== -1) return "We can't find that account, try enrolling instead.";
+  if(c.indexOf('too-many-requests') !== -1) return 'Too many attempts, wait a minute and try again.';
+  return "Something went wrong, check your connection and try again.";
+}
+
+function handleModalSubmit(){
+  var email = document.getElementById('loginEmail').value.trim();
+  var password = document.getElementById('loginPassword').value;
+  document.getElementById('modalError').style.display = 'none';
+
+  if(!email || !password){ showModalError('Email and password are both required.'); return; }
+
+  if(modalMode === 'enroll'){
+    var name = document.getElementById('loginName').value.trim();
+    var gradeIndex = parseInt(document.getElementById('loginGrade').value, 10);
+    if(!name){ showModalError('Please tell Nova your name.'); return; }
+    createUserWithEmailAndPassword(fbAuth, email, password)
+      .then(function(cred){
+        return setDoc(doc(db, 'spaceCadetStudents', cred.user.uid), {
+          name: name, gradeIndex: gradeIndex, coins: 0, createdAt: serverTimestamp()
+        });
+      })
+      .catch(function(e){ showModalError(friendlyAuthError(e)); });
+  } else {
+    signInWithEmailAndPassword(fbAuth, email, password)
+      .catch(function(e){ showModalError(friendlyAuthError(e)); });
+  }
+}
+
+function doLogout(){
+  signOut(fbAuth);
+}
+
+function showBriefing(){
+  var panel = document.getElementById('briefingPanel');
+  var info = GRADE_INFO[auth.gradeIndex];
+  panel.classList.add('show');
+  typeInto(document.getElementById('briefingText'), auth.name + ", welcome aboard. " + info.brief, 12);
+}
+function hideBriefing(){
+  document.getElementById('briefingPanel').classList.remove('show');
+}
+
+function updateLockState(){
+  document.getElementById('lockOverlay').classList.toggle('show', !auth.loggedIn);
+}
+
+// ---------- Real session handling ----------
+onAuthStateChanged(fbAuth, function(user){
+  if(user){
+    loadStudentSession(user.uid);
+  } else {
+    auth.loggedIn = false;
+    auth.uid = null;
+    auth.name = '';
+    auth.coins = 0;
+    bonusAwarded = {};
+    completion = {};
+    renderAuthBar();
+    hideBriefing();
+    updateLockState();
+  }
+});
+
+function loadStudentSession(uid){
+  getDoc(doc(db, 'spaceCadetStudents', uid)).then(function(snap){
+    if(!snap.exists()) return; // profile still being written by enroll flow
+    var data = snap.data();
+    auth.loggedIn = true;
+    auth.uid = uid;
+    auth.name = data.name || 'Cadet';
+    auth.gradeIndex = data.gradeIndex || 0;
+    auth.coins = data.coins || 0;
+    closeLoginModal();
+
+    // rebuild this student's saved mission progress
+    completion = {};
+    bonusAwarded = {};
+    getDocs(collection(db, 'spaceCadetStudents', uid, 'progress')).then(function(qs){
+      qs.forEach(function(d){
+        completion[d.id] = d.data().tasksDone || [false,false,false,false];
+        if(d.data().bonusAwarded) bonusAwarded[d.id] = true;
+      });
+      activeGrade = auth.gradeIndex;
+      activeMonth = 0;
+      renderTabs();
+      renderMonthTabs();
+      renderTasks(true);
+      renderAuthBar();
+      showBriefing();
+      updateLockState();
+    });
+  }).catch(function(){
+    // profile doc not there yet right after signup - retry shortly
+    setTimeout(function(){ loadStudentSession(uid); }, 600);
+  });
+}
+
+var GRADES = [
+  { id:'std7', grade:'Std 7', color:'#4FD8E3', ncert:'Earth, Moon & the Sun', months:[
+    { label:'Month 1', nova:"Std 7 is just about looking up and noticing. No pressure, just wonder.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Moon Phase Journal', desc:"Sketch the Moon's shape every night for a week."},
+      {icon:'🧠', type:'Quiz', title:'Day, Night & Seasons', desc:'4-question check on rotation, revolution and seasons.'},
+      {icon:'🛠️', type:'Build', title:'Day/Night Model', desc:'Use a torch and a globe to show how day and night happen.'},
+      {icon:'🎥', type:'Watch & Reflect', title:"Chandrayaan's Landing", desc:'Watch the landing clip. Write 3 things that surprised you.'}
+    ]}
+  ]},
+  { id:'std8', grade:'Std 8', color:'#4FD8E3', ncert:'Stars & the Solar System', months:[
+    { label:'Month 1', nova:"Std 8 gives names to what you saw last year, stars, constellations, satellites.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Spot a Constellation', desc:'Find and sketch one constellation visible from home this week.'},
+      {icon:'🧠', type:'Quiz', title:'Stars & Solar System', desc:'4-question check on planets, constellations and satellites.'},
+      {icon:'🛠️', type:'Build', title:'Planet Scale Model', desc:'Model two planets to scale using clay or paper.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'INSAT & Weather', desc:'Watch how INSAT satellites forecast weather. Reflect on daily impact.'}
+    ]}
+  ]},
+  { id:'std9', grade:'Std 9', color:'#B45CFF', ncert:'Gravitation + YUVIKA', months:[
+    { label:'Month 1', nova:"This is your year. ISRO's YUVIKA program only takes Class 9 students, don't miss the window.", tasks:[
+      {icon:'🔭', type:'Observe', title:'YUVIKA Application Watch', desc:"Find this year's YUVIKA dates and eligibility on ISRO's site."},
+      {icon:'🧠', type:'Quiz', title:'Gravitation Basics', desc:'4-question check on gravity, free fall and escape velocity.'},
+      {icon:'🛠️', type:'Build', title:'Water-Bottle Rocket', desc:'Build and test-launch one with an adult. Record the height.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'A YUVIKA Alumni Story', desc:"Watch an alum's experience. Write one question you'd ask them."}
+    ]},
+    { label:'Month 2', nova:"Every rocket launch is really just Newton's third law in action. Let's see it for real.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Balloon Rocket Test', desc:'Tape a straw to a balloon on a string. Record how far it travels.'},
+      {icon:'🧠', type:'Quiz', title:'Force & Motion Basics', desc:"4-question check on Newton's three laws."},
+      {icon:'🛠️', type:'Build', title:"Action-Reaction Poster", desc:'Illustrate 3 real examples of action-reaction pairs, one must be rocket-related.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Why Rockets Need Stages', desc:'Watch a clip on multi-stage rockets. Write why single-stage struggles to reach orbit.'}
+    ]},
+    { label:'Month 3', nova:"Getting to space isn't about going up, it's about going fast enough. Let's do the math.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Energy Around You', desc:'List 5 examples of kinetic and potential energy from your day.'},
+      {icon:'🧠', type:'Quiz', title:'Work, Energy & Power', desc:"4-question check tied to this term's physics chapter."},
+      {icon:'🛠️', type:'Build', title:'Escape Velocity Calculator', desc:"Use a simple formula sheet to compare Earth's escape velocity to the Moon's."},
+      {icon:'🎥', type:'Watch & Reflect', title:'Why the Moon Is Easier to Leave', desc:"Watch a clip comparing Earth's and the Moon's gravity. Write one takeaway."}
+    ]},
+    { label:'Month 4', nova:"Applications for YUVIKA open around now. Let's actually get yours in, not just talk about it.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Confirm This Year\'s Window', desc:"Check ISRO's official YUVIKA page for the current application dates."},
+      {icon:'🧠', type:'Quiz', title:'Eligibility Checklist', desc:"4-question self-check confirming you meet YUVIKA's basic eligibility."},
+      {icon:'🛠️', type:'Build', title:'Complete Your Application', desc:'Fill the online form and get your bonafide certificate signed by your Principal.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'What Past Cadets Say', desc:"Watch a YUVIKA alum's video. Write one thing you're nervous or excited about."}
+    ]},
+    { label:'Month 5', nova:"You can't dream about a career you don't know exists. Let's map every major Indian mission.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Mission Timeline', desc:"Build a timeline of India's 5 biggest missions, Aryabhata to Gaganyaan."},
+      {icon:'🧠', type:'Quiz', title:'Name That Mission', desc:'4-question check matching missions to what they achieved.'},
+      {icon:'🛠️', type:'Build', title:'Mission Fact File', desc:'Pick one mission and build a one-page fact file: goal, launch vehicle, outcome.'},
+      {icon:'🎥', type:'Watch & Reflect', title:"Chandrayaan-3's Landing, Again", desc:"Watch mission control's reaction during landing. Write what stood out."}
+    ]},
+    { label:'Month 6', nova:"Let's open up a rocket, layer by layer, propulsion, staging, and payload.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Rocket Anatomy', desc:'Label the parts of a rocket, nose cone, stages, engine, payload, from a diagram.'},
+      {icon:'🧠', type:'Quiz', title:'Propulsion Basics', desc:'4-question check on thrust, fuel and staging.'},
+      {icon:'🛠️', type:'Build', title:'Model Rocket Stage Diagram', desc:'Draw and label a 2-stage rocket, showing what separates and when.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'PSLV vs. GSLV', desc:'Watch a comparison video. Write one key difference you learned.'}
+    ]},
+    { label:'Month 7', nova:"Not every satellite flies the same path, orbit shape decides its whole job.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Spot a Satellite Pass', desc:'Use a free tracking app to spot the ISS or another satellite pass overhead.'},
+      {icon:'🧠', type:'Quiz', title:'Orbit Types', desc:'4-question check on LEO, geostationary and polar orbits.'},
+      {icon:'🛠️', type:'Build', title:'Match the Orbit to the Job', desc:'Match 4 satellite uses (weather, GPS, comms, imaging) to their likely orbit.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'A Day in the Life of a Satellite', desc:'Watch a satellite-operations clip. Write what surprised you.'}
+    ]},
+    { label:'Month 8', nova:"Every scientist you'll ever admire started exactly where you are right now.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Find Their Story', desc:"Research one ISRO scientist's education and career path."},
+      {icon:'🧠', type:'Quiz', title:'Career Path Quick Check', desc:'4-question check on typical qualifications for a space scientist role.'},
+      {icon:'🛠️', type:'Build', title:'Write Their Timeline', desc:"Build a short timeline of the scientist's journey, school to ISRO."},
+      {icon:'🎥', type:'Watch & Reflect', title:'An Interview Worth Watching', desc:'Watch an interview with that scientist. Note one lesson for yourself.'}
+    ]},
+    { label:'Month 9', nova:"Time to stop learning about missions and start designing one of your own.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Pick a Real Problem', desc:'Choose a real problem a satellite could help solve, floods, farming, disaster relief.'},
+      {icon:'🧠', type:'Quiz', title:'Mission Planning Basics', desc:'4-question check on what a mission concept needs to define.'},
+      {icon:'🛠️', type:'Build', title:'Mission Concept One-Pager', desc:'Design a one-pager: mission name, goal, orbit type, and payload.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Pitch Practice', desc:'Watch a short pitch-deck example. Write your own 3-line mission pitch.'}
+    ]},
+    { label:'Month 10', nova:"Whatever happened with YUVIKA this year, selected or not, you've done a full year of real space work. Let's look back.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Your Year in Missions', desc:'List every mission task you completed this year in one place.'},
+      {icon:'🧠', type:'Quiz', title:'Class 9 Space Recap', desc:"4-question check covering the year's biggest ideas."},
+      {icon:'🛠️', type:'Build', title:'Your Std 10 Question', desc:'Write the one open question you still have as you head into your stream decision year.'},
+      {icon:'🎥', type:'Watch & Reflect', title:"Where You're Headed", desc:"Watch a short intro to Std 10's Stream Compass month. Write one hope for next year."}
+    ]}
+  ]},
+  { id:'std10', grade:'Std 10', color:'#FF7A33', ncert:'Stream Compass', months:[
+    { label:'Month 1', nova:"Std 10 is decision year. Let's separate the myths from the real options.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Non-Engineering Roles', desc:"List 3 space-sector jobs that don't need an engineering degree."},
+      {icon:'🧠', type:'Quiz', title:'PCM & Pathways', desc:'4-question check on stream choices and entrance exams.'},
+      {icon:'🛠️', type:'Build', title:'Two-Path Chart', desc:'Compare the engineering route vs. the non-engineering route.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'A Non-Engineer in Space', desc:'Watch a policy/marketing professional in the space sector.'}
+    ]}
+  ]},
+  { id:'std11', grade:'Std 11', color:'#FF7A33', ncert:'Gravitation (full) + Entrance Landscape', months:[
+    { label:'Month 1', nova:"Real employers enter the picture now, ISRO, NSIL, and private space startups.", tasks:[
+      {icon:'🔭', type:'Observe', title:"This Year's JEE Dates", desc:"Look up JEE Advanced dates and last year's IIST cutoff rank."},
+      {icon:'🧠', type:'Quiz', title:"Kepler's Laws & Exams", desc:'4-question check on orbits and entrance pathways.'},
+      {icon:'🛠️', type:'Build', title:'Startup Comparison', desc:'Compare Skyroot vs. Agnikul in a short presentation.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Watch a Launch', desc:'Watch a rocket launch recording. Note each stage of flight.'}
+    ]}
+  ]},
+  { id:'std12', grade:'Std 12', color:'#FF3D7A', ncert:'Communication Systems - Decision Year', months:[
+    { label:'Month 1', nova:"The launch window. Let's turn everything you've learned into a real 12-month plan.", tasks:[
+      {icon:'🔭', type:'Observe', title:'ICRB Notification', desc:"Research this year's ICRB eligibility and notification timeline."},
+      {icon:'🧠', type:'Quiz', title:'Satellites & Recruitment', desc:'4-question check on communication systems and ISRO entry routes.'},
+      {icon:'🛠️', type:'Build', title:'Your 12-Month Plan', desc:'Draft your exam plan for the year, with a backup option.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Early-Career Interview', desc:'Watch an ISRO or private-space early-career engineer. Note your takeaway.'}
+    ]}
+  ]}
+];
+
+var timelineRow = document.getElementById('timelineRow');
+GRADES.forEach(function(g){
+  var node = document.createElement('div');
+  node.className = 'tl-node';
+  node.innerHTML = '<div class="grade display">'+g.grade+'</div><div class="lbl">'+g.ncert+'</div><div class="dot" style="background:'+g.color+'"></div>';
+  timelineRow.appendChild(node);
+});
+
+var gradeTabs = document.getElementById('gradeTabs');
+var monthTabs = document.getElementById('monthTabs');
+var taskGrid = document.getElementById('taskGrid');
+var fuelFill = document.getElementById('fuelFill');
+var fuelPct = document.getElementById('fuelPct');
+var qualifyBanner = document.getElementById('qualifyBanner');
+var novaDemoText = document.getElementById('novaDemoText');
+
+var activeGrade = 0;
+var activeMonth = 0;
+var completion = {}; // keyed by "gradeId-monthIndex" -> [bool,bool,bool,bool]
+
+function completionKey(){ return GRADES[activeGrade].id + '-' + activeMonth; }
+function getCompletion(){
+  var key = completionKey();
+  if(!completion[key]) completion[key] = [false,false,false,false];
+  return completion[key];
+}
+
+function renderTabs(){
+  gradeTabs.innerHTML = '';
+  GRADES.forEach(function(g,i){
+    var btn = document.createElement('button');
+    btn.className = 'grade-tab' + (i===activeGrade ? ' active' : '');
+    btn.textContent = g.grade;
+    btn.onclick = function(){ activeGrade = i; activeMonth = 0; renderTabs(); renderMonthTabs(); renderTasks(true); };
+    gradeTabs.appendChild(btn);
+  });
+}
+
+function renderMonthTabs(){
+  var g = GRADES[activeGrade];
+  monthTabs.innerHTML = '';
+  if(g.months.length <= 1) return;
+  g.months.forEach(function(m,i){
+    var btn = document.createElement('button');
+    btn.className = 'grade-tab' + (i===activeMonth ? ' active' : '');
+    btn.style.fontSize = '11px';
+    btn.style.padding = '6px 12px';
+    btn.textContent = m.label;
+    btn.onclick = function(){ activeMonth = i; renderMonthTabs(); renderTasks(true); };
+    monthTabs.appendChild(btn);
+  });
+}
+
+function renderTasks(announce){
+  var g = GRADES[activeGrade];
+  var m = g.months[activeMonth];
+  var comp = getCompletion();
+  taskGrid.innerHTML = '';
+  m.tasks.forEach(function(t, ti){
+    var done = comp[ti];
+    var card = document.createElement('div');
+    card.className = 'task-card' + (done ? ' done' : '');
+    card.innerHTML =
+      '<div class="task-top">'+
+        '<div><span class="task-icon">'+t.icon+'</span></div>'+
+        '<div class="task-check">'+(done ? '&#10003;' : '')+'</div>'+
+      '</div>'+
+      '<div class="task-type mono">'+t.type+'</div>'+
+      '<div class="task-title">'+t.title+'</div>'+
+      '<div class="task-desc">'+t.desc+'</div>';
+    card.onclick = function(){
+      if(!auth.loggedIn){ openLoginModal(); return; }
+      comp[ti] = !comp[ti];
+      if(comp[ti]){ auth.coins += 10; showCoinToast(10); }
+      else { auth.coins = Math.max(0, auth.coins - 10); }
+      renderTasks(false);
+      renderAuthBar();
+      persistProgress();
+    };
+    taskGrid.appendChild(card);
+  });
+  updateFuel(announce, m);
+}
+
+function persistProgress(){
+  if(!auth.uid) return;
+  var key = completionKey();
+  var comp = getCompletion();
+  setDoc(doc(db, 'spaceCadetStudents', auth.uid, 'progress', key), {
+    tasksDone: comp,
+    bonusAwarded: !!bonusAwarded[key],
+    updatedAt: serverTimestamp()
+  }, { merge:true }).catch(function(e){ console.warn('progress save failed', e); });
+  updateDoc(doc(db, 'spaceCadetStudents', auth.uid), { coins: auth.coins }).catch(function(e){ console.warn('coin save failed', e); });
+}
+
+function updateFuel(announce, m){
+  var comp = getCompletion();
+  var doneCount = comp.filter(Boolean).length;
+  var pct = Math.round((doneCount/4)*100);
+  fuelFill.style.width = pct + '%';
+  fuelPct.textContent = pct + '%';
+  qualifyBanner.classList.toggle('show', doneCount === 4);
+  var key = completionKey();
+  if(doneCount === 4 && auth.loggedIn && !bonusAwarded[key]){
+    bonusAwarded[key] = true;
+    auth.coins += 50;
+    showCoinToast(50);
+    renderAuthBar();
+    persistProgress();
+  }
+  if(announce){
+    typeInto(novaDemoText, m.nova, 14);
+  } else if(doneCount === 4){
+    typeInto(novaDemoText, "All four cleared. That's a qualified month, next one's unlocked.", 14);
+  } else {
+    typeInto(novaDemoText, m.nova, 14);
+  }
+}
+
+applyLanguage('en');
+renderTabs();
+renderMonthTabs();
+renderTasks(true);
+renderAuthBar();
+updateLockState();
+
+// Module scripts don't leak function names to the global scope, but inline
+// onclick="" attributes in the HTML need them there - expose just the ones used that way.
+window.openLoginModal = openLoginModal;
+window.closeLoginModal = closeLoginModal;
+window.toggleModalMode = toggleModalMode;
+window.handleModalSubmit = handleModalSubmit;
+window.doLogout = doLogout;
+</script>
+</body>
+</html>

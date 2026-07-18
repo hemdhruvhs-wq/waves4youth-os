@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Space Cadet Program — Waves4Youth</title>
+<meta name="description" content="A monthly mission program for Std 7-12 students on the path to space technology, guided by AI mentor Nova.">
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+<style>
+:root{
+  --ink:#080B1A; --panel:#111832; --panel-2:#161F45; --teal:#B45CFF; --coral:#FF6B6B;
+  --pulse:#FF7A33; --star:#F5F7FF; --muted:#8C93B8; --gold:#FFD166; --good:#4FD878; --bad:#FF5757;
+  --border:rgba(255,255,255,.12);
+}
+.sp *{box-sizing:border-box;}
+.sp{font-family:'Inter',sans-serif; background:var(--ink); color:var(--star); overflow-x:hidden;}
+.sp .display{font-family:'Poppins',sans-serif;}
+.sp .mono{font-family:'JetBrains Mono',monospace;}
+.sp .wrap{max-width:1040px; margin:0 auto; padding:0 22px;}
+.sp section{position:relative; padding:60px 0;}
+
+/* ---------- Ambient space scene ---------- */
+#stars{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;}
+.star{position:absolute; background:#fff; border-radius:50%; animation:spTwinkle 3s ease-in-out infinite;}
+@keyframes spTwinkle{0%,100%{opacity:.25} 50%{opacity:1}}
+.sp-planet{position:fixed; border-radius:50%; z-index:0; pointer-events:none;}
+.sp-planet.a{width:200px; height:200px; top:10%; right:-60px; background:radial-gradient(circle at 35% 30%,#8A6BFF,#3a1f7a 70%); box-shadow:0 0 90px rgba(138,107,255,.3); animation:spDriftA 26s ease-in-out infinite;}
+.sp-planet.b{width:120px; height:120px; bottom:8%; left:-36px; background:radial-gradient(circle at 35% 30%,#FF7A33,#7a2f0a 70%); box-shadow:0 0 60px rgba(255,122,51,.28); animation:spDriftB 22s ease-in-out infinite;}
+@keyframes spDriftA{0%,100%{transform:translateY(0)} 50%{transform:translateY(28px)}}
+@keyframes spDriftB{0%,100%{transform:translateY(0)} 50%{transform:translateY(-22px)}}
+.sp-capsule{position:fixed; z-index:0; pointer-events:none; opacity:.6;}
+@media (prefers-reduced-motion: reduce){ .star,.sp-planet,.sp-cap1,.sp-cap2{animation:none !important;} }
+.sp-cap1{top:35%; left:-30px; animation:spAstA 34s linear infinite;}
+.sp-cap2{top:65%; left:-40px; animation:spAstB 40s linear infinite 6s;}
+@keyframes spAstA{0%{transform:translate(0,0) rotate(0deg)} 100%{transform:translate(110vw,50px) rotate(360deg)}}
+@keyframes spAstB{0%{transform:translate(0,0) rotate(0deg)} 100%{transform:translate(115vw,-40px) rotate(-360deg)}}
+
+/* ---------- Anvi mentor ---------- */
+.sp .anvi-row{display:flex; gap:14px; align-items:flex-start; position:relative; z-index:1;}
+.sp .anvi-avatar{flex-shrink:0; animation:spFloat 3s ease-in-out infinite;}
+@keyframes spFloat{0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}}
+.sp .anvi-bubble{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px 16px; font-size:13.5px; line-height:1.6; flex:1; min-height:50px;}
+.sp .anvi-label{font-size:10.5px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; display:block;}
+
+/* ---------- Hero ---------- */
+.sp .hero{padding-top:50px; text-align:center;}
+.sp .eyebrow{font-size:11.5px; font-weight:700; color:var(--pulse); letter-spacing:.08em; text-transform:uppercase;}
+.sp .hero h1{font-size:clamp(28px,4.5vw,46px); font-weight:800; margin:14px 0 16px; line-height:1.15;}
+.sp .hero p.sub{color:var(--muted); max-width:560px; margin:0 auto 30px; font-size:15px; line-height:1.6;}
+.sp .btn{display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:999px; font-weight:700; font-size:14px; text-decoration:none; border:none; cursor:pointer; font-family:inherit;}
+.sp .btn-primary{background:linear-gradient(90deg,var(--pulse),var(--teal)); color:#0A1615;}
+.sp .btn-outline{background:transparent; border:1px solid var(--border); color:var(--star);}
+
+/* ---------- Timeline / rule box ---------- */
+.sp .timeline{display:flex; gap:10px; overflow-x:auto; padding:26px 4px 8px;}
+.sp .tl-node{flex:0 0 auto; min-width:128px; background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px; text-align:center;}
+.sp .tl-node .grade{font-family:'Poppins',sans-serif; font-weight:700; font-size:16px;}
+.sp .tl-node .lbl{font-size:11px; color:var(--muted); margin-top:4px;}
+.sp .tl-node .dot{width:8px; height:8px; border-radius:50%; margin:10px auto 0;}
+.sp .rule-box{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:22px 24px; margin-top:30px; display:flex; gap:16px; flex-wrap:wrap;}
+.sp .rule{flex:1; min-width:220px;}
+.sp .rule .num{font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; color:var(--gold);}
+.sp .rule p{font-size:12.5px; color:var(--muted); margin-top:4px; line-height:1.5;}
+
+/* ---------- Coins / auth pill (post-approval, in-page) ---------- */
+.sp .coin-pill{padding:8px 14px; border-radius:999px; background:linear-gradient(90deg,rgba(255,209,102,.18),rgba(255,77,109,.14)); border:1px solid var(--gold); font-size:12px; font-weight:800; color:var(--gold); display:inline-flex; align-items:center; gap:6px;}
+.sp .coin-toast{position:fixed; z-index:60; top:16px; right:14px; background:var(--gold); color:#1a1200; font-weight:800; font-size:12.5px; padding:9px 16px; border-radius:999px; opacity:0; transform:translateY(-8px); transition:opacity .25s ease, transform .25s ease; pointer-events:none;}
+.sp .coin-toast.show{opacity:1; transform:translateY(0);}
+
+/* ---------- Grade / month tabs ---------- */
+.sp .grade-tabs{display:flex; gap:8px; flex-wrap:wrap; margin:24px 0 22px;}
+.sp .grade-tab{padding:8px 16px; border-radius:999px; border:1px solid var(--border); background:var(--panel); color:var(--muted); font-size:12.5px; font-weight:700; cursor:pointer; font-family:inherit;}
+.sp .grade-tab.active{background:linear-gradient(90deg,var(--pulse),var(--teal)); color:#0A1615; border-color:transparent;}
+
+/* ---------- Vitals bar (fuel bar renamed) ---------- */
+.sp .fuel-wrap{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px 18px; display:flex; align-items:center; gap:14px; margin-bottom:22px;}
+.sp .fuel-bar{flex:1; height:10px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden;}
+.sp .fuel-fill{height:100%; background:linear-gradient(90deg,var(--pulse),var(--gold)); width:0%; transition:width .5s ease;}
+.sp .fuel-label{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--gold); white-space:nowrap;}
+
+/* ---------- Task cards ---------- */
+.sp .task-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+@media (max-width:640px){ .sp .task-grid{grid-template-columns:1fr;} }
+.sp .task-card{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px 18px; cursor:pointer; transition:border-color .2s ease, background .2s ease;}
+.sp .task-card.done{border-color:var(--good); background:rgba(79,216,120,.08);}
+.sp .task-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+.sp .task-icon{font-size:20px;}
+.sp .task-type{font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em;}
+.sp .task-title{font-size:13.5px; font-weight:700; margin:8px 0 4px;}
+.sp .task-desc{font-size:12px; color:var(--muted); line-height:1.5;}
+.sp .task-check{width:20px; height:20px; border-radius:50%; border:2px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px;}
+.sp .task-card.done .task-check{background:var(--good); border-color:var(--good); color:#0A1615;}
+.sp .qualify-banner{margin-top:18px; background:linear-gradient(120deg,rgba(255,77,109,.15),rgba(46,196,182,.15)); border:1px solid var(--gold); border-radius:14px; padding:16px 18px; display:none; align-items:center; gap:12px;}
+.sp .qualify-banner.show{display:flex;}
+
+/* ---------- Briefing panel ---------- */
+.sp .briefing{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:20px 22px; margin-top:20px;}
+.sp .briefing-head{display:flex; align-items:center; gap:8px; margin-bottom:10px;}
+.sp .briefing-head strong{font-family:'Poppins',sans-serif; font-size:13.5px;}
+.sp .briefing p{font-size:13px; color:var(--muted); line-height:1.6;}
+
+/* ---------- Store ---------- */
+.sp .store-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:20px;}
+@media (max-width:720px){ .sp .store-grid{grid-template-columns:repeat(2,1fr);} }
+.sp .store-card{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:16px 14px; text-align:center;}
+.sp .store-card.unlocked{border-color:var(--good);}
+.sp .store-emoji{font-size:28px; margin-bottom:8px;}
+.sp .store-name{font-size:12.5px; font-weight:700;}
+.sp .store-cost{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gold); margin:6px 0 8px;}
+.sp .store-status{font-size:10.5px; font-weight:700; padding:4px 10px; border-radius:999px; background:rgba(255,255,255,.08); color:var(--muted);}
+.sp .store-status.ready{background:rgba(79,216,120,.15); color:var(--good);}
+
+/* ---------- Pricing lock panel (matches learn-video-editing.html's showLockPanel pattern) ---------- */
+.sp .lock-panel{text-align:center; padding:60px 20px;}
+.sp .lock-panel h2{font-family:'Poppins',sans-serif; font-size:1.6rem; font-weight:800; margin-bottom:10px;}
+.sp .price-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:26px; text-align:left;}
+@media (max-width:640px){ .sp .price-grid{grid-template-columns:1fr;} }
+.sp .price-card{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:26px 24px; position:relative;}
+.sp .price-card.featured{border-color:var(--gold); background:linear-gradient(160deg,var(--panel),#123330);}
+.sp .price-tag{position:absolute; top:-12px; right:20px; background:var(--gold); color:#1a1200; font-size:11px; font-weight:800; padding:4px 12px; border-radius:999px;}
+.sp .price-name{font-family:'Poppins',sans-serif; font-weight:700; font-size:18px;}
+.sp .price-amount{font-size:32px; font-weight:700; margin:10px 0 2px;}
+.sp .price-amount span{font-size:13px; font-weight:600; color:var(--muted);}
+.sp .price-list{list-style:none; margin-top:16px; display:flex; flex-direction:column; gap:9px;}
+.sp .price-list li{font-size:12.5px; color:var(--muted); display:flex; gap:8px; align-items:flex-start;}
+.sp .price-list li::before{content:"✓"; color:var(--good); font-weight:800; flex-shrink:0;}
+
+.sp h2.section-title{font-family:'Poppins',sans-serif; font-size:clamp(20px,3.2vw,28px); font-weight:800;}
+.sp p.section-sub{color:var(--muted); font-size:14px; max-width:600px; margin-top:8px; line-height:1.6;}
+.sp footer{padding:40px 0 60px; text-align:center; color:var(--muted); font-size:12px;}
+.sp #spApprovalNote{max-width:1040px;margin:0 auto;padding:14px 22px;font-size:12px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER (matches other learn-*.html pages) ============ -->
+<header class="site-header">
+  <div class="navbar container">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-mark.png" alt="Waves4Youth logo">
+      <span class="brand-text">
+        <span class="name">WAVES<span>4</span>YOUTH</span>
+        <span class="tag">India's Digital Creator Campus</span>
+      </span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#schools">Programs</a>
+      <a href="Future-Studio/">Future Studio</a>
+      <a href="learn.html">My Learning</a>
+      <a href="mentors.html">Student Life</a>
+      <a href="student-projects.html">Projects Corner</a>
+      <a href="index.html#about">About Us</a>
+      <a href="welcome-kit.html">Resources</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="nav-login" id="navLoginLink">Login</a>
+      <a href="index.html#schools" class="btn btn-primary btn-sm">Apply Now</a>
+    </div>
+  </div>
+</header>
+
+<div class="sp">
+<div id="stars"></div>
+<div class="sp-planet a"></div>
+<div class="sp-planet b"></div>
+<svg class="sp-capsule sp-cap1" width="22" height="22" viewBox="0 0 40 40"><polygon points="20,2 32,10 38,24 28,38 12,36 2,22 6,8" fill="#6B5A72"/></svg>
+<svg class="sp-capsule sp-cap2" width="16" height="16" viewBox="0 0 40 40"><polygon points="20,4 30,12 36,26 24,36 10,34 4,20" fill="#8C93B8"/></svg>
+
+<div class="coin-toast" id="spCoinToast">+10 🪙</div>
+
+<!-- Hidden until auth-gate confirms approval + this track is unlocked -->
+<div id="spApp" style="display:none;">
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Space & Astro-Tech Track</span>
+    <h1 class="display">The Space Cadet Program</h1>
+    <p class="sub">A monthly mission system for Std 7-12 students on the path to space technology, guided by your AI mentor, Nova. Four real missions a month. Clear them to advance.</p>
+    <div style="margin-bottom:34px;"><span class="coin-pill" id="spCoinPill">🪙 0 coins</span></div>
+
+    <div class="anvi-row" style="max-width:560px;margin:0 auto;text-align:left">
+      <svg class="anvi-avatar" width="64" height="91" viewBox="0 0 120 170">
+        <defs><linearGradient id="anviGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4FD8E3"/><stop offset="100%" stop-color="#B45CFF"/></linearGradient></defs>
+        <rect x="32" y="86" width="56" height="50" rx="12" fill="#C9CEE8"/>
+        <rect x="42" y="130" width="16" height="32" rx="7" fill="#E7EAF7"/>
+        <rect x="62" y="130" width="16" height="32" rx="7" fill="#E7EAF7"/>
+        <rect x="40" y="154" width="20" height="12" rx="5" fill="#8C93B8"/>
+        <rect x="60" y="154" width="20" height="12" rx="5" fill="#8C93B8"/>
+        <rect x="28" y="86" width="64" height="56" rx="20" fill="#F5F7FF"/>
+        <rect x="49" y="100" width="22" height="15" rx="4" fill="url(#anviGrad)" opacity="0.85"/>
+        <rect x="12" y="92" width="17" height="42" rx="8" fill="#F5F7FF"/>
+        <circle cx="20" cy="138" r="11" fill="#F5F7FF" stroke="#C9CEE8" stroke-width="2"/>
+        <rect x="91" y="92" width="17" height="42" rx="8" fill="#F5F7FF"/>
+        <circle cx="100" cy="138" r="11" fill="#F5F7FF" stroke="#C9CEE8" stroke-width="2"/>
+        <rect x="50" y="74" width="20" height="16" fill="#E7EAF7"/>
+        <circle cx="60" cy="52" r="34" fill="#E7EAF7"/>
+        <path d="M26 52 a34 34 0 0 1 68 0" fill="none" stroke="#C9CEE8" stroke-width="6"/>
+        <ellipse cx="60" cy="48" rx="22" ry="18" fill="#0d1128"/>
+        <ellipse cx="60" cy="48" rx="22" ry="18" fill="url(#anviGrad)" opacity="0.55"/>
+        <circle cx="52" cy="46" r="8" fill="#fff" opacity=".3"/>
+        <line x1="60" y1="18" x2="60" y2="6" stroke="#FF7A33" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="60" cy="5" r="3.5" fill="#FF7A33"/>
+      </svg>
+      <div class="anvi-bubble" id="anviIntro">
+        <span class="anvi-label">Nova - Mission Guide</span>
+        <span id="anviIntroText"></span><span style="opacity:.5">|</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spProgram">
+  <div class="wrap">
+    <h2 class="section-title">One Rank Per Month</h2>
+    <p class="section-sub">Every class runs on the same rhythm: four missions a month, across all six years of school. Miss one, retry it. Clear all four, and the next month unlocks.</p>
+    <div class="rule-box">
+      <div class="rule"><div class="num mono">4</div><p>Missions every month - Observe, Quiz, Build, Watch &amp; Reflect</p></div>
+      <div class="rule"><div class="num mono">4/4</div><p>Required to qualify for next month's missions</p></div>
+      <div class="rule"><div class="num mono">6</div><p>Classes covered - Std 7 through Std 12, one continuous mission log</p></div>
+    </div>
+    <div class="timeline" id="spTimelineRow"></div>
+  </div>
+</section>
+
+<section id="spDemo">
+  <div class="wrap">
+    <h2 class="section-title">Your Missions</h2>
+    <p class="section-sub">Pick a class to see this month's real missions.</p>
+
+    <div class="grade-tabs" id="spGradeTabs"></div>
+    <div class="grade-tabs" id="spMonthTabs" style="margin-top:-10px"></div>
+
+    <div class="briefing" id="spBriefing">
+      <div class="briefing-head">🚀 <strong>Nova's Briefing for You</strong></div>
+      <p id="spBriefingText"></p>
+    </div>
+
+    <div class="fuel-wrap">
+      <span class="fuel-label mono">VITALS</span>
+      <div class="fuel-bar"><div class="fuel-fill" id="spFuelFill"></div></div>
+      <span class="fuel-label mono" id="spFuelPct">0%</span>
+    </div>
+
+    <div class="task-grid" id="spTaskGrid"></div>
+
+    <div class="qualify-banner" id="spQualifyBanner">
+      <span style="font-size:22px">🎯</span> <div><strong style="color:var(--gold)">Mission month cleared!</strong><div style="font-size:12.5px;color:var(--muted);margin-top:2px">Next month's missions just unlocked.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="spStore">
+  <div class="wrap">
+    <h2 class="section-title">Earn Coins, Unlock Merch</h2>
+    <p class="section-sub">Every mission earns W4Y Coins - shared platform-wide across every track you're enrolled in.</p>
+    <div class="coin-pill" id="spStoreCoinBadge">🪙 0 coins</div>
+    <div class="store-grid" id="spStoreGrid"></div>
+  </div>
+</section>
+
+</div><!-- /spApp -->
+
+<!-- Shown when logged in + approved, but the Space track itself isn't purchased yet -->
+<div id="spLockPanel" class="lock-panel wrap" style="display:none;">
+  <span class="eyebrow">Space &amp; Astro-Tech Track</span>
+  <h2>Unlock The Space Cadet Program</h2>
+  <p style="color:var(--muted);max-width:520px;margin:0 auto;">Your account is approved - you just haven't enrolled in this track yet. Pick a plan below to unlock Nova and your mission log.</p>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-name">Explorer</div>
+      <div class="price-amount">Rs 1,999<span> /year</span></div>
+      <ul class="price-list">
+        <li>10 months of missions (4 each), matched to your class</li>
+        <li>AI mission mentor Nova, chat + voice guidance</li>
+        <li>Digital mission badges after each cleared month</li>
+        <li>Curated ISRO/JEE alerts and program milestones</li>
+      </ul>
+      <button class="btn btn-outline" style="width:100%; justify-content:center; margin-top:20px;" onclick="spStartCheckout(1)">Start Explorer</button>
+    </div>
+    <div class="price-card featured">
+      <span class="price-tag">BEST VALUE</span>
+      <div class="price-name">Mission Crew</div>
+      <div class="price-amount">Rs 4,999<span> /year</span></div>
+      <ul class="price-list">
+        <li>Everything in Explorer</li>
+        <li>Live monthly doubt-clearing session with a real mentor</li>
+        <li>Quarterly printable progress certificate</li>
+        <li>Parent progress snapshot each month</li>
+      </ul>
+      <button class="btn btn-primary" style="width:100%; justify-content:center; margin-top:20px;" onclick="spStartCheckout(2)">Start Mission Crew</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">Waves4Youth - Space &amp; Astro-Tech Track - Std 7 to Launch</div>
+</footer>
+</div><!-- /.sp -->
+
+<!-- ============ AUTH GATE (hard wall - no guest access, matches every other learn-*.html) ============ -->
+<script type="module" src="auth-gate.js"></script>
+
+<script type="module">
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, updateDoc, increment, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+// auth-gate.js may have already initialized the default app - reuse it, don't collide.
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const TRACK_ID = "space-astro-tech";
+
+const GRADE_INFO = [
+  { ncert:"Earth, Moon & the Sun", brief:"No pressure this year, just look up and notice. We'll track the Moon's phases together and see how Chandrayaan actually got there." },
+  { ncert:"Stars & the Solar System", brief:"This year you start naming what you see, constellations, planets, and the difference between a natural and an artificial satellite." },
+  { ncert:"Gravitation + YUVIKA", brief:"This is a big one. ISRO's YUVIKA program only takes Class 9 students, and I'll remind you before applications close. We'll also build and launch a real model rocket." },
+  { ncert:"Stream Compass", brief:"Your stream choice this year shapes which space careers stay open. I'll show you the engineering route and the non-engineering route, honestly, no pressure either way." },
+  { ncert:"Gravitation (full) + Entrance Landscape", brief:"Real employers enter the picture now, ISRO, NSIL, DRDO, and private space startups. We'll map JEE Advanced, IIST, and what each actually leads to." },
+  { ncert:"Communication Systems - Decision Year", brief:"This is the launch window. We'll turn everything from the last five years into one real 12-month plan for what comes next." }
+];
+
+const GRADES = [
+  { id:'std7', grade:'Std 7', color:'#4FD8E3', ncert:'Earth, Moon & the Sun', months:[
+    { label:'Month 1', nova:"Std 7 is just about looking up and noticing. No pressure, just wonder.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Moon Phase Journal', desc:"Sketch the Moon's shape every night for a week."},
+      {icon:'🧠', type:'Quiz', title:'Day, Night & Seasons', desc:'4-question check on rotation, revolution and seasons.'},
+      {icon:'🛠️', type:'Build', title:'Day/Night Model', desc:'Use a torch and a globe to show how day and night happen.'},
+      {icon:'🎥', type:'Watch & Reflect', title:"Chandrayaan's Landing", desc:'Watch the landing clip. Write 3 things that surprised you.'}
+    ]}
+  ]},
+  { id:'std8', grade:'Std 8', color:'#4FD8E3', ncert:'Stars & the Solar System', months:[
+    { label:'Month 1', nova:"Std 8 gives names to what you saw last year, stars, constellations, satellites.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Spot a Constellation', desc:'Find and sketch one constellation visible from home this week.'},
+      {icon:'🧠', type:'Quiz', title:'Stars & Solar System', desc:'4-question check on planets, constellations and satellites.'},
+      {icon:'🛠️', type:'Build', title:'Planet Scale Model', desc:'Model two planets to scale using clay or paper.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'INSAT & Weather', desc:'Watch how INSAT satellites forecast weather. Reflect on daily impact.'}
+    ]}
+  ]},
+  { id:'std9', grade:'Std 9', color:'#B45CFF', ncert:'Gravitation + YUVIKA', months:[
+    { label:'Month 1', nova:"This is your year. ISRO's YUVIKA program only takes Class 9 students, don't miss the window.", tasks:[
+      {icon:'🔭', type:'Observe', title:'YUVIKA Application Watch', desc:"Find this year's YUVIKA dates and eligibility on ISRO's site."},
+      {icon:'🧠', type:'Quiz', title:'Gravitation Basics', desc:'4-question check on gravity, free fall and escape velocity.'},
+      {icon:'🛠️', type:'Build', title:'Water-Bottle Rocket', desc:'Build and test-launch one with an adult. Record the height.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'A YUVIKA Alumni Story', desc:"Watch an alum's experience. Write one question you'd ask them."}
+    ]},
+    { label:'Month 2', nova:"Every rocket launch is really just Newton's third law in action. Let's see it for real.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Balloon Rocket Test', desc:'Tape a straw to a balloon on a string. Record how far it travels.'},
+      {icon:'🧠', type:'Quiz', title:'Force & Motion Basics', desc:"4-question check on Newton's three laws."},
+      {icon:'🛠️', type:'Build', title:"Action-Reaction Poster", desc:'Illustrate 3 real examples of action-reaction pairs, one must be rocket-related.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Why Rockets Need Stages', desc:'Watch a clip on multi-stage rockets. Write why single-stage struggles to reach orbit.'}
+    ]},
+    { label:'Month 3', nova:"Getting to space isn't about going up, it's about going fast enough. Let's do the math.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Energy Around You', desc:'List 5 examples of kinetic and potential energy from your day.'},
+      {icon:'🧠', type:'Quiz', title:'Work, Energy & Power', desc:"4-question check tied to this term's physics chapter."},
+      {icon:'🛠️', type:'Build', title:'Escape Velocity Calculator', desc:"Use a simple formula sheet to compare Earth's escape velocity to the Moon's."},
+      {icon:'🎥', type:'Watch & Reflect', title:'Why the Moon Is Easier to Leave', desc:"Watch a clip comparing Earth's and the Moon's gravity. Write one takeaway."}
+    ]},
+    { label:'Month 4', nova:"Applications for YUVIKA open around now. Let's actually get yours in, not just talk about it.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Confirm This Year\'s Window', desc:"Check ISRO's official YUVIKA page for the current application dates."},
+      {icon:'🧠', type:'Quiz', title:'Eligibility Checklist', desc:"4-question self-check confirming you meet YUVIKA's basic eligibility."},
+      {icon:'🛠️', type:'Build', title:'Complete Your Application', desc:'Fill the online form and get your bonafide certificate signed by your Principal.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'What Past Cadets Say', desc:"Watch a YUVIKA alum's video. Write one thing you're nervous or excited about."}
+    ]},
+    { label:'Month 5', nova:"You can't dream about a career you don't know exists. Let's map every major Indian mission.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Mission Timeline', desc:"Build a timeline of India's 5 biggest missions, Aryabhata to Gaganyaan."},
+      {icon:'🧠', type:'Quiz', title:'Name That Mission', desc:'4-question check matching missions to what they achieved.'},
+      {icon:'🛠️', type:'Build', title:'Mission Fact File', desc:'Pick one mission and build a one-page fact file: goal, launch vehicle, outcome.'},
+      {icon:'🎥', type:'Watch & Reflect', title:"Chandrayaan-3's Landing, Again", desc:"Watch mission control's reaction during landing. Write what stood out."}
+    ]},
+    { label:'Month 6', nova:"Let's open up a rocket, layer by layer, propulsion, staging, and payload.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Rocket Anatomy', desc:'Label the parts of a rocket, nose cone, stages, engine, payload, from a diagram.'},
+      {icon:'🧠', type:'Quiz', title:'Propulsion Basics', desc:'4-question check on thrust, fuel and staging.'},
+      {icon:'🛠️', type:'Build', title:'Model Rocket Stage Diagram', desc:'Draw and label a 2-stage rocket, showing what separates and when.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'PSLV vs. GSLV', desc:'Watch a comparison video. Write one key difference you learned.'}
+    ]},
+    { label:'Month 7', nova:"Not every satellite flies the same path, orbit shape decides its whole job.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Spot a Satellite Pass', desc:'Use a free tracking app to spot the ISS or another satellite pass overhead.'},
+      {icon:'🧠', type:'Quiz', title:'Orbit Types', desc:'4-question check on LEO, geostationary and polar orbits.'},
+      {icon:'🛠️', type:'Build', title:'Match the Orbit to the Job', desc:'Match 4 satellite uses (weather, GPS, comms, imaging) to their likely orbit.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'A Day in the Life of a Satellite', desc:'Watch a satellite-operations clip. Write what surprised you.'}
+    ]},
+    { label:'Month 8', nova:"Every scientist you'll ever admire started exactly where you are right now.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Find Their Story', desc:"Research one ISRO scientist's education and career path."},
+      {icon:'🧠', type:'Quiz', title:'Career Path Quick Check', desc:'4-question check on typical qualifications for a space scientist role.'},
+      {icon:'🛠️', type:'Build', title:'Write Their Timeline', desc:"Build a short timeline of the scientist's journey, school to ISRO."},
+      {icon:'🎥', type:'Watch & Reflect', title:'An Interview Worth Watching', desc:'Watch an interview with that scientist. Note one lesson for yourself.'}
+    ]},
+    { label:'Month 9', nova:"Time to stop learning about missions and start designing one of your own.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Pick a Real Problem', desc:'Choose a real problem a satellite could help solve, floods, farming, disaster relief.'},
+      {icon:'🧠', type:'Quiz', title:'Mission Planning Basics', desc:'4-question check on what a mission concept needs to define.'},
+      {icon:'🛠️', type:'Build', title:'Mission Concept One-Pager', desc:'Design a one-pager: mission name, goal, orbit type, and payload.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Pitch Practice', desc:'Watch a short pitch-deck example. Write your own 3-line mission pitch.'}
+    ]},
+    { label:'Month 10', nova:"Whatever happened with YUVIKA this year, selected or not, you've done a full year of real space work. Let's look back.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Your Year in Missions', desc:'List every mission task you completed this year in one place.'},
+      {icon:'🧠', type:'Quiz', title:'Class 9 Space Recap', desc:"4-question check covering the year's biggest ideas."},
+      {icon:'🛠️', type:'Build', title:'Your Std 10 Question', desc:'Write the one open question you still have as you head into your stream decision year.'},
+      {icon:'🎥', type:'Watch & Reflect', title:"Where You're Headed", desc:"Watch a short intro to Std 10's Stream Compass month. Write one hope for next year."}
+    ]}
+  ]},
+  { id:'std10', grade:'Std 10', color:'#FF7A33', ncert:'Stream Compass', months:[
+    { label:'Month 1', nova:"Std 10 is decision year. Let's separate the myths from the real options.", tasks:[
+      {icon:'🔭', type:'Observe', title:'Non-Engineering Roles', desc:"List 3 space-sector jobs that don't need an engineering degree."},
+      {icon:'🧠', type:'Quiz', title:'PCM & Pathways', desc:'4-question check on stream choices and entrance exams.'},
+      {icon:'🛠️', type:'Build', title:'Two-Path Chart', desc:'Compare the engineering route vs. the non-engineering route.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'A Non-Engineer in Space', desc:'Watch a policy/marketing professional in the space sector.'}
+    ]}
+  ]},
+  { id:'std11', grade:'Std 11', color:'#FF7A33', ncert:'Gravitation (full) + Entrance Landscape', months:[
+    { label:'Month 1', nova:"Real employers enter the picture now, ISRO, NSIL, and private space startups.", tasks:[
+      {icon:'🔭', type:'Observe', title:"This Year's JEE Dates", desc:"Look up JEE Advanced dates and last year's IIST cutoff rank."},
+      {icon:'🧠', type:'Quiz', title:"Kepler's Laws & Exams", desc:'4-question check on orbits and entrance pathways.'},
+      {icon:'🛠️', type:'Build', title:'Startup Comparison', desc:'Compare Skyroot vs. Agnikul in a short presentation.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Watch a Launch', desc:'Watch a rocket launch recording. Note each stage of flight.'}
+    ]}
+  ]},
+  { id:'std12', grade:'Std 12', color:'#FF3D7A', ncert:'Communication Systems - Decision Year', months:[
+    { label:'Month 1', nova:"The launch window. Let's turn everything you've learned into a real 12-month plan.", tasks:[
+      {icon:'🔭', type:'Observe', title:'ICRB Notification', desc:"Research this year's ICRB eligibility and notification timeline."},
+      {icon:'🧠', type:'Quiz', title:'Satellites & Recruitment', desc:'4-question check on communication systems and ISRO entry routes.'},
+      {icon:'🛠️', type:'Build', title:'Your 12-Month Plan', desc:'Draft your exam plan for the year, with a backup option.'},
+      {icon:'🎥', type:'Watch & Reflect', title:'Early-Career Interview', desc:'Watch an ISRO or private-space early-career engineer. Note your takeaway.'}
+    ]}
+  ]}
+];
+
+function typeInto(el, text, speed){
+  el.textContent = '';
+  let i = 0;
+  const iv = setInterval(() => {
+    i++; el.textContent = text.slice(0,i);
+    if(i >= text.length) clearInterval(iv);
+  }, speed || 16);
+}
+
+let activeGrade = 0, activeMonth = 0;
+let completedIds = []; // from students/{uid}.progress['space-astro-tech'] (arrayUnion of task ids)
+let coins = 0;
+let uid = null;
+
+function taskId(gi, mi, ti){ return GRADES[gi].id + '-m' + mi + '-t' + ti; }
+function monthTaskIds(gi, mi){ return GRADES[gi].months[mi].tasks.map((_,ti) => taskId(gi,mi,ti)); }
+function isDone(id){ return completedIds.indexOf(id) !== -1; }
+
+function renderTimeline(){
+  const row = document.getElementById('spTimelineRow');
+  row.innerHTML = '';
+  GRADES.forEach(g => {
+    const node = document.createElement('div');
+    node.className = 'tl-node';
+    node.innerHTML = `<div class="grade display">${g.grade}</div><div class="lbl">${g.ncert}</div><div class="dot" style="background:${g.color}"></div>`;
+    row.appendChild(node);
+  });
+}
+
+function renderGradeTabs(){
+  const el = document.getElementById('spGradeTabs');
+  el.innerHTML = '';
+  GRADES.forEach((g,i) => {
+    const btn = document.createElement('button');
+    btn.className = 'grade-tab' + (i===activeGrade ? ' active' : '');
+    btn.textContent = g.grade;
+    btn.onclick = () => { activeGrade = i; activeMonth = 0; renderGradeTabs(); renderMonthTabs(); renderTasks(true); };
+    el.appendChild(btn);
+  });
+}
+function renderMonthTabs(){
+  const g = GRADES[activeGrade];
+  const el = document.getElementById('spMonthTabs');
+  el.innerHTML = '';
+  if(g.months.length <= 1) return;
+  g.months.forEach((m,i) => {
+    const btn = document.createElement('button');
+    btn.className = 'grade-tab' + (i===activeMonth ? ' active' : '');
+    btn.style.fontSize = '11px'; btn.style.padding = '6px 12px';
+    btn.textContent = m.label;
+    btn.onclick = () => { activeMonth = i; renderMonthTabs(); renderTasks(true); };
+    el.appendChild(btn);
+  });
+}
+
+function renderTasks(announce){
+  const g = GRADES[activeGrade], m = g.months[activeMonth];
+  const grid = document.getElementById('spTaskGrid');
+  grid.innerHTML = '';
+  m.tasks.forEach((t, ti) => {
+    const id = taskId(activeGrade, activeMonth, ti);
+    const done = isDone(id);
+    const card = document.createElement('div');
+    card.className = 'task-card' + (done ? ' done' : '');
+    card.innerHTML = `
+      <div class="task-top"><span class="task-icon">${t.icon}</span><div class="task-check">${done ? '&#10003;' : ''}</div></div>
+      <div class="task-type mono">${t.type}</div>
+      <div class="task-title">${t.title}</div>
+      <div class="task-desc">${t.desc}</div>`;
+    card.onclick = () => toggleTask(id);
+    grid.appendChild(card);
+  });
+  updateVitals(announce, m);
+}
+
+function updateVitals(announce, m){
+  const ids = monthTaskIds(activeGrade, activeMonth);
+  const doneCount = ids.filter(isDone).length;
+  const pct = Math.round((doneCount/4)*100);
+  document.getElementById('spFuelFill').style.width = pct + '%';
+  document.getElementById('spFuelPct').textContent = pct + '%';
+  document.getElementById('spQualifyBanner').classList.toggle('show', doneCount === 4);
+  const bubble = document.getElementById('spBriefingText');
+  if(announce || doneCount < 4){ typeInto(bubble, m.nova, 14); }
+  else { typeInto(bubble, "All four cleared. That's a qualified month, next one's unlocked.", 14); }
+}
+
+async function toggleTask(id){
+  const wasDone = isDone(id);
+  if(wasDone){
+    // allow un-toggling locally + adjust coin display, but we only ever arrayUnion
+    // server-side (never remove), matching the "no self-service" caution elsewhere -
+    // simplest honest approach: once earned, a coin stays earned.
+    return;
+  }
+  completedIds.push(id);
+  coins += 10;
+  showCoinToast(10);
+  renderTasks(false);
+  renderCoinDisplays();
+  persist(id);
+
+  const ids = monthTaskIds(activeGrade, activeMonth);
+  if(ids.every(isDone)){
+    coins += 50;
+    showCoinToast(50);
+    renderCoinDisplays();
+    persistBonus();
+  }
+}
+
+function persist(id){
+  if(!uid) return;
+  updateDoc(doc(db, 'students', uid), {
+    [`progress.${TRACK_ID}`]: arrayUnion(id),
+    coins: increment(10)
+  }).catch(e => console.warn('progress save failed', e));
+}
+function persistBonus(){
+  if(!uid) return;
+  updateDoc(doc(db, 'students', uid), { coins: increment(50) }).catch(e => console.warn('bonus save failed', e));
+}
+
+function showCoinToast(amount){
+  const t = document.getElementById('spCoinToast');
+  t.textContent = '+' + amount + ' 🪙';
+  t.classList.add('show');
+  clearTimeout(showCoinToast._tid);
+  showCoinToast._tid = setTimeout(() => t.classList.remove('show'), 1400);
+}
+
+function renderCoinDisplays(){
+  document.getElementById('spCoinPill').textContent = '🪙 ' + coins + ' coins';
+  const badge = document.getElementById('spStoreCoinBadge');
+  badge.textContent = '🪙 ' + coins + ' coins';
+  const grid = document.getElementById('spStoreGrid');
+  grid.innerHTML = STORE_ITEMS.map(item => {
+    const unlocked = coins >= item.cost;
+    return `<div class="store-card${unlocked ? ' unlocked' : ''}">
+      <div class="store-emoji">${item.emoji}</div>
+      <div class="store-name">${item.name}</div>
+      <div class="store-cost">${item.cost} coins</div>
+      <div class="store-status${unlocked ? ' ready' : ''}">${unlocked ? 'Ready to redeem' : (item.cost - coins) + ' more needed'}</div>
+    </div>`;
+  }).join('');
+}
+
+const STORE_ITEMS = [
+  { emoji:'🎟️', name:'Sticker Pack', cost:150 },
+  { emoji:'🧢', name:'W4Y Cap', cost:400 },
+  { emoji:'👕', name:'W4Y T-Shirt', cost:800 },
+  { emoji:'🧥', name:'W4Y Hoodie', cost:1500 }
+];
+
+// No self-service unlock, on purpose — same principle as learn-video-editing.html.
+// This just sends them to wherever your real enrollment/payment flow lives.
+window.spStartCheckout = function(tier){
+  window.location.href = `course-${TRACK_ID}.html#pricing`;
+};
+
+function showBriefing(){
+  document.getElementById('spBriefing').style.display = 'block';
+}
+
+function generateStars(){
+  const container = document.getElementById('stars');
+  if(!container || container.childElementCount) return;
+  for(let i=0;i<130;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random()*2 + 1;
+    s.style.width = size+'px'; s.style.height = size+'px';
+    s.style.top = Math.random()*100+'%'; s.style.left = Math.random()*100+'%';
+    s.style.animationDelay = (Math.random()*3)+'s';
+    s.style.animationDuration = (2+Math.random()*3)+'s';
+    container.appendChild(s);
+  }
+}
+
+function bootstrapApp(student, studentUid){
+  uid = studentUid;
+  completedIds = (student.progress && student.progress[TRACK_ID]) || [];
+  coins = student.coins || 0;
+
+  const tier = (student.unlockedTiers && typeof student.unlockedTiers[TRACK_ID] === 'number')
+    ? student.unlockedTiers[TRACK_ID] : 0;
+
+  renderTimeline();
+  generateStars();
+
+  if(tier < 1){
+    document.getElementById('spApp').style.display = 'none';
+    document.getElementById('spLockPanel').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('spLockPanel').style.display = 'none';
+  document.getElementById('spApp').style.display = 'block';
+  renderGradeTabs();
+  renderMonthTabs();
+  renderTasks(true);
+  renderCoinDisplays();
+  showBriefing();
+  typeInto(document.getElementById('anviIntroText'),
+    "Hey, I'm Nova, your mission guide. Every month I'll give you four real space missions. Clear all four, and I'll clear you for the next one.", 14);
+}
+
+// auth-gate.js dispatches this once it knows: logged in, approved, and window.w4yStudent is loaded.
+document.addEventListener('w4yStudentReady', (e) => {
+  if(!window.w4yApproved) return; // auth-gate.js already shows the pending-approval screen itself
+  const student = e.detail || {};
+  const user = auth.currentUser;
+  bootstrapApp(student, user ? user.uid : null);
+});
+</script>
+
+</body>
+</html>
