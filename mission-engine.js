@@ -17,13 +17,19 @@ export const MissionEngine = (function(){
     db = opts.db;
     uid = opts.uid;
     trackSlug = opts.trackSlug;
-    gradeOrder = opts.gradeOrder;
+    gradeOrder = opts.gradeOrder || null; // omit for gradeless tracks (e.g. lightweight Future Studio professions)
     onReady = opts.onReady || function(){};
 
     const snap = await getDoc(doc(db, 'students', uid));
     const data = snap.exists() ? snap.data() : {};
     studentGrade = data.grade || null;
     missionSubmissions = (data.missionSubmissions && data.missionSubmissions[trackSlug]) || {};
+
+    if (!gradeOrder){
+      // gradeless track: no class prompt, no grade lock, straight to ready
+      onReady({ studentGrade, missionSubmissions });
+      return;
+    }
 
     if (!studentGrade){
       promptForGrade(opts.gradeLabels || gradeOrder);
@@ -54,6 +60,7 @@ export const MissionEngine = (function(){
   // A class tab is unlocked if it matches the student's own grade,
   // OR it's an earlier grade than the student's current one (review access).
   function isGradeUnlocked(gradeId){
+    if (!gradeOrder) return true; // gradeless track — no lock applies
     if (!studentGrade) return false;
     const studentIdx = gradeOrder.indexOf(studentGrade);
     const gradeIdx = gradeOrder.indexOf(gradeId);
