@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Future Profession | Waves4Youth</title>
+<style>
+:root{ --bg:#0F0B1E; --card:#171227; --border:rgba(255,255,255,.12); --muted:#A99FC4; --gold:#FFD166; --grad1:#B45CFF; --grad2:#FF6B6B; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{ background:var(--bg); color:#fff; font-family:-apple-system,Segoe UI,Roboto,sans-serif; padding-bottom:60px; }
+.wrap{ max-width:720px; margin:0 auto; padding:0 18px; }
+header{ padding:20px 18px; border-bottom:1px solid var(--border); }
+.eyebrow{ color:var(--gold); font-size:12px; font-weight:700; letter-spacing:.06em; }
+h1{ font-size:26px; margin-top:6px; }
+.coin-pill{ display:inline-block; background:rgba(255,209,102,.12); border:1px solid rgba(255,209,102,.3); color:var(--gold); padding:6px 14px; border-radius:999px; font-size:13px; font-weight:600; margin-top:10px; }
+
+.lock-panel{ text-align:center; padding:60px 20px; }
+.lock-panel h2{ font-size:22px; margin-bottom:10px; }
+.lock-panel p{ color:var(--muted); font-size:14.5px; margin-bottom:24px; line-height:1.5; }
+.plan-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; max-width:340px; margin:0 auto 14px; text-align:left; }
+.plan-price{ font-size:28px; font-weight:800; margin:6px 0; }
+.plan-btn{ width:100%; margin-top:14px; padding:12px; border-radius:10px; border:none; background:linear-gradient(90deg,var(--grad1),var(--grad2)); color:#fff; font-weight:600; }
+
+.month-tabs{ display:flex; gap:8px; overflow-x:auto; padding:16px 18px; }
+.month-tabs button{ flex:none; padding:8px 14px; border-radius:999px; border:1px solid var(--border); background:transparent; color:#fff; font-size:12.5px; }
+.month-tabs button.active{ background:linear-gradient(90deg,var(--grad1),var(--grad2)); border:none; }
+.month-tabs button.locked{ opacity:.4; }
+
+.task-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:0 18px; }
+.task-card{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px; cursor:pointer; }
+.task-card.done{ border-color:var(--gold); }
+.task-card.needs-revision{ border-color:#FF7A33; }
+.task-icon{ font-size:22px; }
+.task-type{ font-size:10.5px; color:var(--muted); text-transform:uppercase; margin-top:6px; }
+.task-title{ font-size:14px; font-weight:600; margin-top:4px; }
+.task-badge{ font-size:11px; color:var(--gold); margin-top:6px; }
+
+.sp-modal-overlay{ display:none; position:fixed; inset:0; background:rgba(6,4,20,.75); z-index:200; align-items:center; justify-content:center; padding:20px; }
+.sp-modal{ background:#141026; border:1px solid var(--border); border-radius:16px; padding:24px; max-width:480px; width:100%; position:relative; }
+.sp-modal-close{ position:absolute; top:12px; right:16px; background:none; border:none; color:#fff; font-size:22px; }
+.sp-modal-desc{ color:var(--muted); font-size:13.5px; margin:6px 0 14px; }
+.sp-modal textarea{ width:100%; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:10px; color:#fff; padding:12px; font-size:14px; font-family:inherit; resize:vertical; }
+.sp-feedback{ margin-top:12px; padding:12px; background:rgba(180,92,255,.12); border-radius:10px; font-size:13.5px; color:#e8ddff; }
+.sp-status{ margin-top:8px; font-size:12.5px; color:var(--muted); min-height:16px; }
+.sp-submit-btn{ margin-top:14px; width:100%; padding:12px; border-radius:10px; border:none; background:linear-gradient(90deg,var(--grad1),var(--grad2)); color:#fff; font-weight:600; }
+.sp-submit-btn:disabled{ opacity:.6; }
+
+#loadingMsg{ text-align:center; padding:60px 20px; color:var(--muted); }
+</style>
+</head>
+<body>
+
+<div id="loadingMsg">Loading your future...</div>
+
+<div id="app" style="display:none;">
+<header>
+  <span class="eyebrow" id="kicker">MY FUTURE PROFESSION</span>
+  <h1 id="profTitle"></h1>
+  <div class="coin-pill" id="coinPill">🪙 0 coins</div>
+</header>
+
+<div id="lockPanel" class="lock-panel" style="display:none;">
+  <h2 id="lockHeadline"></h2>
+  <p id="lockSub"></p>
+  <div class="plan-card" id="planCard"></div>
+</div>
+
+<div id="missionArea" style="display:none;">
+  <div class="month-tabs" id="monthTabs"></div>
+  <div class="task-grid" id="taskGrid"></div>
+</div>
+</div>
+
+<div id="submitModal" class="sp-modal-overlay">
+  <div class="sp-modal">
+    <button class="sp-modal-close" onclick="document.getElementById('submitModal').style.display='none'">&times;</button>
+    <h3 id="submitTitle"></h3>
+    <p id="submitDesc" class="sp-modal-desc"></p>
+    <textarea id="submitAnswer" rows="6" placeholder="Write your answer here..."></textarea>
+    <div id="submitFeedback" class="sp-feedback" style="display:none;"></div>
+    <div id="submitStatus" class="sp-status"></div>
+    <button id="submitBtn" class="sp-submit-btn">Submit for grading</button>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { MissionEngine } from "./mission-engine.js";
+import { ProfessionAccess } from "./profession-access.js";
+import { PROFESSION_CATALOG } from "./profession-catalog.js";
+
+// NOTE: reuses the same Firebase config as the rest of the site.
+// I don't have that config in this session — if this page errors on load,
+// paste in the same firebaseConfig block used in learn-space-astro-tech.html.
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c",
+  measurementId: "G-ZGS6ZJLFSS"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const params = new URLSearchParams(window.location.search);
+const SLUG = params.get('track');
+const PROFILE = PROFESSION_CATALOG[SLUG];
+const GRADE_PROXY_URL = 'https://solar-armadillo-4814.waves4youth.deno.net';
+
+let uid, student, coins = 0, activeMonth = 0;
+
+if (!PROFILE){
+  document.getElementById('loadingMsg').textContent = "This profession isn't set up yet — check back soon!";
+} else {
+  document.getElementById('profTitle').textContent = PROFILE.icon + ' ' + PROFILE.title;
+  window.w4yReady.then(() => {
+    uid = window.w4yStudent.uid;
+    bootstrap();
+  });
+}
+
+async function bootstrap(){
+  const snap = await getDoc(doc(db, 'students', uid));
+  student = snap.exists() ? snap.data() : {};
+  coins = student.coins || 0;
+  document.getElementById('loadingMsg').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  renderCoins();
+
+  if (!ProfessionAccess.isUnlocked(student, SLUG)){
+    showLockPanel();
+    return;
+  }
+  showMissions();
+}
+
+function renderCoins(){
+  document.getElementById('coinPill').textContent = '🪙 ' + coins + ' coins';
+}
+
+function showLockPanel(){
+  document.getElementById('lockPanel').style.display = 'block';
+  const usedSlots = ProfessionAccess.usedBaseSlots(student);
+  const canBeFree = ProfessionAccess.canAddAsBaseSlot(student);
+  document.getElementById('lockHeadline').textContent = "Unlock " + PROFILE.title;
+
+  if (canBeFree && !student.basePlanPaid){
+    document.getElementById('lockSub').textContent = `This would be profession ${usedSlots+1} of 3 in your base plan.`;
+    document.getElementById('planCard').innerHTML = `
+      <div style="font-size:13px;color:var(--muted)">BASE PLAN</div>
+      <div class="plan-price">₹2,999<span style="font-size:14px;font-weight:400"> /year</span></div>
+      <div style="font-size:13px;color:var(--muted)">Choose any 3 professions</div>
+      <button class="plan-btn" onclick="enroll()">Choose This Profession</button>`;
+  } else if (canBeFree && student.basePlanPaid){
+    document.getElementById('lockSub').textContent = `This uses profession ${usedSlots+1} of 3 in your paid base plan.`;
+    document.getElementById('planCard').innerHTML = `<button class="plan-btn" onclick="enroll()">Add This Profession — Included</button>`;
+  } else {
+    document.getElementById('lockSub').textContent = "You've used your 3 base-plan professions. Adding more is ₹999/year each.";
+    document.getElementById('planCard').innerHTML = `
+      <div style="font-size:13px;color:var(--muted)">ADDITIONAL PROFESSION</div>
+      <div class="plan-price">₹999<span style="font-size:14px;font-weight:400"> /year</span></div>
+      <button class="plan-btn" onclick="enroll()">Request This Profession</button>`;
+  }
+}
+
+window.enroll = async function(){
+  const result = await ProfessionAccess.requestEnrollment(db, uid, student, SLUG);
+  if (result === 'added-free' || result === 'already-unlocked'){
+    showMissions();
+  } else {
+    document.getElementById('lockSub').textContent = "Request sent! An admin will confirm your payment and unlock this shortly.";
+    document.getElementById('planCard').innerHTML = '';
+  }
+};
+
+function showMissions(){
+  document.getElementById('lockPanel').style.display = 'none';
+  document.getElementById('missionArea').style.display = 'block';
+  renderMonthTabs();
+  renderTasks();
+}
+
+function monthTaskIds(mi){ return PROFILE.months[mi].tasks.map((_,ti) => SLUG + '-m' + mi + '-t' + ti); }
+function taskId(mi, ti){ return SLUG + '-m' + mi + '-t' + ti; }
+function isDone(id){ const s = MissionEngine.getSubmission(id); return !!s && s.status === 'passed'; }
+
+function renderMonthTabs(){
+  const el = document.getElementById('monthTabs');
+  el.innerHTML = '';
+  PROFILE.months.forEach((m,i) => {
+    const unlocked = MissionEngine.isMonthUnlocked(SLUG, i, monthTaskIds);
+    const btn = document.createElement('button');
+    btn.className = (i===activeMonth?'active ':'') + (unlocked?'':'locked');
+    btn.textContent = (unlocked ? '' : '🔒 ') + 'Month ' + (i+1);
+    btn.disabled = !unlocked;
+    if (unlocked) btn.onclick = () => { activeMonth = i; renderMonthTabs(); renderTasks(); };
+    el.appendChild(btn);
+  });
+}
+
+function renderTasks(){
+  const m = PROFILE.months[activeMonth];
+  const grid = document.getElementById('taskGrid');
+  grid.innerHTML = '';
+  m.tasks.forEach((t, ti) => {
+    const id = taskId(activeMonth, ti);
+    const sub = MissionEngine.getSubmission(id);
+    const status = sub ? sub.status : 'new';
+    const badge = { new:'', submitted:'⏳ Grading...', needs_revision:'✏️ Revise', passed:'✓ Passed' }[status];
+    const card = document.createElement('div');
+    card.className = 'task-card' + (status==='passed'?' done':'') + (status==='needs_revision'?' needs-revision':'');
+    card.innerHTML = `<div class="task-icon">${t.icon}</div><div class="task-type">${t.type}</div><div class="task-title">${t.title}</div><div class="task-badge">${badge}</div>`;
+    card.onclick = () => openModal(id, t);
+    grid.appendChild(card);
+  });
+}
+
+function openModal(id, task){
+  const sub = MissionEngine.getSubmission(id);
+  document.getElementById('submitTitle').textContent = task.title;
+  document.getElementById('submitDesc').textContent = task.desc;
+  document.getElementById('submitAnswer').value = (sub && sub.textAnswer) || '';
+  document.getElementById('submitFeedback').style.display = sub && sub.aiFeedback ? 'block' : 'none';
+  document.getElementById('submitFeedback').textContent = sub ? (sub.aiFeedback || '') : '';
+  document.getElementById('submitStatus').textContent = '';
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = false;
+  btn.textContent = 'Submit for grading';
+  btn.onclick = () => submitMission(id, task);
+  document.getElementById('submitModal').style.display = 'flex';
+}
+
+async function submitMission(id, task){
+  const answer = document.getElementById('submitAnswer').value.trim();
+  if (!answer){ document.getElementById('submitStatus').textContent = 'Write your answer before submitting.'; return; }
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  document.getElementById('submitStatus').textContent = 'Sending for grading...';
+
+  try {
+    const res = await fetch(GRADE_PROXY_URL + '/grade-mission', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ trackSlug: SLUG, taskId: id, taskTitle: task.title, taskType: task.type, rubricHint: task.desc, textAnswer: answer })
+    });
+    const result = await res.json();
+    const record = { status: result.passed ? 'passed' : 'needs_revision', textAnswer: answer, aiScore: result.score||null, aiFeedback: result.feedback||'', submittedAt: new Date().toISOString(), coinsAwarded: !!result.passed };
+    MissionEngine.recordSubmissionLocally(id, record);
+    await updateDoc(doc(db,'students',uid), { [`missionSubmissions.${SLUG}.${id}`]: record }).catch(e=>console.warn(e));
+
+    document.getElementById('submitFeedback').style.display = 'block';
+    document.getElementById('submitFeedback').textContent = record.aiFeedback;
+    document.getElementById('submitStatus').textContent = result.passed ? 'Passed! Coins on the way.' : 'Not quite — read the feedback and try again.';
+    btn.disabled = false; btn.textContent = result.passed ? 'Passed' : 'Resubmit';
+
+    if (result.passed){
+      coins += 10; renderCoins();
+      updateDoc(doc(db,'students',uid), { coins: increment(10) }).catch(e=>console.warn(e));
+      if (monthTaskIds(activeMonth).every(isDone)){
+        coins += 50; renderCoins();
+        updateDoc(doc(db,'students',uid), { coins: increment(50) }).catch(e=>console.warn(e));
+      }
+    }
+    renderTasks(); renderMonthTabs();
+  } catch(e){
+    console.error(e);
+    document.getElementById('submitStatus').textContent = "Couldn't reach the grading system — please try again.";
+    btn.disabled = false; btn.textContent = 'Submit for grading';
+  }
+}
+</script>
+
+<script src="auth-gate.js"></script>
+</body>
+</html>
