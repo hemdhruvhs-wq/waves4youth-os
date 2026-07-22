@@ -505,6 +505,72 @@ track.addEventListener('touchend', function(){ track.style.animationPlayState='r
 </div>
 </div>
 </section>
+<!-- ============ FUTURE STUDIO SCROLLER ============ -->
+<style>
+.fs-scroll-section{ padding:70px 0; }
+.fs-scroll-row{ display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 4px 18px; -webkit-overflow-scrolling:touch; }
+.fs-scroll-row::-webkit-scrollbar{ height:6px; }
+.fs-scroll-row::-webkit-scrollbar-thumb{ background:rgba(0,0,0,.15); border-radius:99px; }
+.fs-card{ flex:0 0 220px; scroll-snap-align:start; text-align:center; padding:0 0 20px; overflow:hidden; }
+.fs-img{ width:100%; height:140px; object-fit:cover; border-radius:14px 14px 0 0; display:block; }
+.fs-card h4{ font-size:15px; margin:14px 18px 6px; }
+.fs-card p{ font-size:12.5px; color:var(--ink-3,#6B5E7D); margin:0 18px; }
+.fs-cta-row{ text-align:center; margin-top:8px; }
+</style>
+<section class="fs-scroll-section" id="future-studio-preview">
+<div class="container">
+<div class="section-head text-center mx-auto">
+<span class="eyebrow" style="justify-content:center">W4Y Future Studio</span>
+<h2>16 Futures. <span class="text-gradient">One Studio.</span></h2>
+<p>Std 6 to 12 students explore real careers through real monthly missions — before they ever have to choose one.</p>
+</div>
+<div class="fs-scroll-row">
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-doctor-healthcare.jpg" alt="Doctor &amp; Healthcare">
+<h4>Doctor &amp; Healthcare</h4>
+<p>Medicine, surgery, healthcare AI.</p>
+</div>
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-engineer-technologist.jpg" alt="Engineer &amp; Technologist">
+<h4>Engineer &amp; Technologist</h4>
+<p>Robots, EVs, software, infrastructure.</p>
+</div>
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-space-aerospace.jpg" alt="Space &amp; Aerospace">
+<h4>Space &amp; Aerospace</h4>
+<p>India's next mission, your role in it.</p>
+</div>
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-entrepreneur-founder.jpg" alt="Entrepreneur &amp; Founder">
+<h4>Entrepreneur &amp; Founder</h4>
+<p>Idea. Plan. Build. Impact.</p>
+</div>
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-law-policy-justice.jpg" alt="Law, Policy &amp; Justice">
+<h4>Law, Policy &amp; Justice</h4>
+<p>Rights, justice, a fairer India.</p>
+</div>
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-scientist-researcher.jpg" alt="Scientist &amp; Researcher">
+<h4>Scientist &amp; Researcher</h4>
+<p>Explore. Discover. Innovate.</p>
+</div>
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-pilot-aviation.jpg" alt="Pilot &amp; Aviation">
+<h4>Pilot &amp; Aviation</h4>
+<p>Your future cockpit awaits.</p>
+</div>
+<div class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-ca-finance-investment.jpg" alt="CA, Finance &amp; Investment">
+<h4>CA, Finance &amp; Investment</h4>
+<p>Numbers today. Wealth tomorrow.</p>
+</div>
+</div>
+<div class="fs-cta-row">
+<a href="Future-Studio/index.html" class="btn btn-primary">Explore All 16 Futures →</a>
+</div>
+</div>
+</section>
 <!-- ============ JOURNEY ============ -->
 <section class="journey-section">
 <div class="container journey-grid">
