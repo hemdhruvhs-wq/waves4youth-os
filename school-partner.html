@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become a W4Y School Partner | Waves4Youth</title>
+<style>
+:root{ --ink:#1B1330; --muted:#6B5E7D; --paper:#FFFBF7; --card:#FFFFFF; --line:rgba(27,19,48,.09);
+--grad-1:#B45CFF; --grad-2:#FF6B6B; --grad-3:#FFA35C; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{ background:var(--paper); color:var(--ink); font-family:-apple-system,Segoe UI,Roboto,sans-serif; }
+.wrap{ max-width:560px; margin:0 auto; padding:0 20px 60px; }
+header{ text-align:center; padding:50px 20px 30px; }
+.eyebrow{ color:var(--grad-2); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+h1{ font-size:28px; margin-top:10px; }
+.sub{ color:var(--muted); font-size:14.5px; margin-top:10px; line-height:1.55; }
+.back-link{ display:inline-block; margin-top:16px; font-size:13.5px; color:var(--grad-1); text-decoration:none; }
+
+form{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px 22px; box-shadow:0 12px 34px rgba(27,19,48,.06); }
+.field{ margin-bottom:16px; }
+label{ display:block; font-size:13px; font-weight:600; margin-bottom:6px; }
+input, textarea{ width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:10px; font-size:14.5px; font-family:inherit; background:rgba(27,19,48,.02); }
+textarea{ resize:vertical; min-height:80px; }
+.row2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+button[type=submit]{ width:100%; margin-top:8px; padding:13px; border:none; border-radius:10px; background:linear-gradient(90deg,var(--grad-1),var(--grad-2)); color:#fff; font-weight:700; font-size:15px; cursor:pointer; }
+.status-msg{ margin-top:14px; font-size:13.5px; text-align:center; min-height:18px; }
+.success-box{ display:none; text-align:center; padding:30px 20px; }
+.success-box h2{ font-size:22px; margin-bottom:10px; }
+</style>
+</head>
+<body>
+
+<header>
+<span class="eyebrow">For Schools</span>
+<h1>Become a W4Y School Partner</h1>
+<p class="sub">Bring Future Studio and W4Y's programs to your students. Tell us a bit about your school and we'll be in touch.</p>
+<a class="back-link" href="Future-Studio/index.html">← Back to Future Studio</a>
+</header>
+
+<div class="wrap">
+<form id="partnerForm">
+  <div class="field">
+    <label for="schoolName">School Name *</label>
+    <input type="text" id="schoolName" name="schoolName" required>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label for="contactName">Your Name *</label>
+      <input type="text" id="contactName" name="contactName" required>
+    </div>
+    <div class="field">
+      <label for="designation">Designation</label>
+      <input type="text" id="designation" name="designation" placeholder="Principal, Coordinator...">
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="field">
+      <label for="phone">Phone *</label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label for="city">City / State</label>
+      <input type="text" id="city" name="city">
+    </div>
+    <div class="field">
+      <label for="studentCount">Approx. Student Strength</label>
+      <input type="number" id="studentCount" name="studentCount" min="1">
+    </div>
+  </div>
+  <div class="field">
+    <label for="message">Anything you'd like us to know?</label>
+    <textarea id="message" name="message" placeholder="Grades you'd want to start with, timeline, questions..."></textarea>
+  </div>
+  <button type="submit" id="submitBtn">Submit Partnership Interest →</button>
+  <div class="status-msg" id="statusMsg"></div>
+</form>
+
+<div class="success-box" id="successBox">
+  <h2>Thank you! 🎉</h2>
+  <p>We've received your interest — our team will reach out shortly to discuss bringing W4Y to your school.</p>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// Same Firebase project already used across the rest of the site.
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// NOTE: same placeholder pattern as your existing student application form.
+// If your real EmailJS keys are already filled in elsewhere on the live site,
+// use those same values here instead of these placeholders.
+emailjs.init("YOUR_PUBLIC_KEY");
+
+document.getElementById('partnerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  const statusMsg = document.getElementById('statusMsg');
+  const payload = Object.fromEntries(new FormData(form).entries());
+
+  btn.disabled = true;
+  statusMsg.textContent = 'Submitting...';
+
+  try {
+    // NOTE: field names below are my best-guess naming — if your existing
+    // Lead Qualification Agent expects different exact field names for
+    // schoolPartnerLeads, this is the one spot that would need adjusting.
+    await addDoc(collection(db, "schoolPartnerLeads"), {
+      ...payload,
+      status: "new",
+      submittedAt: serverTimestamp()
+    });
+
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+      form_type: "New School Partner Interest",
+      name: payload.contactName,
+      email: payload.email,
+      phone: payload.phone,
+      school: payload.schoolName,
+      city: payload.city || "Not provided",
+      student_count: payload.studentCount || "Not provided",
+      extra: payload.message || ""
+    }).catch(err => console.error("EmailJS error:", err));
+
+    form.style.display = 'none';
+    document.getElementById('successBox').style.display = 'block';
+  } catch (err) {
+    console.error("Could not save school partner lead:", err);
+    statusMsg.textContent = "Something went wrong — please try again, or email us directly.";
+    btn.disabled = false;
+  }
+});
+</script>
+
+</body>
+</html>
