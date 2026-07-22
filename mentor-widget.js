@@ -91,7 +91,7 @@ export function createMentorWidget(config){
     const thinkingBubble = msgs.lastChild;
 
     try {
-      const res = await fetch(proxyUrl + '/mentor-chat', {
+      const res = await fetch(proxyUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -100,7 +100,7 @@ export function createMentorWidget(config){
         })
       });
       const data = await res.json();
-      const reply = data.reply || data.text || "Sorry, I couldn't think of a reply just now — try again?";
+      const reply = (data.content && data.content[0] && data.content[0].text) || "Sorry, I couldn't think of a reply just now — try again?";
       thinkingBubble.textContent = reply;
       history.push({ role: 'assistant', content: reply });
       const muted = window['__' + containerId + '_muted'] && window['__' + containerId + '_muted']();

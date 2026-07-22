@@ -592,19 +592,33 @@ async function submitMission(id, task){
   document.getElementById('spSubmitStatus').textContent = 'Sending to Nova for grading...';
 
   try {
-    const res = await fetch(GRADE_PROXY_URL + '/grade-mission', {
+    const gradingSystemPrompt = `You are grading a student's mission submission for the Waves4Youth "${TRACK_ID}" track.
+Task: "${task.title}" (type: ${task.type})
+What a good answer should show: ${task.desc}
+
+Grade the student's answer below. Be encouraging but honest — this is a student in grades 7-12.
+Respond with ONLY valid JSON, no markdown, no preamble, in exactly this shape:
+{"passed": true or false, "score": 0-10, "feedback": "2-3 sentences of specific, encouraging feedback"}
+
+A "pass" means the student engaged genuinely with the task and shows real understanding —
+not perfection. Be generous with effort, strict about copy-pasted or nonsense answers.`;
+
+    const res = await fetch(GRADE_PROXY_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        trackSlug: TRACK_ID,
-        taskId: id,
-        taskTitle: task.title,
-        taskType: task.type,
-        rubricHint: task.desc,
-        textAnswer: answer
+        system: gradingSystemPrompt,
+        messages: [{ role: 'user', content: `Student's answer:\n\n${answer}` }]
       })
     });
-    const result = await res.json(); // expected: { passed: bool, score, feedback }
+    const raw = await res.json();
+    const rawText = (raw.content && raw.content[0] && raw.content[0].text) || '{}';
+    let result;
+    try {
+      result = JSON.parse(rawText.replace(/```json|```/g, '').trim());
+    } catch {
+      result = { passed: false, score: 0, feedback: "Grading hiccup — please try submitting again." };
+    }
 
     const record = {
       status: result.passed ? 'passed' : 'needs_revision',
