@@ -20,12 +20,21 @@ export function createMentorWidget(config){
   const container = document.getElementById(containerId);
   if (!container){ console.warn('mentor-widget: container not found', containerId); return; }
 
+  const LANG_NAMES = {
+    en: 'English', mr: 'Marathi (मराठी)', hi: 'Hindi (हिंदी)', ta: 'Tamil (தமிழ்)',
+    bn: 'Bengali (বাংলা)', kn: 'Kannada (ಕನ್ನಡ)', ml: 'Malayalam (മലയാളം)'
+  };
+  const LANG_VOICE_PREFIX = { en: 'en', mr: 'mr', hi: 'hi', ta: 'ta', bn: 'bn', kn: 'kn', ml: 'ml' };
+
   let history = [];
   let voice = null;
+  let currentLang = 'en';
 
   function pickVoice(){
     const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-    voice = voices.find(v => v.lang.startsWith('en') && /female/i.test(v.name))
+    const prefix = LANG_VOICE_PREFIX[currentLang] || 'en';
+    voice = voices.find(v => v.lang.toLowerCase().startsWith(prefix) && /female/i.test(v.name))
+         || voices.find(v => v.lang.toLowerCase().startsWith(prefix))
          || voices.find(v => v.lang.startsWith('en'))
          || voices[0] || null;
   }
@@ -49,7 +58,12 @@ export function createMentorWidget(config){
 
   function render(){
     container.innerHTML = `
-      <div class="mw-header">✨ ${name}</div>
+      <div class="mw-header" style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+        <span>✨ ${name}</span>
+        <select id="${containerId}-lang" class="mw-lang-select" aria-label="Reply language">
+          ${Object.entries(LANG_NAMES).map(([code,label]) => `<option value="${code}">${label}</option>`).join('')}
+        </select>
+      </div>
       <div class="mw-messages" id="${containerId}-msgs"></div>
       <div class="mw-input-row">
         <input id="${containerId}-input" type="text" placeholder="Ask ${name} anything..." />
@@ -59,6 +73,10 @@ export function createMentorWidget(config){
     document.getElementById(containerId + '-send').onclick = handleSend;
     document.getElementById(containerId + '-input').addEventListener('keydown', e => {
       if (e.key === 'Enter') handleSend();
+    });
+    document.getElementById(containerId + '-lang').addEventListener('change', (e) => {
+      currentLang = e.target.value;
+      pickVoice();
     });
     let muted = false;
     document.getElementById(containerId + '-mute').onclick = () => {
@@ -95,7 +113,7 @@ export function createMentorWidget(config){
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          system: persona + `\n\nContext: student is currently in the ${trackContext} track. Keep answers encouraging, age-appropriate, and under 120 words unless asked for more detail.`,
+          system: persona + `\n\nContext: student is currently in the ${trackContext} track. Keep answers encouraging, age-appropriate, and under 120 words unless asked for more detail. IMPORTANT: reply only in ${LANG_NAMES[currentLang]}, regardless of what language the student's message is written in.`,
           messages: history
         })
       });
