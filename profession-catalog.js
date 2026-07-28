@@ -1365,8 +1365,153 @@ export const PROFESSION_CATALOG = {
             { type: "Reflect", icon: "💭", title: "A message to Std 7 you", desc: "Write a message to yourself for next year, about what you'd like to explore next." }
           ]}
         ]
-      }
-      // "7": { band: "Explorer", months: [ ... ] },  -- TODO next
+      },
+      "7": {
+        band: "Explorer",
+        bandTagline: "Systems start working together — still playful, slightly more connected thinking.",
+        months: [
+          { label: "Digestion Detective", tasks: [
+            { engine: "tap-discover", icon: "🍽️", title: "Follow your food's journey", data: { visual: "🍽️", hotspots: [
+              { label: "Stomach", fact: "Your stomach churns food and mixes it with acid to break it down!" },
+              { label: "Small intestine", fact: "This is where most nutrients get absorbed into your blood!" },
+              { label: "Large intestine", fact: "This absorbs water and prepares waste to leave your body!" }
+            ]}},
+            { engine: "build-match", icon: "🍽️", title: "Match food to its journey stop", data: { noStakes: true, zones: [
+              { id: "mouth", label: "First stop: chewing" }, { id: "stomach", label: "Next: churning" }, { id: "intestine", label: "Last: absorbing" }
+            ], chips: ["mouth","stomach","intestine"], facts: { mouth: "Your mouth starts digestion!", stomach: "Your stomach churns it up!", intestine: "Your intestines absorb the good stuff!" }}},
+            { type: "Quiz", icon: "📝", title: "Digestion basics", desc: "Quiz on how your body breaks down food." },
+            { type: "Reflect", icon: "💭", title: "Food journey", desc: "What surprised you about where your food actually goes?" }
+          ]},
+          { label: "Skin: Your Body's Shield", tasks: [
+            { engine: "tap-discover", icon: "🧴", title: "Explore your skin", data: { visual: "🧴", hotspots: [
+              { label: "Protection", fact: "Your skin is your body's biggest organ and its first line of defense!" },
+              { label: "Temperature", fact: "Sweating through your skin helps cool your whole body down!" },
+              { label: "Healing", fact: "Skin can heal itself after small cuts and scrapes!" }
+            ]}},
+            { engine: "build-match", icon: "🧴", title: "Match skin layer to job", data: { noStakes: true, zones: [
+              { id: "outer", label: "Keeps germs out" }, { id: "middle", label: "Feels touch & pain" }, { id: "inner", label: "Stores fat for warmth" }
+            ], chips: ["outer","middle","inner"], facts: { outer: "Outer layer!", middle: "Middle layer!", inner: "Inner layer!" }}},
+            { type: "Quiz", icon: "📝", title: "Skin basics", desc: "Quiz on what your skin does for you." },
+            { type: "Reflect", icon: "💭", title: "Skin care", desc: "What's one way you take care of your skin?" }
+          ]},
+          { label: "Muscles at Work", tasks: [
+            { engine: "tap-discover", icon: "💪", title: "Explore your muscles", data: { visual: "💪", hotspots: [
+              { label: "Moving", fact: "Muscles pull on your bones to help you move!" },
+              { label: "Heart muscle", fact: "Your heart is actually a muscle that never gets tired!" },
+              { label: "Getting stronger", fact: "Muscles grow stronger the more you use them!" }
+            ]}},
+            { engine: "build-match", icon: "💪", title: "Match action to muscle group", data: { noStakes: true, zones: [
+              { id: "legs", label: "Running" }, { id: "arms", label: "Lifting" }, { id: "core", label: "Sitting up straight" }
+            ], chips: ["legs","arms","core"], facts: { legs: "Leg muscles!", arms: "Arm muscles!", core: "Core muscles!" }}},
+            { type: "Quiz", icon: "📝", title: "Muscle basics", desc: "Quiz on how muscles help you move." },
+            { type: "Reflect", icon: "💭", title: "Your favorite movement", desc: "What's your favorite way to move your body?" }
+          ]},
+          { label: "Blood's Journey", tasks: [
+            { engine: "tap-discover", icon: "🩸", title: "Trace blood's path", data: { visual: "🩸", hotspots: [
+              { label: "Leaving the heart", fact: "Fresh, oxygen-rich blood leaves your heart to travel your whole body!" },
+              { label: "Delivering oxygen", fact: "Blood drops off oxygen everywhere your body needs energy!" },
+              { label: "Returning home", fact: "Used blood travels back to the heart and lungs to refill with oxygen!" }
+            ]}},
+            { engine: "build-match", icon: "🩸", title: "Match blood part to job", data: { noStakes: true, zones: [
+              { id: "rbc", label: "Carries oxygen" }, { id: "wbc", label: "Fights germs" }, { id: "platelets", label: "Stops bleeding" }
+            ], chips: ["rbc","wbc","platelets"], facts: { rbc: "Red blood cells!", wbc: "White blood cells!", platelets: "Platelets!" }}},
+            { type: "Quiz", icon: "📝", title: "Blood basics", desc: "Quiz on what blood does for your body." },
+            { type: "Reflect", icon: "💭", title: "Blood, amazing", desc: "What's the most surprising thing about blood you learned today?" }
+          ]},
+          { label: "Sleep & the Repairing Body", tasks: [
+            { engine: "tap-discover", icon: "😴", title: "Explore sleep", data: { visual: "😴", hotspots: [
+              { label: "Growing", fact: "Your body releases growth hormones mostly while you sleep!" },
+              { label: "Memory", fact: "Sleep helps your brain file away everything you learned that day!" },
+              { label: "Repair", fact: "Your body repairs muscles and cells while you rest!" }
+            ]}},
+            { engine: "build-match", icon: "😴", title: "Match habit to sleep benefit", data: { noStakes: true, zones: [
+              { id: "routine", label: "Falls asleep faster" }, { id: "noscreen", label: "Sleeps more deeply" }, { id: "consistent", label: "Wakes up refreshed" }
+            ], chips: ["routine","noscreen","consistent"], facts: { routine: "A bedtime routine!", noscreen: "No screens before bed!", consistent: "A consistent sleep time!" }}},
+            { type: "Quiz", icon: "📝", title: "Sleep basics", desc: "Quiz on why sleep matters for your body." },
+            { type: "Reflect", icon: "💭", title: "Your sleep routine", desc: "What does your bedtime routine look like?" }
+          ]},
+          { label: "Kidneys: The Body's Filter", tasks: [
+            { engine: "tap-discover", icon: "🫘", title: "Explore your kidneys", data: { visual: "🫘", hotspots: [
+              { label: "Filtering", fact: "Your kidneys filter your entire blood supply many times a day!" },
+              { label: "Waste removal", fact: "Kidneys turn filtered waste into urine to leave your body!" },
+              { label: "Balance", fact: "Kidneys help keep the right amount of water in your body!" }
+            ]}},
+            { engine: "build-match", icon: "🫘", title: "Match habit to kidney health", data: { noStakes: true, zones: [
+              { id: "water", label: "Helps kidneys filter well" }, { id: "checkup", label: "Catches problems early" }
+            ], chips: ["water","checkup"], facts: { water: "Drinking enough water!", checkup: "Regular checkups!" }}},
+            { type: "Quiz", icon: "📝", title: "Kidney basics", desc: "Quiz on what your kidneys do." },
+            { type: "Reflect", icon: "💭", title: "Staying hydrated", desc: "How much water do you think you drink in a day?" }
+          ]},
+          { label: "Meet the Hospital Team", tasks: [
+            { engine: "tap-discover", icon: "🏥", title: "Meet the hospital team", data: { visual: "🏥", hotspots: [
+              { label: "Nurse", fact: "Nurses spend the most time directly caring for patients!" },
+              { label: "Surgeon", fact: "Surgeons perform operations to fix problems inside the body!" },
+              { label: "Radiologist", fact: "Radiologists read X-rays and scans to find what's wrong!" }
+            ]}},
+            { engine: "build-match", icon: "🏥", title: "Match role to task", data: { noStakes: true, zones: [
+              { id: "nurse", label: "Checks on patients often" }, { id: "surgeon", label: "Performs operations" }, { id: "radiologist", label: "Reads scans" }
+            ], chips: ["nurse","surgeon","radiologist"], facts: { nurse: "Nurses!", surgeon: "Surgeons!", radiologist: "Radiologists!" }}},
+            { type: "Quiz", icon: "📝", title: "Hospital roles", desc: "Quiz on who does what in a hospital." },
+            { type: "Reflect", icon: "💭", title: "A role that interests you", desc: "Which hospital role sounds most interesting to you and why?" }
+          ]},
+          { label: "First Aid Basics", tasks: [
+            { engine: "build-match", icon: "🩹", title: "Match situation to safe first step", data: { noStakes: true, zones: [
+              { id: "cut", label: "Small cut" }, { id: "burn", label: "Small burn" }, { id: "bigemergency", label: "Something serious" }
+            ], chips: ["cut","burn","bigemergency"], facts: {
+              cut: "Clean it and cover with a bandage!", burn: "Cool water and tell an adult!", bigemergency: "Get an adult immediately, or call emergency services!"
+            }}},
+            { engine: "tap-discover", icon: "🩹", title: "First aid basics", data: { visual: "🩹", hotspots: [
+              { label: "Stay calm", fact: "Staying calm helps you think clearly in an emergency!" },
+              { label: "Tell an adult", fact: "Always get a trusted adult's help for anything serious!" },
+              { label: "Basic supplies", fact: "Bandages and clean water can help with small injuries!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "First aid basics", desc: "Quiz on simple, safe first steps." },
+            { type: "Reflect", icon: "💭", title: "Being prepared", desc: "Why do you think it helps to know basic first aid?" }
+          ]},
+          { label: "Nutrition Detective", tasks: [
+            { engine: "build-match", icon: "🥗", title: "Match food to food group", data: { noStakes: true, zones: [
+              { id: "fruit", label: "Vitamins" }, { id: "protein", label: "Muscle building" }, { id: "grains", label: "Energy" }
+            ], chips: ["fruit","protein","grains"], facts: { fruit: "Fruits & vegetables!", protein: "Proteins!", grains: "Grains!" }}},
+            { engine: "tap-discover", icon: "🥗", title: "Explore nutrition", data: { visual: "🥗", hotspots: [
+              { label: "Energy", fact: "Food gives your body the energy to think, move, and grow!" },
+              { label: "Variety", fact: "Eating different colors of food gives you different nutrients!" },
+              { label: "Water", fact: "Water is just as important as food for your body!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Nutrition basics", desc: "Quiz on balanced eating." },
+            { type: "Reflect", icon: "💭", title: "Your favorite healthy food", desc: "What's a healthy food you actually enjoy eating?" }
+          ]},
+          { label: "Vaccines & Prevention", tasks: [
+            { engine: "tap-discover", icon: "💉", title: "Explore vaccines", data: { visual: "💉", hotspots: [
+              { label: "Practice run", fact: "Vaccines teach your immune system to recognize germs before you ever get sick!" },
+              { label: "Community protection", fact: "When many people are vaccinated, it helps protect everyone!" },
+              { label: "Prevention", fact: "Preventing illness is often easier than treating it!" }
+            ]}},
+            { engine: "build-match", icon: "💉", title: "Match prevention habit to benefit", data: { noStakes: true, zones: [
+              { id: "vaccine", label: "Prepares your immune system" }, { id: "wash", label: "Removes germs" }, { id: "rest", label: "Keeps you strong" }
+            ], chips: ["vaccine","wash","rest"], facts: { vaccine: "Vaccines!", wash: "Handwashing!", rest: "Rest!" }}},
+            { type: "Quiz", icon: "📝", title: "Prevention basics", desc: "Quiz on how vaccines and prevention work." },
+            { type: "Reflect", icon: "💭", title: "Prevention matters", desc: "Why do you think preventing illness is important?" }
+          ]},
+          { label: "Bones & Muscles Together", tasks: [
+            { engine: "build-match", icon: "🏃", title: "Match movement to body parts working together", data: { noStakes: true, zones: [
+              { id: "jump", label: "Jumping" }, { id: "grip", label: "Gripping something" }, { id: "bend", label: "Bending your arm" }
+            ], chips: ["jump","grip","bend"], facts: { jump: "Leg bones and muscles together!", grip: "Hand bones and muscles together!", bend: "Arm bones and muscles together!" }}},
+            { engine: "tap-discover", icon: "🏃", title: "How they work together", data: { visual: "🏃", hotspots: [
+              { label: "Joints", fact: "Joints are where bones meet, letting your body bend and move!" },
+              { label: "Tendons", fact: "Tendons connect your muscles to your bones!" },
+              { label: "Teamwork", fact: "Bones give you structure, muscles give you movement!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Movement basics", desc: "Quiz on how bones and muscles work as a team." },
+            { type: "Reflect", icon: "💭", title: "Your body in motion", desc: "What's something your body does today that needs both bones and muscles?" }
+          ]},
+          { label: "Design-a-Healthy-Day", tasks: [
+            { type: "Build", icon: "🎨", title: "Design your healthy day", desc: "Plan out a full healthy day — meals, movement, sleep, and one fun activity." },
+            { type: "Quiz", icon: "📝", title: "Healthy habits recap", desc: "A fun recap quiz of everything you explored this year." },
+            { type: "Reflect", icon: "💭", title: "Systems working together", desc: "What's one way your body's systems work together that you didn't know before this year?" },
+            { type: "Reflect", icon: "💭", title: "A message to Std 8 you", desc: "Write a message to yourself for next year." }
+          ]}
+        ]
+      },
       // "8": { band: "Builder", months: [ ... ] },  -- TODO next
       // "9": { band: "Builder", months: [ ... ] },  -- TODO next
       // "10": { band: "Decision-Prep", months: [ ... ] },  -- TODO next
