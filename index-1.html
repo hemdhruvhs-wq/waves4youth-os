@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waves4Youth — India's Digital Creator Campus</title>
+<meta name="description" content="India's first digital university for the creator economy. Learn Film, Animation, Gaming, AI & more from industry mentors. Learn. Create. Launch. Lead.">
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+<div class="navbar container">
+<a href="index.html" class="brand">
+<img src="assets/logo-mark.png" alt="Waves4Youth logo">
+<span class="brand-text">
+<span class="name">WAVES<span>4</span>YOUTH</span>
+<span class="tag">India's Digital Creator Campus</span>
+</span>
+</a>
+<nav class="nav-links" id="navLinks">
+<a href="index.html#schools">Programs</a>
+<a href="Future-Studio/">Future Studio</a>
+<a href="learn.html">My Learning</a>
+<a href="mentors.html">Student Life</a>
+<a href="student-projects.html">Projects Corner</a>
+<a href="index.html#about">About Us</a>
+<a href="welcome-kit.html">Resources</a>
+</nav>
+<div class="nav-actions">
+<button class="icon-btn" aria-label="Search">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</button>
+<a href="login.html" class="nav-login">Login</a>
+<a href="#" onclick="openApplyModal(event)" class="btn btn-primary btn-sm">Apply Now</a>
+<button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+</div>
+</div>
+</header>
+<!-- ============ HERO ============ -->
+<style>
+.hero-film-preview{position:relative;width:100%;height:100%;min-height:300px;border-radius:20px;overflow:hidden;cursor:pointer}
+.hero-film-preview img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.hero-panel:hover .hero-film-preview img{transform:scale(1.04)}
+.hero-film-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(20,10,30,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.85);transition:transform .25s ease}
+.hero-film-play svg{margin-left:3px}
+.hero-panel:hover .hero-film-play{transform:translate(-50%,-50%) scale(1.1)}
+.hero-film-caption{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;background:linear-gradient(0deg,rgba(10,4,20,.85),transparent)}
+.hero-film-tag{display:inline-block;font-size:.75rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#FF6B6B,#8A6BFF);padding:4px 11px;border-radius:999px;margin-bottom:8px;letter-spacing:.02em}
+.hero-film-caption p{margin:0;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.92);line-height:1.4}
+</style>
+<section class="hero">
+<div class="container hero-grid">
+<div class="hero-copy">
+<span class="eyebrow">India's First &amp; Largest Digital University</span>
+<h1>Learn. Create.<br>Launch. <span class="text-gradient">Lead.</span></h1>
+<p class="hero-sub">From Class 5 to career launch — future-ready programs in Film, Animation, Gaming, AI &amp; Content Creation. Industry-aligned curriculum, expert mentors and a portfolio that gets you hired.</p>
+<div class="hero-ctas">
+<a href="#schools" class="btn btn-primary">Explore Programs
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</a>
+<a href="#" class="btn btn-outline" onclick="openW4YJourney(); return false;">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></svg>
+Watch Our Story
+</a>
+</div>
+<div class="pill-row lang-pills">
+<span class="pill">🌐 हिंदी</span><span class="pill">தமிழ்</span><span class="pill">বাংলা</span><span class="pill">ಕನ್ನಡ</span><span class="pill">മലയാളം</span><span class="pill">+5 more</span>
+</div>
+</div>
+<div class="hero-visual" style="position:relative">
+<div class="hero-panel" onclick="openW4YJourney()">
+<div class="hero-panel-glow"></div>
+<div class="hero-film-preview">
+<img src="assets/w4y-story-poster.jpg" alt="Watch Our Story — the W4Y journey">
+<div class="hero-film-play">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="6 3 20 12 6 21"/></svg>
+</div>
+<div class="hero-film-caption">
+<span class="hero-film-tag">▶ Watch Our Story</span>
+<p>Every creator started with one spark of curiosity.</p>
+</div>
+</div>
+</div>
+<div class="admissions-card">
+<span class="badge badge-pink">Admissions Open 2026</span>
+<h4>Shape Your Creative Future</h4>
+<p class="small">Early Bird Scholarship</p>
+<a href="#" onclick="openApplyModal(event)" class="btn btn-white btn-sm btn-block">Apply Now →</a>
+<p class="small muted">Scholarship test on 25th July, 2026</p>
+</div>
+<div class="w4yj-trigger" onclick="openW4YJourney()" style="position:absolute;left:-14px;bottom:-18px;transform:rotate(-4deg)">
+👉 Watch Their Journey
+</div>
+</div>
+</div>
+<div class="container">
+<div class="stats-strip reveal">
+<div class="stat"><span class="ic" style="background:rgba(214,58,255,.25)">👥</span><div><div class="num">10,000+</div><div class="lbl">Active Students</div></div></div>
+<div class="stat"><span class="ic" style="background:rgba(255,107,107,.25)">🎓</span><div><div class="num">25+</div><div class="lbl">Expert Mentors</div></div></div>
+<div class="stat"><span class="ic" style="background:rgba(255,159,90,.25)">▶️</span><div><div class="num">500+</div><div class="lbl">Learning Resources</div></div></div>
+<div class="stat"><span class="ic" style="background:rgba(255,179,71,.25)">🏫</span><div><div class="num">6</div><div class="lbl">Schools</div></div></div>
+<div class="stat"><span class="ic" style="background:rgba(214,58,255,.25)">💼</span><div><div class="num">100%</div><div class="lbl">Career Support</div></div></div>
+<div class="stat"><span class="ic" style="background:rgba(255,107,107,.25)">🌍</span><div><div class="num">18+</div><div class="lbl">Countries</div></div></div>
+</div>
+</div>
+</section>
+<!-- ============ MULTILINGUAL MENTOR CAROUSEL ============ -->
+<section class="mentor-carousel-section">
+<style>
+.mentor-carousel-section{padding:56px 0 64px;background:var(--surface-2,#FBF6EF);overflow:hidden}
+.mentor-carousel-viewport{overflow:hidden;margin-top:32px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mentor-carousel-track{display:flex;gap:20px;width:max-content;animation:mentorScroll 38s linear infinite}
+.mentor-carousel-track:hover{animation-play-state:paused}
+@keyframes mentorScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mentor-card{flex:0 0 260px;border:1px solid var(--border,#F0E0D0);border-radius:20px;overflow:hidden;box-shadow:0 6px 22px rgba(36,18,51,.09);position:relative;background:#fff}
+.mentor-card-visual{height:110px;display:flex;align-items:center;justify-content:center;position:relative}
+.mentor-card-visual::after{content:"";position:absolute;inset:0;background:radial-gradient(240px 120px at 85% -20%,rgba(255,255,255,.35),transparent 60%)}
+.mentor-card-visual span{font-size:44px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.18));position:relative;z-index:1}
+.mentor-card-photo{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.85);position:relative;z-index:1;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.mentor-card-body{padding:20px 22px 22px}
+.mentor-card .mentor-lang-badge{background:var(--mc-grad);color:#fff}
+.mentor-card .mentor-lang-badge span{opacity:.85;color:#fff}
+.mentor-card .link-arrow{color:var(--mc-solid,#8A2ED6);font-weight:800}
+.mentor-card--sunset{background:linear-gradient(160deg,#2E0F2A 0%,#4A1942 55%,#611D45 100%);border-color:rgba(245,196,83,.3)}
+.mentor-card--sunset .mentor-card-visual::after{background:radial-gradient(240px 140px at 90% -20%,rgba(255,147,73,.45),transparent 60%),radial-gradient(200px 120px at -10% 120%,rgba(214,51,108,.4),transparent 60%)}
+.mentor-card--sunset h4,.mentor-card--sunset .mentor-card-with strong{color:#FFF6EC}
+.mentor-card--sunset .mentor-card-with{color:rgba(255,246,236,.75)}
+.mentor-card--sunset .mentor-lang-badge{background:linear-gradient(90deg,#F5C453,#FF6F61)}
+.mentor-card--sunset .link-arrow{color:#F5C453 !important}
+.mentor-card h4{margin:0 0 2px;font:800 1.1rem Poppins,sans-serif}
+.mentor-card-with{margin:0 0 12px;font-size:.86rem;font-weight:600;color:var(--ink-3,#6B5A72)}
+.mentor-card-with strong{color:var(--ink-1,#241233);font-weight:800}
+.mentor-lang-badge{display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap;border-radius:10px;padding:7px 10px;font-size:.78rem;font-weight:800;margin-bottom:14px;line-height:1.4}
+.mentor-lang-badge span{opacity:.75;font-weight:700}
+</style>
+<div class="container">
+<div class="section-head text-center mx-auto">
+<span class="eyebrow" style="justify-content:center">Our Biggest USP</span>
+<h2>One Mentor. <span class="text-gradient">Every Language.</span></h2>
+<p>Every track has its own AI mentor — and every mentor teaches in the language you're most comfortable thinking in.</p>
+</div>
+</div>
+<div class="mentor-carousel-viewport">
+<div class="mentor-carousel-track" id="mentorCarouselTrack">
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#D63AFF,#8A6BFF);--mc-solid:#D63AFF">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#D63AFF,#8A6BFF)"><img class="mentor-card-photo" src="/neel.png" alt="Neel"></div>
+<div class="mentor-card-body">
+<h4>Video Editing</h4>
+<p class="mentor-card-with">with <strong>Neel</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-video-editing.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" style="--mc-grad:linear-gradient(135deg,#FF6B6B,#FF8AC6);--mc-solid:#FF6B6B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF6B6B,#FF8AC6)"><img class="mentor-card-photo" src="/asha.png" alt="Asha"></div>
+<div class="mentor-card-body">
+<h4>Animation &amp; VFX</h4>
+<p class="mentor-card-with">with <strong>Asha</strong></p>
+<div class="mentor-lang-badge">🌐 Marathi · Telugu · Gujarati <span>+8 more</span></div>
+<a href="course-animation-vfx.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#12C48B,#5FE2B9);--mc-solid:#12C48B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#12C48B,#5FE2B9)"><img class="mentor-card-photo" src="/vikram.png" alt="Vikram"></div>
+<div class="mentor-card-body">
+<h4>Game Design</h4>
+<p class="mentor-card-with">with <strong>Vikram</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Kannada · Punjabi <span>+8 more</span></div>
+<a href="course-game-design.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" style="--mc-grad:linear-gradient(135deg,#FF9F5A,#FFB347);--mc-solid:#FF9F5A">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF9F5A,#FFB347)"><img class="mentor-card-photo" src="/meera.png" alt="Meera"></div>
+<div class="mentor-card-body">
+<h4>Digital Content Creation</h4>
+<p class="mentor-card-with">with <strong>Meera</strong></p>
+<div class="mentor-lang-badge">🌐 Tamil · Malayalam · Bengali <span>+8 more</span></div>
+<a href="course-digital-content.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#FF6B6B,#D63AFF);--mc-solid:#FF6B6B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF6B6B,#D63AFF)"><img class="mentor-card-photo" src="/aarav.png" alt="Aarav"></div>
+<div class="mentor-card-body">
+<h4>AI &amp; Creative Technology</h4>
+<p class="mentor-card-with">with <strong>Aarav</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Telugu · Urdu <span>+8 more</span></div>
+<a href="course-ai-creative-tech.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" style="--mc-grad:linear-gradient(135deg,#D63AFF,#12C48B);--mc-solid:#D63AFF">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#D63AFF,#12C48B)"><img class="mentor-card-photo" src="/diya.png" alt="Diya"></div>
+<div class="mentor-card-body">
+<h4>Entrepreneurship &amp; Freelancing</h4>
+<p class="mentor-card-with">with <strong>Diya</strong></p>
+<div class="mentor-lang-badge">🌐 Marathi · Gujarati · Punjabi <span>+8 more</span></div>
+<a href="course-entrepreneurship.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#FFB347,#D63AFF);--mc-solid:#FFB347">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FFB347,#D63AFF)"><span>✨</span></div>
+<div class="mentor-card-body">
+<h4>Future Studio</h4>
+<p class="mentor-card-with">with <strong>Kiran</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Telugu <span>+8 more</span></div>
+<a href="Future-Studio/" class="link-arrow">Explore Future Studio →</a>
+</div>
+</div>
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#E8A87C,#C97B72);--mc-solid:#E8A87C">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#E8A87C,#C97B72)"><span>🏠</span></div>
+<div class="mentor-card-body">
+<h4>Interior Design</h4>
+<p class="mentor-card-with">with <strong>Ira</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-interior-design.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" style="--mc-grad:linear-gradient(135deg,#FF8AC6,#D63AFF);--mc-solid:#FF8AC6">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF8AC6,#D63AFF)"><span>👗</span></div>
+<div class="mentor-card-body">
+<h4>Fashion Design</h4>
+<p class="mentor-card-with">with <strong>Zara</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-fashion-design.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#667EEA,#12C48B);--mc-solid:#667EEA">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#667EEA,#12C48B)"><span>🥽</span></div>
+<div class="mentor-card-body">
+<h4>XR &amp; Immersive Design</h4>
+<p class="mentor-card-with">with <strong>Rey</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-xr-immersive-design.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" style="--mc-grad:linear-gradient(135deg,#FF6B6B,#D63AFF);--mc-solid:#FF6B6B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF6B6B,#D63AFF)"><img class="mentor-card-photo" src="/aarav.png" alt="Aarav"></div>
+<div class="mentor-card-body">
+<h4>Applied AI &amp; Agent Building</h4>
+<p class="mentor-card-with">with <strong>Aarav</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Telugu · Urdu <span>+8 more</span></div>
+<a href="course-applied-ai-agents.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#FFB347,#12C48B);--mc-solid:#FFB347">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FFB347,#12C48B)"><span>🛰️</span></div>
+<div class="mentor-card-body">
+<h4>Robotics &amp; Drone Tech</h4>
+<p class="mentor-card-with">with <strong>Arjun</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-robotics-drones.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" style="--mc-grad:linear-gradient(135deg,#4C6FFF,#8A6BFF);--mc-solid:#4C6FFF">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#4C6FFF,#8A6BFF)"><span>🔭</span></div>
+<div class="mentor-card-body">
+<h4>Space &amp; Astro-Tech</h4>
+<p class="mentor-card-with">with <strong>Tara</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-space-astro-tech.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card" style="--mc-grad:linear-gradient(135deg,#5FE2B9,#12C48B);--mc-solid:#5FE2B9">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#5FE2B9,#12C48B)"><span>🌱</span></div>
+<div class="mentor-card-body">
+<h4>Climate &amp; Sustainability Tech</h4>
+<p class="mentor-card-with">with <strong>Prithvi</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-climate-sustainability-tech.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" style="--mc-grad:linear-gradient(135deg,#12C48B,#5FE2B9);--mc-solid:#12C48B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#12C48B,#5FE2B9)"><img class="mentor-card-photo" src="/vikram.png" alt="Vikram"></div>
+<div class="mentor-card-body">
+<h4>Esports &amp; Live Streaming</h4>
+<p class="mentor-card-with">with <strong>Vikram</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Kannada · Punjabi <span>+8 more</span></div>
+<a href="course-esports-streaming.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#D63AFF,#8A6BFF);--mc-solid:#D63AFF">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#D63AFF,#8A6BFF)"><img class="mentor-card-photo" src="/neel.png" alt="Neel"></div>
+<div class="mentor-card-body">
+<h4>Video Editing</h4>
+<p class="mentor-card-with">with <strong>Neel</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-video-editing.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#FF6B6B,#FF8AC6);--mc-solid:#FF6B6B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF6B6B,#FF8AC6)"><img class="mentor-card-photo" src="/asha.png" alt="Asha"></div>
+<div class="mentor-card-body">
+<h4>Animation &amp; VFX</h4>
+<p class="mentor-card-with">with <strong>Asha</strong></p>
+<div class="mentor-lang-badge">🌐 Marathi · Telugu · Gujarati <span>+8 more</span></div>
+<a href="course-animation-vfx.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#12C48B,#5FE2B9);--mc-solid:#12C48B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#12C48B,#5FE2B9)"><img class="mentor-card-photo" src="/vikram.png" alt="Vikram"></div>
+<div class="mentor-card-body">
+<h4>Game Design</h4>
+<p class="mentor-card-with">with <strong>Vikram</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Kannada · Punjabi <span>+8 more</span></div>
+<a href="course-game-design.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#FF9F5A,#FFB347);--mc-solid:#FF9F5A">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF9F5A,#FFB347)"><img class="mentor-card-photo" src="/meera.png" alt="Meera"></div>
+<div class="mentor-card-body">
+<h4>Digital Content Creation</h4>
+<p class="mentor-card-with">with <strong>Meera</strong></p>
+<div class="mentor-lang-badge">🌐 Tamil · Malayalam · Bengali <span>+8 more</span></div>
+<a href="course-digital-content.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#FF6B6B,#D63AFF);--mc-solid:#FF6B6B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF6B6B,#D63AFF)"><img class="mentor-card-photo" src="/aarav.png" alt="Aarav"></div>
+<div class="mentor-card-body">
+<h4>AI &amp; Creative Technology</h4>
+<p class="mentor-card-with">with <strong>Aarav</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Telugu · Urdu <span>+8 more</span></div>
+<a href="course-ai-creative-tech.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#D63AFF,#12C48B);--mc-solid:#D63AFF">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#D63AFF,#12C48B)"><img class="mentor-card-photo" src="/diya.png" alt="Diya"></div>
+<div class="mentor-card-body">
+<h4>Entrepreneurship &amp; Freelancing</h4>
+<p class="mentor-card-with">with <strong>Diya</strong></p>
+<div class="mentor-lang-badge">🌐 Marathi · Gujarati · Punjabi <span>+8 more</span></div>
+<a href="course-entrepreneurship.html" class="link-arrow">Explore Track →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#FFB347,#D63AFF);--mc-solid:#FFB347">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FFB347,#D63AFF)"><span>✨</span></div>
+<div class="mentor-card-body">
+<h4>Future Studio</h4>
+<p class="mentor-card-with">with <strong>Kiran</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Telugu <span>+8 more</span></div>
+<a href="Future-Studio/" class="link-arrow">Explore Future Studio →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#E8A87C,#C97B72);--mc-solid:#E8A87C">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#E8A87C,#C97B72)"><span>🏠</span></div>
+<div class="mentor-card-body">
+<h4>Interior Design</h4>
+<p class="mentor-card-with">with <strong>Ira</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-interior-design.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#FF8AC6,#D63AFF);--mc-solid:#FF8AC6">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF8AC6,#D63AFF)"><span>👗</span></div>
+<div class="mentor-card-body">
+<h4>Fashion Design</h4>
+<p class="mentor-card-with">with <strong>Zara</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-fashion-design.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#667EEA,#12C48B);--mc-solid:#667EEA">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#667EEA,#12C48B)"><span>🥽</span></div>
+<div class="mentor-card-body">
+<h4>XR &amp; Immersive Design</h4>
+<p class="mentor-card-with">with <strong>Rey</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-xr-immersive-design.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#FF6B6B,#D63AFF);--mc-solid:#FF6B6B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FF6B6B,#D63AFF)"><img class="mentor-card-photo" src="/aarav.png" alt="Aarav"></div>
+<div class="mentor-card-body">
+<h4>Applied AI &amp; Agent Building</h4>
+<p class="mentor-card-with">with <strong>Aarav</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Telugu · Urdu <span>+8 more</span></div>
+<a href="course-applied-ai-agents.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#FFB347,#12C48B);--mc-solid:#FFB347">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#FFB347,#12C48B)"><span>🛰️</span></div>
+<div class="mentor-card-body">
+<h4>Robotics &amp; Drone Tech</h4>
+<p class="mentor-card-with">with <strong>Arjun</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-robotics-drones.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#4C6FFF,#8A6BFF);--mc-solid:#4C6FFF">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#4C6FFF,#8A6BFF)"><span>🔭</span></div>
+<div class="mentor-card-body">
+<h4>Space &amp; Astro-Tech</h4>
+<p class="mentor-card-with">with <strong>Tara</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-space-astro-tech.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#5FE2B9,#12C48B);--mc-solid:#5FE2B9">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#5FE2B9,#12C48B)"><span>🌱</span></div>
+<div class="mentor-card-body">
+<h4>Climate &amp; Sustainability Tech</h4>
+<p class="mentor-card-with">with <strong>Prithvi</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Tamil · Bengali <span>+8 more</span></div>
+<a href="course-climate-sustainability-tech.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+<div class="mentor-card mentor-card--sunset" aria-hidden="true" style="--mc-grad:linear-gradient(135deg,#12C48B,#5FE2B9);--mc-solid:#12C48B">
+<div class="mentor-card-visual" style="background:linear-gradient(135deg,#12C48B,#5FE2B9)"><img class="mentor-card-photo" src="/vikram.png" alt="Vikram"></div>
+<div class="mentor-card-body">
+<h4>Esports &amp; Live Streaming</h4>
+<p class="mentor-card-with">with <strong>Vikram</strong></p>
+<div class="mentor-lang-badge">🌐 Hindi · Kannada · Punjabi <span>+8 more</span></div>
+<a href="course-esports-streaming.html" class="link-arrow">Explore Course →</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function(){
+var track = document.getElementById('mentorCarouselTrack');
+if(!track) return;
+track.addEventListener('touchstart', function(){ track.style.animationPlayState='paused'; }, {passive:true});
+track.addEventListener('touchend', function(){ track.style.animationPlayState='running'; }, {passive:true});
+})();
+</script>
+</section>
+<!-- ============ WHY WAVES4YOUTH (USP) ============ -->
+<section class="usp-section">
+<div class="container">
+<div class="section-head text-center mx-auto">
+<span class="eyebrow" style="justify-content:center">Why Waves4Youth</span>
+<h2>Built Different, <span class="text-gradient">On Purpose.</span></h2>
+</div>
+<div class="grid grid-3 usp-grid">
+<div class="usp-card">
+<div class="usp-ic">🌐</div>
+<h4>Learn In Your Language</h4>
+<p>Every course is available across 12+ Indian languages, so language is never the barrier between you and your craft.</p>
+</div>
+<div class="usp-card">
+<div class="usp-ic">🎂</div>
+<h4>No Age Barrier — Ever</h4>
+<p>From a 12-year-old picking up a camera for the first time to an 80-year-old chasing a lifelong passion — if you want to create, there's a seat for you.</p>
+</div>
+<div class="usp-card">
+<div class="usp-ic">🌟</div>
+<h4>Get Featured On Our Platform</h4>
+<p>Made something you're proud of? Submit your story and stand a chance to be featured on the Waves4Youth website for thousands of creators to see.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ SCHOOLS ============ -->
+<section id="schools">
+<div class="container">
+<div class="section-head text-center mx-auto">
+<span class="eyebrow" style="justify-content:center">Our Schools</span>
+<h2>100+ Creator Programs Across 6 Schools</h2>
+<p>Six specialised schools, one connected creator ecosystem — pick a path or explore them all.</p>
+</div>
+<div class="grid grid-3 school-grid">
+<div class="card school-card reveal">
+<div class="school-ic" style="background:linear-gradient(135deg,#D63AFF,#8A6BFF)">🎬</div>
+<h4>School of Video Editing &amp; AI Content Creation</h4>
+<p>Master editing, storytelling &amp; AI-powered content tools.</p>
+<a href="course-video-editing.html" class="link-arrow">Explore School →</a>
+</div>
+<div class="card school-card reveal">
+<div class="school-ic" style="background:linear-gradient(135deg,#FF6B6B,#FF8AC6)">✏️</div>
+<h4>School of Animation &amp; VFX</h4>
+<p>Create characters, worlds &amp; visual magic.</p>
+<a href="course-animation-vfx.html" class="link-arrow">Explore School →</a>
+</div>
+<div class="card school-card reveal">
+<div class="school-ic" style="background:linear-gradient(135deg,#12C48B,#5FE2B9)">🎮</div>
+<h4>School of Game Design</h4>
+<p>Design games, build worlds, shape player experiences.</p>
+<a href="course-game-design.html" class="link-arrow">Explore School →</a>
+</div>
+<div class="card school-card reveal">
+<div class="school-ic" style="background:linear-gradient(135deg,#FF9F5A,#FFB347)">🎥</div>
+<h4>School of Digital Content Creation</h4>
+<p>Short videos, YouTube, reels &amp; beyond.</p>
+<a href="course-digital-content.html" class="link-arrow">Explore School →</a>
+</div>
+<div class="card school-card reveal">
+<div class="school-ic" style="background:linear-gradient(135deg,#FF6B6B,#D63AFF)">🤖</div>
+<h4>School of AI &amp; Creative Technology</h4>
+<p>Use AI tools to imagine, create &amp; innovate.</p>
+<a href="course-ai-creative-tech.html" class="link-arrow">Explore School →</a>
+</div>
+<div class="card school-card reveal">
+<div class="school-ic" style="background:linear-gradient(135deg,#D63AFF,#12C48B)">🚀</div>
+<h4>School of Entrepreneurship &amp; Freelancing</h4>
+<p>Build your brand, clients &amp; creative business.</p>
+<a href="course-entrepreneurship.html" class="link-arrow">Explore School →</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ FUTURE STUDIO SCROLLER ============ -->
+<style>
+.fs-scroll-section{ padding:70px 0; }
+.fs-scroll-viewport{ overflow:hidden; margin-top:6px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
+.fs-scroll-row{ display:flex; gap:16px; width:max-content; padding:6px 4px 18px; animation:fsScroll 42s linear infinite; }
+.fs-scroll-row:hover{ animation-play-state:paused; }
+@keyframes fsScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+.fs-card{ text-decoration:none; display:block; cursor:pointer; flex:0 0 auto; width:230px; }
+.fs-card{ flex:0 0 220px; scroll-snap-align:start; text-align:center; padding:0 0 20px; overflow:hidden; }
+.fs-img{ width:100%; height:140px; object-fit:cover; border-radius:14px 14px 0 0; display:block; }
+.fs-card h4{ font-size:15px; margin:14px 18px 6px; }
+.fs-card p{ font-size:12.5px; color:var(--ink-3,#6B5E7D); margin:0 18px; }
+.fs-cta-row{ text-align:center; margin-top:8px; }
+</style>
+<section class="fs-scroll-section" id="future-studio-preview">
+<div class="container">
+<img src="assets/w4y-dream-hero.png" alt="A boy and girl dreaming of their future with Waves4Youth" style="width:100%;height:auto;border-radius:20px;display:block;margin-bottom:32px">
+<div class="section-head text-center mx-auto">
+<span class="eyebrow" style="justify-content:center">W4Y Future Studio</span>
+<h2>Your Child Dreams It. <span class="text-gradient">W4Y Helps Build It.</span></h2>
+<p>Std 6 to 12 students explore real careers through real monthly missions — before they ever have to choose one.</p>
+</div>
+<div class="fs-scroll-viewport">
+<div class="fs-scroll-row">
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-doctor-healthcare.jpg" alt="Doctor &amp; Healthcare">
+<h4>Doctor &amp; Healthcare</h4>
+<p>Medicine, surgery, healthcare AI.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-engineer-technologist.jpg" alt="Engineer &amp; Technologist">
+<h4>Engineer &amp; Technologist</h4>
+<p>Robots, EVs, software, infrastructure.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-space-aerospace.jpg" alt="Space &amp; Aerospace">
+<h4>Space &amp; Aerospace</h4>
+<p>India's next mission, your role in it.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-entrepreneur-founder.jpg" alt="Entrepreneur &amp; Founder">
+<h4>Entrepreneur &amp; Founder</h4>
+<p>Idea. Plan. Build. Impact.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-law-policy-justice.jpg" alt="Law, Policy &amp; Justice">
+<h4>Law, Policy &amp; Justice</h4>
+<p>Rights, justice, a fairer India.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-scientist-researcher.jpg" alt="Scientist &amp; Researcher">
+<h4>Scientist &amp; Researcher</h4>
+<p>Explore. Discover. Innovate.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-pilot-aviation.jpg" alt="Pilot &amp; Aviation">
+<h4>Pilot &amp; Aviation</h4>
+<p>Your future cockpit awaits.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-ca-finance-investment.jpg" alt="CA, Finance &amp; Investment">
+<h4>CA, Finance &amp; Investment</h4>
+<p>Numbers today. Wealth tomorrow.</p>
+</a>
+<!-- duplicate set, exact copy, so the marquee loop is seamless at -50% -->
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-doctor-healthcare.jpg" alt="">
+<h4>Doctor &amp; Healthcare</h4>
+<p>Medicine, surgery, healthcare AI.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-engineer-technologist.jpg" alt="">
+<h4>Engineer &amp; Technologist</h4>
+<p>Robots, EVs, software, infrastructure.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-space-aerospace.jpg" alt="">
+<h4>Space &amp; Aerospace</h4>
+<p>India's next mission, your role in it.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-entrepreneur-founder.jpg" alt="">
+<h4>Entrepreneur &amp; Founder</h4>
+<p>Idea. Plan. Build. Impact.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-law-policy-justice.jpg" alt="">
+<h4>Law, Policy &amp; Justice</h4>
+<p>Rights, justice, a fairer India.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-scientist-researcher.jpg" alt="">
+<h4>Scientist &amp; Researcher</h4>
+<p>Explore. Discover. Innovate.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-pilot-aviation.jpg" alt="">
+<h4>Pilot &amp; Aviation</h4>
+<p>Your future cockpit awaits.</p>
+</a>
+<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
+<img class="fs-img" src="Future-Studio/assets/career-images/career-ca-finance-investment.jpg" alt="">
+<h4>CA, Finance &amp; Investment</h4>
+<p>Numbers today. Wealth tomorrow.</p>
+</a>
+</div>
+</div>
+<div class="fs-cta-row">
+<a href="Future-Studio/index.html" class="btn btn-primary">Explore All 16 Futures →</a>
+</div>
+</div>
+</section>
+<!-- ============ JOURNEY ============ -->
+<section class="journey-section">
+<div class="container journey-grid">
+<div class="journey-copy">
+<span class="eyebrow">Your Journey, Our University</span>
+<h2>From <span class="text-gradient">Learning</span> to <span class="text-gradient">Earning</span></h2>
+<p>A structured learning journey designed to turn your passion into a successful career.</p>
+<a href="course-video-editing.html" class="link-arrow">Explore Learning Path →</a>
+</div>
+<div class="journey-steps">
+<div class="jstep reveal"><span class="jnum">01</span><div><h4>Learn</h4><p>Industry-aligned curriculum with expert mentors and hands-on learning.</p></div></div>
+<div class="jstep reveal"><span class="jnum">02</span><div><h4>Create</h4><p>Work on real projects, build your portfolio and bring your ideas to life.</p></div></div>
+<div class="jstep reveal"><span class="jnum">03</span><div><h4>Graduate</h4><p>Earn recognised certifications and a Digital University degree.</p></div></div>
+<div class="jstep reveal"><span class="jnum">04</span><div><h4>Earn</h4><p>Get career support, internships and job opportunities.</p></div></div>
+<div class="jstep reveal"><span class="jnum">05</span><div><h4>Lead</h4><p>Become a creator, entrepreneur and leader of tomorrow.</p></div></div>
+</div>
+</div>
+<div class="container">
+<div class="feature-row">
+<div class="fitem">📅 <span>Semester-based Learning</span></div>
+<div class="fitem">🪪 <span>Digital ID Card</span></div>
+<div class="fitem">🕒 <span>Flexible Learning, Anytime</span></div>
+<div class="fitem">💼 <span>Industry Projects</span></div>
+<div class="fitem">🧑‍🏫 <span>1:1 Mentorship</span></div>
+<div class="fitem">🏅 <span>Global Certifications</span></div>
+</div>
+</div>
+</section>
+<!-- ============ LEARN IN YOUR LANGUAGE ============ -->
+<section class="lang-section">
+<div class="container">
+<div class="lang-card">
+<div class="lang-copy">
+<span class="eyebrow">One Laptop. Unlimited Possibilities.</span>
+<h2>Learn in Your <span class="text-gradient">Language.</span> Build Your Future.</h2>
+<p>100% online. In your language across 12+ Indian languages. Portfolio-first, so you graduate with proof, not just a certificate.</p>
+</div>
+<div class="grid grid-4 lang-stats">
+<div><div class="num">50,000+</div><div class="lbl">Creators Learning</div></div>
+<div><div class="num">100+</div><div class="lbl">Expert Mentors</div></div>
+<div><div class="num">12+</div><div class="lbl">Indian Languages</div></div>
+<div><div class="num">200+</div><div class="lbl">Industry Partners</div></div>
+</div>
+</div>
+<div class="how-it-works">
+<h3 class="text-center">Your Journey From Learning to Earning</h3>
+<div class="hiw-row">
+<div class="hiw-step"><span class="hiw-ic">📘</span><p>Learn</p></div>
+<div class="hiw-arrow">→</div>
+<div class="hiw-step"><span class="hiw-ic">✏️</span><p>Create</p></div>
+<div class="hiw-arrow">→</div>
+<div class="hiw-step"><span class="hiw-ic">🖥️</span><p>Showcase</p></div>
+<div class="hiw-arrow">→</div>
+<div class="hiw-step"><span class="hiw-ic">🤝</span><p>Get Discovered</p></div>
+<div class="hiw-arrow">→</div>
+<div class="hiw-step"><span class="hiw-ic">💰</span><p>Earn</p></div>
+</div>
+</div>
+<style>
+.testimonial-scroll-wrap{ margin-top:20px; }
+.testimonial-scroll-row{ display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 4px 18px; -webkit-overflow-scrolling:touch; }
+.testimonial-scroll-row::-webkit-scrollbar{ height:6px; }
+.testimonial-scroll-row::-webkit-scrollbar-thumb{ background:rgba(0,0,0,.15); border-radius:99px; }
+.testimonial-scroll-row .testimonial-card{ flex:0 0 300px; scroll-snap-align:start; margin:0; }
+</style>
+<div class="testimonial-scroll-wrap">
+<div class="testimonial-scroll-row">
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. Waves4Youth changed my life. I went from beginner to a professional video editor and now I work with clients from different countries."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#D63AFF,#FF6B6B);width:44px;height:44px;font-size:1rem">RS</span>
+<div>
+<strong>Rohit Sharma</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">4.9/5 · Video Editor</span></div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. The Future Studio missions helped me actually figure out what I want to become instead of just guessing."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#FF6B6B,#F6B84B);width:44px;height:44px;font-size:1rem">AK</span>
+<div>
+<strong>Ananya Kulkarni</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">5.0/5 · Std 10 Student</span></div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. The 1:1 mentorship made all the difference — I could ask questions I was too shy to ask in school."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#4A90D9,#D63AFF);width:44px;height:44px;font-size:1rem">SP</span>
+<div>
+<strong>Siddharth Patil</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">4.8/5 · Std 9 Student</span></div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. I built my first real portfolio project through W4Y and it actually got noticed."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#2ECC71,#4A90D9);width:44px;height:44px;font-size:1rem">MI</span>
+<div>
+<strong>Meher Iyer</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">4.9/5 · Content Creator</span></div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. Learning in my own language made everything click so much faster."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#F6B84B,#FF6B6B);width:44px;height:44px;font-size:1rem">RV</span>
+<div>
+<strong>Riya Verma</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">5.0/5 · Std 8 Student</span></div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. As a parent, I finally feel like my son has direction instead of just following the crowd."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#D63AFF,#4A90D9);width:44px;height:44px;font-size:1rem">PN</span>
+<div>
+<strong>Priya Nair</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">4.9/5 · Parent</span></div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. The global certification gave me the confidence to apply for internships early."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#FF6B6B,#D63AFF);width:44px;height:44px;font-size:1rem">AD</span>
+<div>
+<strong>Arjun Deshmukh</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">4.8/5 · Std 11 Student</span></div>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal">
+<p>"PLACEHOLDER — replace with a real quote. What stood out was how practical everything was — real missions, not just theory."</p>
+<div class="flex items-center gap-12">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#4A90D9,#2ECC71);width:44px;height:44px;font-size:1rem">TS</span>
+<div>
+<strong>Tanvi Shah</strong>
+<div class="stars">★★★★★ <span style="color:var(--ink-3)">5.0/5 · Std 12 Student</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ PRICING ============ -->
+<section id="admissions" class="pricing-section">
+<div class="container">
+<div class="section-head text-center mx-auto">
+<span class="eyebrow" style="justify-content:center">Choose Your Plan</span>
+<h2>Affordable Learning for Everyone</h2>
+</div>
+<style>
+.pricing-grid.grid-5{ grid-template-columns:repeat(5,1fr); gap:18px; }
+@media (max-width:1100px){ .pricing-grid.grid-5{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:720px){ .pricing-grid.grid-5{ grid-template-columns:1fr; } }
+</style>
+<div class="grid grid-5 pricing-grid">
+<div class="card price-card reveal">
+<h4>W4Y Access</h4>
+<div class="price">Free</div>
+<p class="small">Start your journey. Explore. Get inspired.</p>
+<ul class="check-list">
+<li>Career Guidance</li><li>Sample Lessons</li><li>Community Access</li><li>Webinars &amp; Challenges</li>
+</ul>
+<a href="#" class="btn btn-outline btn-block btn-sm">Get Started</a>
+</div>
+<div class="card price-card reveal">
+<h4>W4Y Explorer</h4>
+<div class="price">₹199<span>/month</span></div>
+<p class="small">Discover. Learn. Get started.</p>
+<ul class="check-list">
+<li>Selected Beginner Lessons</li><li>Creator Challenges</li><li>Community Access</li><li>Digital Badges</li>
+</ul>
+<a href="#" class="btn btn-outline btn-block btn-sm">Get Started</a>
+</div>
+<div class="card price-card is-popular reveal">
+<span class="badge badge-pink pop-badge">Most Popular</span>
+<h4>W4Y Creator</h4>
+<div class="price">₹999<span>/month</span></div>
+<p class="small">Build skills. Create portfolio.</p>
+<ul class="check-list">
+<li>Full Access to Missions</li><li>Projects &amp; Assignments</li><li>Certificates</li><li>AI Mentor (Limited)</li>
+</ul>
+<a href="#" class="btn btn-primary btn-block btn-sm">Get Started</a>
+</div>
+<div class="card price-card reveal">
+<h4>W4Y Sprint</h4>
+<div class="price">₹4,999<span>one-time</span></div>
+<p class="small">Go all-in on one course, 3 months.</p>
+<ul class="check-list">
+<li>1 Course, Full Access</li><li>Structured 3-Month Pace</li><li>Built-in Milestones</li><li>Certificates</li>
+</ul>
+<a href="#" class="btn btn-outline btn-block btn-sm">Get Started</a>
+</div>
+<div class="card price-card reveal">
+<h4>W4Y Certified</h4>
+<div class="price">₹9,999<span>one-time</span></div>
+<p class="small">Finish with a real certificate.</p>
+<ul class="check-list">
+<li>1 Course, Full Year</li><li>Completion Certificate</li><li>Everything in Sprint</li><li>Priority Support</li>
+</ul>
+<a href="#" class="btn btn-outline btn-block btn-sm">Get Started</a>
+</div>
+</div>
+<div class="pro-banner reveal">
+<div>
+<span class="badge badge-orange">Professional Creator Programs</span>
+<h4>One-time programs — deep specialisation with mentorship &amp; industry projects</h4>
+<p class="small muted">Starting at ₹9,999</p>
+</div>
+<a href="course-video-editing.html" class="btn btn-amber">Explore Programs →</a>
+</div>
+</div>
+</section>
+<!-- ============ FUTURE CTA ============ -->
+<section class="future-cta">
+<div class="container future-grid">
+<div>
+<h2>Future is <span class="text-gradient">Creative.</span><br>You are the <span class="text-gradient">Future.</span></h2>
+<p>Join a nationwide community of creators building their portfolios, their brands, and their careers — one project at a time.</p>
+<a href="student-projects.html" class="btn btn-primary">See What's Possible →</a>
+</div>
+<div class="impact-card reveal">
+<h4>Our Impact</h4>
+<p>For every 10 paid learners, we sponsor 1 deserving learner.</p>
+<div class="impact-stat">Education should reach everyone.</div>
+</div>
+</div>
+</section>
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="about">
+<div class="container">
+<div class="footer-top">
+<div class="footer-brand">
+<a href="index.html" class="brand">
+<img src="assets/logo-mark.png" alt="Waves4Youth logo">
+<span class="brand-text"><span class="name">WAVES<span>4</span>YOUTH</span><span class="tag">India's Digital Creator Campus</span></span>
+</a>
+<p>Empowering a new generation of creators through accessible, affordable and future-ready education.</p>
+<div class="hero-trust" style="margin-top:14px">
+<div class="avatars">
+<span class="avatar-initial" style="background:linear-gradient(135deg,#D63AFF,#8A6BFF)">A</span>
+<span class="avatar-initial" style="background:linear-gradient(135deg,#FF6B6B,#FF8AC6)">R</span>
+<span class="avatar-initial" style="background:linear-gradient(135deg,#FF9F5A,#FFB347)">K</span>
+<span class="avatar-count">10K+</span>
+</div>
+<div class="stars">★★★★★ <strong style="color:var(--ink-1)">4.8/5</strong> <span style="color:var(--ink-3)">(1200+ Reviews)</span></div>
+</div>
+<div class="social-row">
+<a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="YouTube">▶</a><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="X">✕</a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Explore</h4>
+<ul><li><a href="index.html#schools">All Programs</a></li><li><a href="mentors.html">Career Missions</a></li><li><a href="index.html#schools">Free Programs</a></li><li><a href="#">Creator Accelerator</a></li></ul>
+</div>
+<div class="footer-col">
+<h4>Resources</h4>
+<ul><li><a href="welcome-kit.html">Welcome Kit</a></li><li><a href="student-projects.html">Student Projects</a></li><li><a href="#">Blog</a></li><li><a href="mailto:support@waves4youth.in">Help Center</a></li></ul>
+</div>
+<div class="footer-col">
+<h4>Company</h4>
+<ul><li><a href="#about">About Us</a></li><li><a href="mailto:careers@waves4youth.in">Careers</a></li><li><a href="Future-Studio/">Partners</a></li><li><a href="mailto:hello@waves4youth.in">Contact Us</a></li></ul>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<ul><li><a href="terms.html">Terms of Use</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="refund.html">Refund Policy</a></li></ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© <span data-year></span> Waves4Youth. All rights reserved.</span>
+<span>Made with ❤️ in India 🇮🇳</span>
+</div>
+</div>
+</footer>
+<script src="js/script.js"></script>
+<div class="apply-overlay" id="applyOverlay">
+<div class="apply-modal">
+<button class="apply-close" onclick="closeApplyModal()">✕</button>
+<div id="applyFormWrap">
+<h3>Apply to Waves4Youth</h3>
+<p class="apply-sub">Tell us a little about the student — we'll follow up with next steps.</p>
+<form id="applyForm" onsubmit="submitApplication(event)">
+<label>Student's Name</label>
+<input type="text" name="studentName" required>
+<label>Grade / Standard</label>
+<select name="grade" required>
+<option value="">Select grade...</option>
+<option>Std 5</option><option>Std 6</option><option>Std 7</option>
+<option>Std 8</option><option>Std 9</option><option>Std 10</option>
+</select>
+<label>Program of Interest</label>
+<select name="program" required>
+<option value="">Select a program...</option>
+<option>Video Editing &amp; AI Content Creation</option>
+<option>Animation &amp; VFX</option>
+<option>Game Design &amp; Development</option>
+<option>Digital Content Creation</option>
+<option>AI &amp; Creative Technology</option>
+<option>Entrepreneurship &amp; Freelancing</option>
+</select>
+<label>Parent/Guardian Name</label>
+<input type="text" name="parentName" required>
+<label>Parent/Guardian Phone</label>
+<input type="tel" name="parentPhone" required>
+<label>Parent/Guardian Email</label>
+<input type="email" name="parentEmail" required>
+<button type="submit" class="btn btn-primary btn-block" style="margin-top:16px">Submit Application →</button>
+</form>
+</div>
+<div id="applySuccess" style="display:none;text-align:center;padding:20px 0">
+<div style="font-size:44px;margin-bottom:10px">🎉</div>
+<h3>Application received!</h3>
+<p class="apply-sub">We'll reach out to the parent/guardian within 1-2 business days with next steps.</p>
+<button class="btn btn-outline" onclick="closeApplyModal()">Close</button>
+</div>
+</div>
+</div>
+<style>
+.apply-overlay{position:fixed;inset:0;background:rgba(36,18,51,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.apply-overlay.active{display:flex}
+.apply-modal{background:#fff;border-radius:20px;padding:28px 24px;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
+.apply-close{position:absolute;top:14px;right:14px;background:none;border:0;font-size:18px;cursor:pointer;color:#6B5A72}
+.apply-modal h3{font:800 1.3rem Poppins,sans-serif;margin-bottom:6px}
+.apply-sub{color:#6B5A72;font-size:.85rem;margin-bottom:16px}
+.apply-modal label{display:block;font-weight:700;font-size:.8rem;margin:12px 0 5px}
+.apply-modal input,.apply-modal select{width:100%;border:2px solid #F0E0D0;border-radius:10px;padding:10px 12px;font-family:inherit;font-size:.9rem}
+</style>
+<script>
+function openApplyModal(e){ if(e) e.preventDefault(); document.getElementById('applyOverlay').classList.add('active'); }
+function closeApplyModal(){
+document.getElementById('applyOverlay').classList.remove('active');
+document.getElementById('applyForm').style.display = '';
+document.getElementById('applyFormWrap').style.display = '';
+document.getElementById('applySuccess').style.display = 'none';
+document.getElementById('applyForm').reset();
+}
+emailjs.init("YOUR_PUBLIC_KEY");
+async function submitApplication(e){
+e.preventDefault();
+const form = e.target;
+const payload = Object.fromEntries(new FormData(form).entries());
+try{
+const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+const firebaseConfig = {
+apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+authDomain: "waves4youth-4f239.firebaseapp.com",
+projectId: "waves4youth-4f239",
+storageBucket: "waves4youth-4f239.firebasestorage.app",
+messagingSenderId: "828101805925",
+appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+await addDoc(collection(db, "studentApplications"), { ...payload, status: "new", submittedAt: serverTimestamp() });
+emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+  form_type: "New Application", name: payload.studentName, email: payload.parentEmail,
+  phone: payload.parentPhone, track: payload.program, grade: payload.grade,
+  extra: "Parent/Guardian: " + payload.parentName
+}).catch(err => console.error("EmailJS error:", err));
+}catch(err){
+console.error("Could not save application to Firestore:", err);
+localStorage.setItem('w4y_pending_application', JSON.stringify(payload));
+}
+document.getElementById('applyFormWrap').style.display = 'none';
+document.getElementById('applySuccess').style.display = 'block';
+}
+</script>
+<!-- ============================================================
+W4Y JOURNEY — Motion Comic Player
+Drop this block into index.html (before </body>), then trigger
+it by calling openW4YJourney() from any button/link.
+Images expected at: assets/w4y-journey/scene1.png ... scene6.png
+============================================================ -->
+<style>
+#w4yJourneyOverlay{position:fixed;inset:0;background:rgba(6,4,14,.95);display:none;align-items:center;justify-content:center;z-index:99999;padding:20px}
+#w4yJourneyOverlay.active{display:flex}
+.w4yj-box{width:100%;max-width:900px;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+.w4yj-stage{position:relative;width:100%;aspect-ratio:512/373;background:#000;overflow:hidden}
+.w4yj-frame{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+.w4yj-frame.active{opacity:1}
+.w4yj-frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);animation:w4yjPan var(--dur,10s) linear forwards}
+@keyframes w4yjPan{
+0%{transform:scale(1.12) translate(1%,1%)}
+100%{transform:scale(1.0) translate(-1%,-1%)}
+}
+.w4yj-progress-row{display:flex;gap:5px;padding:12px 16px 0}
+.w4yj-progress-seg{flex:1;height:3px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden}
+.w4yj-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#FF6B6B,#8A6BFF);border-radius:99px}
+.w4yj-footer{display:flex;align-items:center;justify-content:space-between;padding:12px 16px 16px;color:#fff;font-family:Inter,sans-serif}
+.w4yj-title{font-family:Poppins,sans-serif;font-weight:700;font-size:14px;opacity:.85}
+.w4yj-controls{display:flex;gap:8px}
+.w4yj-btn{background:rgba(255,255,255,.1);border:none;color:#fff;width:34px;height:34px;border-radius:999px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.w4yj-btn:hover{background:rgba(255,255,255,.22)}
+.w4yj-replay{display:none}
+.w4yj-trigger{display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:rgba(255,255,255,.9);border-radius:999px;padding:8px 16px;font-family:Inter,sans-serif;font-weight:600;font-size:13px;color:#1a1330;box-shadow:0 10px 26px rgba(0,0,0,.25);animation:w4yjBob 2.4s ease-in-out infinite}
+@keyframes w4yjBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.w4yj-caption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;background:linear-gradient(0deg,rgba(0,0,0,.8),transparent);color:#fff;font-family:Inter,sans-serif;font-size:13.5px;font-weight:600;line-height:1.5;text-align:center;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.w4yj-caption.visible{opacity:1}
+.w4yj-narration-row{display:flex;align-items:center;gap:8px;padding:12px 16px 0}
+.w4yj-mute-btn{width:32px;height:32px;font-size:13px}
+.w4yj-lang-select{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px;font-size:12px;font-family:Inter,sans-serif;cursor:pointer;outline:none}
+.w4yj-lang-select option{color:#1a1330}
+.w4yj-voice-note{font-size:10.5px;color:rgba(255,255,255,.45);font-family:Inter,sans-serif;margin-left:auto}
+</style>
+<div id="w4yJourneyOverlay" onclick="if(event.target===this)closeW4YJourney()">
+<div class="w4yj-box">
+<div class="w4yj-stage" id="w4yjStage">
+<video id="w4yjVideo" src="assets/w4y-story.mp4" playsinline controls style="width:100%;height:100%;object-fit:contain;background:#000"></video>
+</div>
+<div class="w4yj-narration-row">
+<select id="w4yjLangSelect" class="w4yj-lang-select" onchange="changeW4YLang(this.value)" aria-label="Narration language">
+<option value="en">English</option>
+<option value="hi">हिंदी (coming soon)</option>
+<option value="mr">मराठी (coming soon)</option>
+</select>
+<span class="w4yj-voice-note" id="w4yjVoiceNote"></span>
+</div>
+<div class="w4yj-footer">
+<span class="w4yj-title">The W4Y Journey</span>
+<div class="w4yj-controls">
+<button class="w4yj-btn" onclick="closeW4YJourney()" aria-label="Close">✕</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+(function(){
+window.openW4YJourney = function(){
+document.getElementById('w4yJourneyOverlay').classList.add('active');
+document.body.style.overflow = 'hidden';
+const vid = document.getElementById('w4yjVideo');
+vid.currentTime = 0;
+vid.play();
+};
+window.closeW4YJourney = function(){
+document.getElementById('w4yJourneyOverlay').classList.remove('active');
+document.body.style.overflow = '';
+document.getElementById('w4yjVideo').pause();
+};
+window.changeW4YLang = function(lang){
+const vid = document.getElementById('w4yjVideo');
+const note = document.getElementById('w4yjVoiceNote');
+if(lang === 'en'){
+vid.muted = false;
+note.textContent = '';
+} else {
+// Hindi/Marathi narration not recorded yet — mute original audio rather than
+// silently pretend it's working. Swap this in once scripts are written.
+vid.muted = true;
+note.textContent = lang === 'hi'
+? 'Hindi narration coming soon — video muted for now.'
+: 'Marathi narration coming soon — video muted for now.';
+}
+};
+})();
+</script>
+</body>
+</html>
