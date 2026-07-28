@@ -1194,79 +1194,184 @@ export const PROFESSION_CATALOG = {
   "doctor-healthcare": {
     title: "Doctor & Healthcare",
     icon: "🩺",
-    months: [
-      { label: "What doctors and healthcare workers do", tasks: [
-        { type: "Observe", icon: "🔭", title: "A time healthcare helped you", desc: "Think of a time a doctor, nurse, or health worker genuinely helped you or your family." },
-        { type: "Quiz", icon: "📝", title: "Roles in healthcare", desc: "Quiz on the different roles in a hospital or clinic." },
-        { type: "Build", icon: "🔨", title: "What did they actually do?", desc: "Write down exactly what that person did that helped." },
-        { type: "Reflect", icon: "💭", title: "What draws you to healthcare?", desc: "What about caring for others' health interests you?" }
-      ]},
-      { label: "Prevention vs treatment", tasks: [
-        { type: "Observe", icon: "🔭", title: "A prevention habit", desc: "Notice a health habit in your life meant to prevent illness, not treat it." },
-        { type: "Quiz", icon: "📝", title: "Prevention vs treatment basics", desc: "Quiz on the difference between preventing illness and treating it." },
-        { type: "Build", icon: "🔨", title: "Design a prevention habit", desc: "Design a simple daily habit that could help prevent a common illness." },
-        { type: "Reflect", icon: "💭", title: "Which interests you more?", desc: "Are you more drawn to helping people stay well, or treating them once they're sick?" }
-      ]},
-      { label: "How the body works, basics", tasks: [
-        { type: "Observe", icon: "🔭", title: "Notice your own body", desc: "Notice your heartbeat or breathing after light exercise." },
-        { type: "Quiz", icon: "📝", title: "Body systems basics", desc: "Quiz on the major systems of the human body." },
-        { type: "Build", icon: "🔨", title: "Explain one system simply", desc: "Explain how one body system works, in your own words." },
-        { type: "Reflect", icon: "💭", title: "What amazes you?", desc: "What about the human body amazes you most?" }
-      ]},
-      { label: "Why people get sick", tasks: [
-        { type: "Observe", icon: "🔭", title: "A common illness", desc: "Think of a common illness you or someone you know has had." },
-        { type: "Quiz", icon: "📝", title: "Why we fall ill, basics", desc: "Quiz on common causes of illness (germs, lifestyle, environment)." },
-        { type: "Build", icon: "🔨", title: "Explain the cause", desc: "Explain what likely caused that illness, in your own words." },
-        { type: "Reflect", icon: "💭", title: "What could prevent it?", desc: "What could have been done to prevent it?" }
-      ]},
-      { label: "India's healthcare landmarks", tasks: [
-        { type: "Observe", icon: "🔭", title: "Research an Indian healthcare story", desc: "Research a significant moment in Indian medicine or public health (a vaccine drive, an institution)." },
-        { type: "Quiz", icon: "📝", title: "Facts about it", desc: "Quiz on what you researched." },
-        { type: "Build", icon: "🔨", title: "Explain it simply", desc: "Explain what you learned in your own words." },
-        { type: "Reflect", icon: "💭", title: "Why it mattered", desc: "Why do you think this moment mattered for India?" }
-      ]},
-      { label: "Diagnosis — figuring out what's wrong", tasks: [
-        { type: "Observe", icon: "🔭", title: "A time symptoms were confusing", desc: "Think of a time it was hard to tell what was actually wrong with someone." },
-        { type: "Quiz", icon: "📝", title: "Diagnosis basics", desc: "Quiz on how doctors narrow down what's causing symptoms." },
-        { type: "Build", icon: "🔨", title: "Practice the logic", desc: "Given a simple set of symptoms, write your best guess reasoning (not a real diagnosis, just the thinking process)." },
-        { type: "Reflect", icon: "💭", title: "What's hard about this?", desc: "What do you think is hardest about diagnosing something correctly?" }
-      ]},
-      { label: "Compassion in healthcare", tasks: [
-        { type: "Observe", icon: "🔭", title: "A moment of real care", desc: "Think of a time someone showed real compassion while helping you or someone else." },
-        { type: "Quiz", icon: "📝", title: "Why bedside manner matters", desc: "Quiz on why how a doctor communicates matters as much as their skill." },
-        { type: "Build", icon: "🔨", title: "Write a caring explanation", desc: "Write how you'd gently explain a scary diagnosis to a worried patient." },
-        { type: "Reflect", icon: "💭", title: "Could you stay calm?", desc: "Do you think you could stay calm and kind in a stressful medical moment?" }
-      ]},
-      { label: "Healthcare technology", tasks: [
-        { type: "Observe", icon: "🔭", title: "A piece of medical technology", desc: "Research one piece of medical technology (X-ray, MRI, or a health app)." },
-        { type: "Quiz", icon: "📝", title: "Facts about it", desc: "Quiz on how that technology actually helps doctors." },
-        { type: "Build", icon: "🔨", title: "Explain it simply", desc: "Explain what you learned in your own words." },
-        { type: "Reflect", icon: "💭", title: "What's next?", desc: "What medical technology do you wish existed?" }
-      ]},
-      { label: "Public health, not just individual care", tasks: [
-        { type: "Observe", icon: "🔭", title: "A public health message", desc: "Notice a public health message you've seen (vaccination, hygiene, awareness)." },
-        { type: "Quiz", icon: "📝", title: "Public health basics", desc: "Quiz on how public health differs from treating one patient at a time." },
-        { type: "Build", icon: "🔨", title: "Design a health campaign", desc: "Design a simple awareness campaign for a health issue you care about." },
-        { type: "Reflect", icon: "💭", title: "Individual care or population health?", desc: "Would you rather treat individual patients, or work on health for entire communities?" }
-      ]},
-      { label: "Careers in healthcare", tasks: [
-        { type: "Observe", icon: "🔭", title: "Research 3 healthcare careers", desc: "Research what a doctor, a nurse, and a healthcare researcher each do." },
-        { type: "Quiz", icon: "📝", title: "Matching roles", desc: "Quiz matching healthcare careers to their day-to-day work." },
-        { type: "Build", icon: "🔨", title: "Pick and justify", desc: "Pick the one that interests you most, and explain why." },
-        { type: "Reflect", icon: "💭", title: "Direct care or research?", desc: "Would you rather treat patients directly, or research new treatments?" }
-      ]},
-      { label: "Path to becoming a doctor", tasks: [
-        { type: "Observe", icon: "🔭", title: "Research NEET", desc: "Research what NEET is and how the path to medical school works in India." },
-        { type: "Quiz", icon: "📝", title: "Facts about the path", desc: "Quiz on the NEET exam and medical college pathway." },
-        { type: "Build", icon: "🔨", title: "Write your roadmap", desc: "Write your own rough roadmap from now to a healthcare career." },
-        { type: "Reflect", icon: "💭", title: "What's in your way?", desc: "What's the biggest thing standing between you and this path today?" }
-      ]},
-      { label: "Your healthcare identity", tasks: [
-        { type: "Observe", icon: "🔭", title: "Look back at the year", desc: "Look back at all 11 months — pick your favorite task." },
-        { type: "Quiz", icon: "📝", title: "Year recap", desc: "Quiz recapping the year's key concepts." },
-        { type: "Build", icon: "🔨", title: "Your healthcare summary", desc: "Build a one-page \"This is the healthcare professional I could become\" summary." },
-        { type: "Reflect", icon: "💭", title: "A message to your future self", desc: "Write a message to your Std 12 self about this year." }
-      ]}
-    ]
+    // This profession now uses the grade-banded system: different content per
+    // grade, some tasks using visual "engine" mini-games (see mission-engines.js)
+    // instead of plain text submission. Grades 7-12 to follow this same pattern.
+    grades: {
+      "6": {
+        band: "Explorer",
+        bandTagline: "Pure curiosity, zero stakes — every tap is rewarded.",
+        months: [
+          { label: "Meet Your Heart", tasks: [
+            { engine: "tap-discover", icon: "🫀", title: "Explore your heart", data: { visual: "🫀", hotspots: [
+              { label: "Left side", fact: "This side pumps blood full of oxygen out to your whole body! 💨" },
+              { label: "Right side", fact: "This side collects blood coming back from your body to refill it! 🔄" },
+              { label: "Bottom", fact: "Whoosh! This is the strongest pumping part of all! 💪" }
+            ]}},
+            { engine: "build-match", icon: "🫀", title: "Match the heart's jobs", data: { noStakes: true, zones: [
+              { id: "pump", label: "Pumps blood" }, { id: "oxygen", label: "Carries oxygen" }, { id: "beat", label: "Beats all day" }
+            ], chips: ["pump","oxygen","beat"] }},
+            { type: "Quiz", icon: "📝", title: "Heart basics", desc: "Quiz on what the heart does for your body." },
+            { type: "Reflect", icon: "💭", title: "What surprised you?", desc: "What's one thing about your heart that surprised you today?" }
+          ]},
+          { label: "Meet Your Bones", tasks: [
+            { engine: "build-match", icon: "🦴", title: "Build a skeleton", data: { noStakes: true, zones: [
+              { id: "skull", label: "💀 Skull" }, { id: "ribcage", label: "🦴 Ribcage" }, { id: "legs", label: "🦵 Leg bones" }
+            ], chips: ["skull","ribcage","legs"], facts: {
+              skull: "Your skull protects your brain — like a built-in helmet! 🪖",
+              ribcage: "Your ribs form a cage to keep your heart and lungs safe! 🛡️",
+              legs: "Your leg bones are some of the strongest in your whole body! 🏃"
+            }}},
+            { engine: "tap-discover", icon: "🦴", title: "Why bones matter", data: { visual: "🦴", hotspots: [
+              { label: "Strength", fact: "Bones are light but incredibly strong — stronger than some steel by weight!" },
+              { label: "Growth", fact: "You have more bones as a baby than as an adult — some fuse together as you grow!" },
+              { label: "Movement", fact: "Bones work with muscles to let you run, jump, and dance!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Skeleton basics", desc: "Quiz on what your skeleton does for you." },
+            { type: "Reflect", icon: "💭", title: "Favorite bone fact?", desc: "What's your favorite thing you learned about bones today?" }
+          ]},
+          { label: "Meet Your Lungs", tasks: [
+            { engine: "tap-discover", icon: "🫁", title: "Explore your lungs", data: { visual: "🫁", hotspots: [
+              { label: "Breathing in", fact: "When you breathe in, your lungs fill up with fresh air full of oxygen!" },
+              { label: "Breathing out", fact: "When you breathe out, you release air your body doesn't need anymore!" },
+              { label: "All day, every day", fact: "You breathe about 20,000 times a day without even thinking about it!" }
+            ]}},
+            { engine: "build-match", icon: "🫁", title: "Air in, air out", data: { noStakes: true, zones: [
+              { id: "in", label: "Breathing IN" }, { id: "out", label: "Breathing OUT" }
+            ], chips: ["in","out"], facts: { in: "Fresh oxygen enters your body!", out: "Used air leaves your body!" }}},
+            { type: "Quiz", icon: "📝", title: "Lung basics", desc: "Quiz on why breathing matters." },
+            { type: "Reflect", icon: "💭", title: "Notice your breathing", desc: "Take 3 deep breaths right now — how does it feel?" }
+          ]},
+          { label: "Germs vs. Defenders", tasks: [
+            { engine: "build-match", icon: "🛡️", title: "Match germ to defender", data: { noStakes: true, zones: [
+              { id: "wash", label: "🦠 Sneeze germs" }, { id: "cut", label: "🦠 Cut on skin" }, { id: "cold", label: "🦠 Cold virus" }
+            ], chips: ["wash","cut","cold"], facts: {
+              wash: "Washing hands is your best defender against sneeze germs! 🧼",
+              cut: "Your skin and white blood cells team up to heal a cut! 🩹",
+              cold: "Your immune system's white blood cells fight off cold viruses! 🛡️"
+            }}},
+            { engine: "tap-discover", icon: "🛡️", title: "Meet your defenders", data: { visual: "🛡️", hotspots: [
+              { label: "White blood cells", fact: "These are your body's tiny superhero soldiers fighting germs!" },
+              { label: "Skin", fact: "Your skin is the first wall keeping germs out!" },
+              { label: "Fever", fact: "A fever is your body turning up the heat to fight germs faster!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Immune system basics", desc: "Quiz on how your body fights off illness." },
+            { type: "Reflect", icon: "💭", title: "Your body, the hero", desc: "Does it feel cool knowing your body has its own defenders? Why?" }
+          ]},
+          { label: "Your Five Senses", tasks: [
+            { engine: "tap-discover", icon: "👀", title: "Explore your senses", data: { visual: "✋", hotspots: [
+              { label: "👀 Sight", fact: "Your eyes send pictures to your brain faster than any camera!" },
+              { label: "👂 Hearing", fact: "Your ears can tell the difference between thousands of sounds!" },
+              { label: "✋ Touch", fact: "Your skin can feel a feather landing on it — that's how sensitive it is!" }
+            ]}},
+            { engine: "build-match", icon: "👃", title: "Match sense to body part", data: { noStakes: true, zones: [
+              { id: "see", label: "👁️ Eyes" }, { id: "smell", label: "👃 Nose" }, { id: "taste", label: "👅 Tongue" }
+            ], chips: ["see","smell","taste"], facts: { see: "Sight!", smell: "Smell!", taste: "Taste!" }}},
+            { type: "Quiz", icon: "📝", title: "Senses basics", desc: "Quiz on your five senses." },
+            { type: "Reflect", icon: "💭", title: "Favorite sense?", desc: "If you had to pick one sense as your favorite, which would it be and why?" }
+          ]},
+          { label: "A Doctor's Toolkit", tasks: [
+            { engine: "build-match", icon: "🩺", title: "Match tool to use", data: { noStakes: true, zones: [
+              { id: "stetho", label: "🩺 Listens to heartbeat" }, { id: "thermo", label: "🌡️ Checks temperature" }, { id: "otoscope", label: "🔦 Looks in ears" }
+            ], chips: ["stetho","thermo","otoscope"], facts: {
+              stetho: "A stethoscope lets doctors hear your heart and lungs!",
+              thermo: "A thermometer tells if you have a fever!",
+              otoscope: "This little light helps doctors check your ears!"
+            }}},
+            { engine: "tap-discover", icon: "🩺", title: "More doctor tools", data: { visual: "🩺", hotspots: [
+              { label: "Stethoscope", fact: "Doctors use this to listen to your heart and lungs!" },
+              { label: "Reflex hammer", fact: "This little hammer checks how your nerves react!" },
+              { label: "Blood pressure cuff", fact: "This squeezes your arm to measure your blood pressure!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Toolkit basics", desc: "Quiz on what different medical tools are for." },
+            { type: "Reflect", icon: "💭", title: "Try it yourself?", desc: "Would you like to try using one of these tools someday? Which one?" }
+          ]},
+          { label: "Meet Your Brain", tasks: [
+            { engine: "tap-discover", icon: "🧠", title: "Explore your brain", data: { visual: "🧠", hotspots: [
+              { label: "Thinking", fact: "Your brain is where every thought, idea, and daydream happens!" },
+              { label: "Memory", fact: "Your brain stores memories like a super-powered photo album!" },
+              { label: "Control center", fact: "Your brain controls your whole body — even your heartbeat!" }
+            ]}},
+            { engine: "build-match", icon: "🧠", title: "Match brain job to action", data: { noStakes: true, zones: [
+              { id: "think", label: "Solving a puzzle" }, { id: "remember", label: "Recalling a birthday" }, { id: "move", label: "Riding a bicycle" }
+            ], chips: ["think","remember","move"], facts: { think: "Thinking!", remember: "Memory!", move: "Movement control!" }}},
+            { type: "Quiz", icon: "📝", title: "Brain basics", desc: "Quiz on what your brain does." },
+            { type: "Reflect", icon: "💭", title: "Your brain, amazing", desc: "What's something your brain does that you never noticed before?" }
+          ]},
+          { label: "How Medicine Helps", tasks: [
+            { engine: "build-match", icon: "💊", title: "Match problem to help", data: { noStakes: true, zones: [
+              { id: "rest", label: "Feeling tired" }, { id: "bandage", label: "A small cut" }, { id: "doctor", label: "Ongoing bad pain" }
+            ], chips: ["rest","bandage","doctor"], facts: {
+              rest: "Rest helps your body recover its energy!",
+              bandage: "A bandage protects a cut while it heals!",
+              doctor: "A doctor should always check anything that keeps hurting!"
+            }}},
+            { engine: "tap-discover", icon: "💊", title: "How medicine works", data: { visual: "💊", hotspots: [
+              { label: "Fighting germs", fact: "Some medicines help your body fight germs faster!" },
+              { label: "Easing pain", fact: "Some medicines calm down pain signals in your body!" },
+              { label: "Always ask an adult", fact: "Medicine should only ever be given by a trusted adult or doctor!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Medicine basics", desc: "Quiz on how medicine helps the body." },
+            { type: "Reflect", icon: "💭", title: "Safety first", desc: "Why do you think it's important to only take medicine an adult gives you?" }
+          ]},
+          { label: "Emergency Helpers", tasks: [
+            { engine: "tap-discover", icon: "🚑", title: "Meet emergency helpers", data: { visual: "🚑", hotspots: [
+              { label: "Ambulance", fact: "An ambulance rushes people who need urgent help to the hospital!" },
+              { label: "Paramedics", fact: "Paramedics can start helping a patient even before reaching the hospital!" },
+              { label: "Emergency number", fact: "In India, 108 connects you to emergency ambulance services!" }
+            ]}},
+            { engine: "build-match", icon: "🚑", title: "Match helper to job", data: { noStakes: true, zones: [
+              { id: "paramedic", label: "Helps in the ambulance" }, { id: "er-doctor", label: "Helps in the emergency room" }, { id: "dispatcher", label: "Answers the emergency call" }
+            ], chips: ["paramedic","er-doctor","dispatcher"], facts: {
+              paramedic: "Paramedics!", "er-doctor": "Emergency room doctors!", dispatcher: "Emergency call dispatchers!"
+            }}},
+            { type: "Quiz", icon: "📝", title: "Emergency basics", desc: "Quiz on who helps in a medical emergency." },
+            { type: "Reflect", icon: "💭", title: "Helper heroes", desc: "What do you think is the hardest part of being an emergency helper?" }
+          ]},
+          { label: "Teeth & Smiles", tasks: [
+            { engine: "build-match", icon: "🦷", title: "Match habit to routine", data: { noStakes: true, zones: [
+              { id: "brush", label: "Morning & night" }, { id: "floss", label: "Once a day" }, { id: "dentist", label: "Every 6 months" }
+            ], chips: ["brush","floss","dentist"], facts: {
+              brush: "Brushing twice a day keeps your teeth strong!",
+              floss: "Flossing cleans the spots your brush can't reach!",
+              dentist: "Regular dentist visits catch problems early!"
+            }}},
+            { engine: "tap-discover", icon: "🦷", title: "Explore your teeth", data: { visual: "🦷", hotspots: [
+              { label: "Front teeth", fact: "Your front teeth are perfect for biting into food!" },
+              { label: "Back teeth", fact: "Your back teeth grind and chew food into small pieces!" },
+              { label: "Enamel", fact: "The outer layer of your teeth is the hardest part of your whole body!" }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Dental basics", desc: "Quiz on how to take care of your teeth." },
+            { type: "Reflect", icon: "💭", title: "Your smile routine", desc: "How do you take care of your teeth every day?" }
+          ]},
+          { label: "Eyes & Seeing", tasks: [
+            { engine: "tap-discover", icon: "👁️", title: "Explore your eyes", data: { visual: "👁️", hotspots: [
+              { label: "Pupil", fact: "The black dot in your eye lets light in — it gets bigger in the dark!" },
+              { label: "Blinking", fact: "You blink about 15-20 times a minute to keep your eyes clean and moist!" },
+              { label: "Two eyes", fact: "Having two eyes helps you judge distance and depth!" }
+            ]}},
+            { engine: "build-match", icon: "👁️", title: "Match eye habit to benefit", data: { noStakes: true, zones: [
+              { id: "screen-breaks", label: "Rests your eyes" }, { id: "sunglasses", label: "Protects from sun" }, { id: "checkup", label: "Catches problems early" }
+            ], chips: ["screen-breaks","sunglasses","checkup"], facts: {
+              "screen-breaks": "Taking screen breaks!", sunglasses: "Wearing sunglasses outdoors!", checkup: "Regular eye checkups!"
+            }}},
+            { type: "Quiz", icon: "📝", title: "Vision basics", desc: "Quiz on how your eyes work." },
+            { type: "Reflect", icon: "💭", title: "Eye care habits", desc: "What's one thing you could do to take better care of your eyes?" }
+          ]},
+          { label: "Your Body, One Year Later", tasks: [
+            { type: "Reflect", icon: "💭", title: "Look back at the year", desc: "Look back at all 11 months — which body system was your favorite to explore?" },
+            { type: "Quiz", icon: "📝", title: "Body systems recap", desc: "A fun recap quiz of everything you discovered this year." },
+            { type: "Build", icon: "🎨", title: "Draw your body explorer badge", desc: "Design what your own \"Body Explorer\" badge would look like." },
+            { type: "Reflect", icon: "💭", title: "A message to Std 7 you", desc: "Write a message to yourself for next year, about what you'd like to explore next." }
+          ]}
+        ]
+      }
+      // "7": { band: "Explorer", months: [ ... ] },  -- TODO next
+      // "8": { band: "Builder", months: [ ... ] },  -- TODO next
+      // "9": { band: "Builder", months: [ ... ] },  -- TODO next
+      // "10": { band: "Decision-Prep", months: [ ... ] },  -- TODO next
+      // "11": { band: "Specialist", months: [ ... ] },  -- TODO next
+      // "12": { band: "Specialist", months: [ ... ] }  -- TODO next
+    }
   }
 };
