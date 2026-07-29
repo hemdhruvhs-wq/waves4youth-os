@@ -134,6 +134,10 @@ onAuthStateChanged(auth, async (user) => {
     console.error("w4y auth-gate: could not load student doc", e);
     window.w4yStudent = { approvalStatus: "Pending", paymentStatus: "Pending", plan: "" };
   }
+  // Firestore's snap.data() only returns the document's fields — it never includes
+  // the document's own ID. Every page that reads window.w4yStudent.uid (to build its
+  // own Firestore references) needs this set explicitly, or those references break.
+  window.w4yStudent.uid = user.uid;
 
   const approved = window.w4yStudent.approvalStatus === "Approved";
   window.w4yApproved = approved;
