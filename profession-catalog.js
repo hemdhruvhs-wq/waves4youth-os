@@ -1213,7 +1213,14 @@ export const PROFESSION_CATALOG = {
         band: "Explorer",
         bandTagline: "Pure curiosity, zero stakes — every tap is rewarded.",
         months: [
-          { label: "Meet Your Heart", tasks: [
+          { label: "Meet Your Heart",
+            bonusAssignment: {
+              title: { en: "Draw Your Heart", hi: "अपना दिल बनाओ", mr: "तुमचं हृदय काढा" },
+              prompt: { en: "Draw or find a picture of a heart, take a photo of it, and write 2-3 sentences about one thing you learned this month. Upload it below!",
+                        hi: "दिल की एक तस्वीर बनाओ या ढूंढो, उसकी फोटो लो, और इस महीने जो सीखा उसके बारे में 2-3 वाक्य लिखो। नीचे अपलोड करो!",
+                        mr: "हृदयाचं चित्र काढा किंवा शोधा, त्याचा फोटो घ्या, आणि या महिन्यात काय शिकलात याबद्दल 2-3 वाक्यं लिहा. खाली अपलोड करा!" }
+            },
+            tasks: [
             { engine: "tap-discover", icon: "🫀", title: "Explore your heart", mentorVisual: "❤️",
               mentorIntro: {
                 en: "Put your hand on your chest for a second — feel that thump-thump? That's your heart, and it never takes a single break, not even while you sleep! It's split into two sides with very different jobs. Tap around and I'll show you what each part actually does.",
@@ -1223,7 +1230,8 @@ export const PROFESSION_CATALOG = {
               data: { visual: "🫀", hotspots: [
               { label: {en:"Left side",hi:"बायाँ हिस्सा",mr:"डावी बाजू"}, fact: {en:"This side pumps blood full of oxygen out to your whole body! 💨",hi:"यह हिस्सा ऑक्सीजन से भरा खून पूरे शरीर में भेजता है! 💨",mr:"ही बाजू ऑक्सिजनने भरलेलं रक्त संपूर्ण शरीरात पाठवते! 💨"} },
               { label: {en:"Right side",hi:"दायाँ हिस्सा",mr:"उजवी बाजू"}, fact: {en:"This side collects blood coming back from your body to refill it! 🔄",hi:"यह हिस्सा शरीर से लौटकर आ रहे खून को इकट्ठा करता है! 🔄",mr:"ही बाजू शरीरातून परत येणारं रक्त गोळा करते! 🔄"} },
-              { label: {en:"Bottom",hi:"नीचे का हिस्सा",mr:"खालचा भाग"}, fact: {en:"Whoosh! This is the strongest pumping part of all! 💪",hi:"वाह! यह सबसे ताकतवर पम्पिंग हिस्सा है! 💪",mr:"वाह! हा सर्वात ताकदवान पंपिंग भाग आहे! 💪"} }
+              { label: {en:"Bottom",hi:"नीचे का हिस्सा",mr:"खालचा भाग"}, fact: {en:"Whoosh! This is the strongest pumping part of all! 💪",hi:"वाह! यह सबसे ताकतवर पम्पिंग हिस्सा है! 💪",mr:"वाह! हा सर्वात ताकदवान पंपिंग भाग आहे! 💪"} },
+              { label: {en:"The sound",hi:"आवाज़",mr:"आवाज"}, fact: {en:"That 'lub-dub' sound? That's your heart's valves snapping shut after every beat! 🔊",hi:"वो 'लब-डब' की आवाज़? यह तुम्हारे दिल के वाल्व हर धड़कन के बाद बंद होने की आवाज़ है! 🔊",mr:"तो 'लब-डब' आवाज? हा तुमच्या हृदयाच्या झडपा प्रत्येक ठोक्यानंतर बंद होण्याचा आवाज आहे! 🔊"} }
             ]}},
             { engine: "build-match", icon: "🫀", title: "Match the heart's jobs", mentorVisual: "🧩",
               mentorIntro: {
@@ -1234,8 +1242,9 @@ export const PROFESSION_CATALOG = {
               data: { noStakes: true, zones: [
               { id: "pump", label: {en:"Pumps blood",hi:"खून पंप करता है",mr:"रक्त पंप करते"} },
               { id: "oxygen", label: {en:"Carries oxygen",hi:"ऑक्सीजन ले जाता है",mr:"ऑक्सिजन घेऊन जाते"} },
-              { id: "beat", label: {en:"Beats all day",hi:"पूरे दिन धड़कता है",mr:"दिवसभर धडधडते"} }
-            ], chips: ["pump","oxygen","beat"] }},
+              { id: "beat", label: {en:"Beats all day",hi:"पूरे दिन धड़कता है",mr:"दिवसभर धडधडते"} },
+              { id: "valves", label: {en:"Has valves",hi:"वाल्व होते हैं",mr:"झडपा असतात"} }
+            ], chips: ["pump","oxygen","beat","valves"] }},
             { type: "Quiz", icon: "📝", title: "Heart basics", mentorVisual: "🩺",
               mentorIntro: {
                 en: "Time for a quick check-in! This isn't a test to trip you up — it's just to see what stuck from exploring the heart. If something feels tricky, that's totally okay — go back and tap around the heart again before you answer.",
@@ -1249,9 +1258,38 @@ export const PROFESSION_CATALOG = {
                 hi: "हर मिशन का मेरा पसंदीदा हिस्सा — अब मुझे तुमसे सुनना है। यहाँ कोई गलत जवाब नहीं है। आज दिल के बारे में ऐसी कौन सी बात थी जिसने तुम्हें कहा 'अरे, सच में?!'",
                 mr: "प्रत्येक मिशनचा माझा आवडता भाग — आता मला तुमच्याकडून ऐकायचं आहे. इथे कुठलंही चुकीचं उत्तर नाही. आज हृदयाबद्दल अशी कोणती गोष्ट होती ज्यामुळे तुम्ही म्हणालात 'अरे, खरंच?!'"
               },
-              desc: {en:"What's one thing about your heart that surprised you today?",hi:"आज दिल के बारे में ऐसी कौन सी बात थी जिसने तुम्हें हैरान किया?",mr:"आज हृदयाबद्दल अशी कोणती गोष्ट होती जी तुम्हाला आश्चर्यचकित करून गेली?"} }
+              desc: {en:"What's one thing about your heart that surprised you today?",hi:"आज दिल के बारे में ऐसी कौन सी बात थी जिसने तुम्हें हैरान किया?",mr:"आज हृदयाबद्दल अशी कोणती गोष्ट होती जी तुम्हाला आश्चर्यचकित करून गेली?"} },
+            { engine: "flip-cards", icon: "🃏", title: "Heart Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising heart fact. No pressure — just flip them all and enjoy!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाला दिल का तथ्य देखो। कोई दबाव नहीं — बस सबको पलटो और मज़े लो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून हृदयाबद्दलचं एक आश्चर्यकारक तथ्य बघा. काही दडपण नाही — फक्त सगळी उलटा आणि मजा करा!"
+              },
+              data: { cards: [
+              { front:{en:"How fast?",hi:"कितनी तेज़?",mr:"किती वेगात?"}, back:{en:"Your heart beats about 100,000 times a day! 🚀",hi:"तुम्हारा दिल दिन में लगभग 1,00,000 बार धड़कता है! 🚀",mr:"तुमचं हृदय दिवसाला सुमारे 1,00,000 वेळा धडधडतं! 🚀"} },
+              { front:{en:"How big?",hi:"कितना बड़ा?",mr:"किती मोठं?"}, back:{en:"Your heart is about the size of your own fist! ✊",hi:"तुम्हारा दिल तुम्हारी अपनी मुट्ठी जितना बड़ा है! ✊",mr:"तुमचं हृदय तुमच्याच मुठीएवढं आहे! ✊"} },
+              { front:{en:"How far?",hi:"कितनी दूर?",mr:"किती लांब?"}, back:{en:"In one day, your heart pumps blood through about 100,000 km of blood vessels! 🌍",hi:"एक दिन में, तुम्हारा दिल लगभग 1,00,000 किमी रक्त वाहिकाओं में खून पंप करता है! 🌍",mr:"एका दिवसात, तुमचं हृदय सुमारे 1,00,000 किमी रक्तवाहिन्यांमधून रक्त पंप करतं! 🌍"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Heart or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your heart knowledge! I'll say a few statements — you decide if each one is true or a myth. Have fun with it!",
+                hi: "चलो तुम्हारे दिल के ज्ञान की जांच करते हैं! मैं कुछ बातें कहूँगी — तुम तय करो कि हर एक सच है या मिथक। मज़े करो!",
+                mr: "चला तुमच्या हृदयाच्या ज्ञानाची चाचणी घेऊया! मी काही विधानं सांगेन — तुम्ही ठरवा प्रत्येक खरं आहे की मिथक. मजा करा!"
+              },
+              data: { statements: [
+              { text:{en:"Your heart stops beating when you sleep.",hi:"सोते समय तुम्हारा दिल धड़कना बंद कर देता है।",mr:"झोपेत तुमचं हृदय धडधडणं थांबतं."}, answer:false, explain:{en:"Myth! Your heart keeps beating your whole life, even while you sleep.",hi:"मिथक! तुम्हारा दिल पूरी ज़िंदगी धड़कता रहता है, सोते समय भी।",mr:"मिथक! तुमचं हृदय आयुष्यभर धडधडत राहतं, झोपेतसुद्धा."} },
+              { text:{en:"Your heart is a muscle.",hi:"तुम्हारा दिल एक मांसपेशी है।",mr:"तुमचं हृदय एक स्नायू आहे."}, answer:true, explain:{en:"True! It's a special muscle that never gets tired.",hi:"सच! यह एक खास मांसपेशी है जो कभी थकती नहीं।",mr:"खरं! हा एक खास स्नायू आहे जो कधीच थकत नाही."} },
+              { text:{en:"Exercise makes your heart weaker.",hi:"व्यायाम तुम्हारे दिल को कमज़ोर बनाता है।",mr:"व्यायामामुळे तुमचं हृदय कमकुवत होतं."}, answer:false, explain:{en:"Myth! Exercise actually makes your heart stronger, just like any muscle.",hi:"मिथक! व्यायाम असल में तुम्हारे दिल को मज़बूत बनाता है, किसी भी मांसपेशी की तरह।",mr:"मिथक! व्यायामामुळे तुमचं हृदय खरंतर मजबूत होतं, इतर कोणत्याही स्नायूसारखं."} }
+            ]}}
           ]},
-          { label: "Meet Your Bones", tasks: [
+          { label: "Meet Your Bones",
+            bonusAssignment: {
+              title: { en: "Build a Bone Model", hi: "हड्डी का मॉडल बनाओ", mr: "हाडाचं मॉडेल बनवा" },
+              prompt: { en: "Use household items (straws, paper, clay — anything!) to build a simple model of a bone or a skeleton part. Take a photo and describe what you used and why!",
+                        hi: "घर की चीज़ों (स्ट्रॉ, कागज़, मिट्टी — कुछ भी!) से हड्डी या कंकाल के हिस्से का एक सरल मॉडल बनाओ। एक फोटो लो और बताओ तुमने क्या इस्तेमाल किया और क्यों!",
+                        mr: "घरातील वस्तू (स्ट्रॉ, कागद, चिकणमाती — काहीही!) वापरून हाडाचं किंवा सांगाड्याच्या भागाचं साधं मॉडेल बनवा. फोटो घ्या आणि तुम्ही काय वापरलं आणि का ते सांगा!" }
+            },
+            tasks: [
             { engine: "build-match", icon: "🦴", title: "Build a skeleton", data: { noStakes: true, zones: [
               { id: "skull", label: "💀 Skull" }, { id: "ribcage", label: "🦴 Ribcage" }, { id: "legs", label: "🦵 Leg bones" }
             ], chips: ["skull","ribcage","legs"], facts: {
@@ -1265,9 +1303,38 @@ export const PROFESSION_CATALOG = {
               { label: "Movement", fact: "Bones work with muscles to let you run, jump, and dance!" }
             ]}},
             { type: "Quiz", icon: "📝", title: "Skeleton basics", desc: "Quiz on what your skeleton does for you." },
-            { type: "Reflect", icon: "💭", title: "Favorite bone fact?", desc: "What's your favorite thing you learned about bones today?" }
+            { type: "Reflect", icon: "💭", title: "Favorite bone fact?", desc: "What's your favorite thing you learned about bones today?" },
+            { engine: "flip-cards", icon: "🃏", title: "Bone Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising bone fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाला हड्डी का तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून हाडांबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How many?",hi:"कितनी?",mr:"किती?"}, back:{en:"Adults have 206 bones, but babies are born with about 300! Some fuse together as you grow. 👶",hi:"वयस्कों में 206 हड्डियाँ होती हैं, लेकिन बच्चे लगभग 300 के साथ पैदा होते हैं! बड़े होने पर कुछ जुड़ जाती हैं। 👶",mr:"प्रौढांना 206 हाडं असतात, पण बाळं सुमारे 300 हाडांसह जन्माला येतात! मोठं होताना काही जुळतात. 👶"} },
+              { front:{en:"Strongest bone?",hi:"सबसे मज़बूत हड्डी?",mr:"सर्वात मजबूत हाड?"}, back:{en:"Your thigh bone (femur) is stronger than concrete by weight! 🏋️",hi:"तुम्हारी जांघ की हड्डी (फीमर) वज़न के हिसाब से कंक्रीट से भी मज़बूत है! 🏋️",mr:"तुमचं मांडीचं हाड (फीमर) वजनाच्या तुलनेत काँक्रीटपेक्षा मजबूत आहे! 🏋️"} },
+              { front:{en:"Smallest bone?",hi:"सबसे छोटी हड्डी?",mr:"सर्वात लहान हाड?"}, back:{en:"The smallest bone in your body is in your ear — smaller than a grain of rice! 👂",hi:"तुम्हारे शरीर की सबसे छोटी हड्डी तुम्हारे कान में है — चावल के दाने से भी छोटी! 👂",mr:"तुमच्या शरीरातील सर्वात लहान हाड तुमच्या कानात आहे — तांदळाच्या दाण्यापेक्षाही लहान! 👂"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Bone or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your bone knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे हड्डी के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या हाडांच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Bones are completely solid all the way through.",hi:"हड्डियाँ पूरी तरह से ठोस होती हैं।",mr:"हाडं पूर्णपणे घन असतात."}, answer:false, explain:{en:"Myth! Bones have a spongy inside part that makes them lighter, plus bone marrow inside.",hi:"मिथक! हड्डियों के अंदर एक स्पंजी हिस्सा होता है जो उन्हें हल्का बनाता है, साथ ही अंदर बोन मैरो होता है।",mr:"मिथक! हाडांच्या आत एक स्पंजसारखा भाग असतो जो त्यांना हलकं बनवतो, शिवाय आत बोन मॅरो असतो."} },
+              { text:{en:"Broken bones can heal themselves over time.",hi:"टूटी हड्डियाँ समय के साथ खुद ठीक हो सकती हैं।",mr:"तुटलेली हाडं कालांतराने स्वतःहून बरी होऊ शकतात."}, answer:true, explain:{en:"True! Bones are living tissue and can actually repair and regrow themselves.",hi:"सच! हड्डियाँ जीवित ऊतक हैं और वास्तव में खुद की मरम्मत और फिर से बढ़ सकती हैं।",mr:"खरं! हाडं जिवंत ऊती आहेत आणि खरोखर स्वतःची दुरुस्ती करून पुन्हा वाढू शकतात."} },
+              { text:{en:"You're born with fewer bones than you'll have as an adult.",hi:"तुम वयस्क होने की तुलना में कम हड्डियों के साथ पैदा होते हो।",mr:"तुम्ही प्रौढ असण्यापेक्षा कमी हाडांसह जन्माला येता."}, answer:false, explain:{en:"Myth! It's the opposite — babies have MORE bones, and many fuse together as they grow.",hi:"मिथक! उल्टा है — बच्चों में ज़्यादा हड्डियाँ होती हैं, और बड़े होने पर कई जुड़ जाती हैं।",mr:"मिथक! उलट आहे — बाळांमध्ये जास्त हाडं असतात, आणि मोठं होताना अनेक जुळतात."} }
+            ]}}
           ]},
-          { label: "Meet Your Lungs", tasks: [
+          { label: "Meet Your Lungs",
+            bonusAssignment: {
+              title: { en: "Breathing Challenge", hi: "साँस लेने की चुनौती", mr: "श्वासाचं आव्हान" },
+              prompt: { en: "Try this: take 5 deep, slow breaths and notice how your chest moves. Take a photo of yourself doing it (or draw it!), and describe how it felt.",
+                        hi: "यह करके देखो: 5 गहरी, धीमी साँसें लो और देखो तुम्हारी छाती कैसे हिलती है। खुद की फोटो लो (या बनाओ!), और बताओ कैसा महसूस हुआ।",
+                        mr: "हे करून बघा: 5 खोल, हळू श्वास घ्या आणि तुमची छाती कशी हलते ते बघा. स्वतःचा फोटो घ्या (किंवा काढा!), आणि कसं वाटलं ते सांगा." }
+            },
+            tasks: [
             { engine: "tap-discover", icon: "🫁", title: "Explore your lungs", data: { visual: "🫁", hotspots: [
               { label: "Breathing in", fact: "When you breathe in, your lungs fill up with fresh air full of oxygen!" },
               { label: "Breathing out", fact: "When you breathe out, you release air your body doesn't need anymore!" },
@@ -1277,9 +1344,38 @@ export const PROFESSION_CATALOG = {
               { id: "in", label: "Breathing IN" }, { id: "out", label: "Breathing OUT" }
             ], chips: ["in","out"], facts: { in: "Fresh oxygen enters your body!", out: "Used air leaves your body!" }}},
             { type: "Quiz", icon: "📝", title: "Lung basics", desc: "Quiz on why breathing matters." },
-            { type: "Reflect", icon: "💭", title: "Notice your breathing", desc: "Take 3 deep breaths right now — how does it feel?" }
+            { type: "Reflect", icon: "💭", title: "Notice your breathing", desc: "Take 3 deep breaths right now — how does it feel?" },
+            { engine: "flip-cards", icon: "🃏", title: "Lung Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising lung fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाला फेफड़ों का तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून फुफ्फुसांबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How big?",hi:"कितने बड़े?",mr:"किती मोठे?"}, back:{en:"If you spread out your lungs flat, they'd cover an entire tennis court! 🎾",hi:"अगर तुम अपने फेफड़ों को समतल फैलाओ, तो वे एक पूरे टेनिस कोर्ट को ढक देंगे! 🎾",mr:"जर तुम्ही तुमची फुफ्फुसं सपाट पसरवली, तर ती संपूर्ण टेनिस कोर्ट झाकतील! 🎾"} },
+              { front:{en:"Left vs right?",hi:"बाएँ बनाम दाएँ?",mr:"डावं विरुद्ध उजवं?"}, back:{en:"Your right lung is slightly bigger than your left — your left one makes room for your heart! ❤️",hi:"तुम्हारा दायाँ फेफड़ा बाएँ से थोड़ा बड़ा है — बायाँ फेफड़ा दिल के लिए जगह बनाता है! ❤️",mr:"तुमचं उजवं फुफ्फुस डाव्यापेक्षा थोडं मोठं आहे — डावं फुफ्फुस हृदयासाठी जागा बनवतं! ❤️"} },
+              { front:{en:"How often?",hi:"कितनी बार?",mr:"किती वेळा?"}, back:{en:"You take about 20,000-30,000 breaths every single day without even thinking about it! 😮",hi:"तुम बिना सोचे भी हर दिन लगभग 20,000-30,000 साँसें लेते हो! 😮",mr:"तुम्ही न विचार करता दररोज सुमारे 20,000-30,000 श्वास घेता! 😮"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Lung or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your lung knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे फेफड़ों के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या फुफ्फुसांच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"You only breathe using your lungs.",hi:"तुम केवल फेफड़ों का इस्तेमाल करके साँस लेते हो।",mr:"तुम्ही फक्त फुफ्फुसं वापरून श्वास घेता."}, answer:false, explain:{en:"Myth! Your diaphragm (a muscle below your lungs) does most of the work pulling air in.",hi:"मिथक! तुम्हारा डायाफ्राम (फेफड़ों के नीचे की मांसपेशी) हवा खींचने का ज़्यादातर काम करता है।",mr:"मिथक! तुमचा डायाफ्राम (फुफ्फुसांखालचा स्नायू) हवा ओढण्याचं बहुतेक काम करतो."} },
+              { text:{en:"Holding your breath for a very long time is safe to practice often.",hi:"लंबे समय तक साँस रोकना अक्सर अभ्यास करने के लिए सुरक्षित है।",mr:"बराच वेळ श्वास रोखणं वारंवार सराव करण्यासाठी सुरक्षित आहे."}, answer:false, explain:{en:"Myth! Your body needs regular oxygen — holding your breath too long isn't something to practice repeatedly.",hi:"मिथक! तुम्हारे शरीर को नियमित ऑक्सीजन चाहिए — साँस बहुत देर तक रोकना बार-बार अभ्यास करने वाली चीज़ नहीं है।",mr:"मिथक! तुमच्या शरीराला नियमित ऑक्सिजन लागतो — श्वास खूप वेळ रोखणं वारंवार सराव करण्यासारखं नाही."} },
+              { text:{en:"Lungs help remove waste gas from your body.",hi:"फेफड़े तुम्हारे शरीर से बेकार गैस निकालने में मदद करते हैं।",mr:"फुफ्फुसं तुमच्या शरीरातून टाकाऊ वायू काढण्यास मदत करतात."}, answer:true, explain:{en:"True! Every time you breathe out, you release carbon dioxide your body doesn't need.",hi:"सच! हर बार जब तुम साँस छोड़ते हो, तुम कार्बन डाइऑक्साइड छोड़ते हो जो तुम्हारे शरीर को नहीं चाहिए।",mr:"खरं! प्रत्येक वेळी तुम्ही श्वास सोडता, तुम्ही कार्बन डायऑक्साइड सोडता जो तुमच्या शरीराला नको असतो."} }
+            ]}}
           ]},
-          { label: "Germs vs. Defenders", tasks: [
+          { label: "Germs vs. Defenders",
+            bonusAssignment: {
+              title: { en: "Handwashing Poster", hi: "हाथ धोने का पोस्टर", mr: "हात धुण्याचं पोस्टर" },
+              prompt: { en: "Draw a poster teaching someone younger than you how to wash their hands properly. Take a photo and explain your poster!",
+                        hi: "अपने से छोटे किसी को हाथ सही तरीके से धोना सिखाने के लिए एक पोस्टर बनाओ। फोटो लो और अपना पोस्टर समझाओ!",
+                        mr: "तुमच्यापेक्षा लहान कोणालातरी हात नीट धुण्यास शिकवणारं पोस्टर बनवा. फोटो घ्या आणि तुमचं पोस्टर समजावून सांगा!" }
+            },
+            tasks: [
             { engine: "build-match", icon: "🛡️", title: "Match germ to defender", data: { noStakes: true, zones: [
               { id: "wash", label: "🦠 Sneeze germs" }, { id: "cut", label: "🦠 Cut on skin" }, { id: "cold", label: "🦠 Cold virus" }
             ], chips: ["wash","cut","cold"], facts: {
@@ -1293,9 +1389,38 @@ export const PROFESSION_CATALOG = {
               { label: "Fever", fact: "A fever is your body turning up the heat to fight germs faster!" }
             ]}},
             { type: "Quiz", icon: "📝", title: "Immune system basics", desc: "Quiz on how your body fights off illness." },
-            { type: "Reflect", icon: "💭", title: "Your body, the hero", desc: "Does it feel cool knowing your body has its own defenders? Why?" }
+            { type: "Reflect", icon: "💭", title: "Your body, the hero", desc: "Does it feel cool knowing your body has its own defenders? Why?" },
+            { engine: "flip-cards", icon: "🃏", title: "Immune Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising immune system fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाला इम्यून सिस्टम का तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून रोगप्रतिकारक शक्तीबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How many soldiers?",hi:"कितने सैनिक?",mr:"किती सैनिक?"}, back:{en:"You have billions of white blood cells patrolling your body right now! 🛡️",hi:"अभी इस समय तुम्हारे शरीर में गश्त लगाती अरबों सफ़ेद रक्त कोशिकाएँ हैं! 🛡️",mr:"आत्ता या क्षणी तुमच्या शरीरात गस्त घालणाऱ्या अब्जावधी पांढऱ्या रक्तपेशी आहेत! 🛡️"} },
+              { front:{en:"Remembering germs?",hi:"कीटाणुओं को याद रखना?",mr:"जंतू लक्षात ठेवणं?"}, back:{en:"Your immune system actually remembers germs it's fought before, so it can fight them faster next time! 🧠",hi:"तुम्हारा इम्यून सिस्टम असल में उन कीटाणुओं को याद रखता है जिनसे वो पहले लड़ चुका है, ताकि अगली बार तेज़ी से लड़ सके! 🧠",mr:"तुमची रोगप्रतिकारक शक्ती खरंच पूर्वी लढलेले जंतू लक्षात ठेवते, जेणेकरून पुढच्या वेळी ती वेगाने लढू शकते! 🧠"} },
+              { front:{en:"Skin's job?",hi:"त्वचा का काम?",mr:"त्वचेचं काम?"}, back:{en:"Your skin isn't just covering — it's your body's biggest defender, blocking germs every second! 🧱",hi:"तुम्हारी त्वचा सिर्फ ढकने के लिए नहीं है — यह तुम्हारे शरीर का सबसे बड़ा रक्षक है, हर पल कीटाणुओं को रोकता है! 🧱",mr:"तुमची त्वचा फक्त झाकण्यासाठी नाही — ती तुमच्या शरीराची सर्वात मोठी रक्षक आहे, दर सेकंदाला जंतूंना रोखते! 🧱"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Immune or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your immune system knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे इम्यून सिस्टम के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या रोगप्रतिकारक शक्तीच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A fever means something is seriously wrong with you.",hi:"बुखार का मतलब है कि तुम्हें कोई गंभीर समस्या है।",mr:"ताप म्हणजे तुम्हाला काहीतरी गंभीर आजार आहे."}, answer:false, explain:{en:"Myth! A mild fever is often your body's normal, healthy way of fighting germs faster.",hi:"मिथक! हल्का बुखार अक्सर तुम्हारे शरीर का कीटाणुओं से तेज़ी से लड़ने का सामान्य, स्वस्थ तरीका है।",mr:"मिथक! सौम्य ताप अनेकदा तुमच्या शरीराचा जंतूंशी वेगाने लढण्याचा सामान्य, निरोगी मार्ग असतो."} },
+              { text:{en:"Washing your hands actually helps prevent illness.",hi:"हाथ धोना वास्तव में बीमारी को रोकने में मदद करता है।",mr:"हात धुणं खरोखर आजार टाळण्यास मदत करतं."}, answer:true, explain:{en:"True! Handwashing removes germs before they get a chance to enter your body.",hi:"सच! हाथ धोना कीटाणुओं को शरीर में घुसने का मौका मिलने से पहले हटा देता है।",mr:"खरं! हात धुतल्याने जंतू तुमच्या शरीरात शिरण्याआधीच निघून जातात."} },
+              { text:{en:"Once you're sick with a germ, your body can never recognize it again.",hi:"एक बार बीमार होने पर, तुम्हारा शरीर उस कीटाणु को फिर कभी नहीं पहचान सकता।",mr:"एकदा आजारी पडल्यावर, तुमचं शरीर तो जंतू पुन्हा कधीच ओळखू शकत नाही."}, answer:false, explain:{en:"Myth! Your immune system often remembers germs, which is part of how vaccines and immunity work.",hi:"मिथक! तुम्हारा इम्यून सिस्टम अक्सर कीटाणुओं को याद रखता है, यही वजह है कि वैक्सीन और इम्युनिटी काम करती है।",mr:"मिथक! तुमची रोगप्रतिकारक शक्ती अनेकदा जंतू लक्षात ठेवते, यामुळेच लस आणि रोगप्रतिकारशक्ती काम करते."} }
+            ]}}
           ]},
-          { label: "Your Five Senses", tasks: [
+          { label: "Your Five Senses",
+            bonusAssignment: {
+              title: { en: "Senses Scavenger Hunt", hi: "इंद्रियों की खोज", mr: "इंद्रियांची शोधमोहीम" },
+              prompt: { en: "Find one object at home for each sense — something to look at, listen to, smell, touch, and taste. Take a photo of your collection and describe your favorite one!",
+                        hi: "घर में हर इंद्रिय के लिए एक चीज़ ढूंढो — देखने, सुनने, सूंघने, छूने और चखने के लिए। अपने संग्रह की फोटो लो और अपनी पसंदीदा चीज़ के बारे में बताओ!",
+                        mr: "घरात प्रत्येक इंद्रियासाठी एक वस्तू शोधा — बघण्यासाठी, ऐकण्यासाठी, वास घेण्यासाठी, स्पर्शासाठी आणि चवीसाठी. तुमच्या संग्रहाचा फोटो घ्या आणि तुमची आवडती वस्तू सांगा!" }
+            },
+            tasks: [
             { engine: "tap-discover", icon: "👀", title: "Explore your senses", data: { visual: "✋", hotspots: [
               { label: "👀 Sight", fact: "Your eyes send pictures to your brain faster than any camera!" },
               { label: "👂 Hearing", fact: "Your ears can tell the difference between thousands of sounds!" },
@@ -1305,9 +1430,38 @@ export const PROFESSION_CATALOG = {
               { id: "see", label: "👁️ Eyes" }, { id: "smell", label: "👃 Nose" }, { id: "taste", label: "👅 Tongue" }
             ], chips: ["see","smell","taste"], facts: { see: "Sight!", smell: "Smell!", taste: "Taste!" }}},
             { type: "Quiz", icon: "📝", title: "Senses basics", desc: "Quiz on your five senses." },
-            { type: "Reflect", icon: "💭", title: "Favorite sense?", desc: "If you had to pick one sense as your favorite, which would it be and why?" }
+            { type: "Reflect", icon: "💭", title: "Favorite sense?", desc: "If you had to pick one sense as your favorite, which would it be and why?" },
+            { engine: "flip-cards", icon: "🃏", title: "Senses Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising fact about your senses!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर अपनी इंद्रियों के बारे में एक हैरान करने वाला तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून तुमच्या इंद्रियांबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How many smells?",hi:"कितनी गंध?",mr:"किती वास?"}, back:{en:"Your nose can recognize over 1 trillion different smells! 👃",hi:"तुम्हारी नाक 1 ट्रिलियन से ज़्यादा अलग-अलग गंधों को पहचान सकती है! 👃",mr:"तुमचं नाक 1 ट्रिलियनहून अधिक वेगवेगळे वास ओळखू शकतं! 👃"} },
+              { front:{en:"Fastest sense?",hi:"सबसे तेज़ इंद्रिय?",mr:"सर्वात वेगवान इंद्रिय?"}, back:{en:"Hearing is your fastest sense — your brain processes sound faster than sight! 👂",hi:"सुनना तुम्हारी सबसे तेज़ इंद्रिय है — तुम्हारा दिमाग देखने से ज़्यादा तेज़ी से आवाज़ को समझता है! 👂",mr:"ऐकणं तुमची सर्वात वेगवान इंद्रिय आहे — तुमचा मेंदू बघण्यापेक्षा वेगाने आवाज समजतो! 👂"} },
+              { front:{en:"Taste and smell?",hi:"स्वाद और गंध?",mr:"चव आणि वास?"}, back:{en:"Most of what you taste actually comes from your sense of smell working together with your tongue! 👅",hi:"तुम जो स्वाद चखते हो उसका ज़्यादातर हिस्सा असल में तुम्हारी सूंघने की इंद्रिय और जीभ के साथ काम करने से आता है! 👅",mr:"तुम्ही जी चव चाखता त्यातील बहुतांश भाग खरंतर तुमची वास घेण्याची इंद्रिय आणि जीभ एकत्र काम करण्यातून येतो! 👅"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Senses or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your senses knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारी इंद्रियों के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या इंद्रियांच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Humans only have five senses total.",hi:"मनुष्यों में कुल पाँच इंद्रियाँ ही होती हैं।",mr:"माणसांना एकूण फक्त पाच इंद्रिये असतात."}, answer:false, explain:{en:"Myth! Scientists count several more, like balance and knowing where your body parts are without looking.",hi:"मिथक! वैज्ञानिक कई और गिनते हैं, जैसे संतुलन और बिना देखे यह जानना कि तुम्हारे शरीर के हिस्से कहाँ हैं।",mr:"मिथक! शास्त्रज्ञ आणखी बऱ्याच गिनतात, जसं संतुलन आणि न बघता तुमच्या शरीराचे भाग कुठे आहेत हे कळणं."} },
+              { text:{en:"Your eyes see everything perfectly upside-down before your brain fixes it.",hi:"तुम्हारी आँखें दिमाग द्वारा ठीक करने से पहले हर चीज़ को उल्टा देखती हैं।",mr:"तुमचा मेंदू दुरुस्त करण्याआधी तुमचे डोळे सर्व काही उलटं बघतात."}, answer:true, explain:{en:"True! Your eyes actually capture images upside-down, and your brain automatically flips them right-side up.",hi:"सच! तुम्हारी आँखें असल में तस्वीरों को उल्टा कैद करती हैं, और तुम्हारा दिमाग अपने आप उन्हें सीधा कर देता है।",mr:"खरं! तुमचे डोळे खरंच प्रतिमा उलट्या टिपतात, आणि तुमचा मेंदू आपोआप त्या सरळ करतो."} },
+              { text:{en:"Touch only works through your fingers.",hi:"स्पर्श केवल तुम्हारी उंगलियों से काम करता है।",mr:"स्पर्श फक्त तुमच्या बोटांमधून काम करतो."}, answer:false, explain:{en:"Myth! Your entire skin, all over your body, can feel touch, pressure, and temperature.",hi:"मिथक! तुम्हारी पूरी त्वचा, पूरे शरीर पर, स्पर्श, दबाव और तापमान महसूस कर सकती है।",mr:"मिथक! तुमची संपूर्ण त्वचा, संपूर्ण शरीरावर, स्पर्श, दाब आणि तापमान जाणवू शकते."} }
+            ]}}
           ]},
-          { label: "A Doctor's Toolkit", tasks: [
+          { label: "A Doctor's Toolkit",
+            bonusAssignment: {
+              title: { en: "Design Your Own Tool", hi: "अपना खुद का औज़ार डिज़ाइन करो", mr: "तुमचं स्वतःचं साधन डिझाइन करा" },
+              prompt: { en: "Imagine a brand-new medical tool that doesn't exist yet. Draw it and describe what it would do and why doctors would need it!",
+                        hi: "एक बिल्कुल नए मेडिकल टूल की कल्पना करो जो अभी मौजूद नहीं है। उसे बनाओ और बताओ वो क्या करेगा और डॉक्टरों को इसकी ज़रूरत क्यों होगी!",
+                        mr: "अजून अस्तित्वात नसलेल्या एका नवीन वैद्यकीय साधनाची कल्पना करा. ते काढा आणि ते काय करेल आणि डॉक्टरांना त्याची गरज का पडेल ते सांगा!" }
+            },
+            tasks: [
             { engine: "build-match", icon: "🩺", title: "Match tool to use", data: { noStakes: true, zones: [
               { id: "stetho", label: "🩺 Listens to heartbeat" }, { id: "thermo", label: "🌡️ Checks temperature" }, { id: "otoscope", label: "🔦 Looks in ears" }
             ], chips: ["stetho","thermo","otoscope"], facts: {
@@ -1321,9 +1475,38 @@ export const PROFESSION_CATALOG = {
               { label: "Blood pressure cuff", fact: "This squeezes your arm to measure your blood pressure!" }
             ]}},
             { type: "Quiz", icon: "📝", title: "Toolkit basics", desc: "Quiz on what different medical tools are for." },
-            { type: "Reflect", icon: "💭", title: "Try it yourself?", desc: "Would you like to try using one of these tools someday? Which one?" }
+            { type: "Reflect", icon: "💭", title: "Try it yourself?", desc: "Would you like to try using one of these tools someday? Which one?" },
+            { engine: "flip-cards", icon: "🃏", title: "Toolkit Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising fact about doctor's tools!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर डॉक्टर के औज़ारों के बारे में एक हैरान करने वाला तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून डॉक्टरांच्या साधनांबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How old?",hi:"कितना पुराना?",mr:"किती जुनं?"}, back:{en:"The stethoscope was invented over 200 years ago — and doctors still use the same basic idea today! 🩺",hi:"स्टेथोस्कोप 200 साल से भी पहले बनाया गया था — और डॉक्टर आज भी उसी बुनियादी विचार का इस्तेमाल करते हैं! 🩺",mr:"स्टेथोस्कोप 200 वर्षांहून अधिक पूर्वी शोधलं गेलं — आणि डॉक्टर आजही त्याच मूळ कल्पनेचा वापर करतात! 🩺"} },
+              { front:{en:"X-ray magic?",hi:"एक्स-रे जादू?",mr:"एक्स-रे जादू?"}, back:{en:"X-rays were discovered by accident in 1895 — and now they help doctors see inside your body without any cutting! ✨",hi:"एक्स-रे की खोज 1895 में गलती से हुई थी — और अब वे डॉक्टरों को बिना काटे तुम्हारे शरीर के अंदर देखने में मदद करते हैं! ✨",mr:"एक्स-रेचा शोध 1895 मध्ये अपघाताने लागला — आणि आता ते डॉक्टरांना कापल्याशिवाय तुमच्या शरीराच्या आत बघण्यास मदत करतात! ✨"} },
+              { front:{en:"Thermometer trivia?",hi:"थर्मामीटर की जानकारी?",mr:"थर्मामीटर माहिती?"}, back:{en:"Modern digital thermometers can give a reading in just a few seconds — old ones used to take several minutes! ⏱️",hi:"आधुनिक डिजिटल थर्मामीटर कुछ ही सेकंड में रीडिंग दे देते हैं — पुराने वालों को कई मिनट लगते थे! ⏱️",mr:"आधुनिक डिजिटल थर्मामीटर काही सेकंदातच रीडिंग देतात — जुन्यांना अनेक मिनिटं लागायची! ⏱️"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Tool or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your toolkit knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे औज़ारों के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या साधनांच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A stethoscope can only be used to listen to your heart.",hi:"स्टेथोस्कोप का इस्तेमाल केवल दिल सुनने के लिए किया जा सकता है।",mr:"स्टेथोस्कोपचा वापर फक्त हृदय ऐकण्यासाठीच होऊ शकतो."}, answer:false, explain:{en:"Myth! Doctors also use it to listen to your lungs and even your stomach sounds.",hi:"मिथक! डॉक्टर इसका इस्तेमाल तुम्हारे फेफड़ों और यहाँ तक कि पेट की आवाज़ों को सुनने के लिए भी करते हैं।",mr:"मिथक! डॉक्टर याचा वापर तुमची फुफ्फुसं आणि अगदी पोटाचे आवाज ऐकण्यासाठीही करतात."} },
+              { text:{en:"A reflex hammer checks how your nerves respond.",hi:"रिफ्लेक्स हैमर जांचता है कि तुम्हारी नसें कैसे प्रतिक्रिया देती हैं।",mr:"रिफ्लेक्स हॅमर तुमच्या नसा कशा प्रतिसाद देतात हे तपासतो."}, answer:true, explain:{en:"True! That little tap on your knee tests whether your nervous system is working correctly.",hi:"सच! तुम्हारे घुटने पर वह छोटी सी थपकी जांचती है कि तुम्हारा नर्वस सिस्टम सही से काम कर रहा है या नहीं।",mr:"खरं! तुमच्या गुडघ्यावरचा तो छोटासा टॅप तुमची चेतासंस्था नीट काम करते आहे का हे तपासतो."} },
+              { text:{en:"Doctors need expensive tools for every single check-up.",hi:"डॉक्टरों को हर जांच के लिए महंगे औज़ारों की ज़रूरत होती है।",mr:"डॉक्टरांना प्रत्येक तपासणीसाठी महाग साधनं लागतात."}, answer:false, explain:{en:"Myth! Many basic check-ups just need simple tools like a stethoscope and a thermometer.",hi:"मिथक! कई बुनियादी जांचों के लिए स्टेथोस्कोप और थर्मामीटर जैसे साधारण औज़ार ही काफी होते हैं।",mr:"मिथक! अनेक मूलभूत तपासण्यांसाठी स्टेथोस्कोप आणि थर्मामीटरसारखी साधी साधनं पुरेशी असतात."} }
+            ]}}
           ]},
-          { label: "Meet Your Brain", tasks: [
+          { label: "Meet Your Brain",
+            bonusAssignment: {
+              title: { en: "Brain Doodle Challenge", hi: "दिमाग़ डूडल चुनौती", mr: "मेंदू डूडल आव्हान" },
+              prompt: { en: "Draw a picture of your brain and label 2-3 things it does. Take a photo and describe your drawing!",
+                        hi: "अपने दिमाग़ की एक तस्वीर बनाओ और उसके 2-3 काम लिखो। फोटो लो और अपनी तस्वीर के बारे में बताओ!",
+                        mr: "तुमच्या मेंदूचं चित्र काढा आणि तो करत असलेली 2-3 कामं लिहा. फोटो घ्या आणि तुमचं चित्र समजावून सांगा!" }
+            },
+            tasks: [
             { engine: "tap-discover", icon: "🧠", title: "Explore your brain", data: { visual: "🧠", hotspots: [
               { label: "Thinking", fact: "Your brain is where every thought, idea, and daydream happens!" },
               { label: "Memory", fact: "Your brain stores memories like a super-powered photo album!" },
@@ -1333,9 +1516,38 @@ export const PROFESSION_CATALOG = {
               { id: "think", label: "Solving a puzzle" }, { id: "remember", label: "Recalling a birthday" }, { id: "move", label: "Riding a bicycle" }
             ], chips: ["think","remember","move"], facts: { think: "Thinking!", remember: "Memory!", move: "Movement control!" }}},
             { type: "Quiz", icon: "📝", title: "Brain basics", desc: "Quiz on what your brain does." },
-            { type: "Reflect", icon: "💭", title: "Your brain, amazing", desc: "What's something your brain does that you never noticed before?" }
+            { type: "Reflect", icon: "💭", title: "Your brain, amazing", desc: "What's something your brain does that you never noticed before?" },
+            { engine: "flip-cards", icon: "🃏", title: "Brain Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising brain fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाला दिमाग़ का तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून मेंदूबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How fast?",hi:"कितनी तेज़?",mr:"किती वेगात?"}, back:{en:"Messages travel through your brain at speeds up to 268 miles per hour! ⚡",hi:"संदेश तुम्हारे दिमाग़ में 268 मील प्रति घंटे तक की गति से यात्रा करते हैं! ⚡",mr:"संदेश तुमच्या मेंदूतून ताशी 268 मैल वेगाने प्रवास करतात! ⚡"} },
+              { front:{en:"How much energy?",hi:"कितनी ऊर्जा?",mr:"किती ऊर्जा?"}, back:{en:"Your brain uses about 20% of all your body's energy, even though it's a small part of your weight! 🔋",hi:"तुम्हारा दिमाग़ तुम्हारे शरीर की कुल ऊर्जा का लगभग 20% इस्तेमाल करता है, भले ही यह तुम्हारे वज़न का एक छोटा हिस्सा हो! 🔋",mr:"तुमचा मेंदू तुमच्या शरीराच्या एकूण ऊर्जेपैकी सुमारे 20% वापरतो, जरी तो तुमच्या वजनाचा एक लहान भाग असला तरी! 🔋"} },
+              { front:{en:"Never stops?",hi:"कभी नहीं रुकता?",mr:"कधीच थांबत नाही?"}, back:{en:"Your brain stays active even while you sleep — that's when it sorts and stores your memories! 😴",hi:"तुम्हारा दिमाग़ सोते समय भी सक्रिय रहता है — तभी वह तुम्हारी यादों को छाँटता और संग्रहीत करता है! 😴",mr:"तुम्ही झोपेत असतानाही तुमचा मेंदू सक्रिय राहतो — तेव्हाच तो तुमच्या आठवणी वर्गीकृत करून साठवतो! 😴"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Brain or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your brain knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे दिमाग़ के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या मेंदूच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"You only use 10% of your brain.",hi:"तुम अपने दिमाग़ का केवल 10% इस्तेमाल करते हो।",mr:"तुम्ही तुमच्या मेंदूचा फक्त 10% वापर करता."}, answer:false, explain:{en:"Myth! Brain scans show you actually use nearly all of your brain, just at different times for different tasks.",hi:"मिथक! ब्रेन स्कैन दिखाते हैं कि तुम असल में अपने लगभग पूरे दिमाग़ का इस्तेमाल करते हो, बस अलग-अलग कामों के लिए अलग समय पर।",mr:"मिथक! ब्रेन स्कॅन दाखवतात की तुम्ही खरंतर तुमच्या जवळजवळ संपूर्ण मेंदूचा वापर करता, फक्त वेगवेगळ्या कामांसाठी वेगळ्या वेळी."} },
+              { text:{en:"Your brain can grow new connections your whole life.",hi:"तुम्हारा दिमाग़ पूरी ज़िंदगी नए कनेक्शन बना सकता है।",mr:"तुमचा मेंदू आयुष्यभर नवीन जोडण्या तयार करू शकतो."}, answer:true, explain:{en:"True! Learning new things creates new brain connections at any age — this is called neuroplasticity.",hi:"सच! नई चीज़ें सीखना किसी भी उम्र में नए दिमाग़ी कनेक्शन बनाता है — इसे न्यूरोप्लास्टिसिटी कहते हैं।",mr:"खरं! नवीन गोष्टी शिकल्याने कोणत्याही वयात नवीन मेंदू जोडण्या तयार होतात — याला न्यूरोप्लास्टिसिटी म्हणतात."} },
+              { text:{en:"Bigger brains always mean smarter people.",hi:"बड़ा दिमाग़ हमेशा ज़्यादा स्मार्ट होने का मतलब है।",mr:"मोठा मेंदू म्हणजे नेहमी हुशार व्यक्ती."}, answer:false, explain:{en:"Myth! Brain size doesn't determine intelligence — how the brain's connections work matters much more.",hi:"मिथक! दिमाग़ का आकार बुद्धिमत्ता तय नहीं करता — दिमाग़ के कनेक्शन कैसे काम करते हैं यह ज़्यादा मायने रखता है।",mr:"मिथक! मेंदूचा आकार बुद्धिमत्ता ठरवत नाही — मेंदूच्या जोडण्या कशा काम करतात हे जास्त महत्त्वाचं आहे."} }
+            ]}}
           ]},
-          { label: "How Medicine Helps", tasks: [
+          { label: "How Medicine Helps",
+            bonusAssignment: {
+              title: { en: "Home Remedy Chart", hi: "घरेलू उपाय चार्ट", mr: "घरगुती उपाय तक्ता" },
+              prompt: { en: "Ask a family member about a safe home remedy they use (like rest for tiredness). Draw or write a small chart about it and take a photo!",
+                        hi: "परिवार के किसी सदस्य से एक सुरक्षित घरेलू उपाय के बारे में पूछो जो वे इस्तेमाल करते हैं (जैसे थकान के लिए आराम)। उसके बारे में एक छोटा चार्ट बनाओ या लिखो और फोटो लो!",
+                        mr: "कुटुंबातील एखाद्याला ते वापरत असलेल्या सुरक्षित घरगुती उपायाबद्दल विचारा (जसं थकव्यासाठी आराम). त्याबद्दल छोटा तक्ता काढा किंवा लिहा आणि फोटो घ्या!" }
+            },
+            tasks: [
             { engine: "build-match", icon: "💊", title: "Match problem to help", data: { noStakes: true, zones: [
               { id: "rest", label: "Feeling tired" }, { id: "bandage", label: "A small cut" }, { id: "doctor", label: "Ongoing bad pain" }
             ], chips: ["rest","bandage","doctor"], facts: {
@@ -1349,9 +1561,38 @@ export const PROFESSION_CATALOG = {
               { label: "Always ask an adult", fact: "Medicine should only ever be given by a trusted adult or doctor!" }
             ]}},
             { type: "Quiz", icon: "📝", title: "Medicine basics", desc: "Quiz on how medicine helps the body." },
-            { type: "Reflect", icon: "💭", title: "Safety first", desc: "Why do you think it's important to only take medicine an adult gives you?" }
+            { type: "Reflect", icon: "💭", title: "Safety first", desc: "Why do you think it's important to only take medicine an adult gives you?" },
+            { engine: "flip-cards", icon: "🃏", title: "Medicine Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising medicine fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाली दवा का तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून औषधांबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"From plants?",hi:"पौधों से?",mr:"वनस्पतींपासून?"}, back:{en:"Many medicines originally came from plants — aspirin was first found in willow tree bark! 🌳",hi:"कई दवाएँ मूल रूप से पौधों से आईं — एस्पिरिन सबसे पहले विलो पेड़ की छाल में मिली थी! 🌳",mr:"अनेक औषधं मूळत: वनस्पतींपासून आली — ऍस्पिरिन प्रथम विलो झाडाच्या सालीत सापडलं! 🌳"} },
+              { front:{en:"How they travel?",hi:"वे कैसे यात्रा करती हैं?",mr:"ती कशी प्रवास करतात?"}, back:{en:"Once swallowed, medicine travels through your blood to reach exactly where it's needed! 🩸",hi:"निगलने के बाद, दवा तुम्हारे खून के ज़रिए ठीक वहाँ पहुँचती है जहाँ इसकी ज़रूरत होती है! 🩸",mr:"गिळल्यानंतर, औषध तुमच्या रक्तातून नेमकं तिथे पोहोचतं जिथे त्याची गरज असते! 🩸"} },
+              { front:{en:"Vaccines?",hi:"वैक्सीन?",mr:"लस?"}, back:{en:"Vaccines are a special kind of medicine that teach your body to fight a germ before you even get sick! 💉",hi:"वैक्सीन एक खास तरह की दवा है जो तुम्हारे बीमार होने से पहले ही तुम्हारे शरीर को कीटाणु से लड़ना सिखाती है! 💉",mr:"लस हा एक खास प्रकारचा औषध आहे जो तुम्ही आजारी पडण्याआधीच तुमच्या शरीराला जंतूशी लढायला शिकवतो! 💉"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Medicine or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your medicine knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारी दवा के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या औषधांच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Taking more medicine than needed helps you get better faster.",hi:"ज़रूरत से ज़्यादा दवा लेने से तुम तेज़ी से ठीक होते हो।",mr:"गरजेपेक्षा जास्त औषध घेतल्याने तुम्ही लवकर बरे होता."}, answer:false, explain:{en:"Myth! Taking more than the right amount can actually be harmful — always follow what a doctor or adult says.",hi:"मिथक! सही मात्रा से ज़्यादा लेना असल में नुकसानदेह हो सकता है — हमेशा डॉक्टर या बड़े की बात मानो।",mr:"मिथक! योग्य मात्रेपेक्षा जास्त घेणं खरंतर हानिकारक असू शकतं — नेहमी डॉक्टर किंवा मोठ्यांचं ऐका."} },
+              { text:{en:"Different medicines can be used for different problems.",hi:"अलग-अलग समस्याओं के लिए अलग-अलग दवाओं का इस्तेमाल किया जा सकता है।",mr:"वेगवेगळ्या समस्यांसाठी वेगवेगळी औषधं वापरली जाऊ शकतात."}, answer:true, explain:{en:"True! That's why doctors carefully choose the right medicine for each specific problem.",hi:"सच! इसीलिए डॉक्टर हर खास समस्या के लिए ध्यान से सही दवा चुनते हैं।",mr:"खरं! म्हणूनच डॉक्टर प्रत्येक विशिष्ट समस्येसाठी काळजीपूर्वक योग्य औषध निवडतात."} },
+              { text:{en:"It's fine to share your prescribed medicine with a friend who feels sick.",hi:"जो दोस्त बीमार महसूस कर रहा है उसके साथ अपनी बताई गई दवा साझा करना ठीक है।",mr:"आजारी वाटणाऱ्या मित्रासोबत तुमचं सांगितलेलं औषध वाटणं ठीक आहे."}, answer:false, explain:{en:"Myth! Medicine prescribed for you might not be right — or safe — for someone else's body.",hi:"मिथक! तुम्हारे लिए बताई गई दवा किसी और के शरीर के लिए सही — या सुरक्षित — नहीं हो सकती।",mr:"मिथक! तुमच्यासाठी सांगितलेलं औषध दुसऱ्याच्या शरीरासाठी योग्य — किंवा सुरक्षित — नसू शकतं."} }
+            ]}}
           ]},
-          { label: "Emergency Helpers", tasks: [
+          { label: "Emergency Helpers",
+            bonusAssignment: {
+              title: { en: "My Emergency Plan", hi: "मेरी आपातकालीन योजना", mr: "माझी आणीबाणी योजना" },
+              prompt: { en: "With a family member, write down 3 important numbers/steps for an emergency at home. Take a photo of your list!",
+                        hi: "परिवार के किसी सदस्य के साथ, घर पर आपातकाल के लिए 3 ज़रूरी नंबर/कदम लिखो। अपनी सूची की फोटो लो!",
+                        mr: "कुटुंबातील एखाद्यासोबत, घरी आणीबाणीसाठी 3 महत्त्वाचे नंबर/पायऱ्या लिहा. तुमच्या यादीचा फोटो घ्या!" }
+            },
+            tasks: [
             { engine: "tap-discover", icon: "🚑", title: "Meet emergency helpers", data: { visual: "🚑", hotspots: [
               { label: "Ambulance", fact: "An ambulance rushes people who need urgent help to the hospital!" },
               { label: "Paramedics", fact: "Paramedics can start helping a patient even before reaching the hospital!" },
@@ -1363,9 +1604,38 @@ export const PROFESSION_CATALOG = {
               paramedic: "Paramedics!", "er-doctor": "Emergency room doctors!", dispatcher: "Emergency call dispatchers!"
             }}},
             { type: "Quiz", icon: "📝", title: "Emergency basics", desc: "Quiz on who helps in a medical emergency." },
-            { type: "Reflect", icon: "💭", title: "Helper heroes", desc: "What do you think is the hardest part of being an emergency helper?" }
+            { type: "Reflect", icon: "💭", title: "Helper heroes", desc: "What do you think is the hardest part of being an emergency helper?" },
+            { engine: "flip-cards", icon: "🃏", title: "Emergency Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising emergency-care fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर आपातकालीन देखभाल का एक हैरान करने वाला तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून आणीबाणी काळजीबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"Golden hour?",hi:"गोल्डन ऑवर?",mr:"गोल्डन अवर?"}, back:{en:"Doctors call the first hour after a serious injury the 'golden hour' — quick help makes a huge difference! ⏰",hi:"डॉक्टर गंभीर चोट के बाद पहले घंटे को 'गोल्डन ऑवर' कहते हैं — तेज़ मदद बहुत फ़र्क डालती है! ⏰",mr:"डॉक्टर गंभीर दुखापतीनंतरच्या पहिल्या तासाला 'गोल्डन अवर' म्हणतात — जलद मदत खूप फरक पाडते! ⏰"} },
+              { front:{en:"Ambulance tech?",hi:"एम्बुलेंस तकनीक?",mr:"रुग्णवाहिका तंत्रज्ञान?"}, back:{en:"Modern ambulances are like mini-hospitals on wheels, with equipment to help right on the way! 🚑",hi:"आधुनिक एम्बुलेंस पहियों पर मिनी-अस्पताल की तरह हैं, रास्ते में ही मदद करने के उपकरणों के साथ! 🚑",mr:"आधुनिक रुग्णवाहिका चाकांवरच्या मिनी-हॉस्पिटलसारख्या असतात, वाटेतच मदत करण्याच्या उपकरणांसह! 🚑"} },
+              { front:{en:"Kids can help too?",hi:"बच्चे भी मदद कर सकते हैं?",mr:"मुलंही मदत करू शकतात?"}, back:{en:"Even kids can help in an emergency — by staying calm and telling a trusted adult right away! 🌟",hi:"बच्चे भी आपातकाल में मदद कर सकते हैं — शांत रहकर और तुरंत किसी भरोसेमंद बड़े को बताकर! 🌟",mr:"मुलंसुद्धा आणीबाणीत मदत करू शकतात — शांत राहून आणि लगेच एखाद्या विश्वासू मोठ्याला सांगून! 🌟"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Emergency or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your emergency-care knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो आपातकालीन देखभाल के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला आणीबाणी काळजीच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"You should always try to handle a serious emergency completely by yourself.",hi:"तुम्हें हमेशा एक गंभीर आपातकाल को पूरी तरह अकेले संभालने की कोशिश करनी चाहिए।",mr:"तुम्ही नेहमी गंभीर आणीबाणी पूर्णपणे एकट्याने हाताळण्याचा प्रयत्न करावा."}, answer:false, explain:{en:"Myth! The right first step is almost always to get a trusted adult or call for emergency help right away.",hi:"मिथक! सही पहला कदम लगभग हमेशा भरोसेमंद बड़े को बुलाना या तुरंत आपातकालीन मदद के लिए कॉल करना है।",mr:"मिथक! योग्य पहिली पायरी जवळजवळ नेहमी विश्वासू मोठ्याला बोलावणं किंवा लगेच आणीबाणी मदतीसाठी कॉल करणं हीच असते."} },
+              { text:{en:"Paramedics are trained to help before reaching the hospital.",hi:"पैरामेडिक्स अस्पताल पहुँचने से पहले मदद करने के लिए प्रशिक्षित होते हैं।",mr:"पॅरामेडिक्स रुग्णालयात पोहोचण्याआधी मदत करण्यासाठी प्रशिक्षित असतात."}, answer:true, explain:{en:"True! Paramedics can start important care right in the ambulance, on the way to the hospital.",hi:"सच! पैरामेडिक्स एम्बुलेंस में ही, अस्पताल जाते समय ज़रूरी देखभाल शुरू कर सकते हैं।",mr:"खरं! पॅरामेडिक्स रुग्णवाहिकेतच, रुग्णालयाकडे जाताना महत्त्वाची काळजी सुरू करू शकतात."} },
+              { text:{en:"Emergency numbers are only useful for adults to call.",hi:"आपातकालीन नंबर केवल बड़ों के कॉल करने के लिए उपयोगी हैं।",mr:"आणीबाणी क्रमांक फक्त मोठ्यांनी कॉल करण्यासाठीच उपयोगी असतात."}, answer:false, explain:{en:"Myth! Kids can and should call for emergency help too, if there's no adult around and someone needs urgent help.",hi:"मिथक! बच्चे भी आपातकालीन मदद के लिए कॉल कर सकते हैं और करना चाहिए, अगर आसपास कोई बड़ा न हो और किसी को तुरंत मदद चाहिए।",mr:"मिथक! जर आजूबाजूला कोणी मोठं नसेल आणि कोणाला तातडीने मदत हवी असेल, तर मुलंसुद्धा आणीबाणी मदतीसाठी कॉल करू शकतात आणि करावं."} }
+            ]}}
           ]},
-          { label: "Teeth & Smiles", tasks: [
+          { label: "Teeth & Smiles",
+            bonusAssignment: {
+              title: { en: "Design a Smile Chart", hi: "मुस्कान चार्ट डिज़ाइन करो", mr: "स्माईल तक्ता डिझाइन करा" },
+              prompt: { en: "Design a fun weekly chart to track brushing your teeth morning and night. Take a photo of your chart and describe how you'll use it!",
+                        hi: "सुबह और रात दांत ब्रश करने को ट्रैक करने के लिए एक मज़ेदार साप्ताहिक चार्ट डिज़ाइन करो। अपने चार्ट की फोटो लो और बताओ तुम इसे कैसे इस्तेमाल करोगे!",
+                        mr: "सकाळी आणि रात्री दात घासण्याचा मागोवा घेण्यासाठी एक मजेदार साप्ताहिक तक्ता डिझाइन करा. तुमच्या तक्त्याचा फोटो घ्या आणि तुम्ही तो कसा वापराल ते सांगा!" }
+            },
+            tasks: [
             { engine: "build-match", icon: "🦷", title: "Match habit to routine", data: { noStakes: true, zones: [
               { id: "brush", label: "Morning & night" }, { id: "floss", label: "Once a day" }, { id: "dentist", label: "Every 6 months" }
             ], chips: ["brush","floss","dentist"], facts: {
@@ -1379,9 +1649,38 @@ export const PROFESSION_CATALOG = {
               { label: "Enamel", fact: "The outer layer of your teeth is the hardest part of your whole body!" }
             ]}},
             { type: "Quiz", icon: "📝", title: "Dental basics", desc: "Quiz on how to take care of your teeth." },
-            { type: "Reflect", icon: "💭", title: "Your smile routine", desc: "How do you take care of your teeth every day?" }
+            { type: "Reflect", icon: "💭", title: "Your smile routine", desc: "How do you take care of your teeth every day?" },
+            { engine: "flip-cards", icon: "🃏", title: "Teeth Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising teeth fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाला दांतों का तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून दातांबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How many?",hi:"कितने?",mr:"किती?"}, back:{en:"Adults have 32 teeth, but kids your age are still growing into that number! 🦷",hi:"वयस्कों के 32 दांत होते हैं, लेकिन तुम्हारी उम्र के बच्चे अभी उस संख्या तक बढ़ रहे हैं! 🦷",mr:"प्रौढांना 32 दात असतात, पण तुमच्या वयाची मुलं अजून त्या संख्येपर्यंत वाढत आहेत! 🦷"} },
+              { front:{en:"Stronger than bone?",hi:"हड्डी से मज़बूत?",mr:"हाडांपेक्षा मजबूत?"}, back:{en:"Tooth enamel is the hardest substance in your entire body — even harder than bone! 💎",hi:"दांतों का इनैमल तुम्हारे पूरे शरीर में सबसे कठोर पदार्थ है — हड्डी से भी ज़्यादा कठोर! 💎",mr:"दातांचं इनॅमल तुमच्या संपूर्ण शरीरातील सर्वात कठीण पदार्थ आहे — हाडांपेक्षाही कठीण! 💎"} },
+              { front:{en:"Everyone's unique?",hi:"हर किसी के अनोखे?",mr:"प्रत्येकाचे वेगळे?"}, back:{en:"Just like fingerprints, no two people have exactly the same teeth pattern! ✨",hi:"उंगलियों के निशान की तरह, किसी भी दो लोगों के दांतों का पैटर्न बिल्कुल एक जैसा नहीं होता! ✨",mr:"बोटांच्या ठशांप्रमाणे, कोणत्याही दोन व्यक्तींचे दातांचे नमुने अगदी सारखे नसतात! ✨"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Teeth or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your teeth knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे दांतों के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या दातांच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Sugary food can help germs grow on your teeth.",hi:"चीनी वाला खाना तुम्हारे दांतों पर कीटाणुओं को बढ़ने में मदद कर सकता है।",mr:"साखरयुक्त अन्न तुमच्या दातांवर जंतू वाढण्यास मदत करू शकतं."}, answer:true, explain:{en:"True! Sugar feeds the germs in your mouth, which is why brushing after sweets really matters.",hi:"सच! चीनी तुम्हारे मुँह के कीटाणुओं को खिलाती है, इसीलिए मीठा खाने के बाद ब्रश करना बहुत मायने रखता है।",mr:"खरं! साखर तुमच्या तोंडातील जंतूंना खाद्य देते, म्हणूनच गोड खाल्ल्यानंतर ब्रश करणं खूप महत्त्वाचं आहे."} },
+              { text:{en:"Once you lose a baby tooth, nothing grows back in its place.",hi:"एक बार दूध का दांत टूटने पर, उसकी जगह कुछ नहीं उगता।",mr:"एकदा दुधाचा दात पडला की, त्याच्या जागी काहीच उगवत नाही."}, answer:false, explain:{en:"Myth! A permanent adult tooth grows in to take the place of every baby tooth you lose.",hi:"मिथक! हर टूटे हुए दूध के दांत की जगह एक स्थायी वयस्क दांत उगता है।",mr:"मिथक! तुम्ही गमावलेल्या प्रत्येक दुधाच्या दाताच्या जागी एक कायमचा प्रौढ दात उगवतो."} },
+              { text:{en:"Brushing harder always cleans your teeth better.",hi:"ज़्यादा ज़ोर से ब्रश करना हमेशा दांतों को बेहतर साफ़ करता है।",mr:"जोरात घासल्याने नेहमी दात जास्त चांगले स्वच्छ होतात."}, answer:false, explain:{en:"Myth! Brushing too hard can actually hurt your gums — gentle, thorough brushing works best.",hi:"मिथक! बहुत ज़ोर से ब्रश करना असल में मसूड़ों को नुकसान पहुँचा सकता है — धीरे और अच्छी तरह ब्रश करना सबसे अच्छा है।",mr:"मिथक! खूप जोरात घासल्याने खरंतर हिरड्यांना इजा होऊ शकते — हळुवार, नीट घासणं सर्वात चांगलं."} }
+            ]}}
           ]},
-          { label: "Eyes & Seeing", tasks: [
+          { label: "Eyes & Seeing",
+            bonusAssignment: {
+              title: { en: "Eye Care Ad", hi: "आँखों की देखभाल विज्ञापन", mr: "डोळ्यांची काळजी जाहिरात" },
+              prompt: { en: "Create a short poster or ad convincing someone to take screen breaks for their eyes. Take a photo and explain your message!",
+                        hi: "किसी को आँखों के लिए स्क्रीन ब्रेक लेने के लिए मनाने वाला एक छोटा पोस्टर या विज्ञापन बनाओ। फोटो लो और अपना संदेश समझाओ!",
+                        mr: "डोळ्यांसाठी स्क्रीन ब्रेक घेण्यास कोणाला तरी पटवून देणारं छोटं पोस्टर किंवा जाहिरात तयार करा. फोटो घ्या आणि तुमचा संदेश समजावून सांगा!" }
+            },
+            tasks: [
             { engine: "tap-discover", icon: "👁️", title: "Explore your eyes", data: { visual: "👁️", hotspots: [
               { label: "Pupil", fact: "The black dot in your eye lets light in — it gets bigger in the dark!" },
               { label: "Blinking", fact: "You blink about 15-20 times a minute to keep your eyes clean and moist!" },
@@ -1393,13 +1692,64 @@ export const PROFESSION_CATALOG = {
               "screen-breaks": "Taking screen breaks!", sunglasses: "Wearing sunglasses outdoors!", checkup: "Regular eye checkups!"
             }}},
             { type: "Quiz", icon: "📝", title: "Vision basics", desc: "Quiz on how your eyes work." },
-            { type: "Reflect", icon: "💭", title: "Eye care habits", desc: "What's one thing you could do to take better care of your eyes?" }
+            { type: "Reflect", icon: "💭", title: "Eye care habits", desc: "What's one thing you could do to take better care of your eyes?" },
+            { engine: "flip-cards", icon: "🃏", title: "Eye Fun Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Ready for something fun? Flip each card to reveal a surprising eye fact!",
+                hi: "कुछ मज़ेदार करने के लिए तैयार हो? हर कार्ड को पलटकर एक हैरान करने वाला आँख का तथ्य देखो!",
+                mr: "काहीतरी मजेदार करायला तयार आहात? प्रत्येक कार्ड उलटून डोळ्यांबद्दलचं एक आश्चर्यकारक तथ्य बघा!"
+              },
+              data: { cards: [
+              { front:{en:"How fast do you blink?",hi:"तुम कितनी तेज़ पलक झपकाते हो?",mr:"तुम्ही किती वेगात पापण्या मिचकावता?"}, back:{en:"A single blink takes only about one-tenth of a second — one of the fastest muscle movements in your body! ⚡",hi:"एक पलक झपकने में केवल एक-दसवां सेकंड लगता है — तुम्हारे शरीर की सबसे तेज़ मांसपेशी हरकतों में से एक! ⚡",mr:"एक पापणी मिचकावण्यास फक्त एक-दशांश सेकंद लागतो — तुमच्या शरीरातील सर्वात वेगवान स्नायू हालचालींपैकी एक! ⚡"} },
+              { front:{en:"Upside down?",hi:"उल्टा?",mr:"उलटं?"}, back:{en:"Your eyes actually see the world upside-down — your brain flips the image the right way up instantly! 🙃",hi:"तुम्हारी आँखें असल में दुनिया को उल्टा देखती हैं — तुम्हारा दिमाग़ तुरंत तस्वीर को सीधा कर देता है! 🙃",mr:"तुमचे डोळे खरंच जग उलटं बघतात — तुमचा मेंदू लगेच प्रतिमा सरळ करतो! 🙃"} },
+              { front:{en:"Colors you can't see?",hi:"रंग जो तुम नहीं देख सकते?",mr:"रंग जे तुम्हाला दिसत नाहीत?"}, back:{en:"Some animals like bees can see colors humans can't even imagine, like ultraviolet light! 🐝",hi:"मधुमक्खियों जैसे कुछ जानवर उन रंगों को देख सकते हैं जिनकी इंसान कल्पना भी नहीं कर सकते, जैसे अल्ट्रावायलेट लाइट! 🐝",mr:"मधमाश्यांसारखे काही प्राणी माणसांना कल्पनाही न करता येणारे रंग बघू शकतात, जसं अल्ट्राव्हायोलेट प्रकाश! 🐝"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Eyes or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your eye knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारी आँखों के ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या डोळ्यांच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Sitting too close to a screen permanently damages your eyes.",hi:"स्क्रीन के बहुत पास बैठना तुम्हारी आँखों को स्थायी रूप से नुकसान पहुँचाता है।",mr:"स्क्रीनजवळ खूप जवळ बसल्याने तुमच्या डोळ्यांना कायमचं नुकसान होतं."}, answer:false, explain:{en:"Myth! It can cause temporary eye strain and tiredness, but doesn't permanently damage healthy eyes.",hi:"मिथक! इससे अस्थायी आँखों का तनाव और थकान हो सकती है, लेकिन यह स्वस्थ आँखों को स्थायी नुकसान नहीं पहुँचाता।",mr:"मिथक! यामुळे तात्पुरता डोळ्यांचा ताण आणि थकवा येऊ शकतो, पण निरोगी डोळ्यांना कायमचं नुकसान होत नाही."} },
+              { text:{en:"Carrots can help support healthy eyes.",hi:"गाजर स्वस्थ आँखों का समर्थन करने में मदद कर सकते हैं।",mr:"गाजर निरोगी डोळ्यांना आधार देण्यास मदत करू शकतात."}, answer:true, explain:{en:"True! Carrots contain Vitamin A, which genuinely supports healthy vision.",hi:"सच! गाजर में विटामिन ए होता है, जो वास्तव में स्वस्थ दृष्टि का समर्थन करता है।",mr:"खरं! गाजरांमध्ये व्हिटॅमिन ए असतं, जे खरोखर निरोगी दृष्टीला आधार देतं."} },
+              { text:{en:"Everyone's eyes are exactly the same shape and size.",hi:"सभी की आँखें बिल्कुल एक ही आकार और साइज़ की होती हैं।",mr:"प्रत्येकाचे डोळे अगदी सारखेच आकार आणि साईझचे असतात."}, answer:false, explain:{en:"Myth! Just like faces, everyone's eyes are slightly different in shape, size, and color.",hi:"मिथक! चेहरों की तरह, हर किसी की आँखें आकार, साइज़ और रंग में थोड़ी अलग होती हैं।",mr:"मिथक! चेहऱ्यांप्रमाणे, प्रत्येकाचे डोळे आकार, साईझ आणि रंगात थोडे वेगळे असतात."} }
+            ]}}
           ]},
-          { label: "Your Body, One Year Later", tasks: [
+          { label: "Your Body, One Year Later",
+            bonusAssignment: {
+              title: { en: "My Year in Review", hi: "मेरा साल का सफ़र", mr: "माझं वर्षभराचं प्रवास" },
+              prompt: { en: "Create a page (drawing, collage, or writing) showing your favorite discovery from this whole year of exploring the body. Take a photo and tell us about it!",
+                        hi: "इस पूरे साल शरीर की खोज में अपनी पसंदीदा खोज दिखाते हुए एक पेज (चित्र, कोलाज, या लेखन) बनाओ। फोटो लो और हमें इसके बारे में बताओ!",
+                        mr: "या संपूर्ण वर्षात शरीराच्या शोधातील तुमचा आवडता शोध दाखवणारं एक पान (चित्र, कोलाज, किंवा लेखन) तयार करा. फोटो घ्या आणि आम्हाला त्याबद्दल सांगा!" }
+            },
+            tasks: [
             { type: "Reflect", icon: "💭", title: "Look back at the year", desc: "Look back at all 11 months — which body system was your favorite to explore?" },
             { type: "Quiz", icon: "📝", title: "Body systems recap", desc: "A fun recap quiz of everything you discovered this year." },
             { type: "Build", icon: "🎨", title: "Draw your body explorer badge", desc: "Design what your own \"Body Explorer\" badge would look like." },
-            { type: "Reflect", icon: "💭", title: "A message to Std 7 you", desc: "Write a message to yourself for next year, about what you'd like to explore next." }
+            { type: "Reflect", icon: "💭", title: "A message to Std 7 you", desc: "Write a message to yourself for next year, about what you'd like to explore next." },
+            { engine: "flip-cards", icon: "🃏", title: "Year Highlights", mentorVisual: "🎉",
+              mentorIntro: {
+                en: "What a year of discovery! Flip each card for a fun recap of your journey through the human body.",
+                hi: "क्या खोज भरा साल रहा! मानव शरीर की तुम्हारी यात्रा का मज़ेदार सारांश देखने के लिए हर कार्ड पलटो।",
+                mr: "काय शोधाचं वर्ष होतं! मानवी शरीरातील तुमच्या प्रवासाचा मजेदार आढावा बघण्यासाठी प्रत्येक कार्ड उलटा."
+              },
+              data: { cards: [
+              { front:{en:"Where did we start?",hi:"हमने कहाँ से शुरुआत की?",mr:"आपण कुठून सुरुवात केली?"}, back:{en:"You started this year discovering your own beating heart — the very first thing you explored! ❤️",hi:"तुमने इस साल की शुरुआत अपने ही धड़कते दिल की खोज से की — जो सबसे पहली चीज़ थी जिसे तुमने एक्सप्लोर किया! ❤️",mr:"तुम्ही या वर्षाची सुरुवात तुमच्या स्वतःच्या धडधडणाऱ्या हृदयाच्या शोधाने केली — तुम्ही एक्सप्लोर केलेली पहिलीच गोष्ट! ❤️"} },
+              { front:{en:"How many systems?",hi:"कितने सिस्टम?",mr:"किती यंत्रणा?"}, back:{en:"You explored 11 different body systems this year — from your heart all the way to your eyes! 🔬",hi:"तुमने इस साल 11 अलग-अलग शरीर के सिस्टम एक्सप्लोर किए — तुम्हारे दिल से लेकर तुम्हारी आँखों तक! 🔬",mr:"तुम्ही या वर्षी 11 वेगवेगळ्या शरीर यंत्रणा एक्सप्लोर केल्या — तुमच्या हृदयापासून ते तुमच्या डोळ्यांपर्यंत! 🔬"} },
+              { front:{en:"What's next?",hi:"आगे क्या?",mr:"पुढे काय?"}, back:{en:"Next year, you'll discover even more — like digestion, muscles, and how your whole body works together! 🚀",hi:"अगले साल, तुम और भी बहुत कुछ खोजोगे — जैसे पाचन, मांसपेशियाँ, और तुम्हारा पूरा शरीर कैसे एक साथ काम करता है! 🚀",mr:"पुढच्या वर्षी, तुम्ही आणखी बरंच काही शोधाल — जसं पचन, स्नायू, आणि तुमचं संपूर्ण शरीर एकत्र कसं काम करतं! 🚀"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "How Much Do You Remember?", mentorVisual: "🏆",
+              mentorIntro: {
+                en: "One last check-in before the year wraps up! Let's see what stuck from your whole year of exploring.",
+                hi: "साल खत्म होने से पहले एक आखिरी जांच! देखते हैं तुम्हारे पूरे साल की खोज से क्या याद रहा।",
+                mr: "वर्ष संपण्याआधी शेवटची एक तपासणी! बघूया तुमच्या संपूर्ण वर्षाच्या शोधातून काय लक्षात राहिलं."
+              },
+              data: { statements: [
+              { text:{en:"Your heart is the only body part you explored this year that never stops working.",hi:"तुम्हारा दिल इस साल एक्सप्लोर किया गया एकमात्र शरीर का हिस्सा है जो कभी काम करना बंद नहीं करता।",mr:"तुमचं हृदय या वर्षी एक्सप्लोर केलेला एकमेव शरीराचा भाग आहे जो कधीच काम करणं थांबवत नाही."}, answer:false, explain:{en:"Myth! Your brain and lungs also never stop working, even while you sleep.",hi:"मिथक! तुम्हारा दिमाग़ और फेफड़े भी कभी काम करना बंद नहीं करते, सोते समय भी नहीं।",mr:"मिथक! तुमचा मेंदू आणि फुफ्फुसंसुद्धा कधीच काम करणं थांबवत नाहीत, झोपेतसुद्धा नाही."} },
+              { text:{en:"Every body system you explored this year works completely on its own, with no connection to the others.",hi:"तुमने इस साल एक्सप्लोर किया हर शरीर सिस्टम बिल्कुल अकेले काम करता है, बाकियों से कोई जुड़ाव नहीं।",mr:"तुम्ही या वर्षी एक्सप्लोर केलेली प्रत्येक शरीर यंत्रणा पूर्णपणे स्वतंत्रपणे काम करते, इतरांशी कोणताही संबंध नाही."}, answer:false, explain:{en:"Myth! Your body systems work as a team — like your heart and lungs working together to deliver oxygen everywhere.",hi:"मिथक! तुम्हारे शरीर के सिस्टम एक टीम की तरह काम करते हैं — जैसे तुम्हारा दिल और फेफड़े मिलकर हर जगह ऑक्सीजन पहुँचाते हैं।",mr:"मिथक! तुमच्या शरीराच्या यंत्रणा एका संघासारख्या काम करतात — जसं तुमचं हृदय आणि फुफ्फुसं मिळून सगळीकडे ऑक्सिजन पोहोचवतात."} },
+              { text:{en:"Learning about your body is something you can keep doing for the rest of your life.",hi:"अपने शरीर के बारे में सीखना कुछ ऐसा है जो तुम अपनी पूरी ज़िंदगी करते रह सकते हो।",mr:"तुमच्या शरीराबद्दल शिकणं ही अशी गोष्ट आहे जी तुम्ही तुमच्या उर्वरित आयुष्यभर करत राहू शकता."}, answer:true, explain:{en:"True! Even doctors and scientists keep discovering new things about the human body every single year.",hi:"सच! डॉक्टर और वैज्ञानिक भी हर साल मानव शरीर के बारे में नई चीज़ें खोजते रहते हैं।",mr:"खरं! डॉक्टर आणि शास्त्रज्ञसुद्धा दरवर्षी मानवी शरीराबद्दल नवीन गोष्टी शोधत राहतात."} }
+            ]}}
           ]}
         ]
       },
