@@ -1194,6 +1194,17 @@ export const PROFESSION_CATALOG = {
   "doctor-healthcare": {
     title: "Doctor & Healthcare",
     icon: "🩺",
+    mentorBannerImg: "assets/mentors/mentor-arjun-banner.jpg",
+    // Year-end physical reward ladder, based on total coins earned in this
+    // profession across the year (~1080 max if every month is fully completed).
+    // Shown once a student completes their final month; redemption collects
+    // shipping address at that point only (not upfront at signup).
+    rewardTiers: [
+      { minCoins: 250, icon: "🖊️", item: "W4Y Smart Pen" },
+      { minCoins: 550, icon: "👕", item: "Doctor & Healthcare Themed T-Shirt" },
+      { minCoins: 850, icon: "🥼", item: "W4Y-Branded Doctor's Coat" },
+      { minCoins: 1050, icon: "🧥", item: "Stylish W4Y Hoodie" }
+    ],
     // This profession now uses the grade-banded system: different content per
     // grade, some tasks using visual "engine" mini-games (see mission-engines.js)
     // instead of plain text submission. Grades 7-12 to follow this same pattern.
@@ -1203,16 +1214,42 @@ export const PROFESSION_CATALOG = {
         bandTagline: "Pure curiosity, zero stakes — every tap is rewarded.",
         months: [
           { label: "Meet Your Heart", tasks: [
-            { engine: "tap-discover", icon: "🫀", title: "Explore your heart", data: { visual: "🫀", hotspots: [
-              { label: "Left side", fact: "This side pumps blood full of oxygen out to your whole body! 💨" },
-              { label: "Right side", fact: "This side collects blood coming back from your body to refill it! 🔄" },
-              { label: "Bottom", fact: "Whoosh! This is the strongest pumping part of all! 💪" }
+            { engine: "tap-discover", icon: "🫀", title: "Explore your heart", mentorVisual: "❤️",
+              mentorIntro: {
+                en: "Put your hand on your chest for a second — feel that thump-thump? That's your heart, and it never takes a single break, not even while you sleep! It's split into two sides with very different jobs. Tap around and I'll show you what each part actually does.",
+                hi: "अपना हाथ एक पल के लिए अपनी छाती पर रखो — वो धक-धक महसूस हो रही है? यही तुम्हारा दिल है, जो कभी नहीं रुकता, यहाँ तक कि सोते समय भी नहीं! इसके दो हिस्से हैं और दोनों के काम बिल्कुल अलग हैं। इधर-उधर छूकर देखो, मैं तुम्हें हर हिस्से का असली काम दिखाती हूँ।",
+                mr: "थोडा वेळ आपला हात छातीवर ठेवा — ती धडधड जाणवते आहे का? हेच तुमचं हृदय आहे, जे कधीच थांबत नाही, अगदी झोपेतसुद्धा नाही! याचे दोन भाग आहेत आणि दोघांची कामं अगदी वेगळी आहेत. इकडे-तिकडे टॅप करा, मी तुम्हाला प्रत्येक भागाचं खरं काम दाखवते."
+              },
+              data: { visual: "🫀", hotspots: [
+              { label: {en:"Left side",hi:"बायाँ हिस्सा",mr:"डावी बाजू"}, fact: {en:"This side pumps blood full of oxygen out to your whole body! 💨",hi:"यह हिस्सा ऑक्सीजन से भरा खून पूरे शरीर में भेजता है! 💨",mr:"ही बाजू ऑक्सिजनने भरलेलं रक्त संपूर्ण शरीरात पाठवते! 💨"} },
+              { label: {en:"Right side",hi:"दायाँ हिस्सा",mr:"उजवी बाजू"}, fact: {en:"This side collects blood coming back from your body to refill it! 🔄",hi:"यह हिस्सा शरीर से लौटकर आ रहे खून को इकट्ठा करता है! 🔄",mr:"ही बाजू शरीरातून परत येणारं रक्त गोळा करते! 🔄"} },
+              { label: {en:"Bottom",hi:"नीचे का हिस्सा",mr:"खालचा भाग"}, fact: {en:"Whoosh! This is the strongest pumping part of all! 💪",hi:"वाह! यह सबसे ताकतवर पम्पिंग हिस्सा है! 💪",mr:"वाह! हा सर्वात ताकदवान पंपिंग भाग आहे! 💪"} }
             ]}},
-            { engine: "build-match", icon: "🫀", title: "Match the heart's jobs", data: { noStakes: true, zones: [
-              { id: "pump", label: "Pumps blood" }, { id: "oxygen", label: "Carries oxygen" }, { id: "beat", label: "Beats all day" }
+            { engine: "build-match", icon: "🫀", title: "Match the heart's jobs", mentorVisual: "🧩",
+              mentorIntro: {
+                en: "Now that you've explored it — let's see if you can match each job to what your heart actually does. Don't worry about getting it perfectly right, just have a go. Every box you fill teaches you something new!",
+                hi: "अब जब तुमने इसे एक्सप्लोर कर लिया है — चलो देखते हैं कि तुम हर काम को सही जगह पर मैच कर पाते हो या नहीं। बिल्कुल सही करने की चिंता मत करो, बस कोशिश करो। हर बॉक्स भरने पर तुम कुछ नया सीखोगे!",
+                mr: "आता तुम्ही हे एक्सप्लोर केलं आहे — बघूया तुम्ही प्रत्येक काम बरोबर जागी जुळवू शकता का. अगदी बरोबर करण्याची काळजी करू नका, फक्त प्रयत्न करा. प्रत्येक बॉक्स भरताना तुम्हाला काहीतरी नवीन शिकायला मिळेल!"
+              },
+              data: { noStakes: true, zones: [
+              { id: "pump", label: {en:"Pumps blood",hi:"खून पंप करता है",mr:"रक्त पंप करते"} },
+              { id: "oxygen", label: {en:"Carries oxygen",hi:"ऑक्सीजन ले जाता है",mr:"ऑक्सिजन घेऊन जाते"} },
+              { id: "beat", label: {en:"Beats all day",hi:"पूरे दिन धड़कता है",mr:"दिवसभर धडधडते"} }
             ], chips: ["pump","oxygen","beat"] }},
-            { type: "Quiz", icon: "📝", title: "Heart basics", desc: "Quiz on what the heart does for your body." },
-            { type: "Reflect", icon: "💭", title: "What surprised you?", desc: "What's one thing about your heart that surprised you today?" }
+            { type: "Quiz", icon: "📝", title: "Heart basics", mentorVisual: "🩺",
+              mentorIntro: {
+                en: "Time for a quick check-in! This isn't a test to trip you up — it's just to see what stuck from exploring the heart. If something feels tricky, that's totally okay — go back and tap around the heart again before you answer.",
+                hi: "अब थोड़ी जांच का समय है! यह तुम्हें फँसाने के लिए टेस्ट नहीं है — बस यह देखने के लिए है कि दिल के बारे में क्या याद रहा। अगर कुछ मुश्किल लगे, तो कोई बात नहीं — जवाब देने से पहले वापस जाकर दिल को फिर से छूकर देखो।",
+                mr: "आता थोडी तपासणीची वेळ आहे! ही तुम्हाला अडकवण्यासाठी परीक्षा नाही — फक्त हृदयाबद्दल काय लक्षात राहिलं हे बघण्यासाठी आहे. काही अवघड वाटलं तर हरकत नाही — उत्तर देण्याआधी परत जाऊन हृदयाला पुन्हा टॅप करून बघा."
+              },
+              desc: {en:"Quiz on what the heart does for your body.",hi:"दिल शरीर के लिए क्या करता है, इस पर क्विज़।",mr:"हृदय शरीरासाठी काय करतं, यावर क्विझ."} },
+            { type: "Reflect", icon: "💭", title: "What surprised you?", mentorVisual: "✨",
+              mentorIntro: {
+                en: "My favorite part of every mission — I want to hear from YOU now. There's no wrong answer here. What's one thing about your heart today that made you go 'wait, really?!'",
+                hi: "हर मिशन का मेरा पसंदीदा हिस्सा — अब मुझे तुमसे सुनना है। यहाँ कोई गलत जवाब नहीं है। आज दिल के बारे में ऐसी कौन सी बात थी जिसने तुम्हें कहा 'अरे, सच में?!'",
+                mr: "प्रत्येक मिशनचा माझा आवडता भाग — आता मला तुमच्याकडून ऐकायचं आहे. इथे कुठलंही चुकीचं उत्तर नाही. आज हृदयाबद्दल अशी कोणती गोष्ट होती ज्यामुळे तुम्ही म्हणालात 'अरे, खरंच?!'"
+              },
+              desc: {en:"What's one thing about your heart that surprised you today?",hi:"आज दिल के बारे में ऐसी कौन सी बात थी जिसने तुम्हें हैरान किया?",mr:"आज हृदयाबद्दल अशी कोणती गोष्ट होती जी तुम्हाला आश्चर्यचकित करून गेली?"} }
           ]},
           { label: "Meet Your Bones", tasks: [
             { engine: "build-match", icon: "🦴", title: "Build a skeleton", data: { noStakes: true, zones: [
