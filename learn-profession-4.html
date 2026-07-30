@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Future Profession | Waves4Youth</title>
+<style>
+:root{ --bg:#0F0B1E; --card:#171227; --border:rgba(255,255,255,.12); --muted:#A99FC4; --gold:#FFD166; --grad1:#B45CFF; --grad2:#FF6B6B; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{ background:var(--bg); color:#fff; font-family:-apple-system,Segoe UI,Roboto,sans-serif; padding-bottom:60px; }
+.wrap{ max-width:720px; margin:0 auto; padding:0 18px; }
+header{ padding:20px 18px; border-bottom:1px solid var(--border); }
+.eyebrow{ color:var(--gold); font-size:12px; font-weight:700; letter-spacing:.06em; }
+h1{ font-size:26px; margin-top:6px; }
+.coin-pill{ display:inline-block; background:rgba(255,209,102,.12); border:1px solid rgba(255,209,102,.3); color:var(--gold); padding:6px 14px; border-radius:999px; font-size:13px; font-weight:600; margin-top:10px; }
+
+.lock-panel{ text-align:center; padding:60px 20px; }
+.lock-panel h2{ font-size:22px; margin-bottom:10px; }
+.lock-panel p{ color:var(--muted); font-size:14.5px; margin-bottom:24px; line-height:1.5; }
+.plan-card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px; max-width:340px; margin:0 auto 14px; text-align:left; }
+.plan-price{ font-size:28px; font-weight:800; margin:6px 0; }
+.plan-btn{ width:100%; margin-top:14px; padding:12px; border-radius:10px; border:none; background:linear-gradient(90deg,var(--grad1),var(--grad2)); color:#fff; font-weight:600; }
+
+.month-tabs{ display:flex; gap:8px; overflow-x:auto; padding:16px 18px; }
+.month-tabs button{ flex:none; padding:8px 14px; border-radius:999px; border:1px solid var(--border); background:transparent; color:#fff; font-size:12.5px; }
+.month-tabs button.active{ background:linear-gradient(90deg,var(--grad1),var(--grad2)); border:none; }
+.month-tabs button.locked{ opacity:.4; }
+
+.task-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:0 18px; }
+.task-card{ background:var(--card); border:1px solid var(--border); border-radius:14px; padding:14px; cursor:pointer; }
+.task-card.done{ border-color:var(--gold); }
+.task-card.needs-revision{ border-color:#FF7A33; }
+.task-icon{ font-size:22px; }
+.task-type{ font-size:10.5px; color:var(--muted); text-transform:uppercase; margin-top:6px; }
+.task-title{ font-size:14px; font-weight:600; margin-top:4px; }
+.task-badge{ font-size:11px; color:var(--gold); margin-top:6px; }
+
+.sp-modal-overlay{ display:none; position:fixed; inset:0; background:rgba(6,4,20,.75); z-index:200; align-items:center; justify-content:center; padding:20px; }
+.sp-modal{ background:#141026; border:1px solid var(--border); border-radius:16px; padding:24px; max-width:480px; width:100%; position:relative; }
+.sp-modal-close{ position:absolute; top:12px; right:16px; background:none; border:none; color:#fff; font-size:22px; }
+.sp-modal-desc{ color:var(--muted); font-size:13.5px; margin:6px 0 14px; }
+.sp-modal textarea{ width:100%; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:10px; color:#fff; padding:12px; font-size:14px; font-family:inherit; resize:vertical; }
+.sp-feedback{ margin-top:12px; padding:12px; background:rgba(180,92,255,.12); border-radius:10px; font-size:13.5px; color:#e8ddff; }
+.sp-status{ margin-top:8px; font-size:12.5px; color:var(--muted); min-height:16px; }
+.sp-submit-btn{ margin-top:14px; width:100%; padding:12px; border-radius:10px; border:none; background:linear-gradient(90deg,var(--grad1),var(--grad2)); color:#fff; font-weight:600; }
+.sp-submit-btn:disabled{ opacity:.6; }
+
+#loadingMsg{ text-align:center; padding:60px 20px; color:var(--muted); }
+
+.band-tag{ display:inline-block; background:rgba(255,209,102,.12); border:1px solid rgba(255,209,102,.3); color:var(--gold); padding:4px 12px; border-radius:999px; font-size:11.5px; font-weight:700; margin-top:8px; }
+
+/* ---- Visual mission engines (tap-discover, build-match) ---- */
+.vm-overlay{ display:none; position:fixed; inset:0; background:rgba(6,4,20,.85); z-index:250; align-items:center; justify-content:center; padding:20px; }
+.vm-modal{ background:#141026; border:1px solid var(--border); border-radius:18px; padding:22px; max-width:480px; width:100%; max-height:90vh; overflow-y:auto; position:relative; }
+.vm-close{ position:absolute; top:12px; right:16px; background:none; border:none; color:#fff; font-size:22px; cursor:pointer; }
+.vm-title{ font-size:17px; font-weight:700; margin:0 0 14px; padding-right:24px; }
+
+.td-visual{ font-size:110px; text-align:center; margin-bottom:10px; animation:tdBeat 1.3s infinite ease-in-out; line-height:1.1; }
+@keyframes tdBeat{ 0%,100%{transform:scale(1)} 20%{transform:scale(1.12)} 40%{transform:scale(.98)} 60%{transform:scale(1.08)} }
+@media (prefers-reduced-motion: reduce){ .td-visual{ animation:none; } }
+.td-hotspots{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:14px 0; }
+.td-hotspot{ background:rgba(180,92,255,.15); border:1px solid rgba(180,92,255,.4); color:#e8ddff; padding:12px 20px; border-radius:99px; font-size:15px; font-weight:600; cursor:pointer; }
+.td-hotspot.tapped{ background:rgba(255,209,102,.18); border-color:rgba(255,209,102,.5); color:var(--gold); }
+.td-fact{ background:rgba(255,255,255,.06); border-radius:12px; padding:14px; font-size:14px; min-height:50px; display:flex; align-items:center; text-align:center; color:#e8ddff; }
+.vm-done-btn{ width:100%; margin-top:16px; padding:12px; border-radius:10px; border:none; background:linear-gradient(90deg,var(--grad1),var(--grad2)); color:#fff; font-weight:600; cursor:pointer; }
+.vm-done-btn:disabled{ opacity:.4; cursor:not-allowed; }
+
+.bm-bank{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:14px 0; }
+.bm-chip{ background:rgba(255,255,255,.08); border:1px solid var(--border); border-radius:99px; padding:12px 20px; font-size:15px; font-weight:600; color:#fff; cursor:grab; }
+.bm-chip.used{ opacity:.3; cursor:not-allowed; }
+.bm-zones{ display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
+.bm-zone{ border:2px dashed rgba(255,255,255,.25); border-radius:12px; padding:18px; font-size:15px; color:var(--muted); text-align:center; min-height:24px; font-weight:600; }
+.mentor-intro{ display:flex; gap:12px; align-items:flex-start; background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:14px; padding:14px; margin-bottom:16px; }
+.mentor-face-wrap{ flex:0 0 auto; animation:mentorBob 2.4s infinite ease-in-out; }
+@keyframes mentorBob{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+@media (prefers-reduced-motion: reduce){ .mentor-face-wrap{ animation:none; } }
+.mentor-intro p{ font-size:13.5px; color:#e8ddff; line-height:1.5; margin:2px 0 0; }
+.mentor-intro b{ display:block; font-size:12px; color:var(--gold); text-transform:uppercase; letter-spacing:.03em; margin-bottom:2px; }
+.mentor-lang-row{ display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; align-items:center; }
+.lang-btn{ background:rgba(255,255,255,.08); border:1px solid var(--border); color:#e8ddff; font-size:11.5px; font-weight:600; padding:5px 11px; border-radius:99px; cursor:pointer; }
+.lang-btn.active{ background:linear-gradient(90deg,var(--grad1),var(--grad2)); border-color:transparent; color:#fff; }
+.speak-btn{ background:rgba(245,196,83,.15); border:1px solid rgba(245,196,83,.4); color:var(--gold); font-size:11.5px; font-weight:700; padding:5px 12px; border-radius:99px; cursor:pointer; }
+.speak-btn:disabled{ opacity:.5; cursor:wait; }
+.mentor-banner{ width:100%; border-radius:16px; margin-bottom:18px; display:block; }
+.bonus-card{ background:linear-gradient(135deg,rgba(245,196,83,.12),rgba(255,107,107,.08)); border:1px solid rgba(245,196,83,.35); border-radius:16px; padding:18px; margin:18px 0; cursor:pointer; }
+.bonus-card .bonus-tag{ font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--gold); margin-bottom:6px; }
+.bonus-card h4{ font-size:15px; margin:0 0 4px; }
+.bonus-card p{ font-size:12.5px; color:var(--muted); margin:0; }
+.bonus-card .bonus-status{ font-size:11.5px; color:#4CE0B3; margin-top:8px; font-weight:600; }
+.upload-drop{ border:2px dashed var(--border); border-radius:12px; padding:20px; text-align:center; cursor:pointer; margin:10px 0; }
+.upload-drop img{ max-width:100%; border-radius:8px; margin-top:8px; }
+.upload-hint{ font-size:12px; color:var(--muted); }
+.bm-zone.filled{ border-style:solid; border-color:#4CE0B3; color:#fff; background:rgba(76,224,179,.1); }
+.fc-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:16px 0; }
+.fc-card{ background:rgba(255,255,255,.06); border:1px solid var(--border); border-radius:12px; padding:14px 8px; text-align:center; cursor:pointer; min-height:90px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; transition:background .2s; }
+.fc-card.flipped{ background:rgba(76,224,179,.12); border-color:#4CE0B3; font-size:11.5px; font-weight:500; color:#e8ddff; }
+.tf-item{ background:rgba(255,255,255,.05); border:1px solid var(--border); border-radius:12px; padding:14px; margin-bottom:10px; }
+.tf-text{ font-size:14px; margin-bottom:10px; }
+.tf-btns{ display:flex; gap:8px; }
+.tf-btn{ flex:1; padding:9px; border-radius:8px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:#fff; font-weight:600; cursor:pointer; font-size:13px; }
+.tf-btn.correct{ background:rgba(76,224,179,.2); border-color:#4CE0B3; }
+.tf-btn.wrong{ background:rgba(255,107,107,.2); border-color:#FF6B6B; }
+.tf-explain{ font-size:12.5px; color:var(--muted); margin-top:8px; display:none; }
+</style>
+</head>
+<body>
+
+<div id="loadingMsg">Loading your future...</div>
+
+<div id="app" style="display:none;">
+<header>
+  <span class="eyebrow" id="kicker">MY FUTURE PROFESSION</span>
+  <img id="mentorBannerImg" class="mentor-banner" style="display:none;" alt="Your mentor">
+  <h1 id="profTitle"></h1>
+  <div id="bandTag" style="display:none" class="band-tag"></div>
+  <div class="coin-pill" id="coinPill">🪙 0 coins</div>
+</header>
+
+<div id="lockPanel" class="lock-panel" style="display:none;">
+  <h2 id="lockHeadline"></h2>
+  <p id="lockSub"></p>
+  <div class="plan-card" id="planCard"></div>
+</div>
+
+<div id="missionArea" style="display:none;">
+  <div class="month-tabs" id="monthTabs"></div>
+  <div class="task-grid" id="taskGrid"></div>
+  <div id="bonusCardWrap"></div>
+</div>
+</div>
+
+<div id="submitModal" class="sp-modal-overlay">
+  <div class="sp-modal">
+    <button class="sp-modal-close" onclick="document.getElementById('submitModal').style.display='none'">&times;</button>
+    <h3 id="submitTitle"></h3>
+    <div id="submitMentorIntro"></div>
+    <p id="submitDesc" class="sp-modal-desc"></p>
+    <textarea id="submitAnswer" rows="6" placeholder="Write your answer here..."></textarea>
+    <div id="submitFeedback" class="sp-feedback" style="display:none;"></div>
+    <div id="submitStatus" class="sp-status"></div>
+    <button id="submitBtn" class="sp-submit-btn">Submit for grading</button>
+  </div>
+</div>
+
+<div id="vmOverlay" class="vm-overlay">
+  <div class="vm-modal" id="vmModal"></div>
+</div>
+
+<script type="module" src="auth-gate.js"></script>
+<script type="module">
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc, updateDoc, increment, arrayUnion } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+import { MissionEngine } from "./mission-engine.js";
+import { ProfessionAccess } from "./profession-access.js";
+import { PROFESSION_CATALOG } from "./profession-catalog.js";
+
+// Reuses the same Firebase app auth-gate.js already initializes (see getApps() check below)
+// so this page never triggers a duplicate-app error.
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c",
+  measurementId: "G-ZGS6ZJLFSS"
+};
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+const params = new URLSearchParams(window.location.search);
+const SLUG = params.get('track');
+const PROFILE = PROFESSION_CATALOG[SLUG];
+const GRADE_PROXY_URL = 'https://solar-armadillo-4814.waves4youth.deno.net';
+
+let uid, student, coins = 0, activeMonth = 0;
+
+if (!PROFILE){
+  document.getElementById('loadingMsg').textContent = "This profession isn't set up yet — check back soon!";
+} else {
+  document.getElementById('profTitle').textContent = PROFILE.icon + ' ' + PROFILE.title;
+  if (PROFILE.mentorBannerImg){
+    const bannerEl = document.getElementById('mentorBannerImg');
+    bannerEl.src = PROFILE.mentorBannerImg;
+    bannerEl.style.display = 'block';
+  }
+  window.w4yReady.then(() => {
+    uid = window.w4yStudent.uid;
+    bootstrap().catch(e => {
+      console.error('learn-profession bootstrap failed', e);
+      document.getElementById('loadingMsg').textContent = "Couldn't load this program — please check your connection and try again.";
+    });
+  });
+}
+
+async function bootstrap(){
+  const snap = await getDoc(doc(db, 'students', uid));
+  student = snap.exists() ? snap.data() : {};
+  coins = student.coins || 0;
+  document.getElementById('loadingMsg').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  renderCoins();
+
+  // CRITICAL: MissionEngine keeps its own internal record of which tasks are
+  // passed, used by isMonthUnlocked()/getSubmission() — but that record only
+  // gets populated inside init(). Without calling this, month-unlock checks
+  // silently check against nothing, no matter what's actually in Firestore.
+  // We handle grade-based CONTENT selection ourselves (getGradeBand below),
+  // so this is intentionally a "gradeless track" from MissionEngine's point
+  // of view — no gradeOrder passed, no grade-tab locking from this engine.
+  await MissionEngine.init({ db, uid, trackSlug: SLUG, onReady: () => {} });
+
+  const bandInfo = getGradeBand();
+  if (bandInfo){
+    const tag = document.getElementById('bandTag');
+    tag.textContent = bandInfo.band + ' · Std ' + (student.grade || '?');
+    tag.style.display = 'inline-block';
+  }
+
+  // Fully paid/enrolled students always get in. Everyone else still gets in —
+  // they're on a free preview, capped per-task inside renderTasks().
+  const unlocked = ProfessionAccess.isUnlocked(student, SLUG);
+  if (PROFILE.grades && getMonths().length === 0){
+    showNotReadyForGrade();
+    return;
+  }
+  showMissions();
+  if (!unlocked) showPreviewBanner();
+}
+
+function showPreviewBanner(){
+  const remaining = ProfessionAccess.remainingFreeTasks(student, SLUG);
+  const bar = document.createElement('div');
+  bar.style.cssText = 'background:rgba(245,196,83,.12);border:1px solid rgba(245,196,83,.3);color:var(--gold);border-radius:10px;padding:10px 14px;font-size:12.5px;text-align:center;margin-bottom:14px;';
+  bar.textContent = remaining > 0
+    ? `🔍 Free preview — ${remaining} of ${ProfessionAccess.FREE_PREVIEW_TASKS} tasks left in this profession.`
+    : `🔒 Free preview used up for this profession — enroll to keep going.`;
+  document.getElementById('app').insertBefore(bar, document.getElementById('app').firstChild);
+}
+
+function showNotReadyForGrade(){
+  const app = document.getElementById('app');
+  const grade = student.grade ? ('Std ' + student.grade) : 'your grade';
+  app.innerHTML = `
+    <div style="text-align:center;padding:60px 24px;">
+      <div style="font-size:40px;margin-bottom:12px;">🚧</div>
+      <h2 style="margin-bottom:8px;">Not quite ready for ${grade} yet</h2>
+      <p style="color:var(--muted);max-width:360px;margin:0 auto;">
+        We're still building out this profession's missions for ${grade}.
+        It's live for Std 6 right now — check back soon, or explore another profession in the meantime.
+      </p>
+    </div>`;
+}
+
+// Resolves the right content for this student: grade-banded professions look up
+// PROFILE.grades[student.grade]; older professions fall back to PROFILE.months
+// directly, so nothing else on the site needs to change.
+function getGradeBand(){
+  if (!PROFILE.grades) return null;
+  // TEMPORARY: registration doesn't collect grade yet, so default to "6"
+  // (the only grade with content right now) instead of showing nothing.
+  // Remove this fallback once the signup form collects a real grade.
+  const g = String(student.grade || '6');
+  return PROFILE.grades[g] || null;
+}
+function getMonths(){
+  const band = getGradeBand();
+  if (band) return band.months;
+  return PROFILE.months || [];
+}
+
+function renderCoins(){
+  document.getElementById('coinPill').textContent = '🪙 ' + coins + ' coins';
+}
+
+function showLockPanel(){
+  document.getElementById('lockPanel').style.display = 'block';
+  const usedSlots = ProfessionAccess.usedBaseSlots(student);
+  const canBeFree = ProfessionAccess.canAddAsBaseSlot(student);
+  document.getElementById('lockHeadline').textContent = "Unlock " + PROFILE.title;
+
+  if (canBeFree && !student.basePlanPaid){
+    document.getElementById('lockSub').textContent = `This would be profession ${usedSlots+1} of 3 in your base plan.`;
+    document.getElementById('planCard').innerHTML = `
+      <div style="font-size:13px;color:var(--muted)">BASE PLAN</div>
+      <div class="plan-price">₹2,999<span style="font-size:14px;font-weight:400"> /year</span></div>
+      <div style="font-size:13px;color:var(--muted)">Choose any 3 professions</div>
+      <button class="plan-btn" onclick="enroll()">Choose This Profession</button>`;
+  } else if (canBeFree && student.basePlanPaid){
+    document.getElementById('lockSub').textContent = `This uses profession ${usedSlots+1} of 3 in your paid base plan.`;
+    document.getElementById('planCard').innerHTML = `<button class="plan-btn" onclick="enroll()">Add This Profession — Included</button>`;
+  } else {
+    document.getElementById('lockSub').textContent = "You've used your 3 base-plan professions. Adding more is ₹999/year each.";
+    document.getElementById('planCard').innerHTML = `
+      <div style="font-size:13px;color:var(--muted)">ADDITIONAL PROFESSION</div>
+      <div class="plan-price">₹999<span style="font-size:14px;font-weight:400"> /year</span></div>
+      <button class="plan-btn" onclick="enroll()">Request This Profession</button>`;
+  }
+}
+
+window.enroll = async function(){
+  const result = await ProfessionAccess.requestEnrollment(db, uid, student, SLUG);
+  if (result === 'added-free' || result === 'already-unlocked'){
+    showMissions();
+  } else {
+    document.getElementById('lockSub').textContent = "Request sent! An admin will confirm your payment and unlock this shortly.";
+    document.getElementById('planCard').innerHTML = '';
+  }
+};
+
+function showMissions(){
+  document.getElementById('lockPanel').style.display = 'none';
+  document.getElementById('missionArea').style.display = 'block';
+  renderMonthTabs();
+  renderTasks();
+}
+
+function monthTaskIds(mi){ return getMonths()[mi].tasks.map((_,ti) => SLUG + '-m' + mi + '-t' + ti); }
+function taskId(mi, ti){ return SLUG + '-m' + mi + '-t' + ti; }
+function isDone(id){ const s = MissionEngine.getSubmission(id); return !!s && s.status === 'passed'; }
+
+function renderMonthTabs(){
+  const el = document.getElementById('monthTabs');
+  el.innerHTML = '';
+  getMonths().forEach((m,i) => {
+    const unlocked = MissionEngine.isMonthUnlocked(SLUG, i, monthTaskIds);
+    const btn = document.createElement('button');
+    btn.className = (i===activeMonth?'active ':'') + (unlocked?'':'locked');
+    btn.textContent = (unlocked ? '' : '🔒 ') + 'Month ' + (i+1);
+    btn.disabled = !unlocked;
+    if (unlocked) btn.onclick = () => { activeMonth = i; renderMonthTabs(); renderTasks(); };
+    el.appendChild(btn);
+  });
+}
+
+function canAttemptTask(){
+  return ProfessionAccess.canAttemptTask(student, SLUG);
+}
+function showFreeLimitReached(){
+  const overlay = document.getElementById('vmOverlay');
+  const modal = document.getElementById('vmModal');
+  overlay.style.display = 'flex';
+  const unlocked = ProfessionAccess.isUnlocked(student, SLUG);
+  modal.innerHTML = `
+    <button class="vm-close" onclick="closeVisualMission()">&times;</button>
+    <h3 class="vm-title">🔒 You've used your ${ProfessionAccess.FREE_PREVIEW_TASKS} free tasks here</h3>
+    <p style="color:#e8ddff;font-size:14px;line-height:1.5;margin-bottom:16px;">
+      You've explored ${ProfessionAccess.FREE_PREVIEW_TASKS} free tasks in ${PROFILE.title} — nice work!
+      Enroll to keep going: your first 3 professions are ₹2,999/year together, and any profession after
+      that is ₹999/year on its own.
+    </p>
+    <button class="vm-done-btn" onclick="window.location.href='index.html#pricing'">See Plans →</button>
+  `;
+}
+async function recordFreeTaskIfNeeded(){
+  if (ProfessionAccess.isUnlocked(student, SLUG)) return;
+  student.freeTasksByProfession = student.freeTasksByProfession || {};
+  student.freeTasksByProfession[SLUG] = (student.freeTasksByProfession[SLUG] || 0) + 1;
+  await ProfessionAccess.recordFreeTaskUsed(db, uid, SLUG);
+}
+
+function renderTasks(){
+  const m = getMonths()[activeMonth];
+  const grid = document.getElementById('taskGrid');
+  grid.innerHTML = '';
+  m.tasks.forEach((t, ti) => {
+    const id = taskId(activeMonth, ti);
+    const sub = MissionEngine.getSubmission(id);
+    const status = sub ? sub.status : 'new';
+    const badge = { new:'', submitted:'⏳ Grading...', needs_revision:'✏️ Revise', passed:'✓ Passed' }[status];
+    const card = document.createElement('div');
+    card.className = 'task-card' + (status==='passed'?' done':'') + (status==='needs_revision'?' needs-revision':'');
+    card.innerHTML = `<div class="task-icon">${t.icon}</div><div class="task-type">${t.engine || t.type}</div><div class="task-title">${t.title}</div><div class="task-badge">${badge}</div>`;
+    card.onclick = () => {
+      if (status !== 'passed' && !canAttemptTask()){ showFreeLimitReached(); return; }
+      t.engine ? openVisualMission(id, t) : openModal(id, t);
+    };
+    grid.appendChild(card);
+  });
+  renderBonusCard();
+}
+
+// ===================================================================
+// WEEKLY-STYLE BONUS ASSIGNMENT — one extra optional creative task per
+// month, separate from the 4 core missions. Student uploads a photo
+// (optional) + a text description; the same AI proxy used for grading
+// missions reviews it and awards bonus coins if it's a genuine effort.
+// These become a personal keepsake collection for the student (photo +
+// description of what they made) — purely for their own record and fun,
+// not framed as career/job-outcome material. Future Studio is exploration
+// only; any job-related features (the Jobs Tab) belong solely to the
+// paid vocational courses, gated to Masterclass-tier completion + 18+.
+// ===================================================================
+let bonusImageFile = null;
+
+function renderBonusCard(){
+  const wrap = document.getElementById('bonusCardWrap');
+  const m = getMonths()[activeMonth];
+  if (!m.bonusAssignment){ wrap.innerHTML = ''; return; }
+  const key = 'm' + activeMonth;
+  const existing = (student.bonusAssignments && student.bonusAssignments[SLUG] && student.bonusAssignments[SLUG][key]) || null;
+  const statusText = existing
+    ? (existing.status === 'passed' ? `✅ Submitted — +${existing.coinsAwarded} bonus coins earned!` : '✏️ Submitted — tap to try again for more bonus coins')
+    : '';
+  wrap.innerHTML = `
+    <div class="bonus-card" id="bonusCardEl">
+      <div class="bonus-tag">🎁 This Month's Bonus Assignment</div>
+      <h4>${t(m.bonusAssignment.title)}</h4>
+      <p>${t(m.bonusAssignment.prompt)}</p>
+      ${statusText ? `<div class="bonus-status">${statusText}</div>` : ''}
+    </div>`;
+  document.getElementById('bonusCardEl').onclick = () => openBonusAssignment(m.bonusAssignment, key);
+}
+
+function openBonusAssignment(assignment, key){
+  const overlay = document.getElementById('vmOverlay');
+  const modal = document.getElementById('vmModal');
+  overlay.style.display = 'flex';
+  bonusImageFile = null;
+  modal.innerHTML = `
+    <button class="vm-close" onclick="closeVisualMission()">&times;</button>
+    <h3 class="vm-title">🎁 ${t(assignment.title)}</h3>
+    <p style="color:#e8ddff;font-size:13.5px;margin-bottom:14px;">${t(assignment.prompt)}</p>
+    <div class="upload-drop" id="bonusUploadDrop">
+      <div class="upload-hint">📷 Tap to add a photo (optional)</div>
+      <input type="file" id="bonusFileInput" accept="image/*" style="display:none;">
+    </div>
+    <textarea id="bonusDesc" rows="4" placeholder="Describe what you made or learned..." style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;font-family:inherit;margin-top:10px;"></textarea>
+    <button class="vm-done-btn" id="bonusSubmitBtn" style="margin-top:12px;">Submit Assignment →</button>
+  `;
+  document.getElementById('bonusUploadDrop').onclick = () => document.getElementById('bonusFileInput').click();
+  document.getElementById('bonusFileInput').addEventListener('change', (e)=>{
+    const file = e.target.files[0];
+    if (!file) return;
+    bonusImageFile = file;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      document.getElementById('bonusUploadDrop').innerHTML = `<img src="${ev.target.result}" alt="Preview"><div class="upload-hint">Tap to change photo</div>`;
+      document.getElementById('bonusUploadDrop').onclick = () => document.getElementById('bonusFileInput').click();
+    };
+    reader.readAsDataURL(file);
+  });
+  document.getElementById('bonusSubmitBtn').addEventListener('click', ()=> submitBonusAssignment(assignment, key));
+}
+
+async function submitBonusAssignment(assignment, key){
+  const desc = document.getElementById('bonusDesc').value.trim();
+  if (!desc){ alert('Please describe your work before submitting.'); return; }
+  const btn = document.getElementById('bonusSubmitBtn');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+
+  let imageURL = null;
+  try {
+    if (bonusImageFile){
+      const storageRef = ref(storage, `bonus-assignments/${uid}/${SLUG}/${key}-${Date.now()}.jpg`);
+      await uploadBytes(storageRef, bonusImageFile);
+      imageURL = await getDownloadURL(storageRef);
+    }
+  } catch(e){ console.warn('Image upload failed (continuing without it):', e); }
+
+  const gradingSystemPrompt = `You are grading a bonus creative assignment for a Std ${student.grade || 6} student on the "${assignment.title}" theme in ${PROFILE.title}. Be warm and encouraging — this is a bonus, low-stakes creative task, not a strict test. Respond with ONLY valid JSON, no markdown: {"passed": true or false, "bonusCoins": a number 0-30, "feedback": "2-3 encouraging sentences"}. Give bonusCoins based on genuine effort and engagement, not perfection — most real attempts should pass with at least some coins; only fail something that's clearly nonsense or copy-pasted.`;
+
+  try {
+    const res = await fetch(GRADE_PROXY_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ system: gradingSystemPrompt, messages: [{ role:'user', content: `Student's description of their work:\n\n${desc}` }] })
+    });
+    const raw = await res.json();
+    const rawText = (raw.content && raw.content[0] && raw.content[0].text) || '{}';
+    let result;
+    try { result = JSON.parse(rawText.replace(/```json|```/g,'').trim()); }
+    catch { result = { passed:true, bonusCoins:10, feedback:"Nice work — thanks for sharing!" }; }
+
+    const record = {
+      status: result.passed ? 'passed' : 'needs_revision',
+      description: desc, imageURL,
+      aiFeedback: result.feedback || '',
+      coinsAwarded: result.passed ? (result.bonusCoins || 10) : 0,
+      submittedAt: new Date().toISOString()
+    };
+    student.bonusAssignments = student.bonusAssignments || {};
+    student.bonusAssignments[SLUG] = student.bonusAssignments[SLUG] || {};
+    student.bonusAssignments[SLUG][key] = record;
+
+    const fsUpdate = { [`bonusAssignments.${SLUG}.${key}`]: record };
+    if (result.passed) fsUpdate.coins = increment(record.coinsAwarded);
+    await updateDoc(doc(db,'students',uid), fsUpdate).catch(e=>console.warn(e));
+    if (result.passed){ coins += record.coinsAwarded; renderCoins(); }
+
+    const modal = document.getElementById('vmModal');
+    modal.innerHTML = `
+      <div style="text-align:center;padding:24px 10px;">
+        <div style="font-size:52px;margin-bottom:10px;">${result.passed ? '🎉' : '💪'}</div>
+        <h3 style="margin:0 0 8px;">${result.passed ? `+${record.coinsAwarded} Bonus Coins!` : "Keep going!"}</h3>
+        <p style="color:#e8ddff;font-size:13.5px;">${result.feedback || ''}</p>
+      </div>`;
+    setTimeout(()=>{ closeVisualMission(); renderTasks(); }, 2400);
+  } catch(e){
+    console.error('Bonus assignment grading failed', e);
+    btn.disabled = false; btn.textContent = 'Submit Assignment →';
+    alert('Something went wrong grading your assignment — please try again.');
+  }
+}
+
+// Dr. Arjun — Future Studio's Doctor & Healthcare mentor. Uses each task's own
+// hand-written mentorIntro/mentorVisual when present (richer, specific to that
+// exact mission); falls back to a generic line for tasks not yet authored.
+// Supports English/Hindi/Marathi — both spoken (browser text-to-speech) and
+// written — with a 🔊 Listen button per mission.
+const MENTOR = { name: "Dr. Arjun", avatarImg: "assets/mentors/mentor-arjun-avatar.jpg" };
+let currentLang = 'en';
+const LANG_LABELS = { en: "English", hi: "हिंदी", mr: "मराठी" };
+const LANG_CODES = { en: "en-IN", hi: "hi-IN", mr: "mr-IN" };
+
+// Static UI strings (buttons, hints, progress counters) that need to switch
+// language alongside the mentor's own dialogue — not just the spoken line.
+const UI = {
+  tapHint: { en:"👆 Tap a spot above to discover something new!", hi:"👆 कुछ नया जानने के लिए ऊपर किसी जगह को छुओ!", mr:"👆 काहीतरी नवीन जाणून घेण्यासाठी वर एखाद्या जागेला स्पर्श करा!" },
+  exploreProgress: { en:n=>`Explore all spots first (${n})`, hi:n=>`पहले सभी जगहों को देखो (${n})`, mr:n=>`आधी सर्व जागा एक्सप्लोर करा (${n})` },
+  completeMission: { en:"Complete Mission →", hi:"मिशन पूरा करो →", mr:"मिशन पूर्ण करा →" },
+  dragHint: { en:"🖐️ Drag each chip onto a matching box!", hi:"🖐️ हर चिप को सही बॉक्स में खींचकर रखो!", mr:"🖐️ प्रत्येक चिप योग्य बॉक्समध्ये ड्रॅग करा!" },
+  placeProgress: { en:n=>`Place all pieces first (${n})`, hi:n=>`पहले सभी टुकड़े रखो (${n})`, mr:n=>`आधी सर्व तुकडे ठेवा (${n})` },
+};
+// t(dict) picks the current language's value, falling back to English;
+// t(dict, arg) supports UI strings that are functions of a progress count.
+function t(dict, ...args){
+  if (!dict) return '';
+  if (typeof dict === 'string') return dict; // plain string — not yet translated, use as-is
+  const v = dict[currentLang] || dict.en || '';
+  return typeof v === 'function' ? v(...args) : v;
+}
+
+function mentorIntroHTML(task, taskKey){
+  const dialogue = task.mentorIntro || { en: `Let's explore "${task.title}" together — take your time, and remember: every attempt teaches you something!` };
+  const visual = task.mentorVisual ? `<div style="font-size:32px;line-height:1;margin-bottom:2px;">${task.mentorVisual}</div>` : '';
+  const langButtons = Object.keys(LANG_LABELS).filter(l => dialogue[l]).map(l =>
+    `<button class="lang-btn ${l===currentLang?'active':''}" onclick="setLang('${l}','${taskKey}')">${LANG_LABELS[l]}</button>`
+  ).join('');
+  return `<div class="mentor-intro">
+    <div class="mentor-face-wrap"><img src="${MENTOR.avatarImg}" alt="${MENTOR.name}" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);display:block;"></div>
+    <div>${visual}<b>${MENTOR.name} says</b>
+      <p id="mentorText-${taskKey}">${dialogue[currentLang] || dialogue.en}</p>
+      <div class="mentor-lang-row">${langButtons}
+        <button class="speak-btn" onclick="speakMentor('${taskKey}')">🔊 Listen</button>
+        <button class="speak-btn" onclick="startVoiceChat('${taskKey}')" id="voiceBtn-${taskKey}">🎤 Ask Dr. Arjun</button>
+      </div>
+      <div id="voiceChatBox-${taskKey}" style="display:none;margin-top:10px;background:rgba(255,255,255,.04);border-radius:10px;padding:10px 12px;">
+        <p style="font-size:12px;color:var(--muted);margin:0 0 4px;" id="voiceYouSaid"></p>
+        <p style="font-size:13.5px;color:#fff;margin:0;" id="voiceMentorReply"></p>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Tracks whichever task is currently open, so switching language can fully
+// redraw it (hotspots, chips, buttons — not just the mentor's own paragraph).
+let currentOpenTaskId = null, currentOpenTask = null, currentOpenIsVisual = false;
+
+window.setLang = (lang, taskKey) => {
+  currentLang = lang;
+  if (currentOpenTask){
+    if (currentOpenIsVisual) openVisualMission(currentOpenTaskId, currentOpenTask);
+    else openModal(currentOpenTaskId, currentOpenTask);
+  }
+};
+
+window.speakMentor = (taskKey) => {
+  const dialogue = currentOpenTask ? currentOpenTask.mentorIntro : null;
+  if (!dialogue) return;
+  const text = dialogue[currentLang] || dialogue.en;
+  if (!('speechSynthesis' in window)){ alert('Text-to-speech is not supported in this browser.'); return; }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = LANG_CODES[currentLang] || 'en-IN';
+  utter.rate = 0.95;
+  window.speechSynthesis.speak(utter);
+};
+
+// Voice conversation: student speaks -> browser transcribes -> same AI proxy
+// used for grading generates Dr. Arjun's reply -> spoken back aloud.
+// Reuses GRADE_PROXY_URL (already proven working for grading) with a
+// conversational system prompt instead of a grading one.
+window.startVoiceChat = (taskKey) => {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition){ alert('Voice input is not supported in this browser — try Chrome.'); return; }
+  if (!currentOpenTask) return;
+
+  const btn = document.getElementById('voiceBtn-'+taskKey);
+  const box = document.getElementById('voiceChatBox-'+taskKey);
+  const youSaidEl = document.getElementById('voiceYouSaid');
+  const replyEl = document.getElementById('voiceMentorReply');
+
+  const recognition = new SpeechRecognition();
+  recognition.lang = LANG_CODES[currentLang] || 'en-IN';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  btn.disabled = true; btn.textContent = '🎤 Listening...';
+  box.style.display = 'block';
+  youSaidEl.textContent = '';
+  replyEl.textContent = '';
+
+  recognition.onresult = async (event) => {
+    const transcript = event.results[0][0].transcript;
+    youSaidEl.textContent = `You: "${transcript}"`;
+    btn.textContent = '🎤 Thinking...';
+
+    const langName = { en:"English", hi:"Hindi", mr:"Marathi" }[currentLang] || "English";
+    const mentorSystemPrompt = `You are Dr. Arjun, a warm, encouraging Doctor & Healthcare mentor for an Indian student in grades 6-12, currently on the mission "${currentOpenTask.title}". Answer their question simply and kindly in ${langName}, in 2-3 short sentences — age-appropriate, never giving real medical diagnoses or advice about a real person's actual health, just friendly educational explanation tied to what they're learning.`;
+
+    try {
+      const res = await fetch(GRADE_PROXY_URL, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          system: mentorSystemPrompt,
+          messages: [{ role: 'user', content: transcript }]
+        })
+      });
+      const raw = await res.json();
+      const replyText = (raw.content && raw.content[0] && raw.content[0].text) || "Sorry, I didn't quite catch that — try asking again!";
+      replyEl.textContent = `${MENTOR.name}: ${replyText}`;
+      if ('speechSynthesis' in window){
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(replyText);
+        utter.lang = LANG_CODES[currentLang] || 'en-IN';
+        utter.rate = 0.95;
+        window.speechSynthesis.speak(utter);
+      }
+    } catch(e){
+      console.warn('Voice chat failed', e);
+      replyEl.textContent = `${MENTOR.name}: Sorry, I couldn't hear back properly — try again in a moment.`;
+    }
+    btn.disabled = false; btn.textContent = '🎤 Ask Dr. Arjun';
+  };
+  recognition.onerror = () => {
+    btn.disabled = false; btn.textContent = '🎤 Ask Dr. Arjun';
+    youSaidEl.textContent = "Didn't catch that — try again.";
+  };
+  recognition.start();
+};
+
+function openModal(id, task){
+  currentOpenTaskId = id; currentOpenTask = task; currentOpenIsVisual = false;
+  const sub = MissionEngine.getSubmission(id);
+  document.getElementById('submitTitle').textContent = task.title;
+  document.getElementById('submitMentorIntro').innerHTML = mentorIntroHTML(task, id);
+  document.getElementById('submitDesc').textContent = t(task.desc);
+  document.getElementById('submitAnswer').value = (sub && sub.textAnswer) || '';
+  document.getElementById('submitFeedback').style.display = sub && sub.aiFeedback ? 'block' : 'none';
+  document.getElementById('submitFeedback').textContent = sub ? (sub.aiFeedback || '') : '';
+  document.getElementById('submitStatus').textContent = '';
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = false;
+  btn.textContent = 'Submit for grading';
+  btn.onclick = () => submitMission(id, task);
+  document.getElementById('submitModal').style.display = 'flex';
+}
+
+async function submitMission(id, task){
+  const answer = document.getElementById('submitAnswer').value.trim();
+  if (!answer){ document.getElementById('submitStatus').textContent = 'Write your answer before submitting.'; return; }
+  const alreadyPassed = isDone(id); // was this task already passed BEFORE this attempt?
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  document.getElementById('submitStatus').textContent = 'Sending for grading...';
+
+  try {
+    const gradingSystemPrompt = `You are grading a student's mission submission for the Waves4Youth "${SLUG}" track.
+Task: "${task.title}" (type: ${task.type})
+What a good answer should show: ${task.desc}
+
+Grade the student's answer below. Be encouraging but honest — this is a student in grades 6-12.
+Respond with ONLY valid JSON, no markdown, no preamble, in exactly this shape:
+{"passed": true or false, "score": 0-10, "feedback": "2-3 sentences of specific, encouraging feedback"}
+
+A "pass" means the student engaged genuinely with the task and shows real understanding —
+not perfection. Be generous with effort, strict about copy-pasted or nonsense answers.`;
+
+    const res = await fetch(GRADE_PROXY_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: gradingSystemPrompt,
+        messages: [{ role: 'user', content: `Student's answer:\n\n${answer}` }]
+      })
+    });
+    const raw = await res.json();
+    const rawText = (raw.content && raw.content[0] && raw.content[0].text) || '{}';
+    let result;
+    try {
+      result = JSON.parse(rawText.replace(/```json|```/g, '').trim());
+    } catch {
+      result = { passed: false, score: 0, feedback: "Grading hiccup — please try submitting again." };
+    }
+    const record = { status: result.passed ? 'passed' : 'needs_revision', textAnswer: answer, aiScore: result.score||null, aiFeedback: result.feedback||'', submittedAt: new Date().toISOString(), coinsAwarded: !!result.passed };
+    MissionEngine.recordSubmissionLocally(id, record);
+    await updateDoc(doc(db,'students',uid), { [`missionSubmissions.${SLUG}.${id}`]: record }).catch(e=>console.warn(e));
+
+    document.getElementById('submitFeedback').style.display = 'block';
+    document.getElementById('submitFeedback').textContent = record.aiFeedback;
+    document.getElementById('submitStatus').textContent = result.passed
+      ? (alreadyPassed ? "Passed again — nice review! (Coins already earned the first time.)" : "🎉 Hurray! You've earned 10 W4Y Coins!")
+      : 'Not quite — read the feedback and try again.';
+    btn.disabled = false; btn.textContent = result.passed ? 'Passed' : 'Resubmit';
+
+    if (result.passed && !alreadyPassed){
+      coins += 10; renderCoins();
+      updateDoc(doc(db,'students',uid), {
+        coins: increment(10),
+        biographyEvents: arrayUnion({ grade: student.grade || null, profession: SLUG, event: task.title, at: new Date().toISOString() })
+      }).catch(e=>console.warn(e));
+      recordFreeTaskIfNeeded();
+      if (monthTaskIds(activeMonth).every(isDone)){
+        coins += 50; renderCoins();
+        updateDoc(doc(db,'students',uid), { coins: increment(50) }).catch(e=>console.warn(e));
+        showMonthlyMomento();
+      }
+    }
+    renderTasks(); renderMonthTabs();
+  } catch(e){
+    console.error(e);
+    document.getElementById('submitStatus').textContent = "Couldn't reach the grading system — please try again.";
+    btn.disabled = false; btn.textContent = 'Submit for grading';
+  }
+}
+/* ===================================================================
+   VISUAL MISSION ENGINES — reusable, data-driven mini-games.
+   Two engines cover Std 6 Explorer content: "tap-discover" (no stakes,
+   pure curiosity) and "build-match" (drag chip to zone; noStakes:true
+   means every placement is accepted and shows its fact, no wrong answer).
+   Adding a new month's content never needs new code — only new data
+   in profession-catalog.js. New engines (e.g. "branching" for Specialist
+   band) can be added the same way later.
+=================================================================== */
+
+function openVisualMission(id, task){
+  currentOpenTaskId = id; currentOpenTask = task; currentOpenIsVisual = true;
+  const overlay = document.getElementById('vmOverlay');
+  const modal = document.getElementById('vmModal');
+  overlay.style.display = 'flex';
+
+  if (task.engine === 'tap-discover') renderTapDiscover(modal, id, task);
+  else if (task.engine === 'build-match') renderBuildMatch(modal, id, task);
+  else if (task.engine === 'flip-cards') renderFlipCards(modal, id, task);
+  else if (task.engine === 'true-false') renderTrueFalse(modal, id, task);
+  else modal.innerHTML = '<p style="color:#fff">This mission type is not supported yet.</p>';
+}
+
+function closeVisualMission(){
+  document.getElementById('vmOverlay').style.display = 'none';
+}
+window.closeVisualMission = closeVisualMission;
+
+function renderTapDiscover(modal, id, task){
+  const data = task.data;
+  let discovered = new Set();
+  modal.innerHTML = `
+    <button class="vm-close" onclick="closeVisualMission()">&times;</button>
+    <h3 class="vm-title">${task.icon} ${task.title}</h3>
+    ${mentorIntroHTML(task, id)}
+    <div class="td-visual">${data.visual}</div>
+    <div class="td-hotspots">${data.hotspots.map((h,i)=>`<div class="td-hotspot" data-i="${i}">${t(h.label)}</div>`).join('')}</div>
+    <div class="td-fact" id="tdFact">${t(UI.tapHint)}</div>
+    <button class="vm-done-btn" id="tdDoneBtn" disabled>${t(UI.exploreProgress, `0/${data.hotspots.length}`)}</button>
+  `;
+  modal.querySelectorAll('.td-hotspot').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const i = parseInt(el.dataset.i);
+      el.classList.add('tapped');
+      document.getElementById('tdFact').textContent = t(data.hotspots[i].fact);
+      discovered.add(i);
+      const btn = document.getElementById('tdDoneBtn');
+      btn.disabled = discovered.size < data.hotspots.length;
+      btn.textContent = discovered.size < data.hotspots.length
+        ? t(UI.exploreProgress, `${discovered.size}/${data.hotspots.length}`)
+        : t(UI.completeMission);
+    });
+  });
+  document.getElementById('tdDoneBtn').addEventListener('click', ()=> completeVisualMission(id, task));
+}
+
+function renderBuildMatch(modal, id, task){
+  const data = task.data;
+  let placed = {};
+  const chipLabel = (chipId) => { const z = data.zones.find(z=>z.id===chipId); return z ? t(z.label) : chipId; };
+  modal.innerHTML = `
+    <button class="vm-close" onclick="closeVisualMission()">&times;</button>
+    <h3 class="vm-title">${task.icon} ${task.title}</h3>
+    ${mentorIntroHTML(task, id)}
+    <div class="bm-zones">${data.zones.map(z=>`<div class="bm-zone" data-zone="${z.id}">${t(z.label)}</div>`).join('')}</div>
+    <div class="bm-bank" id="bmBank">${data.chips.map(c=>`<div class="bm-chip" draggable="true" data-chip="${c}">${chipLabel(c)}</div>`).join('')}</div>
+    <div class="td-fact" id="bmFact">${t(UI.dragHint)}</div>
+    <button class="vm-done-btn" id="bmDoneBtn" disabled>${t(UI.placeProgress, `0/${data.chips.length}`)}</button>
+  `;
+  const chips = modal.querySelectorAll('.bm-chip');
+  const zones = modal.querySelectorAll('.bm-zone');
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', chip.dataset.chip));
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover', e=> e.preventDefault());
+    zone.addEventListener('drop', e=>{
+      e.preventDefault();
+      if (zone.classList.contains('filled')) return;
+      const chipVal = e.dataTransfer.getData('text/plain');
+      if (!data.noStakes && chipVal !== zone.dataset.zone) return; // strict mode for later bands
+      zone.classList.add('filled');
+      placed[chipVal] = true;
+      const chipEl = [...chips].find(c=>c.dataset.chip===chipVal);
+      if (chipEl) chipEl.classList.add('used');
+      if (data.facts && data.facts[chipVal]) document.getElementById('bmFact').textContent = t(data.facts[chipVal]);
+      const count = Object.keys(placed).length;
+      const btn = document.getElementById('bmDoneBtn');
+      btn.disabled = count < data.chips.length;
+      btn.textContent = count < data.chips.length
+        ? t(UI.placeProgress, `${count}/${data.chips.length}`)
+        : t(UI.completeMission);
+    });
+  });
+  document.getElementById('bmDoneBtn').addEventListener('click', ()=> completeVisualMission(id, task));
+}
+
+function renderFlipCards(modal, id, task){
+  const data = task.data;
+  let flippedCount = 0;
+  modal.innerHTML = `
+    <button class="vm-close" onclick="closeVisualMission()">&times;</button>
+    <h3 class="vm-title">${task.icon} ${task.title}</h3>
+    ${mentorIntroHTML(task, id)}
+    <div class="fc-grid">${data.cards.map((c,i)=>`<div class="fc-card" data-i="${i}">${t(c.front)}</div>`).join('')}</div>
+    <button class="vm-done-btn" id="fcDoneBtn" disabled>Flip all cards first (0/${data.cards.length})</button>
+  `;
+  modal.querySelectorAll('.fc-card').forEach(card=>{
+    card.addEventListener('click', ()=>{
+      if (card.classList.contains('flipped')) return;
+      const i = parseInt(card.dataset.i);
+      card.classList.add('flipped');
+      card.textContent = t(data.cards[i].back);
+      flippedCount++;
+      const btn = document.getElementById('fcDoneBtn');
+      btn.disabled = flippedCount < data.cards.length;
+      btn.textContent = flippedCount < data.cards.length ? `Flip all cards first (${flippedCount}/${data.cards.length})` : t(UI.completeMission);
+    });
+  });
+  document.getElementById('fcDoneBtn').addEventListener('click', ()=> completeVisualMission(id, task));
+}
+
+function renderTrueFalse(modal, id, task){
+  const data = task.data;
+  let answered = 0;
+  modal.innerHTML = `
+    <button class="vm-close" onclick="closeVisualMission()">&times;</button>
+    <h3 class="vm-title">${task.icon} ${task.title}</h3>
+    ${mentorIntroHTML(task, id)}
+    ${data.statements.map((s,i)=>`
+      <div class="tf-item" data-i="${i}">
+        <div class="tf-text">${t(s.text)}</div>
+        <div class="tf-btns">
+          <button class="tf-btn" data-val="true">True</button>
+          <button class="tf-btn" data-val="false">False</button>
+        </div>
+        <div class="tf-explain">${t(s.explain)}</div>
+      </div>`).join('')}
+    <button class="vm-done-btn" id="tfDoneBtn" disabled>Answer all first (0/${data.statements.length})</button>
+  `;
+  modal.querySelectorAll('.tf-item').forEach(item=>{
+    const i = parseInt(item.dataset.i);
+    const correct = data.statements[i].answer;
+    item.querySelectorAll('.tf-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        if (item.querySelector('.tf-btn.correct, .tf-btn.wrong')) return;
+        const chosen = btn.dataset.val === 'true';
+        btn.classList.add(chosen === correct ? 'correct' : 'wrong');
+        item.querySelector('.tf-explain').style.display = 'block';
+        answered++;
+        const doneBtn = document.getElementById('tfDoneBtn');
+        doneBtn.disabled = answered < data.statements.length;
+        doneBtn.textContent = answered < data.statements.length ? `Answer all first (${answered}/${data.statements.length})` : t(UI.completeMission);
+      });
+    });
+  });
+  document.getElementById('tfDoneBtn').addEventListener('click', ()=> completeVisualMission(id, task));
+}
+
+async function completeVisualMission(id, task){
+  const alreadyPassed = isDone(id); // was this task already passed BEFORE this attempt?
+  const record = { status: 'passed', engine: task.engine, submittedAt: new Date().toISOString(), coinsAwarded: !alreadyPassed };
+  MissionEngine.recordSubmissionLocally(id, record);
+
+  const firestoreUpdate = { [`missionSubmissions.${SLUG}.${id}`]: record };
+  if (!alreadyPassed){
+    firestoreUpdate.coins = increment(10);
+    firestoreUpdate.biographyEvents = arrayUnion({
+      grade: student.grade || null,
+      profession: SLUG,
+      event: task.title,
+      at: new Date().toISOString()
+    });
+  }
+  await updateDoc(doc(db,'students',uid), firestoreUpdate).catch(e=>console.warn('completeVisualMission write failed', e));
+
+  if (!alreadyPassed){
+    coins += 10; renderCoins();
+    recordFreeTaskIfNeeded();
+    if (monthTaskIds(activeMonth).every(isDone)){
+      coins += 50; renderCoins();
+      updateDoc(doc(db,'students',uid), { coins: increment(50) }).catch(e=>console.warn(e));
+    }
+  }
+
+  const modal = document.getElementById('vmModal');
+  const monthJustCompleted = !alreadyPassed && monthTaskIds(activeMonth).every(isDone);
+  modal.innerHTML = `
+    <div style="text-align:center;padding:20px 10px;">
+      <div style="font-size:52px;margin-bottom:10px;">🎉</div>
+      <h3 style="margin:0 0 8px;">${alreadyPassed ? "Nice review!" : "Hurray! You did it!"}</h3>
+      <p style="color:#e8ddff;font-size:14px;">${alreadyPassed ? "You've already earned coins for this one — great practice though!" : "You've earned 10 W4Y Coins! 🪙"}</p>
+    </div>`;
+  setTimeout(()=>{
+    if (monthJustCompleted) showMonthlyMomento();
+    else { closeVisualMission(); renderTasks(); renderMonthTabs(); }
+  }, 1400);
+}
+
+// ===================================================================
+// MONTHLY MOMENTO + YEAR-END REWARD LADDER
+// A collectible reveal every time a student finishes all 4 tasks in a
+// month — builds toward the real, physical year-end gift, tiered by
+// total coins earned in this profession (see PROFILE.rewardTiers).
+// ===================================================================
+function showMonthlyMomento(){
+  document.getElementById('submitModal').style.display = 'none'; // in case called from a text-task submission
+  document.getElementById('vmOverlay').style.display = 'flex';
+  const modal = document.getElementById('vmModal');
+  const monthLabel = getMonths()[activeMonth].label;
+  const isLastMonth = activeMonth === getMonths().length - 1;
+  modal.innerHTML = `
+    <div style="text-align:center;padding:24px 10px;">
+      <div style="font-size:60px;margin-bottom:10px;">🎖️</div>
+      <h3 style="margin:0 0 8px;">Monthly Momento Earned!</h3>
+      <p style="color:#e8ddff;font-size:14px;margin-bottom:16px;">You've completed <b>${monthLabel}</b> — this month's momento is added to your collection.</p>
+      <button class="vm-done-btn" id="momentoContinueBtn">${isLastMonth ? "See Your Year-End Gift →" : "Continue →"}</button>
+    </div>`;
+  document.getElementById('momentoContinueBtn').addEventListener('click', ()=>{
+    if (isLastMonth) showYearEndReward();
+    else { closeVisualMission(); renderTasks(); renderMonthTabs(); }
+  });
+}
+
+function showYearEndReward(){
+  const modal = document.getElementById('vmModal');
+  const tiers = PROFILE.rewardTiers || [];
+  const earned = [...tiers].reverse().find(tier => coins >= tier.minCoins);
+  modal.innerHTML = earned ? `
+    <div style="text-align:center;padding:20px 10px;">
+      <div style="font-size:70px;margin-bottom:10px;">${earned.icon}</div>
+      <h3 style="margin:0 0 8px;">🎉 You've earned a real gift!</h3>
+      <p style="color:#e8ddff;font-size:14px;margin-bottom:6px;">With <b>${coins} coins</b> earned this year, you've unlocked:</p>
+      <p style="color:var(--gold);font-size:16px;font-weight:700;margin-bottom:16px;">${earned.item}</p>
+      <button class="vm-done-btn" id="claimGiftBtn">Claim My Gift →</button>
+    </div>` : `
+    <div style="text-align:center;padding:20px 10px;">
+      <div style="font-size:52px;margin-bottom:10px;">🌱</div>
+      <h3 style="margin:0 0 8px;">Great year of learning!</h3>
+      <p style="color:#e8ddff;font-size:14px;">You're close to your first reward tier — keep earning coins next year to unlock a real W4Y gift!</p>
+    </div>`;
+  if (earned){
+    document.getElementById('claimGiftBtn').addEventListener('click', ()=> showGiftAddressForm(earned));
+  }
+}
+
+function showGiftAddressForm(earned){
+  const modal = document.getElementById('vmModal');
+  modal.innerHTML = `
+    <button class="vm-close" onclick="closeVisualMission()">&times;</button>
+    <h3 class="vm-title">${earned.icon} Claim: ${earned.item}</h3>
+    <p style="color:#e8ddff;font-size:13px;margin-bottom:14px;">We just need a shipping address to send your gift — this is only collected now, when you're actually claiming it.</p>
+    <input id="giftName" placeholder="Full name" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:#fff;">
+    <textarea id="giftAddress" placeholder="Full shipping address, including PIN code" rows="3" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:#fff;font-family:inherit;"></textarea>
+    <input id="giftPhone" placeholder="Contact number for delivery" style="width:100%;padding:10px;margin-bottom:14px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:#fff;">
+    <button class="vm-done-btn" id="submitGiftBtn">Submit for Delivery →</button>
+  `;
+  document.getElementById('submitGiftBtn').addEventListener('click', async ()=>{
+    const name = document.getElementById('giftName').value.trim();
+    const address = document.getElementById('giftAddress').value.trim();
+    const phone = document.getElementById('giftPhone').value.trim();
+    if (!name || !address || !phone){ alert('Please fill all fields so we can deliver your gift.'); return; }
+    await updateDoc(doc(db,'students',uid), {
+      [`giftRedemptions.${SLUG}`]: {
+        item: earned.item, coinsAtRedemption: coins, name, address, phone,
+        status: 'Pending Fulfillment', requestedAt: new Date().toISOString()
+      }
+    }).catch(e=>console.warn('Gift redemption save failed', e));
+    modal.innerHTML = `<div style="text-align:center;padding:30px 10px;"><div style="font-size:52px;margin-bottom:10px;">📦</div><h3>Gift request sent!</h3><p style="color:#e8ddff;font-size:14px;">Your ${earned.item} is on its way to being shipped. 🎉</p></div>`;
+    setTimeout(()=>{ closeVisualMission(); renderTasks(); renderMonthTabs(); }, 2200);
+  });
+}
+</script>
+
+</body>
+</html>
