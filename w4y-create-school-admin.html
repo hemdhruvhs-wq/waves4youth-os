@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W4Y — Create School Admin Account</title>
+<style>
+  :root{ --plum:#1A0B2E; --coral:#FF6B6B; --magenta:#D63AFF; --gold:#F5C453; --card:#241539; --border:rgba(255,255,255,.12); --muted:#b8a8d0; }
+  *{box-sizing:border-box;}
+  body{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(160deg,var(--plum),#150822); font-family:'Poppins','Inter',sans-serif; color:#fff; padding:24px; }
+  .card{ width:100%; max-width:440px; background:var(--card); border:1px solid var(--border); border-radius:20px; padding:28px; }
+  h1{ font-size:19px; margin:0 0 4px; }
+  .sub{ color:var(--muted); font-size:13px; margin:0 0 20px; }
+  label{ display:block; font-size:12.5px; color:var(--muted); margin-bottom:6px; margin-top:14px; }
+  input{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border);
+    background:rgba(255,255,255,.06); color:#fff; font-size:14px; }
+  input:focus{ outline:none; border-color:var(--gold); }
+  button{ width:100%; padding:13px; border:none; border-radius:10px; font-weight:700; font-size:14px;
+    background:linear-gradient(135deg,var(--coral),var(--magenta)); color:#fff; cursor:pointer; margin-top:20px; }
+  button:disabled{ opacity:.6; cursor:not-allowed; }
+  .msg{ margin-top:14px; font-size:13px; padding:10px 12px; border-radius:10px; display:none; line-height:1.5; }
+  .msg.err{ display:block; background:rgba(255,107,107,.15); border:1px solid rgba(255,107,107,.4); color:#FF9B9B; }
+  .msg.ok{ display:block; background:rgba(76,224,179,.15); border:1px solid rgba(76,224,179,.4); color:#4CE0B3; }
+  .note{ margin-top:20px; font-size:11px; color:var(--muted); line-height:1.5; }
+  #gate{ }
+  #form{ display:none; }
+  .creds-box{ margin-top:14px; background:rgba(245,196,83,.1); border:1px solid rgba(245,196,83,.35); border-radius:10px; padding:14px; font-size:13px; line-height:1.7; }
+  .creds-box b{ color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🏫 Create School Admin Account</h1>
+  <p class="sub">One-click setup — creates the login AND grants school-admin access, in one step.</p>
+
+  <div id="gate">
+    <label>Admin tool password</label>
+    <input type="password" id="gatePassword" placeholder="Enter password">
+    <button id="gateBtn">Unlock →</button>
+    <div id="gateMsg" class="msg"></div>
+  </div>
+
+  <div id="form">
+    <label>School name</label>
+    <input type="text" id="schoolName" placeholder="e.g. Delhi Public School, Andheri">
+
+    <label>School admin email</label>
+    <input type="email" id="adminEmail" placeholder="admin@school.edu">
+
+    <label>Password for this account</label>
+    <input type="password" id="adminPassword" placeholder="Create a password (min 6 characters)">
+
+    <button id="createBtn">Create School Admin Account →</button>
+    <div id="msg" class="msg"></div>
+  </div>
+
+  <div class="note">⚠️ This is a testing/admin utility, not something to link from your live site. Keep this file's URL private, and consider deleting it once school onboarding is stable.</div>
+</div>
+
+<script type="module">
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+
+// Main app instance — used only for writing the schoolAdmins Firestore doc.
+const mainApp = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const db = getFirestore(mainApp);
+
+const $ = id => document.getElementById(id);
+const setMsg = (el, t, ok=false) => { const m=$(el); m.textContent=t; m.className="msg "+(ok?"ok":"err"); };
+
+const GATE_PASSWORD = "w4y-schooladmin-2026";
+
+$("gateBtn").addEventListener("click", () => {
+  if ($("gatePassword").value === GATE_PASSWORD) {
+    $("gate").style.display = "none";
+    $("form").style.display = "block";
+  } else {
+    setMsg("gateMsg", "Incorrect password.");
+  }
+});
+
+$("createBtn").addEventListener("click", async () => {
+  const schoolName = $("schoolName").value.trim();
+  const email = $("adminEmail").value.trim();
+  const password = $("adminPassword").value;
+
+  if (!schoolName || !email || !password) { setMsg("msg", "Please fill in all fields."); return; }
+  if (password.length < 6) { setMsg("msg", "Password must be at least 6 characters."); return; }
+
+  $("createBtn").disabled = true;
+  $("createBtn").textContent = "Creating account...";
+  setMsg("msg", "");
+
+  // Use a SEPARATE, secondary Firebase app instance just for creating this
+  // new user. This is the standard workaround for the fact that creating a
+  // user with the client SDK automatically signs in as them — using a
+  // second app instance means it never touches whoever is using this page.
+  const secondaryApp = initializeApp(firebaseConfig, "schoolAdminCreator-" + Date.now());
+  const secondaryAuth = getAuth(secondaryApp);
+
+  try {
+    const cred = await createUserWithEmailAndPassword(secondaryAuth, email, password);
+    const uid = cred.user.uid;
+
+    // Immediately sign out of the secondary instance — we only needed it
+    // long enough to get the new user's UID.
+    await signOut(secondaryAuth);
+
+    // Grant school-admin access via the main app's Firestore connection.
+    await setDoc(doc(db, "schoolAdmins", uid), {
+      schoolName,
+      email,
+      active: true,
+      createdAt: serverTimestamp()
+    });
+
+    $("msg").className = "msg ok";
+    $("msg").innerHTML = `✅ Account created successfully!<div class="creds-box">
+      Share these with the school:<br>
+      <b>Login page:</b> waves4youth.in/w4y-school-admin-login.html<br>
+      <b>Email:</b> ${email}<br>
+      <b>Password:</b> ${password}
+    </div>`;
+    $("schoolName").value = ""; $("adminEmail").value = ""; $("adminPassword").value = "";
+  } catch (e) {
+    console.error(e);
+    let friendly = "Something went wrong — check the browser console for details.";
+    if (e.code === "auth/email-already-in-use") friendly = "That email is already registered — use a different one, or check if this school already has an account.";
+    if (e.code === "auth/weak-password") friendly = "Password is too weak — please use at least 6 characters.";
+    if (e.code === "auth/invalid-email") friendly = "That email address doesn't look valid.";
+    setMsg("msg", friendly);
+  }
+  $("createBtn").disabled = false;
+  $("createBtn").textContent = "Create School Admin Account →";
+});
+</script>
+</body>
+</html>

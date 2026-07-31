@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W4Y School Admin Login</title>
+<style>
+  :root{ --plum:#1A0B2E; --coral:#FF6B6B; --magenta:#D63AFF; --gold:#F5C453; --card:#241539; --border:rgba(255,255,255,.12); --muted:#b8a8d0; }
+  *{box-sizing:border-box;}
+  body{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(160deg,var(--plum),#150822); font-family:'Poppins','Inter',sans-serif; color:#fff; padding:24px; }
+  .card{ width:100%; max-width:400px; background:var(--card); border:1px solid var(--border); border-radius:20px; padding:28px; }
+  h1{ font-size:19px; margin:0 0 4px; }
+  .sub{ color:var(--muted); font-size:13px; margin:0 0 22px; }
+  label{ display:block; font-size:12.5px; color:var(--muted); margin-bottom:6px; }
+  input{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border);
+    background:rgba(255,255,255,.06); color:#fff; font-size:14px; margin-bottom:16px; }
+  input:focus{ outline:none; border-color:var(--gold); }
+  button{ width:100%; padding:13px; border:none; border-radius:10px; font-weight:700; font-size:14px;
+    background:linear-gradient(135deg,var(--coral),var(--magenta)); color:#fff; cursor:pointer; }
+  button:disabled{ opacity:.6; cursor:not-allowed; }
+  .msg{ margin-top:14px; font-size:13px; padding:10px 12px; border-radius:10px; display:none; }
+  .msg.err{ display:block; background:rgba(255,107,107,.15); border:1px solid rgba(255,107,107,.4); color:#FF9B9B; }
+  .msg.ok{ display:block; background:rgba(76,224,179,.15); border:1px solid rgba(76,224,179,.4); color:#4CE0B3; }
+  .note{ margin-top:20px; font-size:11px; color:var(--muted); line-height:1.5; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🏫 School Admin Login</h1>
+  <p class="sub">For authorized school administrators to view student biographies.</p>
+
+  <label>School admin email</label>
+  <input type="email" id="email" placeholder="admin@yourschool.edu" autocomplete="username">
+
+  <label>Password</label>
+  <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+
+  <button id="loginBtn">Sign In →</button>
+
+  <div id="msg" class="msg"></div>
+
+  <div class="note">This login is separate from student accounts. Access is restricted to school administrators specifically authorized by W4Y — if you believe you should have access and can't log in, contact W4Y directly.</div>
+</div>
+
+<script type="module">
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+  authDomain: "waves4youth-4f239.firebaseapp.com",
+  projectId: "waves4youth-4f239",
+  storageBucket: "waves4youth-4f239.firebasestorage.app",
+  messagingSenderId: "828101805925",
+  appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = id => document.getElementById(id);
+const setMsg = (t, ok=false) => { const m=$("msg"); m.textContent=t; m.className="msg "+(ok?"ok":"err"); };
+
+$("loginBtn").addEventListener("click", async () => {
+  const email = $("email").value.trim();
+  const password = $("password").value;
+  if (!email || !password) { setMsg("Please enter both email and password."); return; }
+
+  $("loginBtn").disabled = true;
+  $("loginBtn").textContent = "Signing in...";
+  setMsg("");
+
+  try {
+    const cred = await signInWithEmailAndPassword(auth, email, password);
+    const uid = cred.user.uid;
+
+    // Check this account is actually an authorized school admin — a
+    // separate collection from students, so this role is never
+    // accidentally granted just by having a regular login.
+    const adminDoc = await getDoc(doc(db, "schoolAdmins", uid));
+    if (!adminDoc.exists() || adminDoc.data().active === false) {
+      await signOut(auth);
+      setMsg("This account isn't authorized as a school admin. Please contact W4Y if this seems wrong.");
+      $("loginBtn").disabled = false;
+      $("loginBtn").textContent = "Sign In →";
+      return;
+    }
+
+    setMsg("✅ Signed in! Redirecting...", true);
+    sessionStorage.setItem("w4y_school_name", adminDoc.data().schoolName || "");
+    window.location.href = "w4y-student-biography.html";
+  } catch (e) {
+    console.error(e);
+    setMsg("Sign-in failed — check your email and password and try again.");
+    $("loginBtn").disabled = false;
+    $("loginBtn").textContent = "Sign In →";
+  }
+});
+</script>
+</body>
+</html>
