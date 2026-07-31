@@ -1227,7 +1227,7 @@ export const PROFESSION_CATALOG = {
                 hi: "अपना हाथ एक पल के लिए अपनी छाती पर रखो — वो धक-धक महसूस हो रही है? यही तुम्हारा दिल है, जो कभी नहीं रुकता, यहाँ तक कि सोते समय भी नहीं! इसके दो हिस्से हैं और दोनों के काम बिल्कुल अलग हैं। इधर-उधर छूकर देखो, मैं तुम्हें हर हिस्से का असली काम दिखाती हूँ।",
                 mr: "थोडा वेळ आपला हात छातीवर ठेवा — ती धडधड जाणवते आहे का? हेच तुमचं हृदय आहे, जे कधीच थांबत नाही, अगदी झोपेतसुद्धा नाही! याचे दोन भाग आहेत आणि दोघांची कामं अगदी वेगळी आहेत. इकडे-तिकडे टॅप करा, मी तुम्हाला प्रत्येक भागाचं खरं काम दाखवते."
               },
-              data: { visual: "🫀", hotspots: [
+              data: { visual: "🫀", animation: "heartbeat", hotspots: [
               { label: {en:"Left side",hi:"बायाँ हिस्सा",mr:"डावी बाजू"}, fact: {en:"This side pumps blood full of oxygen out to your whole body! 💨",hi:"यह हिस्सा ऑक्सीजन से भरा खून पूरे शरीर में भेजता है! 💨",mr:"ही बाजू ऑक्सिजनने भरलेलं रक्त संपूर्ण शरीरात पाठवते! 💨"} },
               { label: {en:"Right side",hi:"दायाँ हिस्सा",mr:"उजवी बाजू"}, fact: {en:"This side collects blood coming back from your body to refill it! 🔄",hi:"यह हिस्सा शरीर से लौटकर आ रहे खून को इकट्ठा करता है! 🔄",mr:"ही बाजू शरीरातून परत येणारं रक्त गोळा करते! 🔄"} },
               { label: {en:"Bottom",hi:"नीचे का हिस्सा",mr:"खालचा भाग"}, fact: {en:"Whoosh! This is the strongest pumping part of all! 💪",hi:"वाह! यह सबसे ताकतवर पम्पिंग हिस्सा है! 💪",mr:"वाह! हा सर्वात ताकदवान पंपिंग भाग आहे! 💪"} },
@@ -1297,7 +1297,7 @@ export const PROFESSION_CATALOG = {
               ribcage: "Your ribs form a cage to keep your heart and lungs safe! 🛡️",
               legs: "Your leg bones are some of the strongest in your whole body! 🏃"
             }}},
-            { engine: "tap-discover", icon: "🦴", title: "Why bones matter", data: { visual: "🦴", hotspots: [
+            { engine: "tap-discover", icon: "🦴", title: "Why bones matter", data: { visual: "🦴", animation: "skeleton", hotspots: [
               { label: "Strength", fact: "Bones are light but incredibly strong — stronger than some steel by weight!" },
               { label: "Growth", fact: "You have more bones as a baby than as an adult — some fuse together as you grow!" },
               { label: "Movement", fact: "Bones work with muscles to let you run, jump, and dance!" }
@@ -1335,7 +1335,7 @@ export const PROFESSION_CATALOG = {
                         mr: "हे करून बघा: 5 खोल, हळू श्वास घ्या आणि तुमची छाती कशी हलते ते बघा. स्वतःचा फोटो घ्या (किंवा काढा!), आणि कसं वाटलं ते सांगा." }
             },
             tasks: [
-            { engine: "tap-discover", icon: "🫁", title: "Explore your lungs", data: { visual: "🫁", hotspots: [
+            { engine: "tap-discover", icon: "🫁", title: "Explore your lungs", data: { visual: "🫁", animation: "breathing", hotspots: [
               { label: "Breathing in", fact: "When you breathe in, your lungs fill up with fresh air full of oxygen!" },
               { label: "Breathing out", fact: "When you breathe out, you release air your body doesn't need anymore!" },
               { label: "All day, every day", fact: "You breathe about 20,000 times a day without even thinking about it!" }
@@ -1383,7 +1383,7 @@ export const PROFESSION_CATALOG = {
               cut: "Your skin and white blood cells team up to heal a cut! 🩹",
               cold: "Your immune system's white blood cells fight off cold viruses! 🛡️"
             }}},
-            { engine: "tap-discover", icon: "🛡️", title: "Meet your defenders", data: { visual: "🛡️", hotspots: [
+            { engine: "tap-discover", icon: "🛡️", title: "Meet your defenders", data: { visual: "🛡️", animation: "shield", hotspots: [
               { label: "White blood cells", fact: "These are your body's tiny superhero soldiers fighting germs!" },
               { label: "Skin", fact: "Your skin is the first wall keeping germs out!" },
               { label: "Fever", fact: "A fever is your body turning up the heat to fight germs faster!" }
@@ -1507,7 +1507,7 @@ export const PROFESSION_CATALOG = {
                         mr: "तुमच्या मेंदूचं चित्र काढा आणि तो करत असलेली 2-3 कामं लिहा. फोटो घ्या आणि तुमचं चित्र समजावून सांगा!" }
             },
             tasks: [
-            { engine: "tap-discover", icon: "🧠", title: "Explore your brain", data: { visual: "🧠", hotspots: [
+            { engine: "tap-discover", icon: "🧠", title: "Explore your brain", data: { visual: "🧠", animation: "nervesignal", hotspots: [
               { label: "Thinking", fact: "Your brain is where every thought, idea, and daydream happens!" },
               { label: "Memory", fact: "Your brain stores memories like a super-powered photo album!" },
               { label: "Control center", fact: "Your brain controls your whole body — even your heartbeat!" }
@@ -1888,7 +1888,7 @@ export const PROFESSION_CATALOG = {
                         mr: "एक साधं वर्तुळ काढा जे दाखवेल की रक्त तुमच्या हृदयातून निघून, तुमच्या शरीरात फिरून, परत कसं येतं. फोटो घ्या आणि तुमचं चित्र समजावून सांगा!" }
             },
             tasks: [
-            { engine: "tap-discover", icon: "🩸", title: "Trace blood's path", data: { visual: "🩸", hotspots: [
+            { engine: "tap-discover", icon: "🩸", title: "Trace blood's path", data: { visual: "🩸", animation: "bloodflow", hotspots: [
               { label: "Leaving the heart", fact: "Fresh, oxygen-rich blood leaves your heart to travel your whole body!" },
               { label: "Delivering oxygen", fact: "Blood drops off oxygen everywhere your body needs energy!" },
               { label: "Returning home", fact: "Used blood travels back to the heart and lungs to refill with oxygen!" }
@@ -2136,7 +2136,7 @@ export const PROFESSION_CATALOG = {
                         mr: "आजार टाळण्याच्या एका मार्गाबद्दल पोस्टर डिझाइन करा (लस, हात धुणं, विश्रांती). फोटो घ्या आणि तुमचा संदेश समजावून सांगा!" }
             },
             tasks: [
-            { engine: "tap-discover", icon: "💉", title: "Explore vaccines", data: { visual: "💉", hotspots: [
+            { engine: "tap-discover", icon: "💉", title: "Explore vaccines", data: { visual: "💉", animation: "shield", hotspots: [
               { label: "Practice run", fact: "Vaccines teach your immune system to recognize germs before you ever get sick!" },
               { label: "Community protection", fact: "When many people are vaccinated, it helps protect everyone!" },
               { label: "Prevention", fact: "Preventing illness is often easier than treating it!" }
@@ -2180,7 +2180,7 @@ export const PROFESSION_CATALOG = {
             { engine: "build-match", icon: "🏃", title: "Match movement to body parts working together", data: { noStakes: true, zones: [
               { id: "jump", label: "Jumping" }, { id: "grip", label: "Gripping something" }, { id: "bend", label: "Bending your arm" }
             ], chips: ["jump","grip","bend"], facts: { jump: "Leg bones and muscles together!", grip: "Hand bones and muscles together!", bend: "Arm bones and muscles together!" }}},
-            { engine: "tap-discover", icon: "🏃", title: "How they work together", data: { visual: "🏃", hotspots: [
+            { engine: "tap-discover", icon: "🏃", title: "How they work together", data: { visual: "🏃", animation: "skeleton", hotspots: [
               { label: "Joints", fact: "Joints are where bones meet, letting your body bend and move!" },
               { label: "Tendons", fact: "Tendons connect your muscles to your bones!" },
               { label: "Teamwork", fact: "Bones give you structure, muscles give you movement!" }
@@ -2282,7 +2282,7 @@ export const PROFESSION_CATALOG = {
                 hi: "अब जब तुम कक्षों को जानते हो, चलो वाल्व से मिलते हैं — उनके बीच के दरवाज़े जो तुम्हारे खून को सही दिशा में बहाए रखते हैं!",
                 mr: "आता तुम्हाला कप्पे माहीत आहेत, चला झडपांना भेटूया — त्यांच्यामधले दरवाजे जे तुमचं रक्त फक्त योग्य दिशेने वाहत ठेवतात!"
               },
-              data: { visual: "🚪", hotspots: [
+              data: { visual: "🚪", animation: "heartbeat", hotspots: [
               { label: {en:"Tricuspid valve",hi:"त्रिकुस्पिड वाल्व",mr:"ट्रायकस्पिड झडप"}, fact:{en:"This valve sits between the right atrium and right ventricle, opening one-way like a door! 🚪",hi:"यह वाल्व दायें अलिंद और दायें निलय के बीच बैठता है, एक दरवाज़े की तरह एक-तरफ़ा खुलता है! 🚪",mr:"ही झडप उजव्या कर्णिका आणि उजव्या जवनिकेच्या मध्ये बसते, दरवाज्यासारखी एकाच बाजूने उघडते! 🚪"} },
               { label: {en:"Mitral valve",hi:"माइट्रल वाल्व",mr:"मायट्रल झडप"}, fact:{en:"This valve sits between the left atrium and left ventricle, keeping blood flowing the right way! ➡️",hi:"यह वाल्व बायें अलिंद और बायें निलय के बीच बैठता है, खून को सही दिशा में बहाए रखता है! ➡️",mr:"ही झडप डाव्या कर्णिका आणि डाव्या जवनिकेच्या मध्ये बसते, रक्त योग्य दिशेने वाहत ठेवते! ➡️"} },
               { label: {en:"Why valves matter",hi:"वाल्व क्यों मायने रखते हैं",mr:"झडपा का महत्त्वाच्या आहेत"}, fact:{en:"Without valves, blood could flow backward — valves keep everything moving in one correct direction! 🔄",hi:"वाल्व के बिना, खून पीछे की ओर बह सकता है — वाल्व सब कुछ एक सही दिशा में बहाए रखते हैं! 🔄",mr:"झडपांशिवाय, रक्त मागे वाहू शकतं — झडपा सर्वकाही एका योग्य दिशेने वाहत ठेवतात! 🔄"} }
@@ -2328,7 +2328,7 @@ export const PROFESSION_CATALOG = {
                 hi: "डॉक्टर हर दिन वाइटल्स मॉनिटर पढ़ते हैं! चलो सीखते हैं संख्याएँ असल में क्या मतलब रखती हैं — हृदय गति, ब्लड प्रेशर, और ऑक्सीजन लेवल।",
                 mr: "डॉक्टर दररोज व्हायटल्स मॉनिटर वाचतात! चला शिकूया संख्या खरंच काय अर्थ ठेवतात — हृदयगती, रक्तदाब, आणि ऑक्सिजन पातळी."
               },
-              data: { visual: "📈", hotspots: [
+              data: { visual: "📈", animation: "ecg", hotspots: [
               { label:{en:"Heart rate: 78 bpm",hi:"हृदय गति: 78 बीपीएम",mr:"हृदयगती: 78 बीपीएम"}, fact:{en:"A resting heart rate of 60-100 beats per minute is considered normal for someone your age!",hi:"तुम्हारी उम्र के किसी के लिए आराम की हृदय गति 60-100 धड़कन प्रति मिनट सामान्य मानी जाती है!",mr:"तुमच्या वयाच्या कोणासाठी विश्रांतीची हृदयगती 60-100 ठोके प्रति मिनिट सामान्य मानली जाते!"} },
               { label:{en:"Blood pressure: 118/76",hi:"ब्लड प्रेशर: 118/76",mr:"रक्तदाब: 118/76"}, fact:{en:"This reading shows normal blood pressure — the top number is when your heart beats, the bottom is when it rests!",hi:"यह रीडिंग सामान्य ब्लड प्रेशर दिखाती है — ऊपर की संख्या तब है जब तुम्हारा दिल धड़कता है, नीचे की तब जब यह आराम करता है!",mr:"हे रीडिंग सामान्य रक्तदाब दाखवतं — वरची संख्या तेव्हा असते जेव्हा तुमचं हृदय धडधडतं, खालची तेव्हा जेव्हा ते विश्रांती घेतं!"} },
               { label:{en:"Oxygen: 98%",hi:"ऑक्सीजन: 98%",mr:"ऑक्सिजन: 98%"}, fact:{en:"Healthy oxygen levels are usually 95% or above — this tells doctors your lungs are working well!",hi:"स्वस्थ ऑक्सीजन लेवल आमतौर पर 95% या इससे ज़्यादा होते हैं — यह डॉक्टरों को बताता है कि तुम्हारे फेफड़े अच्छे से काम कर रहे हैं!",mr:"निरोगी ऑक्सिजन पातळी सहसा 95% किंवा त्याहून जास्त असते — हे डॉक्टरांना सांगतं की तुमची फुफ्फुसं चांगली काम करत आहेत!"} }
@@ -2389,7 +2389,7 @@ export const PROFESSION_CATALOG = {
                 hi: "एक्स-रे डॉक्टरों को बिना काटे हड्डियाँ देखने देते हैं! चलो एक्सप्लोर करते हैं वे हड्डी की चोट के बारे में क्या बता सकते हैं।",
                 mr: "एक्स-रे डॉक्टरांना न कापता हाडं बघू देतात! चला एक्सप्लोर करूया ते हाडाच्या दुखापतीबद्दल काय सांगू शकतात."
               },
-              data: { visual: "🩻", hotspots: [
+              data: { visual: "🩻", animation: "xray", hotspots: [
               { label:{en:"Hairline fracture",hi:"बाल जैसी दरार",mr:"केसाएवढी भेग"}, fact:{en:"A hairline fracture is a very thin crack — sometimes hard to see, but it still needs care to heal properly!",hi:"बाल जैसी दरार एक बहुत पतली दरार है — कभी-कभी देखना मुश्किल होता है, लेकिन इसे ठीक से ठीक होने के लिए देखभाल चाहिए!",mr:"केसाएवढी भेग खूप पातळ भेग आहे — कधीकधी बघणं कठीण असतं, पण ती नीट बरी होण्यासाठी काळजी हवी!"} },
               { label:{en:"Complete fracture",hi:"पूरी दरार",mr:"पूर्ण भेग"}, fact:{en:"A complete fracture means the bone has broken all the way through into two or more pieces!",hi:"पूरी दरार का मतलब है हड्डी पूरी तरह टूटकर दो या ज़्यादा टुकड़ों में बंट गई है!",mr:"पूर्ण भेग म्हणजे हाड पूर्णपणे तुटून दोन किंवा अधिक तुकड्यांमध्ये विभागलं आहे!"} },
               { label:{en:"Healing time",hi:"ठीक होने का समय",mr:"बरं होण्याची वेळ"}, fact:{en:"Most broken bones take about 6-8 weeks to heal, though it can vary depending on the bone and age!",hi:"ज़्यादातर टूटी हड्डियों को ठीक होने में लगभग 6-8 हफ़्ते लगते हैं, हालांकि यह हड्डी और उम्र पर निर्भर हो सकता है!",mr:"बहुतेक मोडलेली हाडं बरी होण्यास सुमारे 6-8 आठवडे लागतात, जरी ते हाड आणि वयावर अवलंबून बदलू शकतं!"} }
@@ -2450,7 +2450,7 @@ export const PROFESSION_CATALOG = {
                 hi: "डॉक्टर मापते हैं कि तुम्हारे फेफड़े कितनी हवा रख सकते हैं — इसे फेफड़ों की क्षमता कहते हैं, और यह फेफड़ों के स्वास्थ्य के बारे में बहुत कुछ बताता है!",
                 mr: "डॉक्टर मोजतात की तुमची फुफ्फुसं किती हवा धरू शकतात — याला फुफ्फुसांची क्षमता म्हणतात, आणि हे फुफ्फुसांच्या आरोग्याबद्दल बरंच काही सांगतं!"
               },
-              data: { visual: "🫁", hotspots: [
+              data: { visual: "🫁", animation: "breathing", hotspots: [
               { label:{en:"Total lung capacity",hi:"कुल फेफड़ों की क्षमता",mr:"एकूण फुफ्फुसांची क्षमता"}, fact:{en:"An average adult's lungs can hold about 6 liters of air at full capacity!",hi:"एक औसत वयस्क के फेफड़े पूरी क्षमता पर लगभग 6 लीटर हवा रख सकते हैं!",mr:"सरासरी प्रौढ व्यक्तीची फुफ्फुसं पूर्ण क्षमतेवर सुमारे 6 लिटर हवा धरू शकतात!"} },
               { label:{en:"Normal breathing",hi:"सामान्य साँस लेना",mr:"सामान्य श्वासोच्छ्वास"}, fact:{en:"During normal, relaxed breathing, you only use a small part of your total lung capacity!",hi:"सामान्य, आरामदायक साँस लेने के दौरान, तुम अपनी कुल फेफड़ों की क्षमता का केवल एक छोटा हिस्सा इस्तेमाल करते हो!",mr:"सामान्य, आरामशीर श्वासोच्छ्वासादरम्यान, तुम्ही तुमच्या एकूण फुफ्फुसांच्या क्षमतेचा फक्त एक लहान भाग वापरता!"} },
               { label:{en:"Athletes' lungs",hi:"खिलाड़ियों के फेफड़े",mr:"खेळाडूंची फुफ्फुसं"}, fact:{en:"Athletes often train to increase how efficiently their lungs use oxygen, not just their total size!",hi:"खिलाड़ी अक्सर यह बढ़ाने के लिए प्रशिक्षण लेते हैं कि उनके फेफड़े कितनी कुशलता से ऑक्सीजन का इस्तेमाल करते हैं, सिर्फ़ उनका कुल आकार नहीं!",mr:"खेळाडू अनेकदा त्यांची फुफ्फुसं किती कार्यक्षमतेने ऑक्सिजन वापरतात हे वाढवण्यासाठी प्रशिक्षण घेतात, फक्त त्यांचा एकूण आकार नाही!"} }
@@ -2511,7 +2511,7 @@ export const PROFESSION_CATALOG = {
                 hi: "जब कोई कीटाणु आक्रमण करता है, तुम्हारा शरीर एक असली, संगठित प्रतिक्रिया शुरू करता है! चलो चरण-दर-चरण चरणों को एक्सप्लोर करते हैं।",
                 mr: "जेव्हा जंतू आक्रमण करतो, तुमचं शरीर एक खरी, संघटित प्रतिक्रिया सुरू करतं! चला टप्प्याटप्प्याने टप्पे एक्सप्लोर करूया."
               },
-              data: { visual: "🛡️", hotspots: [
+              data: { visual: "🛡️", animation: "shield", hotspots: [
               { label:{en:"Detection",hi:"पहचान",mr:"शोध"}, fact:{en:"First, your body detects that a germ doesn't belong — like a security alarm going off!",hi:"पहले, तुम्हारा शरीर पहचानता है कि एक कीटाणु का यहाँ कोई काम नहीं — जैसे एक सुरक्षा अलार्म बज उठे!",mr:"प्रथम, तुमचं शरीर ओळखतं की एक जंतू इथला नाही — जसं सुरक्षा अलार्म वाजतो!"} },
               { label:{en:"Response",hi:"प्रतिक्रिया",mr:"प्रतिसाद"}, fact:{en:"White blood cells rush to the area and start attacking the invading germ directly!",hi:"सफ़ेद रक्त कोशिकाएँ उस जगह दौड़ती हैं और सीधे आक्रमणकारी कीटाणु पर हमला शुरू करती हैं!",mr:"पांढऱ्या रक्तपेशी त्या जागी धावतात आणि थेट आक्रमण करणाऱ्या जंतूवर हल्ला सुरू करतात!"} },
               { label:{en:"Memory",hi:"याददाश्त",mr:"स्मृती"}, fact:{en:"After winning, your body remembers this germ so it can respond even faster next time!",hi:"जीतने के बाद, तुम्हारा शरीर इस कीटाणु को याद रखता है ताकि अगली बार और भी तेज़ी से प्रतिक्रिया दे सके!",mr:"जिंकल्यानंतर, तुमचं शरीर हा जंतू लक्षात ठेवतं जेणेकरून पुढच्या वेळी अधिक वेगाने प्रतिसाद देऊ शकेल!"} }
@@ -2572,7 +2572,7 @@ export const PROFESSION_CATALOG = {
                 hi: "तुम्हारा नर्वस सिस्टम संदेश उतनी तेज़ी से भेजता है जितनी तुम कल्पना नहीं कर सकते! चलो एक्सप्लोर करते हैं संकेत तुम्हारे शरीर में कैसे यात्रा करते हैं।",
                 mr: "तुमची चेतासंस्था तुम्हाला कल्पनाही करता येणार नाही इतक्या वेगाने संदेश पाठवते! चला एक्सप्लोर करूया संकेत तुमच्या शरीरातून कसे प्रवास करतात."
               },
-              data: { visual: "⚡", hotspots: [
+              data: { visual: "⚡", animation: "nervesignal", hotspots: [
               { label:{en:"Speed of signals",hi:"संकेतों की गति",mr:"संकेतांचा वेग"}, fact:{en:"Some nerve signals travel at speeds up to 120 meters per second — faster than a race car!",hi:"कुछ नर्व संकेत 120 मीटर प्रति सेकंड तक की गति से यात्रा करते हैं — एक रेस कार से भी तेज़!",mr:"काही चेता संकेत ताशी 120 मीटर प्रति सेकंद वेगाने प्रवास करतात — रेस कारपेक्षाही वेगवान!"} },
               { label:{en:"Reflexes",hi:"रिफ्लेक्स",mr:"प्रतिक्षिप्त क्रिया"}, fact:{en:"Some reflexes, like pulling your hand away from something hot, happen before your brain even fully processes it!",hi:"कुछ रिफ्लेक्स, जैसे गर्म चीज़ से हाथ खींचना, तुम्हारे दिमाग़ के पूरी तरह इसे प्रोसेस करने से पहले ही हो जाते हैं!",mr:"काही प्रतिक्षिप्त क्रिया, जसं गरम वस्तूपासून हात मागे घेणं, तुमचा मेंदू ते पूर्णपणे प्रोसेस करण्याआधीच होतात!"} },
               { label:{en:"Nerve network",hi:"नर्व नेटवर्क",mr:"चेता नेटवर्क"}, fact:{en:"Your nervous system has a network of nerves that would stretch for thousands of kilometers if laid end to end!",hi:"तुम्हारे नर्वस सिस्टम में नसों का एक नेटवर्क है जो अगर एक सिरे से दूसरे सिरे तक बिछाया जाए तो हज़ारों किलोमीटर तक फैलेगा!",mr:"तुमच्या चेतासंस्थेत चेतांचं एक नेटवर्क आहे जे एका टोकापासून दुसऱ्या टोकापर्यंत मांडलं तर हजारो किलोमीटरपर्यंत पसरेल!"} }
@@ -2817,7 +2817,7 @@ export const PROFESSION_CATALOG = {
                 hi: "चलो तुम्हारे कंकाल में पहले से कहीं ज़्यादा गहराई में जाते हैं — असली हड्डियों के नाम, असली विवरण!",
                 mr: "चला तुमच्या सांगाड्यात आधीपेक्षा जास्त खोलात जाऊया — खरी हाडांची नावं, खरा तपशील!"
               },
-              data: { visual: "💀", hotspots: [
+              data: { visual: "💀", animation: "skeleton", hotspots: [
               { label:{en:"Cranium",hi:"क्रेनियम",mr:"क्रेनियम"}, fact:{en:"The cranium is the dome-shaped part of your skull that directly protects your brain!"} },
               { label:{en:"Femur",hi:"फीमर",mr:"फीमर"}, fact:{en:"The femur, your thigh bone, is the longest and strongest bone in your entire body!"} },
               { label:{en:"Vertebrae",hi:"वर्टिब्रे",mr:"मणके"}, fact:{en:"Your spine is made of 33 small bones called vertebrae, stacked to protect your spinal cord!"} }
@@ -2878,7 +2878,7 @@ export const PROFESSION_CATALOG = {
                 hi: "सारा खून बिल्कुल एक जैसा नहीं होता! चलो अलग-अलग ब्लड टाइप और वे क्यों मायने रखते हैं, एक्सप्लोर करते हैं।",
                 mr: "सगळं रक्त अगदी सारखं नसतं! चला वेगवेगळे रक्तगट आणि ते का महत्त्वाचे आहेत ते एक्सप्लोर करूया."
               },
-              data: { visual: "🩸", hotspots: [
+              data: { visual: "🩸", animation: "bloodflow", hotspots: [
               { label:{en:"Type O",hi:"टाइप O",mr:"टाइप O"}, fact:{en:"Type O negative is often called the 'universal donor' because it can often be given to people of many other blood types in an emergency!"} },
               { label:{en:"Type AB",hi:"टाइप AB",mr:"टाइप AB"}, fact:{en:"Type AB positive is often called the 'universal recipient' because people with this type can often receive blood from more types!"} },
               { label:{en:"Why it matters",hi:"यह क्यों मायने रखता है",mr:"हे का महत्त्वाचं आहे"}, fact:{en:"Giving someone the wrong blood type can cause a dangerous reaction — matching correctly is absolutely essential!"} }
@@ -3006,7 +3006,7 @@ export const PROFESSION_CATALOG = {
                 hi: "एक एक्स-रे पढ़ना एक असली कौशल है जिसे डॉक्टर सालों तक निपुण होने के लिए प्रशिक्षण लेते हैं! चलो बुनियादी बातें सीखते हैं।",
                 mr: "एक्स-रे वाचणं हे एक खरं कौशल्य आहे जे डॉक्टर वर्षानुवर्षे प्रभुत्व मिळवण्यासाठी प्रशिक्षण घेतात! चला मूलभूत गोष्टी शिकूया."
               },
-              data: { visual: "🩻", hotspots: [
+              data: { visual: "🩻", animation: "xray", hotspots: [
               { label:{en:"Bright white areas",hi:"चमकीले सफ़ेद क्षेत्र",mr:"चमकदार पांढरे भाग"}, fact:{en:"Bones show up bright white on X-rays because they're dense and block X-ray beams well!"} },
               { label:{en:"Darker areas",hi:"गहरे क्षेत्र",mr:"गडद भाग"}, fact:{en:"Soft tissue and air show up darker, since X-rays pass through them more easily!"} },
               { label:{en:"Looking for breaks",hi:"दरारें ढूंढना",mr:"भेगा शोधणं"}, fact:{en:"Doctors look for any interruption in a bone's smooth white line — that's often a sign of a fracture!"} }
@@ -3067,7 +3067,7 @@ export const PROFESSION_CATALOG = {
                 hi: "पिछले साल तुमने सामान्य वाइटल्स सीखे। अब चलो और गहराई में जाते हैं — जब असल में कुछ गलत होता है तो यह कैसा दिखता है?",
                 mr: "गेल्या वर्षी तुम्ही सामान्य व्हायटल्स शिकलात. आता चला अधिक खोलात जाऊया — जेव्हा खरंच काहीतरी चुकीचं होतं तेव्हा ते कसं दिसतं?"
               },
-              data: { visual: "📉", hotspots: [
+              data: { visual: "📉", animation: "ecg", hotspots: [
               { label:{en:"Very fast heart rate",hi:"बहुत तेज़ हृदय गति",mr:"खूप जलद हृदयगती"}, fact:{en:"A resting heart rate consistently over 100 bpm in someone not exercising can be a sign of a problem needing attention!"} },
               { label:{en:"Very low oxygen",hi:"बहुत कम ऑक्सीजन",mr:"खूप कमी ऑक्सिजन"}, fact:{en:"Oxygen levels below 90% are considered concerning and usually need urgent medical attention!"} },
               { label:{en:"Irregular pattern",hi:"अनियमित पैटर्न",mr:"अनियमित नमुना"}, fact:{en:"Sometimes it's not just the number, but an irregular, unpredictable pattern that catches a doctor's attention!"} }
@@ -3128,7 +3128,7 @@ export const PROFESSION_CATALOG = {
                 hi: "तुम्हारे शरीर का हर हिस्सा छोटी-छोटी कोशिकाओं से बना है! चलो एक्सप्लोर करते हैं एक कोशिका पास से असल में कैसी दिखती है।",
                 mr: "तुमच्या शरीराचा प्रत्येक भाग छोट्या पेशींनी बनलेला आहे! चला एक्सप्लोर करूया एक पेशी जवळून खरंच कशी दिसते."
               },
-              data: { visual: "🔬", hotspots: [
+              data: { visual: "🔬", animation: "celldivide", hotspots: [
               { label:{en:"Nucleus",hi:"नाभिक",mr:"केंद्रक"}, fact:{en:"The nucleus is like the cell's control center, holding all the genetic instructions!"} },
               { label:{en:"Cell membrane",hi:"कोशिका झिल्ली",mr:"पेशी आवरण"}, fact:{en:"The cell membrane is the outer boundary, deciding what comes in and out of the cell!"} },
               { label:{en:"Mitochondria",hi:"माइटोकॉन्ड्रिया",mr:"माइटोकॉन्ड्रिया"}, fact:{en:"Mitochondria are often called the cell's 'powerhouse' because they produce energy!"} }
@@ -3372,7 +3372,7 @@ export const PROFESSION_CATALOG = {
                 hi: "डॉक्टर बीमारियों को कई तरीकों से छाँटते हैं — एक ज़रूरी तरीका है वे कैसे फैलती हैं। चलो इसे एक्सप्लोर करते हैं।",
                 mr: "डॉक्टर आजार अनेक प्रकारे वर्गीकृत करतात — एक महत्त्वाचा मार्ग म्हणजे ते कसे पसरतात. चला हे एक्सप्लोर करूया."
               },
-              data: { visual: "🦠", hotspots: [
+              data: { visual: "🦠", animation: "germ", hotspots: [
               { label:{en:"Contagious illness",hi:"संक्रामक बीमारी",mr:"संसर्गजन्य आजार"}, fact:{en:"A contagious illness, like a cold, can spread from person to person!"} },
               { label:{en:"Non-contagious illness",hi:"गैर-संक्रामक बीमारी",mr:"गैर-संसर्गजन्य आजार"}, fact:{en:"A non-contagious illness, like many allergies, can't spread from person to person!"} },
               { label:{en:"Why classification matters",hi:"वर्गीकरण क्यों मायने रखता है",mr:"वर्गीकरण का महत्त्वाचं आहे"}, fact:{en:"Knowing if something is contagious shapes how doctors advise patients to protect others around them!"} }
@@ -3744,7 +3744,7 @@ export const PROFESSION_CATALOG = {
                 hi: "इस साल, हम जो तुम जानते हो उसे असली मेडिकल स्पेशलिटी से जोड़ना शुरू करते हैं। चलो कार्डियोलॉजी से मिलते हैं — दिल पर केंद्रित स्पेशलिटी।",
                 mr: "या वर्षी, आपण तुम्हाला माहीत असलेलं खऱ्या वैद्यकीय खासियतींशी जोडायला सुरुवात करतो. चला कार्डिओलॉजीला भेटूया — हृदयावर केंद्रित खासियत."
               },
-              data: { visual: "❤️‍🩹", hotspots: [
+              data: { visual: "❤️‍🩹", animation: "heartbeat", hotspots: [
               { label:{en:"What cardiologists do",hi:"कार्डियोलॉजिस्ट क्या करते हैं",mr:"कार्डिओलॉजिस्ट काय करतात"}, fact:{en:"Cardiologists diagnose and treat conditions of the heart and blood vessels — from checkups to complex procedures!"} },
               { label:{en:"Years of training",hi:"सालों का प्रशिक्षण",mr:"वर्षांचं प्रशिक्षण"}, fact:{en:"Becoming a cardiologist takes many years of training after medical school — real dedication!"} },
               { label:{en:"Everyday impact",hi:"रोज़मर्रा का असर",mr:"दैनंदिन परिणाम"}, fact:{en:"Heart disease is extremely common, so cardiologists help enormous numbers of people every year!"} }
@@ -3805,7 +3805,7 @@ export const PROFESSION_CATALOG = {
                 hi: "चलो एक और स्पेशलिटी से मिलते हैं — ऑर्थोपेडिक्स, हड्डियों, जोड़ों, और मांसपेशियों पर केंद्रित, अक्सर सर्जरी शामिल करती है।",
                 mr: "चला आणखी एका खासियतीला भेटूया — ऑर्थोपेडिक्स, हाडं, सांधे, आणि स्नायूंवर केंद्रित, अनेकदा शस्त्रक्रिया समाविष्ट करते."
               },
-              data: { visual: "🦴", hotspots: [
+              data: { visual: "🦴", animation: "xray", hotspots: [
               { label:{en:"What orthopedic surgeons do",hi:"ऑर्थोपेडिक सर्जन क्या करते हैं",mr:"ऑर्थोपेडिक सर्जन काय करतात"}, fact:{en:"Orthopedic surgeons treat problems with bones, joints, ligaments, and muscles — from fractures to joint replacements!"} },
               { label:{en:"Not always surgery",hi:"हमेशा सर्जरी नहीं",mr:"नेहमी शस्त्रक्रिया नाही"}, fact:{en:"Many orthopedic problems are actually treated without surgery at all — physical therapy or casts are often enough!"} },
               { label:{en:"Sports medicine link",hi:"स्पोर्ट्स मेडिसिन लिंक",mr:"स्पोर्ट्स मेडिसिन दुवा"}, fact:{en:"Many orthopedic surgeons specialize in sports injuries, helping athletes recover and return to their sport!"} }
@@ -3866,7 +3866,7 @@ export const PROFESSION_CATALOG = {
                 hi: "चलो न्यूरोलॉजी से मिलते हैं — दिमाग़ और नर्वस सिस्टम पर केंद्रित स्पेशलिटी, चल रही रिसर्च से गहराई से जुड़ी हुई।",
                 mr: "चला न्यूरोलॉजीला भेटूया — मेंदू आणि चेतासंस्थेवर केंद्रित खासियत, सुरू असलेल्या संशोधनाशी घट्ट जोडलेली."
               },
-              data: { visual: "🧠", hotspots: [
+              data: { visual: "🧠", animation: "nervesignal", hotspots: [
               { label:{en:"What neurologists do",hi:"न्यूरोलॉजिस्ट क्या करते हैं",mr:"न्यूरोलॉजिस्ट काय करतात"}, fact:{en:"Neurologists diagnose and treat conditions of the brain, spinal cord, and nerves — from headaches to complex disorders!"} },
               { label:{en:"Research-heavy field",hi:"रिसर्च-भारी क्षेत्र",mr:"संशोधन-जड क्षेत्र"}, fact:{en:"The brain is still not fully understood, so neurology is one of the most active areas of ongoing medical research!"} },
               { label:{en:"Not just doctors",hi:"सिर्फ़ डॉक्टर नहीं",mr:"फक्त डॉक्टर नाही"}, fact:{en:"Many neuroscientists doing brain research aren't practicing doctors at all — they're scientists in labs!"} }
@@ -3927,7 +3927,7 @@ export const PROFESSION_CATALOG = {
                 hi: "चलो एक ऐसी स्पेशलिटी से मिलते हैं जो अक्सर पर्दे के पीछे काम करती है — पैथोलॉजी, लैब विश्लेषण के ज़रिए बीमारी का निदान करने पर केंद्रित।",
                 mr: "चला एका खासियतीला भेटूया जी अनेकदा पडद्यामागे काम करते — पॅथॉलॉजी, लॅब विश्लेषणाद्वारे आजाराचं निदान करण्यावर केंद्रित."
               },
-              data: { visual: "🔬", hotspots: [
+              data: { visual: "🔬", animation: "celldivide", hotspots: [
               { label:{en:"What pathologists do",hi:"पैथोलॉजिस्ट क्या करते हैं",mr:"पॅथॉलॉजिस्ट काय करतात"}, fact:{en:"Pathologists examine tissue samples, blood, and other specimens under a microscope to diagnose diseases!"} },
               { label:{en:"Behind the scenes",hi:"पर्दे के पीछे",mr:"पडद्यामागे"}, fact:{en:"Many pathologists rarely meet patients directly — but their work shapes almost every diagnosis in medicine!"} },
               { label:{en:"Detective work",hi:"जासूसी काम",mr:"गुप्तहेर काम"}, fact:{en:"Pathology has been called medical detective work — carefully examining evidence to find the truth!"} }
@@ -4171,7 +4171,7 @@ export const PROFESSION_CATALOG = {
                 hi: "चलो रेडियोलॉजी से मिलते हैं — पूरी तरह मेडिकल इमेजिंग पर केंद्रित स्पेशलिटी, बिना सर्जरी के शरीर के अंदर देखना।",
                 mr: "चला रेडिओलॉजीला भेटूया — पूर्णपणे वैद्यकीय इमेजिंगवर केंद्रित खासियत, शस्त्रक्रियेशिवाय शरीराच्या आत बघणं."
               },
-              data: { visual: "🩻", hotspots: [
+              data: { visual: "🩻", animation: "xray", hotspots: [
               { label:{en:"Multiple imaging types",hi:"कई इमेजिंग प्रकार",mr:"अनेक इमेजिंग प्रकार"}, fact:{en:"Radiologists work with X-rays, CT scans, MRIs, and ultrasounds — each showing something a bit different!"} },
               { label:{en:"Diagnostic detective work",hi:"निदान जासूसी काम",mr:"निदान गुप्तहेर काम"}, fact:{en:"Radiologists carefully examine images to catch things other doctors might miss — real precision matters!"} },
               { label:{en:"Interventional radiology",hi:"इंटरवेंशनल रेडियोलॉजी",mr:"इंटरव्हेन्शनल रेडिओलॉजी"}, fact:{en:"Some radiologists even perform minor procedures guided by imaging, blending diagnosis and treatment!"} }
@@ -4464,7 +4464,1790 @@ export const PROFESSION_CATALOG = {
           ]}
         ]
       },
-      // "12": { band: "Specialist", months: [ ... ] }  -- TODO next
+      "11": {
+        band: "Specialist",
+        bandTagline: "Real judgment calls — every choice has a genuine consequence, not just right or wrong.",
+        months: [
+          { label: "Advanced Diagnosis",
+            bonusAssignment: {
+              title: { en: "Diagnostic Case Write-Up", hi: "निदान केस लेखन", mr: "निदान केस लेखन" },
+              prompt: { en: "Write a short fictional patient case (symptoms + your reasoning for a likely diagnosis). Take a photo of your write-up!",
+                        hi: "एक छोटा काल्पनिक मरीज़ केस लिखो (लक्षण + संभावित निदान के लिए तुम्हारा तर्क)। अपने लेखन की फोटो लो!",
+                        mr: "एक छोटी काल्पनिक रुग्ण केस लिहा (लक्षणं + शक्य निदानासाठी तुमचा तर्क). तुमच्या लेखनाचा फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🩺", title: "Diagnose the Case", mentorVisual: "🩺",
+              mentorIntro: {
+                en: "This year, things get real. You'll face situations with genuine judgment calls — not just one right answer, but choices with real consequences. Let's begin your first case.",
+                hi: "इस साल, चीज़ें असली हो जाती हैं। तुम असली फ़ैसलों वाली स्थितियों का सामना करोगे — सिर्फ़ एक सही जवाब नहीं, बल्कि असली नतीजों वाले विकल्प। चलो तुम्हारा पहला केस शुरू करते हैं।",
+                mr: "या वर्षी, गोष्टी खऱ्या होतात. तुम्ही खऱ्या निर्णयांच्या परिस्थितीला सामोरे जाल — फक्त एक बरोबर उत्तर नाही, तर खऱ्या परिणामांचे पर्याय. चला तुमची पहिली केस सुरू करूया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A 45-year-old patient comes in complaining of chest pain that started an hour ago. They also mention feeling short of breath and a bit dizzy. What's your first move?",
+                             hi:"एक 45 साल का मरीज़ सीने में दर्द की शिकायत लेकर आता है जो एक घंटे पहले शुरू हुआ। वे साँस फूलने और थोड़ा चक्कर आने का भी ज़िक्र करते हैं। तुम्हारा पहला कदम क्या है?",
+                             mr:"एक 45 वर्षांचा रुग्ण छातीत दुखण्याची तक्रार घेऊन येतो जी एक तासापूर्वी सुरू झाली. ते श्वास घेण्यास त्रास आणि थोडं चक्कर येण्याचाही उल्लेख करतात. तुमची पहिली कृती काय आहे?" },
+                choices: [
+                  { label:{en:"Immediately check vitals and get an ECG — chest pain plus these symptoms could be cardiac", hi:"तुरंत वाइटल्स जाँचो और ईसीजी करो — सीने में दर्द के साथ ये लक्षण दिल से जुड़े हो सकते हैं", mr:"लगेच व्हायटल्स तपासा आणि ईसीजी करा — छातीतील दुखणं आणि ही लक्षणं हृदयाशी संबंधित असू शकतात"}, quality:"best",
+                    outcome:{en:"Good instinct! Chest pain with breathlessness and dizziness are classic warning signs that need immediate vitals and an ECG to rule out anything cardiac.",hi:"अच्छी सोच! साँस फूलने और चक्कर के साथ सीने में दर्द क्लासिक चेतावनी संकेत हैं जिन्हें तुरंत वाइटल्स और ईसीजी की ज़रूरत है ताकि दिल से जुड़ी किसी भी चीज़ को खारिज किया जा सके।",mr:"चांगली अंतःप्रेरणा! श्वास घेण्यास त्रास आणि चक्कर येण्यासोबत छातीतील दुखणं ही ठराविक इशाऱ्याची लक्षणं आहेत ज्यांना हृदयाशी संबंधित काहीही नाकारण्यासाठी लगेच व्हायटल्स आणि ईसीजी हवं."} },
+                  { label:{en:"Ask them to wait and see if the pain goes away on its own first", hi:"उन्हें इंतज़ार करने और देखने के लिए कहो कि क्या दर्द अपने आप चला जाता है", mr:"त्यांना वाट बघायला आणि दुखणं आपोआप जातं का ते बघायला सांगा"}, quality:"risky",
+                    outcome:{en:"This could be risky. Chest pain with breathlessness and dizziness needs urgent evaluation — waiting could delay finding a serious problem.",hi:"यह जोखिम भरा हो सकता है। साँस फूलने और चक्कर के साथ सीने का दर्द तत्काल मूल्यांकन चाहता है — इंतज़ार करने से एक गंभीर समस्या का पता लगाने में देरी हो सकती है।",mr:"हे धोकादायक असू शकतं. श्वास घेण्यास त्रास आणि चक्करसोबत छातीतील दुखणं तातडीच्या मूल्यमापनाची गरज असते — वाट बघितल्याने गंभीर समस्या शोधण्यास उशीर होऊ शकतो."} }
+                ]
+              },
+              {
+                situation: { en:"The ECG comes back showing some irregularity, and vitals show a slightly elevated heart rate. What's your next step?",
+                             hi:"ईसीजी में कुछ अनियमितता दिखती है, और वाइटल्स थोड़ी बढ़ी हुई हृदय गति दिखाते हैं। तुम्हारा अगला कदम क्या है?",
+                             mr:"ईसीजीमध्ये काही अनियमितता दिसते, आणि व्हायटल्स थोडी वाढलेली हृदयगती दाखवतात. तुमची पुढची पायरी काय आहे?" },
+                choices: [
+                  { label:{en:"Refer immediately to a cardiologist for further specialist evaluation", hi:"आगे विशेषज्ञ मूल्यांकन के लिए तुरंत कार्डियोलॉजिस्ट के पास रेफर करो", mr:"पुढील तज्ज्ञ मूल्यमापनासाठी लगेच कार्डिओलॉजिस्टकडे रेफर करा"}, quality:"best",
+                    outcome:{en:"Excellent judgment! An irregular ECG with these symptoms is exactly the kind of case that needs a cardiologist's specialist expertise — this is real interdisciplinary thinking.",hi:"बेहतरीन निर्णय! इन लक्षणों के साथ अनियमित ईसीजी बिल्कुल वैसा केस है जिसे कार्डियोलॉजिस्ट की विशेषज्ञता चाहिए — यह असली अंतःविषय सोच है।",mr:"उत्तम निर्णय! या लक्षणांसह अनियमित ईसीजी अगदी अशीच केस आहे जिला कार्डिओलॉजिस्टच्या तज्ज्ञतेची गरज आहे — हा खरा आंतरविद्याशाखीय विचार आहे."} },
+                  { label:{en:"Just prescribe rest and pain medicine without further tests", hi:"बिना और टेस्ट के बस आराम और दर्द की दवा लिखो", mr:"आणखी चाचण्यांशिवाय फक्त विश्रांती आणि वेदनाशामक औषध लिहा"}, quality:"risky",
+                    outcome:{en:"This misses something important — an irregular ECG needs specialist follow-up, not just symptom relief. The underlying cause still needs investigation.",hi:"यह कुछ ज़रूरी चीज़ छोड़ देता है — अनियमित ईसीजी को सिर्फ़ लक्षण राहत नहीं, विशेषज्ञ फ़ॉलो-अप चाहिए। अंतर्निहित कारण की अभी भी जांच ज़रूरी है।",mr:"यात काहीतरी महत्त्वाचं चुकतं — अनियमित ईसीजीला फक्त लक्षण आराम नाही, तज्ज्ञ फॉलो-अप हवं. मूळ कारणाची अजूनही चौकशी आवश्यक आहे."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🔍", title: "Explore diagnostic reasoning", mentorVisual: "🔍",
+              mentorIntro: {
+                en: "Great diagnosis relies on real reasoning skills, not guessing. Let's explore how doctors think through a case.",
+                hi: "बेहतरीन निदान असली तर्क कौशल पर निर्भर करता है, अनुमान लगाने पर नहीं। चलो एक्सप्लोर करते हैं डॉक्टर एक केस के बारे में कैसे सोचते हैं।",
+                mr: "उत्तम निदान खऱ्या तर्क कौशल्यांवर अवलंबून असतं, अंदाज लावण्यावर नाही. चला एक्सप्लोर करूया डॉक्टर एका केसबद्दल कसा विचार करतात."
+              },
+              data: { visual: "🔍", hotspots: [
+              { label:{en:"Differential diagnosis",hi:"डिफरेंशियल डायग्नोसिस",mr:"डिफरेन्शियल निदान"}, fact:{en:"Doctors often list several possible explanations for symptoms, then narrow down using tests — this is called differential diagnosis!"} },
+              { label:{en:"Ruling things out",hi:"चीज़ों को खारिज करना",mr:"गोष्टी नाकारणं"}, fact:{en:"A huge part of diagnosis is ruling OUT dangerous possibilities first, even if they turn out not to be the cause!"} },
+              { label:{en:"Pattern recognition",hi:"पैटर्न पहचान",mr:"नमुना ओळख"}, fact:{en:"Experienced doctors develop pattern recognition — recognizing symptom combinations they've seen work out a certain way before!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Diagnostic reasoning quiz",
+              desc: { en:"A real quiz on how doctors approach complex diagnostic reasoning.", hi:"डॉक्टर जटिल निदान तर्क को कैसे अपनाते हैं, इस पर एक असली क्विज़।", mr:"डॉक्टर जटिल निदान तर्काकडे कसे बघतात, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Living with uncertainty",
+              desc: { en:"How do you think it feels to make a judgment call as a doctor, knowing you might not have 100% certainty? How would you handle that pressure?", hi:"तुम्हें क्या लगता है एक डॉक्टर के रूप में फ़ैसला लेना कैसा महसूस होता है, यह जानते हुए कि तुम्हें 100% निश्चितता नहीं हो सकती? तुम इस दबाव को कैसे संभालोगे?", mr:"डॉक्टर म्हणून निर्णय घेणं कसं वाटत असेल, हे माहीत असताना की तुम्हाला 100% खात्री नसू शकते? तुम्ही हा दबाव कसा हाताळाल?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Diagnosis Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced diagnostic fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस निदान तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत निदान तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"AI helping diagnosis?",hi:"AI निदान में मदद कर रहा है?",mr:"AI निदानात मदत करतंय?"}, back:{en:"AI tools increasingly help doctors consider possibilities they might not think of immediately — a helpful second opinion! 🤖",hi:"AI टूल्स तेज़ी से डॉक्टरों को उन संभावनाओं पर विचार करने में मदद करते हैं जिनके बारे में वे तुरंत नहीं सोच सकते! 🤖",mr:"AI साधनं वाढत्या प्रमाणात डॉक्टरांना ते लगेच विचार करणार नाहीत अशा शक्यतांचा विचार करण्यास मदत करतात! 🤖"} },
+              { front:{en:"Rare vs common?",hi:"दुर्लभ बनाम आम?",mr:"दुर्मिळ विरुद्ध सामान्य?"}, back:{en:"There's a saying in medicine: 'when you hear hoofbeats, think horses, not zebras' — common causes are usually checked before rare ones! 🦓",hi:"चिकित्सा में एक कहावत है: 'जब तुम खुरों की आवाज़ सुनो, घोड़ों के बारे में सोचो, ज़ेब्रा के बारे में नहीं' — दुर्लभ कारणों से पहले आम कारणों की जाँच होती है! 🦓",mr:"वैद्यकशास्त्रात एक म्हण आहे: 'जेव्हा तुम्ही खुरांचा आवाज ऐकता, घोड्यांचा विचार करा, झेब्र्यांचा नाही' — दुर्मिळ कारणांआधी सामान्य कारणं तपासली जातात! 🦓"} },
+              { front:{en:"Second opinions matter?",hi:"दूसरी राय मायने रखती है?",mr:"दुसरं मत महत्त्वाचं आहे?"}, back:{en:"Even experienced doctors regularly seek second opinions on complex cases — it's a sign of good judgment, not weakness! 🤝",hi:"यहाँ तक कि अनुभवी डॉक्टर भी जटिल मामलों पर नियमित रूप से दूसरी राय लेते हैं — यह अच्छे निर्णय का संकेत है, कमज़ोरी का नहीं! 🤝",mr:"अगदी अनुभवी डॉक्टरही जटिल प्रकरणांवर नियमितपणे दुसरं मत घेतात — हे चांगल्या निर्णयाचं लक्षण आहे, कमकुवतपणाचं नाही! 🤝"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Diagnosis or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your diagnostic knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो निदान के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला निदानाच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Doctors are always 100% certain about a diagnosis before treating a patient.",hi:"डॉक्टर मरीज़ का इलाज करने से पहले हमेशा निदान के बारे में 100% निश्चित होते हैं।",mr:"डॉक्टर रुग्णावर उपचार करण्याआधी नेहमी निदानाबद्दल 100% खात्री बाळगतात."}, answer:false, explain:{en:"Myth! Doctors often act on the most likely diagnosis while continuing to investigate, since certainty isn't always immediately possible.",hi:"मिथक! डॉक्टर अक्सर सबसे संभावित निदान पर काम करते हैं जबकि जांच जारी रखते हैं, क्योंकि निश्चितता हमेशा तुरंत संभव नहीं होती।",mr:"मिथक! डॉक्टर अनेकदा सर्वात शक्य निदानावर काम करतात तपासणी सुरू ठेवत, कारण खात्री नेहमी लगेच शक्य नसते."} },
+              { text:{en:"Ruling out dangerous possibilities first is a common diagnostic approach.",hi:"पहले खतरनाक संभावनाओं को खारिज करना एक आम निदान तरीका है।",mr:"धोकादायक शक्यता आधी नाकारणं ही एक सामान्य निदान पद्धत आहे."}, answer:true, explain:{en:"True! Doctors often prioritize ruling out the most dangerous explanations first, even if they turn out unlikely.",hi:"सच! डॉक्टर अक्सर सबसे खतरनाक व्याख्याओं को पहले खारिज करने को प्राथमिकता देते हैं, भले ही वे असंभावित निकलें।",mr:"खरं! डॉक्टर अनेकदा सर्वात धोकादायक स्पष्टीकरणं आधी नाकारण्यास प्राधान्य देतात, जरी ती असंभाव्य निघाली तरी."} },
+              { text:{en:"Seeking a second opinion on a complex case is a sign of a doctor's weakness.",hi:"एक जटिल मामले पर दूसरी राय लेना डॉक्टर की कमज़ोरी का संकेत है।",mr:"जटिल केसवर दुसरं मत घेणं हे डॉक्टरच्या कमकुवतपणाचं लक्षण आहे."}, answer:false, explain:{en:"Myth! Seeking second opinions is actually a sign of good judgment and care for the patient, not weakness.",hi:"मिथक! दूसरी राय लेना असल में अच्छे निर्णय और मरीज़ की देखभाल का संकेत है, कमज़ोरी का नहीं।",mr:"मिथक! दुसरं मत घेणं खरंतर चांगला निर्णय आणि रुग्णाच्या काळजीचं लक्षण आहे, कमकुवतपणाचं नाही."} }
+            ]}}
+          ]},
+          { label: "Pharmacology & Dosage",
+            bonusAssignment: {
+              title: { en: "Dosage Safety Explainer", hi: "खुराक सुरक्षा समझाने वाला", mr: "मात्रा सुरक्षा समजावणारं" },
+              prompt: { en: "Research why medicine dosage is often calculated by body weight, and write 3-4 sentences. Take a photo!",
+                        hi: "दवा की खुराक अक्सर शरीर के वज़न से क्यों गणना की जाती है इस पर रिसर्च करो और 3-4 वाक्य लिखो। फोटो लो!",
+                        mr: "औषधाची मात्रा अनेकदा शरीराच्या वजनावरून का मोजली जाते यावर संशोधन करा आणि 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "💊", title: "Get the Dosage Right", mentorVisual: "💊",
+              mentorIntro: {
+                en: "Dosage decisions are some of the most important judgment calls in medicine — too little doesn't help, too much can harm. Let's work through a real scenario.",
+                hi: "खुराक के फ़ैसले चिकित्सा में सबसे ज़रूरी निर्णयों में से हैं — बहुत कम मदद नहीं करता, बहुत ज़्यादा नुकसान पहुँचा सकता है। चलो एक असली परिदृश्य से गुज़रते हैं।",
+                mr: "मात्रेचे निर्णय वैद्यकशास्त्रातील सर्वात महत्त्वाच्या निर्णयांपैकी आहेत — खूप कमी मदत करत नाही, खूप जास्त नुकसान पोहोचवू शकतं. चला एका खऱ्या परिस्थितीतून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"You're prescribing medicine for a child patient. The standard adult dose is listed on the packaging, but your patient is much smaller. What do you do?",
+                             hi:"तुम एक बच्चे मरीज़ के लिए दवा लिख रहे हो। पैकेजिंग पर मानक वयस्क खुराक दी गई है, लेकिन तुम्हारा मरीज़ बहुत छोटा है। तुम क्या करते हो?",
+                             mr:"तुम्ही एका मूल रुग्णासाठी औषध लिहित आहात. पॅकेजिंगवर मानक प्रौढ मात्रा दिली आहे, पण तुमचा रुग्ण खूप लहान आहे. तुम्ही काय करता?" },
+                choices: [
+                  { label:{en:"Calculate the dose based on the child's specific body weight", hi:"बच्चे के खास शरीर के वज़न के आधार पर खुराक की गणना करो", mr:"मुलाच्या विशिष्ट शरीराच्या वजनावर आधारित मात्रा मोजा"}, quality:"best",
+                    outcome:{en:"Correct approach! Weight-based dosing is the standard, safe way to calculate medicine for children, since their bodies process medicine differently than adults.",hi:"सही तरीका! वज़न-आधारित खुराक बच्चों के लिए दवा की गणना करने का मानक, सुरक्षित तरीका है, क्योंकि उनके शरीर वयस्कों से अलग तरह से दवा प्रोसेस करते हैं।",mr:"योग्य पद्धत! वजन-आधारित मात्रा मुलांसाठी औषधाची गणना करण्याची मानक, सुरक्षित पद्धत आहे, कारण त्यांची शरीरं प्रौढांपेक्षा वेगळ्या पद्धतीने औषध प्रोसेस करतात."} },
+                  { label:{en:"Just give a smaller guess, like half the adult dose", hi:"बस एक छोटा अनुमान दो, जैसे वयस्क खुराक का आधा", mr:"फक्त एक लहान अंदाज द्या, जसं प्रौढ मात्रेचं अर्धं"}, quality:"risky",
+                    outcome:{en:"This is risky. Guessing without calculating based on actual weight could lead to giving too much or too little — precision matters here.",hi:"यह जोखिम भरा है। असली वज़न के आधार पर गणना किए बिना अनुमान लगाने से बहुत ज़्यादा या बहुत कम देने का खतरा हो सकता है — यहाँ सटीकता मायने रखती है।",mr:"हे धोकादायक आहे. खऱ्या वजनावर आधारित गणना न करता अंदाज लावल्याने खूप जास्त किंवा खूप कमी देण्याचा धोका असू शकतो — इथे अचूकता महत्त्वाची आहे."} }
+                ]
+              },
+              {
+                situation: { en:"After calculating the correct weight-based dose, the parent asks if they can just round it up 'to be safe.' How do you respond?",
+                             hi:"सही वज़न-आधारित खुराक की गणना करने के बाद, माता-पिता पूछते हैं कि क्या वे इसे 'सुरक्षित रहने के लिए' बस राउंड अप कर सकते हैं। तुम कैसे जवाब देते हो?",
+                             mr:"योग्य वजन-आधारित मात्रेची गणना केल्यानंतर, पालक विचारतात की ते ते 'सुरक्षित राहण्यासाठी' फक्त वाढवू शकतात का. तुम्ही कसं उत्तर देता?" },
+                choices: [
+                  { label:{en:"Explain clearly that the calculated dose IS the safe amount, and more isn't automatically safer", hi:"स्पष्ट रूप से समझाओ कि गणना की गई खुराक ही सुरक्षित मात्रा है, और ज़्यादा स्वतः सुरक्षित नहीं है", mr:"स्पष्टपणे समजावून सांगा की मोजलेली मात्रा हीच सुरक्षित मात्रा आहे, आणि जास्त म्हणजे आपोआप सुरक्षित नाही"}, quality:"best",
+                    outcome:{en:"Great communication! This is an important teaching moment — many people assume 'more is safer,' but with medicine, the correct calculated dose IS the safe amount.",hi:"बेहतरीन बातचीत! यह एक ज़रूरी सिखाने का पल है — कई लोग मानते हैं कि 'ज़्यादा ज़्यादा सुरक्षित है,' लेकिन दवा के साथ, सही गणना की गई खुराक ही सुरक्षित मात्रा है।",mr:"उत्तम संवाद! ही एक महत्त्वाची शिकवण्याची वेळ आहे — अनेक लोक मानतात की 'जास्त म्हणजे सुरक्षित,' पण औषधासोबत, बरोबर मोजलेली मात्रा हीच सुरक्षित मात्रा आहे."} },
+                  { label:{en:"Agree to round it up slightly since the parent seems worried", hi:"थोड़ा राउंड अप करने के लिए राज़ी हो जाओ क्योंकि माता-पिता चिंतित लगते हैं", mr:"थोडं वाढवायला सहमत व्हा कारण पालक काळजीत दिसतात"}, quality:"risky",
+                    outcome:{en:"This misses an important teaching opportunity, and could actually be unsafe — the calculated dose exists for good reason, and rounding up isn't harmless.",hi:"यह एक ज़रूरी सिखाने का मौका छोड़ देता है, और असल में असुरक्षित हो सकता है — गणना की गई खुराक एक अच्छे कारण से मौजूद है, और राउंड अप करना हानिरहित नहीं है।",mr:"हे एक महत्त्वाची शिकवण्याची संधी गमावतं, आणि खरंच असुरक्षित असू शकतं — मोजलेली मात्रा चांगल्या कारणासाठी अस्तित्वात असते, आणि वाढवणं निरुपद्रवी नाही."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "💊", title: "Explore dosage science", mentorVisual: "💊",
+              mentorIntro: {
+                en: "Let's explore the science behind why exact dosage matters so much in medicine.",
+                hi: "चलो उस विज्ञान को एक्सप्लोर करते हैं जो बताता है कि सटीक खुराक चिकित्सा में इतनी मायने क्यों रखती है।",
+                mr: "चला त्या शास्त्राला एक्सप्लोर करूया जे सांगतं की नेमकी मात्रा वैद्यकशास्त्रात इतकी का महत्त्वाची आहे."
+              },
+              data: { visual: "💊", hotspots: [
+              { label:{en:"Too little",hi:"बहुत कम",mr:"खूप कमी"}, fact:{en:"Too little medicine might not treat the condition effectively, leaving the problem unresolved!"} },
+              { label:{en:"Too much",hi:"बहुत ज़्यादा",mr:"खूप जास्त"}, fact:{en:"Too much medicine can cause dangerous side effects — more is genuinely not always safer!"} },
+              { label:{en:"The right window",hi:"सही खिड़की",mr:"योग्य कक्षा"}, fact:{en:"Doctors aim for a specific safe range — enough to help, not so much that it causes harm!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Pharmacology & dosage quiz",
+              desc: { en:"A real quiz on dosage calculation and why precision matters in pharmacology.", hi:"खुराक की गणना पर और फार्माकोलॉजी में सटीकता क्यों मायने रखती है, इस पर एक असली क्विज़।", mr:"मात्रेच्या गणनेवर आणि फार्माकोलॉजीमध्ये अचूकता का महत्त्वाची आहे, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "The weight of precision",
+              desc: { en:"How do you feel knowing that a small calculation error in dosage could genuinely affect someone's health? How would you build habits to avoid mistakes?", hi:"यह जानते हुए कि खुराक में एक छोटी सी गणना की गलती असल में किसी के स्वास्थ्य को प्रभावित कर सकती है, तुम्हें कैसा महसूस होता है? तुम गलतियों से बचने के लिए आदतें कैसे बनाओगे?", mr:"मात्रेतील एक लहानशी गणनेची चूक खरंच एखाद्याच्या आरोग्यावर परिणाम करू शकते हे माहीत असताना तुम्हाला कसं वाटतं? चुका टाळण्यासाठी तुम्ही सवयी कशा तयार कराल?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Pharmacology Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced pharmacology fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस फार्माकोलॉजी तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत फार्माकोलॉजी तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Double-checking systems?",hi:"दोबारा जाँचने वाले सिस्टम?",mr:"पुन्हा तपासणारी यंत्रणा?"}, back:{en:"Hospitals have multiple double-checking systems — pharmacists verify doctors' dosage calculations before medicine reaches patients! ✅",hi:"अस्पतालों में कई दोबारा जाँचने वाले सिस्टम हैं — फार्मासिस्ट दवा मरीज़ों तक पहुँचने से पहले डॉक्टरों की खुराक गणना को सत्यापित करते हैं! ✅",mr:"रुग्णालयांमध्ये अनेक पुन्हा तपासणाऱ्या यंत्रणा आहेत — औषध रुग्णांपर्यंत पोहोचण्याआधी फार्मासिस्ट डॉक्टरांच्या मात्रा गणनेची पडताळणी करतात! ✅"} },
+              { front:{en:"Weight isn't the only factor?",hi:"वज़न ही एकमात्र कारक नहीं है?",mr:"वजन हा एकमेव घटक नाही?"}, back:{en:"Age, kidney function, and other health conditions can also affect how doctors calculate the right dose! ⚖️",hi:"उम्र, किडनी का काम, और अन्य स्वास्थ्य स्थितियाँ भी प्रभावित कर सकती हैं कि डॉक्टर सही खुराक की गणना कैसे करते हैं! ⚖️",mr:"वय, किडनीचं कार्य, आणि इतर आरोग्य स्थितीही डॉक्टर योग्य मात्रा कशी मोजतात यावर परिणाम करू शकतात! ⚖️"} },
+              { front:{en:"Technology helps calculate?",hi:"तकनीक गणना में मदद करती है?",mr:"तंत्रज्ञान गणना करण्यास मदत करतं?"}, back:{en:"Many hospitals now use software to double-check dosage calculations, reducing the chance of human error! 💻",hi:"कई अस्पताल अब खुराक गणना को दोबारा जाँचने के लिए सॉफ्टवेयर का इस्तेमाल करते हैं, मानवीय गलती की संभावना को कम करते हुए! 💻",mr:"अनेक रुग्णालयं आता मात्रा गणना पुन्हा तपासण्यासाठी सॉफ्टवेअर वापरतात, मानवी चुकीची शक्यता कमी करत! 💻"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Dosage or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your dosage knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो खुराक के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला मात्रेच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Giving a slightly higher dose than calculated is always safer.",hi:"गणना से थोड़ी ज़्यादा खुराक देना हमेशा ज़्यादा सुरक्षित है।",mr:"मोजलेल्यापेक्षा थोडी जास्त मात्रा देणं नेहमी सुरक्षित असतं."}, answer:false, explain:{en:"Myth! The calculated dose IS the safe amount — giving more isn't automatically safer and can cause harm.",hi:"मिथक! गणना की गई खुराक ही सुरक्षित मात्रा है — ज़्यादा देना स्वतः सुरक्षित नहीं है और नुकसान पहुँचा सकता है।",mr:"मिथक! मोजलेली मात्रा हीच सुरक्षित मात्रा आहे — जास्त देणं आपोआप सुरक्षित नाही आणि नुकसान करू शकतं."} },
+              { text:{en:"Pharmacists often double-check a doctor's dosage calculations.",hi:"फार्मासिस्ट अक्सर डॉक्टर की खुराक गणना को दोबारा जाँचते हैं।",mr:"फार्मासिस्ट अनेकदा डॉक्टरांच्या मात्रा गणनेची पुन्हा तपासणी करतात."}, answer:true, explain:{en:"True! This double-checking system is an important safety measure in hospitals.",hi:"सच! यह दोबारा जाँचने वाला सिस्टम अस्पतालों में एक ज़रूरी सुरक्षा उपाय है।",mr:"खरं! ही पुन्हा तपासणारी यंत्रणा रुग्णालयांमध्ये एक महत्त्वाचा सुरक्षा उपाय आहे."} },
+              { text:{en:"Only body weight matters when calculating the right medicine dose.",hi:"सही दवा खुराक की गणना करते समय केवल शरीर का वज़न मायने रखता है।",mr:"योग्य औषध मात्रा मोजताना फक्त शरीराचं वजन महत्त्वाचं असतं."}, answer:false, explain:{en:"Myth! Age, kidney function, and other health factors can also affect proper dosage calculation.",hi:"मिथक! उम्र, किडनी का काम, और अन्य स्वास्थ्य कारक भी उचित खुराक गणना को प्रभावित कर सकते हैं।",mr:"मिथक! वय, किडनीचं कार्य, आणि इतर आरोग्य घटकही योग्य मात्रा गणनेवर परिणाम करू शकतात."} }
+            ]}}
+          ]},
+          { label: "Surgical Decision-Making",
+            bonusAssignment: {
+              title: { en: "Surgery vs. Non-Surgery Reflection", hi: "सर्जरी बनाम गैर-सर्जरी विचार", mr: "शस्त्रक्रिया विरुद्ध गैर-शस्त्रक्रिया विचार" },
+              prompt: { en: "Write 3-4 sentences on how you imagine a surgeon decides whether an operation is really necessary. Take a photo!",
+                        hi: "3-4 वाक्य लिखो कि तुम कैसे कल्पना करते हो कि एक सर्जन तय करता है कि क्या ऑपरेशन वाकई ज़रूरी है। फोटो लो!",
+                        mr: "एक सर्जन ऑपरेशन खरंच आवश्यक आहे का हे कसं ठरवतो अशी तुमची कल्पना आहे, याबद्दल 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🔪", title: "Decide the Surgical Path", mentorVisual: "🔪",
+              mentorIntro: {
+                en: "Not every problem needs surgery, and deciding when it's truly necessary is a real judgment call. Let's work through a scenario.",
+                hi: "हर समस्या को सर्जरी की ज़रूरत नहीं होती, और यह तय करना कि यह वाकई ज़रूरी है, एक असली फ़ैसला है। चलो एक परिदृश्य से गुज़रते हैं।",
+                mr: "प्रत्येक समस्येला शस्त्रक्रियेची गरज नसते, आणि ती खरंच आवश्यक आहे का हे ठरवणं एक खरा निर्णय आहे. चला एका परिस्थितीतून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient has a torn ligament in their knee from a sports injury. It's painful, but they can still walk. What's the right approach?",
+                             hi:"एक मरीज़ के घुटने में खेल की चोट से एक फटा हुआ लिगामेंट है। यह दर्दनाक है, लेकिन वे अभी भी चल सकते हैं। सही तरीका क्या है?",
+                             mr:"एका रुग्णाच्या गुडघ्यात खेळाच्या दुखापतीमुळे फाटलेलं लिगामेंट आहे. ते वेदनादायक आहे, पण ते अजूनही चालू शकतात. योग्य पद्धत काय आहे?" },
+                choices: [
+                  { label:{en:"Start with physical therapy and monitor closely, keeping surgery as an option if it doesn't improve", hi:"फिज़िकल थेरेपी से शुरू करो और बारीकी से निगरानी करो, अगर सुधार न हो तो सर्जरी को एक विकल्प के रूप में रखते हुए", mr:"फिजिकल थेरपीने सुरुवात करा आणि बारकाईने निरीक्षण करा, सुधारणा न झाल्यास शस्त्रक्रियेचा पर्याय ठेवत"}, quality:"best",
+                    outcome:{en:"Good judgment! Many ligament injuries can improve with physical therapy first — surgery is often reserved for cases that don't respond to conservative treatment.",hi:"अच्छा निर्णय! कई लिगामेंट चोटें पहले फिज़िकल थेरेपी से सुधर सकती हैं — सर्जरी अक्सर उन मामलों के लिए रखी जाती है जो कंज़र्वेटिव इलाज का जवाब नहीं देते।",mr:"चांगला निर्णय! अनेक लिगामेंट दुखापती आधी फिजिकल थेरपीने सुधारू शकतात — शस्त्रक्रिया अनेकदा कंझर्व्हेटिव्ह उपचाराला प्रतिसाद न देणाऱ्या केसेससाठी राखीव असते."} },
+                  { label:{en:"Recommend surgery immediately since it's a torn ligament", hi:"तुरंत सर्जरी की सलाह दो क्योंकि यह एक फटा हुआ लिगामेंट है", mr:"लगेच शस्त्रक्रियेची शिफारस करा कारण हे एक फाटलेलं लिगामेंट आहे"}, quality:"risky",
+                    outcome:{en:"This might be premature. Many ligament injuries improve without surgery — jumping straight to an operation isn't always the necessary or best first step.",hi:"यह जल्दबाज़ी हो सकती है। कई लिगामेंट चोटें बिना सर्जरी के सुधरती हैं — सीधे ऑपरेशन पर जाना हमेशा ज़रूरी या सबसे अच्छा पहला कदम नहीं है।",mr:"हे घाईचं असू शकतं. अनेक लिगामेंट दुखापती शस्त्रक्रियेशिवाय सुधारतात — थेट ऑपरेशनवर जाणं नेहमी आवश्यक किंवा सर्वोत्तम पहिली पायरी नाही."} }
+                ]
+              },
+              {
+                situation: { en:"After 6 weeks of physical therapy, the knee still isn't improving and the patient struggles with basic movement. What now?",
+                             hi:"6 हफ़्तों की फिज़िकल थेरेपी के बाद, घुटना अभी भी सुधर नहीं रहा और मरीज़ बुनियादी हरकत के साथ संघर्ष करता है। अब क्या?",
+                             mr:"6 आठवड्यांच्या फिजिकल थेरपीनंतर, गुडघा अजूनही सुधारत नाही आणि रुग्णाला मूलभूत हालचालीत त्रास होतो. आता काय?" },
+                choices: [
+                  { label:{en:"Now recommend surgical evaluation, since conservative treatment hasn't worked", hi:"अब सर्जिकल मूल्यांकन की सलाह दो, क्योंकि कंज़र्वेटिव इलाज काम नहीं आया", mr:"आता शस्त्रक्रिया मूल्यमापनाची शिफारस करा, कारण कंझर्व्हेटिव्ह उपचार काम आलं नाही"}, quality:"best",
+                    outcome:{en:"Exactly right! This is the correct progression — try conservative treatment first, and move to surgical evaluation when it genuinely isn't working.",hi:"बिल्कुल सही! यह सही प्रगति है — पहले कंज़र्वेटिव इलाज आज़माओ, और जब यह वाकई काम नहीं कर रहा हो तो सर्जिकल मूल्यांकन की ओर बढ़ो।",mr:"अगदी बरोबर! ही योग्य प्रगती आहे — आधी कंझर्व्हेटिव्ह उपचार वापरून बघा, आणि तो खरंच काम करत नसेल तेव्हा शस्त्रक्रिया मूल्यमापनाकडे जा."} },
+                  { label:{en:"Just continue the same physical therapy indefinitely", hi:"बस उसी फिज़िकल थेरेपी को अनिश्चित काल तक जारी रखो", mr:"फक्त तीच फिजिकल थेरपी अनिश्चित काळासाठी सुरू ठेवा"}, quality:"risky",
+                    outcome:{en:"This could delay necessary treatment. If conservative approaches genuinely aren't working after a reasonable trial, it's time to reassess rather than continue indefinitely.",hi:"यह ज़रूरी इलाज में देरी कर सकता है। अगर कंज़र्वेटिव तरीके एक उचित परीक्षण के बाद वाकई काम नहीं कर रहे, तो अनिश्चित काल तक जारी रखने के बजाय फिर से मूल्यांकन करने का समय है।",mr:"यामुळे आवश्यक उपचारास उशीर होऊ शकतो. जर कंझर्व्हेटिव्ह पद्धती वाजवी चाचणीनंतरही खरंच काम करत नसतील, तर अनिश्चित काळासाठी सुरू ठेवण्याऐवजी पुनर्मूल्यांकन करण्याची वेळ आहे."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🔪", title: "Explore surgical decision-making", mentorVisual: "🔪",
+              mentorIntro: {
+                en: "Let's explore what factors go into a surgeon's decision about whether to operate.",
+                hi: "चलो एक्सप्लोर करते हैं कि सर्जन के ऑपरेट करने या न करने के फ़ैसले में कौन से कारक शामिल होते हैं।",
+                mr: "चला एक्सप्लोर करूया की सर्जनच्या ऑपरेट करायचं की नाही या निर्णयात कोणते घटक समाविष्ट असतात."
+              },
+              data: { visual: "🔪", hotspots: [
+              { label:{en:"Risk vs. benefit",hi:"जोखिम बनाम लाभ",mr:"धोका विरुद्ध फायदा"}, fact:{en:"Every surgery carries some risk — surgeons weigh that risk against the expected benefit before recommending an operation!"} },
+              { label:{en:"Conservative first",hi:"पहले कंज़र्वेटिव",mr:"आधी कंझर्व्हेटिव्ह"}, fact:{en:"Many conditions are treated with non-surgical options first, saving surgery for when it's genuinely needed!"} },
+              { label:{en:"Patient's own goals",hi:"मरीज़ के अपने लक्ष्य",mr:"रुग्णाची स्वतःची उद्दिष्टं"}, fact:{en:"Surgeons also consider what matters most to the patient — like an athlete needing full function back quickly!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Surgical decision-making quiz",
+              desc: { en:"A real quiz on how surgeons decide when an operation is truly necessary.", hi:"सर्जन कैसे तय करते हैं कि एक ऑपरेशन वाकई ज़रूरी है, इस पर एक असली क्विज़।", mr:"सर्जन ऑपरेशन खरंच आवश्यक आहे का हे कसं ठरवतात, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Weighing risk and benefit",
+              desc: { en:"How would you feel making a decision that involves real risk, like recommending surgery? What would help you feel confident in that judgment?", hi:"असली जोखिम वाला फ़ैसला लेना कैसा महसूस होगा, जैसे सर्जरी की सलाह देना? इस निर्णय में आत्मविश्वास महसूस करने में तुम्हें क्या मदद करेगा?", mr:"शस्त्रक्रियेची शिफारस करण्यासारखा खरा धोका असलेला निर्णय घेणं कसं वाटेल? त्या निर्णयात आत्मविश्वास वाटण्यास तुम्हाला काय मदत करेल?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Surgical Decision Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about surgical decision-making!",
+                hi: "चलो और गहराई में जाते हैं — सर्जिकल निर्णय के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — शस्त्रक्रिया निर्णयाबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Tumor boards exist?",hi:"ट्यूमर बोर्ड मौजूद हैं?",mr:"ट्यूमर बोर्ड अस्तित्वात आहेत?"}, back:{en:"For complex cases like cancer, teams of specialists called 'tumor boards' discuss together whether surgery is the best option! 👥",hi:"कैंसर जैसे जटिल मामलों के लिए, 'ट्यूमर बोर्ड' कहे जाने वाले विशेषज्ञों की टीमें साथ मिलकर चर्चा करती हैं कि क्या सर्जरी सबसे अच्छा विकल्प है! 👥",mr:"कर्करोगासारख्या जटिल केसेससाठी, 'ट्यूमर बोर्ड' म्हटल्या जाणाऱ्या तज्ज्ञांच्या टीम एकत्र चर्चा करतात की शस्त्रक्रिया सर्वोत्तम पर्याय आहे का! 👥"} },
+              { front:{en:"Minimally invasive options?",hi:"न्यूनतम आक्रामक विकल्प?",mr:"किमान आक्रमक पर्याय?"}, back:{en:"Modern surgery increasingly uses minimally invasive techniques — smaller cuts, faster recovery! 🔬",hi:"आधुनिक सर्जरी तेज़ी से न्यूनतम आक्रामक तकनीकों का इस्तेमाल कर रही है — छोटे कट, तेज़ रिकवरी! 🔬",mr:"आधुनिक शस्त्रक्रिया वाढत्या प्रमाणात किमान आक्रमक तंत्रं वापरत आहे — लहान कापणी, जलद रिकव्हरी! 🔬"} },
+              { front:{en:"Informed consent matters?",hi:"सूचित सहमति मायने रखती है?",mr:"माहितीपूर्ण संमती महत्त्वाची आहे?"}, back:{en:"Before any surgery, doctors must fully explain risks and benefits so the patient can genuinely consent to the decision! ✍️",hi:"किसी भी सर्जरी से पहले, डॉक्टरों को जोखिम और लाभ पूरी तरह समझाने होते हैं ताकि मरीज़ वाकई फ़ैसले पर सहमति दे सके! ✍️",mr:"कोणत्याही शस्त्रक्रियेआधी, डॉक्टरांना धोके आणि फायदे पूर्णपणे समजावून सांगावे लागतात जेणेकरून रुग्ण खरंच निर्णयाला संमती देऊ शकेल! ✍️"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Surgical Decisions or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your surgical decision-making knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो सर्जिकल निर्णय के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला शस्त्रक्रिया निर्णयाच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Surgery is always the first treatment option, before trying anything else.",hi:"सर्जरी हमेशा पहला इलाज विकल्प है, कुछ और आज़माने से पहले।",mr:"शस्त्रक्रिया नेहमी पहिला उपचार पर्याय असते, इतर काहीही करून बघण्याआधी."}, answer:false, explain:{en:"Myth! Many conditions are treated with conservative approaches first, with surgery reserved for when those don't work.",hi:"मिथक! कई स्थितियों का पहले कंज़र्वेटिव तरीकों से इलाज किया जाता है, सर्जरी उन मामलों के लिए रखी जाती है जो काम नहीं करते।",mr:"मिथक! अनेक स्थितींवर आधी कंझर्व्हेटिव्ह पद्धतींनी उपचार केले जातात, शस्त्रक्रिया त्या काम न करणाऱ्या केसेससाठी राखीव असते."} },
+              { text:{en:"Patients must give informed consent before undergoing surgery.",hi:"सर्जरी करवाने से पहले मरीज़ों को सूचित सहमति देनी होती है।",mr:"शस्त्रक्रिया करण्याआधी रुग्णांना माहितीपूर्ण संमती द्यावी लागते."}, answer:true, explain:{en:"True! Informed consent, after fully understanding risks and benefits, is a core requirement before any surgery.",hi:"सच! जोखिम और लाभ को पूरी तरह समझने के बाद सूचित सहमति, किसी भी सर्जरी से पहले एक मुख्य ज़रूरत है।",mr:"खरं! धोके आणि फायदे पूर्णपणे समजून घेतल्यानंतर माहितीपूर्ण संमती, कोणत्याही शस्त्रक्रियेआधी एक मुख्य आवश्यकता आहे."} },
+              { text:{en:"All surgical decisions are made by just one doctor working alone, regardless of complexity.",hi:"सभी सर्जिकल फ़ैसले जटिलता की परवाह किए बिना, बस एक डॉक्टर द्वारा अकेले लिए जाते हैं।",mr:"सर्व शस्त्रक्रिया निर्णय जटिलतेची पर्वा न करता, फक्त एका डॉक्टरद्वारे एकट्याने घेतले जातात."}, answer:false, explain:{en:"Myth! Complex cases often involve teams of specialists discussing together, like tumor boards for cancer cases.",hi:"मिथक! जटिल मामलों में अक्सर विशेषज्ञों की टीमें एक साथ चर्चा करती हैं, जैसे कैंसर मामलों के लिए ट्यूमर बोर्ड।",mr:"मिथक! जटिल केसेसमध्ये अनेकदा तज्ज्ञांच्या टीम एकत्र चर्चा करतात, जसं कर्करोग केसेससाठी ट्यूमर बोर्ड."} }
+            ]}}
+          ]},
+          { label: "Reading Real Reports",
+            bonusAssignment: {
+              title: { en: "Report Interpretation Practice", hi: "रिपोर्ट व्याख्या अभ्यास", mr: "अहवाल अर्थ लावण्याचा सराव" },
+              prompt: { en: "Research one real type of medical report (like a blood panel) and write 3-4 sentences explaining how a doctor would read it. Take a photo!",
+                        hi: "एक असली तरह की मेडिकल रिपोर्ट (जैसे ब्लड पैनल) पर रिसर्च करो और 3-4 वाक्य लिखो कि एक डॉक्टर इसे कैसे पढ़ेगा। फोटो लो!",
+                        mr: "एका खऱ्या प्रकारच्या वैद्यकीय अहवालावर (जसं रक्त पॅनेल) संशोधन करा आणि डॉक्टर तो कसा वाचेल याबद्दल 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "📋", title: "Interpret the Full Report", mentorVisual: "📋",
+              mentorIntro: {
+                en: "Real medical reports have many numbers together — reading them well means understanding the whole picture, not just one value. Let's work through one.",
+                hi: "असली मेडिकल रिपोर्ट में कई संख्याएँ एक साथ होती हैं — उन्हें अच्छे से पढ़ने का मतलब है पूरी तस्वीर समझना, सिर्फ़ एक वैल्यू नहीं। चलो एक से गुज़रते हैं।",
+                mr: "खऱ्या वैद्यकीय अहवालात अनेक संख्या एकत्र असतात — त्या नीट वाचणं म्हणजे संपूर्ण चित्र समजून घेणं, फक्त एक मूल्य नाही. चला एकातून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient's blood report shows slightly low red blood cells, but everything else — including white blood cells and platelets — is normal. The patient reports feeling a bit more tired than usual lately. What's your interpretation?",
+                             hi:"एक मरीज़ की ब्लड रिपोर्ट में थोड़ी कम लाल रक्त कोशिकाएँ दिखती हैं, लेकिन बाकी सब कुछ — सफ़ेद रक्त कोशिकाओं और प्लेटलेट्स सहित — सामान्य है। मरीज़ बताता है कि हाल ही में थोड़ा ज़्यादा थका हुआ महसूस कर रहा है। तुम्हारी व्याख्या क्या है?",
+                             mr:"एका रुग्णाच्या रक्त अहवालात थोड्या कमी लाल रक्तपेशी दिसतात, पण बाकी सर्वकाही — पांढऱ्या रक्तपेशी आणि प्लेटलेट्ससह — सामान्य आहे. रुग्ण सांगतो की अलीकडे थोडं जास्त थकवा जाणवतोय. तुमचा अर्थ काय आहे?" },
+                choices: [
+                  { label:{en:"Consider mild anemia as a likely explanation, and investigate further (like diet or iron levels)", hi:"हल्के एनीमिया को एक संभावित व्याख्या के रूप में मानो, और आगे जांच करो (जैसे आहार या आयरन लेवल)", mr:"सौम्य ॲनिमियाला संभाव्य स्पष्टीकरण मानून, पुढील तपासणी करा (जसं आहार किंवा लोहाची पातळी)"}, quality:"best",
+                    outcome:{en:"Good interpretation! Low red blood cells combined with fatigue often points toward mild anemia — checking things like iron levels or diet is a logical next step.",hi:"अच्छी व्याख्या! थकान के साथ कम लाल रक्त कोशिकाएँ अक्सर हल्के एनीमिया की ओर इशारा करती हैं — आयरन लेवल या आहार जैसी चीज़ों की जाँच करना एक तार्किक अगला कदम है।",mr:"चांगला अर्थ! थकव्यासोबत कमी लाल रक्तपेशी अनेकदा सौम्य ॲनिमियाकडे निर्देश करतात — लोहाची पातळी किंवा आहारासारख्या गोष्टी तपासणं हे एक तार्किक पुढचं पाऊल आहे."} },
+                  { label:{en:"Ignore the slightly low reading since only one value is off", hi:"थोड़ी कम रीडिंग को नज़रअंदाज़ करो क्योंकि केवल एक वैल्यू गड़बड़ है", mr:"थोडी कमी रीडिंग दुर्लक्षित करा कारण फक्त एक मूल्य चुकीचं आहे"}, quality:"risky",
+                    outcome:{en:"This misses a real clue. Even a single abnormal value, combined with a matching symptom like fatigue, deserves proper investigation rather than being dismissed.",hi:"यह एक असली सुराग छोड़ देता है। यहाँ तक कि एक अकेली असामान्य वैल्यू भी, थकान जैसे मेल खाते लक्षण के साथ, नज़रअंदाज़ करने के बजाय उचित जांच की हकदार है।",mr:"यात एक खरा सुगावा चुकतो. अगदी एक असामान्य मूल्यही, थकव्यासारख्या जुळणाऱ्या लक्षणासोबत, दुर्लक्षित करण्याऐवजी योग्य तपासणी हवी असते."} }
+                ]
+              },
+              {
+                situation: { en:"Follow-up tests confirm mild anemia, likely from low iron. The patient asks if this is serious. How do you explain it?",
+                             hi:"फ़ॉलो-अप टेस्ट हल्के एनीमिया की पुष्टि करते हैं, संभवतः कम आयरन से। मरीज़ पूछता है कि क्या यह गंभीर है। तुम इसे कैसे समझाते हो?",
+                             mr:"फॉलो-अप चाचण्या सौम्य ॲनिमियाची पुष्टी करतात, बहुधा कमी लोहामुळे. रुग्ण विचारतो हे गंभीर आहे का. तुम्ही ते कसं समजावून सांगता?" },
+                choices: [
+                  { label:{en:"Explain clearly that mild anemia is common and very manageable, often improving with diet or supplements", hi:"स्पष्ट रूप से समझाओ कि हल्का एनीमिया आम है और बहुत प्रबंधनीय है, अक्सर आहार या सप्लीमेंट से सुधरता है", mr:"स्पष्टपणे समजावून सांगा की सौम्य ॲनिमिया सामान्य आहे आणि खूप व्यवस्थापित करण्यायोग्य आहे, अनेकदा आहार किंवा सप्लिमेंटने सुधारतो"}, quality:"best",
+                    outcome:{en:"Great communication! Being clear and reassuring, while still being honest about next steps, helps patients feel informed rather than unnecessarily worried.",hi:"बेहतरीन बातचीत! अगले कदमों के बारे में ईमानदार रहते हुए स्पष्ट और आश्वस्त करने वाला होना, मरीज़ों को अनावश्यक रूप से चिंतित होने के बजाय सूचित महसूस कराने में मदद करता है।",mr:"उत्तम संवाद! पुढील पावलांबद्दल प्रामाणिक राहत स्पष्ट आणि आश्वासक असणं, रुग्णांना अनावश्यक काळजीऐवजी माहितीपूर्ण वाटण्यास मदत करतं."} },
+                  { label:{en:"Give a vague answer without really explaining what's going on", hi:"बिना असल में समझाए कि क्या हो रहा है, एक अस्पष्ट जवाब दो", mr:"खरंच काय होत आहे हे न समजावता, एक अस्पष्ट उत्तर द्या"}, quality:"risky",
+                    outcome:{en:"This leaves the patient uninformed and possibly more anxious. Clear communication about even manageable conditions genuinely matters for patient trust and understanding.",hi:"यह मरीज़ को असूचित और शायद और ज़्यादा चिंतित छोड़ देता है। यहाँ तक कि प्रबंधनीय स्थितियों के बारे में भी स्पष्ट बातचीत मरीज़ के भरोसे और समझ के लिए वाकई मायने रखती है।",mr:"यामुळे रुग्ण अनभिज्ञ आणि कदाचित अधिक चिंतित राहतो. व्यवस्थापित करण्यायोग्य स्थितींबद्दलही स्पष्ट संवाद रुग्णाच्या विश्वास आणि समजुतीसाठी खरंच महत्त्वाचा आहे."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "📋", title: "Explore reading full reports", mentorVisual: "📋",
+              mentorIntro: {
+                en: "Let's explore what it means to read a report as a whole, not just individual numbers.",
+                hi: "चलो एक्सप्लोर करते हैं एक रिपोर्ट को पूरी तरह पढ़ने का क्या मतलब है, सिर्फ़ अलग-अलग संख्याएँ नहीं।",
+                mr: "चला एक्सप्लोर करूया अहवाल संपूर्णपणे वाचण्याचा अर्थ काय आहे, फक्त वेगळ्या संख्या नाही."
+              },
+              data: { visual: "📋", hotspots: [
+              { label:{en:"Patterns over single values",hi:"अकेली वैल्यू पर पैटर्न",mr:"एकट्या मूल्यांपेक्षा नमुने"}, fact:{en:"Skilled doctors look for patterns across multiple values, not just flagging one number as 'off'!"} },
+              { label:{en:"Symptoms plus numbers",hi:"लक्षण और संख्याएँ",mr:"लक्षणं आणि संख्या"}, fact:{en:"A report means much more when combined with what the patient is actually experiencing!"} },
+              { label:{en:"Trends matter",hi:"रुझान मायने रखते हैं",mr:"कल महत्त्वाचा आहे"}, fact:{en:"Comparing a report to the same patient's past reports often reveals more than a single snapshot!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Reading real reports quiz",
+              desc: { en:"A real quiz on interpreting medical reports as a complete picture.", hi:"मेडिकल रिपोर्ट को एक पूरी तस्वीर के रूप में समझने पर एक असली क्विज़।", mr:"वैद्यकीय अहवाल संपूर्ण चित्र म्हणून समजून घेण्यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "The skill of interpretation",
+              desc: { en:"Why do you think interpreting a report well takes real skill, beyond just knowing what 'normal' numbers look like?", hi:"तुम्हें क्यों लगता है कि एक रिपोर्ट की अच्छी व्याख्या करने में असली कौशल लगता है, सिर्फ़ यह जानने से आगे कि 'सामान्य' संख्याएँ कैसी दिखती हैं?", mr:"'सामान्य' संख्या कशा दिसतात हे फक्त माहीत असण्यापलीकडे, अहवालाचा चांगला अर्थ लावण्यासाठी खरं कौशल्य लागतं असं तुम्हाला का वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Reading Reports Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about reading medical reports!",
+                hi: "चलो और गहराई में जाते हैं — मेडिकल रिपोर्ट पढ़ने के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — वैद्यकीय अहवाल वाचण्याबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Reports have dozens of values?",hi:"रिपोर्ट में दर्जनों वैल्यू होती हैं?",mr:"अहवालात डझनभर मूल्यं असतात?"}, back:{en:"A single comprehensive blood panel can include 20+ different values, all needing to be considered together! 📊",hi:"एक व्यापक ब्लड पैनल में 20 से ज़्यादा अलग-अलग वैल्यू शामिल हो सकती हैं, सभी को एक साथ मानने की ज़रूरत है! 📊",mr:"एका सर्वसमावेशक रक्त पॅनेलमध्ये 20 हून अधिक वेगवेगळी मूल्यं समाविष्ट असू शकतात, सर्व एकत्र विचारात घ्यावी लागतात! 📊"} },
+              { front:{en:"Reports change over a lifetime?",hi:"रिपोर्ट पूरे जीवनकाल में बदलती हैं?",mr:"अहवाल आयुष्यभर बदलतात?"}, back:{en:"A patient's own history of past reports is often kept and compared over years to track their health! 📁",hi:"मरीज़ के अपने पिछली रिपोर्टों के इतिहास को अक्सर सालों तक रखा और तुलना किया जाता है ताकि उनके स्वास्थ्य को ट्रैक किया जा सके! 📁",mr:"रुग्णाच्या स्वतःच्या मागील अहवालांचा इतिहास अनेकदा वर्षानुवर्षे राखला जातो आणि तुलना केली जाते त्यांचं आरोग्य ट्रॅक करण्यासाठी! 📁"} },
+              { front:{en:"Software helps flag values?",hi:"सॉफ्टवेयर वैल्यू फ़्लैग करने में मदद करता है?",mr:"सॉफ्टवेअर मूल्यं फ्लॅग करण्यास मदत करतं?"}, back:{en:"Lab software automatically flags out-of-range values, but the doctor still interprets what it actually means for that patient! 💻",hi:"लैब सॉफ्टवेयर स्वचालित रूप से रेंज से बाहर की वैल्यू को फ़्लैग करता है, लेकिन डॉक्टर अभी भी व्याख्या करता है कि इसका उस मरीज़ के लिए असल में क्या मतलब है! 💻",mr:"लॅब सॉफ्टवेअर आपोआप श्रेणीबाहेरील मूल्यं फ्लॅग करतं, पण डॉक्टर तरीही त्या रुग्णासाठी त्याचा खरंच काय अर्थ आहे याचा अर्थ लावतो! 💻"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Reading Reports or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your report-reading knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो रिपोर्ट पढ़ने के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला अहवाल वाचण्याच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Any single abnormal value in a report should be completely ignored if everything else looks normal.",hi:"अगर बाकी सब कुछ सामान्य लगता है तो रिपोर्ट में किसी भी अकेली असामान्य वैल्यू को पूरी तरह नज़रअंदाज़ करना चाहिए।",mr:"जर बाकी सर्वकाही सामान्य दिसत असेल तर अहवालातील कोणतंही एक असामान्य मूल्य पूर्णपणे दुर्लक्षित करावं."}, answer:false, explain:{en:"Myth! Even one abnormal value, especially combined with a symptom, deserves attention and possible further investigation.",hi:"मिथक! यहाँ तक कि एक असामान्य वैल्यू भी, खासकर एक लक्षण के साथ मिलकर, ध्यान और संभावित आगे की जांच की हकदार है।",mr:"मिथक! अगदी एक असामान्य मूल्यही, विशेषतः लक्षणासोबत जुळताना, लक्ष आणि शक्य पुढील तपासणीस पात्र आहे."} },
+              { text:{en:"Comparing a patient's current report to their past reports can reveal helpful trends.",hi:"मरीज़ की वर्तमान रिपोर्ट की तुलना उनकी पिछली रिपोर्टों से करना मददगार रुझान दिखा सकता है।",mr:"रुग्णाच्या सध्याच्या अहवालाची त्यांच्या मागील अहवालांशी तुलना केल्याने उपयुक्त कल दिसू शकतात."}, answer:true, explain:{en:"True! Trends over time often reveal much more than a single snapshot in time.",hi:"सच! समय के साथ रुझान अक्सर एक ही समय की तस्वीर से कहीं ज़्यादा दिखाते हैं।",mr:"खरं! कालांतराने कल अनेकदा एका क्षणाच्या चित्रापेक्षा खूप जास्त दाखवतात."} },
+              { text:{en:"Lab software fully interprets what a report means for a specific patient, with no doctor input needed.",hi:"लैब सॉफ्टवेयर पूरी तरह व्याख्या करता है कि एक रिपोर्ट का किसी खास मरीज़ के लिए क्या मतलब है, बिना किसी डॉक्टर के इनपुट की ज़रूरत के।",mr:"लॅब सॉफ्टवेअर एका विशिष्ट रुग्णासाठी अहवालाचा काय अर्थ आहे याचा पूर्णपणे अर्थ लावतं, कोणत्याही डॉक्टर इनपुटची गरज न पडता."}, answer:false, explain:{en:"Myth! Software can flag values, but doctors still interpret what those values genuinely mean for that specific patient's situation.",hi:"मिथक! सॉफ्टवेयर वैल्यू को फ़्लैग कर सकता है, लेकिन डॉक्टर अभी भी व्याख्या करते हैं कि उन वैल्यू का उस खास मरीज़ की स्थिति के लिए वाकई क्या मतलब है।",mr:"मिथक! सॉफ्टवेअर मूल्यं फ्लॅग करू शकतं, पण डॉक्टर तरीही त्या मूल्यांचा त्या विशिष्ट रुग्णाच्या परिस्थितीसाठी खरंच काय अर्थ आहे याचा अर्थ लावतात."} }
+            ]}}
+          ]},
+          { label: "Emergency Triage",
+            bonusAssignment: {
+              title: { en: "Triage Priority List", hi: "ट्राएज प्राथमिकता सूची", mr: "ट्रायेज प्राधान्य यादी" },
+              prompt: { en: "List 4 patients with different symptoms and put them in order of who should be seen first. Explain your reasoning. Take a photo!",
+                        hi: "अलग-अलग लक्षणों वाले 4 मरीज़ों की सूची बनाओ और उन्हें इस क्रम में रखो कि किसे पहले देखा जाना चाहिए। अपनी सोच समझाओ। फोटो लो!",
+                        mr: "वेगवेगळ्या लक्षणांसह 4 रुग्णांची यादी करा आणि कोणाला आधी बघावं याच्या क्रमाने ठेवा. तुमचं तर्क समजावून सांगा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🚨", title: "Triage the Waiting Room", mentorVisual: "🚨",
+              mentorIntro: {
+                en: "In a busy ER, you often have multiple patients needing attention at once. Real triage means making tough calls about who needs help first. Let's practice.",
+                hi: "एक व्यस्त ईआर में, तुम्हारे पास अक्सर एक साथ कई मरीज़ होते हैं जिन्हें ध्यान चाहिए। असली ट्राएज का मतलब है कठिन फ़ैसले लेना कि किसे पहले मदद चाहिए। चलो अभ्यास करते हैं।",
+                mr: "व्यस्त ईआरमध्ये, तुमच्याकडे अनेकदा एकाच वेळी लक्ष हवं असणारे अनेक रुग्ण असतात. खरं ट्रायेज म्हणजे कोणाला आधी मदत हवी याबद्दल कठीण निर्णय घेणं. चला सराव करूया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"Two patients arrive at the same time: one has a badly sprained ankle and is in visible pain, the other seems calm but mentions chest tightness that started 20 minutes ago. Who do you see first?",
+                             hi:"दो मरीज़ एक ही समय पर पहुँचते हैं: एक का टखना बुरी तरह मुड़ा हुआ है और दिखने में दर्द में है, दूसरा शांत लगता है लेकिन 20 मिनट पहले शुरू हुई सीने में जकड़न का ज़िक्र करता है। तुम पहले किसे देखते हो?",
+                             mr:"दोन रुग्ण एकाच वेळी येतात: एकाचा घोटा वाईटरित्या मुरगळलेला आहे आणि दिसण्यात वेदनेत आहे, दुसरा शांत दिसतो पण 20 मिनिटांपूर्वी सुरू झालेल्या छातीत घट्टपणाचा उल्लेख करतो. तुम्ही आधी कोणाला बघता?" },
+                choices: [
+                  { label:{en:"See the patient with chest tightness first, despite them appearing calm", hi:"सीने में जकड़न वाले मरीज़ को पहले देखो, भले ही वे शांत दिखें", mr:"छातीत घट्टपणा असलेल्या रुग्णाला आधी बघा, जरी ते शांत दिसत असले तरी"}, quality:"best",
+                    outcome:{en:"Correct triage instinct! Chest tightness can signal something serious, even without visible distress — this needs priority over a painful but non-urgent ankle sprain.",hi:"सही ट्राएज सोच! सीने में जकड़न कुछ गंभीर का संकेत हो सकती है, बिना दिखने वाली परेशानी के भी — इसे एक दर्दनाक लेकिन गैर-अत्यावश्यक टखने की मोच पर प्राथमिकता चाहिए।",mr:"बरोबर ट्रायेज अंतःप्रेरणा! छातीतील घट्टपणा काहीतरी गंभीर असल्याचं सूचित करू शकतो, दृश्य त्रासाशिवायही — याला वेदनादायक पण तातडीचं नसलेल्या घोट्याच्या मुरगळण्यापेक्षा प्राधान्य हवं."} },
+                  { label:{en:"See the patient in visible pain first, since their distress is obvious", hi:"दिखने वाले दर्द में मरीज़ को पहले देखो, क्योंकि उनकी परेशानी साफ़ है", mr:"दृश्य वेदनेत असलेल्या रुग्णाला आधी बघा, कारण त्यांचा त्रास स्पष्ट आहे"}, quality:"risky",
+                    outcome:{en:"This could be dangerous. Visible pain isn't always the best indicator of urgency — chest tightness, even without obvious distress, can signal something needing immediate attention.",hi:"यह खतरनाक हो सकता है। दिखने वाला दर्द हमेशा तात्कालिकता का सबसे अच्छा संकेतक नहीं है — सीने में जकड़न, बिना साफ़ परेशानी के भी, कुछ ऐसा संकेत दे सकती है जिसे तुरंत ध्यान चाहिए।",mr:"हे धोकादायक असू शकतं. दृश्य वेदना नेहमी तातडीचं सर्वोत्तम सूचक नाही — छातीतील घट्टपणा, स्पष्ट त्रासाशिवायही, तात्काळ लक्ष हवं असणाऱ्या गोष्टीचं सूचक असू शकतो."} }
+                ]
+              },
+              {
+                situation: { en:"You check the chest-tightness patient — their vitals show an elevated heart rate. Meanwhile, the ankle patient is asking loudly why they're waiting. What's your approach?",
+                             hi:"तुम सीने में जकड़न वाले मरीज़ की जाँच करते हो — उनके वाइटल्स बढ़ी हुई हृदय गति दिखाते हैं। इस बीच, टखने वाला मरीज़ ज़ोर से पूछ रहा है कि वे क्यों इंतज़ार कर रहे हैं। तुम्हारा तरीका क्या है?",
+                             mr:"तुम्ही छातीतील घट्टपणा असलेल्या रुग्णाला तपासता — त्यांचे व्हायटल्स वाढलेली हृदयगती दाखवतात. दरम्यान, घोट्याचा रुग्ण मोठ्याने विचारत आहे की ते का वाट बघत आहेत. तुमची पद्धत काय आहे?" },
+                choices: [
+                  { label:{en:"Continue prioritizing the chest-tightness patient's workup, while having staff reassure the ankle patient it won't be long", hi:"सीने में जकड़न वाले मरीज़ की जांच को प्राथमिकता देना जारी रखो, जबकि स्टाफ़ टखने वाले मरीज़ को आश्वस्त करे कि ज़्यादा देर नहीं होगी", mr:"छातीतील घट्टपणा असलेल्या रुग्णाच्या तपासणीला प्राधान्य देणं सुरू ठेवा, स्टाफने घोट्याच्या रुग्णाला जास्त वेळ लागणार नाही याची खात्री देत"}, quality:"best",
+                    outcome:{en:"Well handled! Sticking with correct clinical priority while still addressing the other patient's concerns through communication is exactly the balance real triage requires.",hi:"अच्छे से संभाला! सही क्लिनिकल प्राथमिकता के साथ बने रहते हुए बातचीत के ज़रिए दूसरे मरीज़ की चिंताओं को संबोधित करना बिल्कुल वही संतुलन है जो असली ट्राएज चाहता है।",mr:"चांगलं हाताळलं! योग्य क्लिनिकल प्राधान्यासोबत राहत संवादाद्वारे इतर रुग्णाच्या चिंता सोडवणं हेच खरं संतुलन आहे जे खरं ट्रायेज मागतं."} },
+                  { label:{en:"Switch to seeing the ankle patient since they're being vocal about waiting", hi:"टखने वाले मरीज़ को देखने पर स्विच करो क्योंकि वे इंतज़ार के बारे में मुखर हो रहे हैं", mr:"घोट्याच्या रुग्णाकडे बघायला स्विच करा कारण ते वाट बघण्याबद्दल आवाज उठवत आहेत"}, quality:"risky",
+                    outcome:{en:"This could be a mistake. Switching priority based on who's louder, rather than actual clinical urgency, could delay care for the more serious case.",hi:"यह एक गलती हो सकती है। असली क्लिनिकल तात्कालिकता के बजाय कौन ज़्यादा ज़ोर से बोल रहा है इसके आधार पर प्राथमिकता बदलना, ज़्यादा गंभीर मामले के लिए देखभाल में देरी कर सकता है।",mr:"ही एक चूक असू शकते. खऱ्या क्लिनिकल तातडीऐवजी कोण जास्त आवाज करत आहे यावर आधारित प्राधान्य बदलल्याने अधिक गंभीर केससाठी काळजीला उशीर होऊ शकतो."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🚨", title: "Explore triage principles", mentorVisual: "🚨",
+              mentorIntro: {
+                en: "Let's explore the real principles behind emergency triage decisions.",
+                hi: "चलो आपातकालीन ट्राएज फ़ैसलों के पीछे के असली सिद्धांतों को एक्सप्लोर करते हैं।",
+                mr: "चला आणीबाणी ट्रायेज निर्णयांमागील खरे तत्त्वं एक्सप्लोर करूया."
+              },
+              data: { visual: "🚨", hotspots: [
+              { label:{en:"Hidden urgency",hi:"छिपी हुई तात्कालिकता",mr:"लपलेली तातडी"}, fact:{en:"Some of the most urgent cases don't look dramatic — quiet chest pain can be more dangerous than a loud, painful injury!"} },
+              { label:{en:"Systematic checking",hi:"व्यवस्थित जांच",mr:"पद्धतशीर तपासणी"}, fact:{en:"Triage nurses use systematic checklists, not just gut feeling, to sort patients by real urgency!"} },
+              { label:{en:"Communication under pressure",hi:"दबाव में बातचीत",mr:"दबावाखाली संवाद"}, fact:{en:"Managing patients' frustration while sticking to correct priorities is a real skill emergency staff must build!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Emergency triage quiz",
+              desc: { en:"A real quiz on how emergency triage decisions are made under pressure.", hi:"दबाव में आपातकालीन ट्राएज फ़ैसले कैसे लिए जाते हैं, इस पर एक असली क्विज़।", mr:"दबावाखाली आणीबाणी ट्रायेज निर्णय कसे घेतले जातात, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Staying calm under pressure",
+              desc: { en:"How do you think you'd handle staying calm and clear-headed while multiple people need help at once? What would help you manage that pressure?", hi:"तुम्हें क्या लगता है जब कई लोगों को एक साथ मदद चाहिए हो तो तुम शांत और स्पष्ट-दिमाग़ कैसे रहोगे? इस दबाव को संभालने में तुम्हें क्या मदद करेगा?", mr:"अनेक लोकांना एकाच वेळी मदत हवी असताना तुम्ही शांत आणि स्पष्ट डोक्याने कसे राहाल असं तुम्हाला वाटतं? तो दबाव हाताळण्यास तुम्हाला काय मदत करेल?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Triage Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced triage fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस ट्राएज तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत ट्रायेज तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Color-coded systems?",hi:"रंग-कोडित सिस्टम?",mr:"रंग-कोडित यंत्रणा?"}, back:{en:"Many ERs use color-coded triage systems (like red, yellow, green) to quickly communicate urgency across the whole team! 🔴🟡🟢",hi:"कई ईआर तेज़ी से पूरी टीम में तात्कालिकता बताने के लिए रंग-कोडित ट्राएज सिस्टम (जैसे लाल, पीला, हरा) इस्तेमाल करते हैं! 🔴🟡🟢",mr:"अनेक ईआर संपूर्ण टीममध्ये त्वरित तातडी सांगण्यासाठी रंग-कोडित ट्रायेज यंत्रणा (जसं लाल, पिवळा, हिरवा) वापरतात! 🔴🟡🟢"} },
+              { front:{en:"Retriage happens?",hi:"रीट्राएज होता है?",mr:"रीट्रायेज होतं?"}, back:{en:"Patients are often re-evaluated while waiting, since their condition can change — triage isn't a one-time decision! 🔄",hi:"मरीज़ों का अक्सर इंतज़ार के दौरान पुनर्मूल्यांकन होता है, क्योंकि उनकी स्थिति बदल सकती है — ट्राएज एक बार का फ़ैसला नहीं है! 🔄",mr:"रुग्णांचं अनेकदा वाट बघताना पुनर्मूल्यांकन होतं, कारण त्यांची स्थिती बदलू शकते — ट्रायेज एकदाचा निर्णय नाही! 🔄"} },
+              { front:{en:"Triage training is ongoing?",hi:"ट्राएज प्रशिक्षण चल रहा है?",mr:"ट्रायेज प्रशिक्षण सुरू आहे?"}, back:{en:"Emergency staff regularly practice triage scenarios through simulation, keeping their judgment sharp! 🎯",hi:"आपातकालीन स्टाफ़ सिमुलेशन के ज़रिए नियमित रूप से ट्राएज परिदृश्यों का अभ्यास करते हैं, अपने निर्णय को तेज़ रखते हुए! 🎯",mr:"आणीबाणी स्टाफ सिम्युलेशनद्वारे नियमितपणे ट्रायेज परिस्थितींचा सराव करतो, त्यांचा निर्णय तीक्ष्ण ठेवत! 🎯"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Triage or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your triage knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो ट्राएज के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला ट्रायेजच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"The patient who appears most visibly distressed is always the most medically urgent.",hi:"जो मरीज़ सबसे ज़्यादा दिखने में परेशान लगता है वह हमेशा सबसे ज़्यादा मेडिकली अत्यावश्यक होता है।",mr:"जो रुग्ण सर्वात जास्त दृश्यमानपणे त्रस्त दिसतो तो नेहमी सर्वात जास्त वैद्यकीयदृष्ट्या तातडीचा असतो."}, answer:false, explain:{en:"Myth! Some urgent conditions, like certain heart issues, don't always look dramatic — visible distress isn't the only indicator of urgency.",hi:"मिथक! कुछ अत्यावश्यक स्थितियाँ, जैसे कुछ दिल की समस्याएँ, हमेशा नाटकीय नहीं दिखतीं — दिखने वाली परेशानी तात्कालिकता का एकमात्र संकेतक नहीं है।",mr:"मिथक! काही तातडीच्या स्थिती, जसं काही हृदयाच्या समस्या, नेहमी नाट्यमय दिसत नाहीत — दृश्य त्रास हे तातडीचं एकमेव सूचक नाही."} },
+              { text:{en:"Patients waiting in the ER are sometimes re-evaluated since their condition can change.",hi:"ईआर में इंतज़ार कर रहे मरीज़ों का कभी-कभी पुनर्मूल्यांकन होता है क्योंकि उनकी स्थिति बदल सकती है।",mr:"ईआरमध्ये वाट बघणाऱ्या रुग्णांचं कधीकधी पुनर्मूल्यांकन होतं कारण त्यांची स्थिती बदलू शकते."}, answer:true, explain:{en:"True! Triage is an ongoing process — patients can be re-evaluated as their condition evolves while waiting.",hi:"सच! ट्राएज एक चल रही प्रक्रिया है — इंतज़ार के दौरान मरीज़ों की स्थिति विकसित होने पर उनका पुनर्मूल्यांकन हो सकता है।",mr:"खरं! ट्रायेज ही एक सुरू असलेली प्रक्रिया आहे — वाट बघताना रुग्णांची स्थिती विकसित होताना त्यांचं पुनर्मूल्यांकन होऊ शकतं."} },
+              { text:{en:"Once a patient is triaged, their priority level can never be changed.",hi:"एक बार जब एक मरीज़ को ट्राएज कर दिया जाता है, उनका प्राथमिकता स्तर कभी नहीं बदला जा सकता।",mr:"एकदा रुग्णाला ट्रायेज केलं की, त्यांची प्राधान्य पातळी कधीच बदलली जाऊ शकत नाही."}, answer:false, explain:{en:"Myth! Priority levels can and do change as a patient's condition is reassessed over time.",hi:"मिथक! प्राथमिकता स्तर बदल सकते हैं और समय के साथ मरीज़ की स्थिति का पुनर्मूल्यांकन होने पर बदलते हैं।",mr:"मिथक! प्राधान्य पातळी बदलू शकतात आणि कालांतराने रुग्णाच्या स्थितीचं पुनर्मूल्यांकन होताना बदलतातही."} }
+            ]}}
+          ]},
+          { label: "Medical Ethics",
+            bonusAssignment: {
+              title: { en: "Ethics Principle Explainer", hi: "नैतिकता सिद्धांत समझाने वाला", mr: "नैतिकता तत्त्व समजावणारं" },
+              prompt: { en: "Pick one medical ethics principle (like informed consent or confidentiality) and write 3-4 sentences explaining why it matters. Take a photo!",
+                        hi: "एक मेडिकल एथिक्स सिद्धांत चुनो (जैसे सूचित सहमति या गोपनीयता) और 3-4 वाक्य लिखो कि यह क्यों मायने रखता है। फोटो लो!",
+                        mr: "एक वैद्यकीय नैतिकता तत्त्व निवडा (जसं माहितीपूर्ण संमती किंवा गोपनीयता) आणि ते का महत्त्वाचं आहे याबद्दल 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "⚖️", title: "Navigate an Ethical Situation", mentorVisual: "⚖️",
+              mentorIntro: {
+                en: "Medicine involves real ethical principles, not just medical knowledge. Let's work through a situation that tests those principles.",
+                hi: "चिकित्सा में असली नैतिक सिद्धांत शामिल हैं, सिर्फ़ मेडिकल ज्ञान नहीं। चलो एक ऐसी स्थिति से गुज़रते हैं जो उन सिद्धांतों को परखती है।",
+                mr: "वैद्यकशास्त्रात खरी नैतिक तत्त्वं समाविष्ट आहेत, फक्त वैद्यकीय ज्ञान नाही. चला अशा परिस्थितीतून जाऊया जी ती तत्त्वं तपासते."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient's family member asks you to share details about the patient's condition, but the patient hasn't given permission to share that information with them. What do you do?",
+                             hi:"एक मरीज़ के परिवार का सदस्य तुमसे मरीज़ की स्थिति के बारे में जानकारी साझा करने के लिए कहता है, लेकिन मरीज़ ने उनके साथ वह जानकारी साझा करने की अनुमति नहीं दी है। तुम क्या करते हो?",
+                             mr:"रुग्णाच्या कुटुंबातील सदस्य तुम्हाला रुग्णाच्या स्थितीबद्दल माहिती सांगायला सांगतो, पण रुग्णाने त्यांच्यासोबत ती माहिती सांगण्याची परवानगी दिलेली नाही. तुम्ही काय करता?" },
+                choices: [
+                  { label:{en:"Respectfully explain that you can't share details without the patient's permission, due to confidentiality", hi:"आदरपूर्वक समझाओ कि गोपनीयता के कारण तुम मरीज़ की अनुमति के बिना जानकारी साझा नहीं कर सकते", mr:"आदराने समजावून सांगा की गोपनीयतेमुळे तुम्ही रुग्णाच्या परवानगीशिवाय माहिती सांगू शकत नाही"}, quality:"best",
+                    outcome:{en:"Correct approach! Patient confidentiality is a core ethical and legal principle — even close family members don't automatically have a right to medical details without the patient's consent.",hi:"सही तरीका! मरीज़ की गोपनीयता एक मुख्य नैतिक और कानूनी सिद्धांत है — यहाँ तक कि करीबी परिवार के सदस्यों को भी मरीज़ की सहमति के बिना मेडिकल जानकारी का अधिकार स्वतः नहीं होता।",mr:"योग्य पद्धत! रुग्णाची गोपनीयता हे एक मुख्य नैतिक आणि कायदेशीर तत्त्व आहे — अगदी जवळचे कुटुंब सदस्यही रुग्णाच्या संमतीशिवाय वैद्यकीय तपशीलांचा हक्क आपोआप ठेवत नाहीत."} },
+                  { label:{en:"Share the basic details since it's a close family member asking", hi:"बुनियादी जानकारी साझा करो क्योंकि यह एक करीबी परिवार का सदस्य पूछ रहा है", mr:"मूलभूत तपशील सांगा कारण एक जवळचा कुटुंब सदस्य विचारत आहे"}, quality:"risky",
+                    outcome:{en:"This breaks confidentiality without the patient's consent — even with good intentions, sharing details without permission violates a core ethical principle in medicine.",hi:"यह मरीज़ की सहमति के बिना गोपनीयता तोड़ता है — अच्छे इरादों के साथ भी, बिना अनुमति के जानकारी साझा करना चिकित्सा में एक मुख्य नैतिक सिद्धांत का उल्लंघन करता है।",mr:"हे रुग्णाच्या संमतीशिवाय गोपनीयता तोडतं — चांगल्या हेतूंसहही, परवानगीशिवाय तपशील सांगणं वैद्यकशास्त्रातील एका मुख्य नैतिक तत्त्वाचं उल्लंघन करतं."} }
+                ]
+              },
+              {
+                situation: { en:"The family member becomes upset and says they have a 'right to know' since they're paying for the treatment. How do you respond?",
+                             hi:"परिवार का सदस्य परेशान हो जाता है और कहता है कि उन्हें 'जानने का अधिकार' है क्योंकि वे इलाज के लिए पैसे दे रहे हैं। तुम कैसे जवाब देते हो?",
+                             mr:"कुटुंब सदस्य अस्वस्थ होतो आणि म्हणतो की त्यांना 'जाणून घेण्याचा हक्क' आहे कारण ते उपचारासाठी पैसे देत आहेत. तुम्ही कसं उत्तर देता?" },
+                choices: [
+                  { label:{en:"Empathetically acknowledge their concern, but explain that confidentiality applies regardless of who's paying, and suggest asking the patient directly", hi:"सहानुभूतिपूर्वक उनकी चिंता स्वीकार करो, लेकिन समझाओ कि गोपनीयता इस बात की परवाह किए बिना लागू होती है कि कौन भुगतान कर रहा है, और मरीज़ से सीधे पूछने का सुझाव दो", mr:"सहानुभूतीने त्यांची काळजी मान्य करा, पण समजावून सांगा की कोण पैसे देत आहे याची पर्वा न करता गोपनीयता लागू होते, आणि रुग्णाला थेट विचारण्याचा सल्ला द्या"}, quality:"best",
+                    outcome:{en:"Well handled! Acknowledging their feelings while still holding the ethical line, and redirecting them to the patient directly, respects both the family's concern and the patient's rights.",hi:"अच्छे से संभाला! नैतिक रेखा पर बने रहते हुए उनकी भावनाओं को स्वीकार करना, और उन्हें सीधे मरीज़ की ओर पुनर्निर्देशित करना, परिवार की चिंता और मरीज़ के अधिकारों दोनों का सम्मान करता है।",mr:"चांगलं हाताळलं! नैतिक रेषेवर राहत त्यांच्या भावना मान्य करणं, आणि त्यांना थेट रुग्णाकडे पुनर्निर्देशित करणं, कुटुंबाची काळजी आणि रुग्णाचे हक्क दोन्हींचा आदर करतं."} },
+                  { label:{en:"Give in and share some details since they seem genuinely upset", hi:"हार मान लो और कुछ जानकारी साझा करो क्योंकि वे वाकई परेशान लगते हैं", mr:"हार माना आणि काही तपशील सांगा कारण ते खरंच अस्वस्थ दिसतात"}, quality:"risky",
+                    outcome:{en:"Giving in under emotional pressure still breaks the patient's confidentiality — paying for treatment doesn't override the patient's own right to privacy about their health information.",hi:"भावनात्मक दबाव में हार मानना अभी भी मरीज़ की गोपनीयता तोड़ता है — इलाज के लिए भुगतान करना उनके स्वास्थ्य जानकारी के बारे में मरीज़ के अपने गोपनीयता अधिकार को रद्द नहीं करता।",mr:"भावनिक दबावाखाली हार मानणं तरीही रुग्णाची गोपनीयता तोडतं — उपचारासाठी पैसे देणं त्यांच्या आरोग्य माहितीबद्दल रुग्णाच्या स्वतःच्या गोपनीयता हक्काला रद्द करत नाही."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "⚖️", title: "Explore core ethical principles", mentorVisual: "⚖️",
+              mentorIntro: {
+                en: "Let's explore some of the core ethical principles that guide medical practice everywhere.",
+                hi: "चलो कुछ मुख्य नैतिक सिद्धांतों को एक्सप्लोर करते हैं जो हर जगह मेडिकल प्रैक्टिस का मार्गदर्शन करते हैं।",
+                mr: "चला काही मुख्य नैतिक तत्त्वं एक्सप्लोर करूया जी सर्वत्र वैद्यकीय प्रॅक्टिसला मार्गदर्शन करतात."
+              },
+              data: { visual: "⚖️", hotspots: [
+              { label:{en:"Confidentiality",hi:"गोपनीयता",mr:"गोपनीयता"}, fact:{en:"Keeping patient information private, sharing it only with their permission, is one of medicine's oldest ethical principles!"} },
+              { label:{en:"Informed consent",hi:"सूचित सहमति",mr:"माहितीपूर्ण संमती"}, fact:{en:"Patients have the right to fully understand risks and benefits before agreeing to any treatment!"} },
+              { label:{en:"Fairness",hi:"निष्पक्षता",mr:"निष्पक्षता"}, fact:{en:"Doctors are ethically expected to treat all patients fairly, regardless of background!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Medical ethics quiz",
+              desc: { en:"A real quiz on core ethical principles that guide medical practice.", hi:"मेडिकल प्रैक्टिस का मार्गदर्शन करने वाले मुख्य नैतिक सिद्धांतों पर एक असली क्विज़।", mr:"वैद्यकीय प्रॅक्टिसला मार्गदर्शन करणाऱ्या मुख्य नैतिक तत्त्वांवर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Holding an ethical line",
+              desc: { en:"How do you think it would feel to hold an ethical principle firm, even when someone is upset with you about it? Why does that matter?", hi:"तुम्हें क्या लगता है एक नैतिक सिद्धांत पर दृढ़ रहना कैसा महसूस होगा, तब भी जब कोई इसके बारे में तुमसे परेशान हो? यह क्यों मायने रखता है?", mr:"कोणी तुमच्यावर याबद्दल अस्वस्थ असतानाही एका नैतिक तत्त्वावर ठाम राहणं कसं वाटेल असं तुम्हाला वाटतं? हे का महत्त्वाचं आहे?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Ethics Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more thoughtful ethics fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा विचारशील एथिक्स तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक विचारशील नैतिकता तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Ancient roots?",hi:"प्राचीन जड़ें?",mr:"प्राचीन मुळं?"}, back:{en:"Medical ethics has roots going back thousands of years — the famous 'Hippocratic Oath' is over 2,000 years old! 📜",hi:"मेडिकल एथिक्स की जड़ें हज़ारों साल पुरानी हैं — प्रसिद्ध 'हिप्पोक्रेटिक ओथ' 2,000 साल से भी ज़्यादा पुरानी है! 📜",mr:"वैद्यकीय नैतिकतेची मुळं हजारो वर्षं जुनी आहेत — प्रसिद्ध 'हिप्पोक्रॅटिक ओथ' 2,000 वर्षांहूनही जुनी आहे! 📜"} },
+              { front:{en:"Ethics committees exist?",hi:"एथिक्स कमेटी मौजूद हैं?",mr:"नैतिकता समित्या अस्तित्वात आहेत?"}, back:{en:"Many hospitals have ethics committees that help doctors think through especially difficult situations together! 👥",hi:"कई अस्पतालों में एथिक्स कमेटी होती हैं जो डॉक्टरों को विशेष रूप से कठिन स्थितियों के बारे में एक साथ सोचने में मदद करती हैं! 👥",mr:"अनेक रुग्णालयांमध्ये नैतिकता समित्या असतात ज्या डॉक्टरांना विशेषतः कठीण परिस्थितींबद्दल एकत्र विचार करण्यास मदत करतात! 👥"} },
+              { front:{en:"Ethics is taught formally?",hi:"एथिक्स औपचारिक रूप से पढ़ाई जाती है?",mr:"नैतिकता औपचारिकपणे शिकवली जाते?"}, back:{en:"Medical schools have entire courses dedicated just to teaching ethical reasoning, not just medical facts! 🎓",hi:"मेडिकल स्कूलों में केवल नैतिक तर्क सिखाने के लिए समर्पित पूरे कोर्स होते हैं, सिर्फ़ मेडिकल तथ्य नहीं! 🎓",mr:"वैद्यकीय शाळांमध्ये फक्त नैतिक तर्क शिकवण्यासाठी समर्पित संपूर्ण अभ्यासक्रम असतात, फक्त वैद्यकीय तथ्यं नाही! 🎓"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Medical Ethics or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your medical ethics knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो मेडिकल एथिक्स के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला वैद्यकीय नैतिकतेच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A family member paying for treatment automatically has the right to see the patient's medical details.",hi:"इलाज के लिए भुगतान करने वाले परिवार के सदस्य को स्वतः ही मरीज़ की मेडिकल जानकारी देखने का अधिकार होता है।",mr:"उपचारासाठी पैसे देणाऱ्या कुटुंब सदस्याला आपोआप रुग्णाचे वैद्यकीय तपशील बघण्याचा हक्क असतो."}, answer:false, explain:{en:"Myth! Confidentiality applies regardless of who's paying — the patient's own consent is what matters.",hi:"मिथक! गोपनीयता इस बात की परवाह किए बिना लागू होती है कि कौन भुगतान कर रहा है — मरीज़ की अपनी सहमति ही मायने रखती है।",mr:"मिथक! कोण पैसे देत आहे याची पर्वा न करता गोपनीयता लागू होते — रुग्णाची स्वतःची संमती हीच महत्त्वाची असते."} },
+              { text:{en:"Many hospitals have ethics committees to help with especially difficult decisions.",hi:"कई अस्पतालों में विशेष रूप से कठिन फ़ैसलों में मदद के लिए एथिक्स कमेटी होती हैं।",mr:"अनेक रुग्णालयांमध्ये विशेषतः कठीण निर्णयांसाठी मदत करण्यासाठी नैतिकता समित्या असतात."}, answer:true, explain:{en:"True! Ethics committees are a real, common resource in hospitals for navigating tough situations.",hi:"सच! एथिक्स कमेटी कठिन स्थितियों को नेविगेट करने के लिए अस्पतालों में एक असली, आम संसाधन हैं।",mr:"खरं! कठीण परिस्थितींमधून मार्ग काढण्यासाठी नैतिकता समित्या रुग्णालयांमध्ये एक खरं, सामान्य साधन आहेत."} },
+              { text:{en:"Medical ethics is a completely modern idea with no historical roots.",hi:"मेडिकल एथिक्स एक पूरी तरह आधुनिक विचार है जिसकी कोई ऐतिहासिक जड़ें नहीं हैं।",mr:"वैद्यकीय नैतिकता ही एक पूर्णपणे आधुनिक कल्पना आहे ज्याला कोणतीही ऐतिहासिक मुळं नाहीत."}, answer:false, explain:{en:"Myth! Medical ethics has roots going back thousands of years, including the ancient Hippocratic Oath.",hi:"मिथक! मेडिकल एथिक्स की जड़ें हज़ारों साल पुरानी हैं, प्राचीन हिप्पोक्रेटिक ओथ सहित।",mr:"मिथक! वैद्यकीय नैतिकतेची मुळं हजारो वर्षं जुनी आहेत, प्राचीन हिप्पोक्रॅटिक ओथसह."} }
+            ]}}
+          ]},
+          { label: "Research Study Design",
+            bonusAssignment: {
+              title: { en: "Design a Mini Study", hi: "एक मिनी स्टडी डिज़ाइन करो", mr: "एक मिनी अभ्यास डिझाइन करा" },
+              prompt: { en: "Design a simple research question and study idea (like 'does more sleep improve test scores?'). Take a photo of your idea!",
+                        hi: "एक साधा रिसर्च सवाल और स्टडी विचार डिज़ाइन करो (जैसे 'क्या ज़्यादा नींद टेस्ट स्कोर सुधारती है?')। अपने विचार की फोटो लो!",
+                        mr: "एक साधा संशोधन प्रश्न आणि अभ्यास कल्पना डिझाइन करा (जसं 'जास्त झोपेमुळे परीक्षेचे गुण सुधारतात का?'). तुमच्या कल्पनेचा फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🔬", title: "Design a Fair Study", mentorVisual: "🔬",
+              mentorIntro: {
+                en: "Good research needs careful design to get trustworthy results. Let's work through designing a study.",
+                hi: "अच्छी रिसर्च को भरोसेमंद नतीजे पाने के लिए सावधान डिज़ाइन चाहिए। चलो एक स्टडी डिज़ाइन करने से गुज़रते हैं।",
+                mr: "चांगल्या संशोधनाला विश्वासार्ह निकाल मिळवण्यासाठी काळजीपूर्वक डिझाइन हवं. चला एक अभ्यास डिझाइन करण्यातून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"You want to test whether a new supplement helps people sleep better. You have 100 volunteers. How do you design the study?",
+                             hi:"तुम टेस्ट करना चाहते हो कि क्या एक नया सप्लीमेंट लोगों को बेहतर सोने में मदद करता है। तुम्हारे पास 100 वालंटियर हैं। तुम स्टडी कैसे डिज़ाइन करते हो?",
+                             mr:"तुम्हाला तपासायचं आहे की एक नवीन सप्लिमेंट लोकांना चांगली झोप घेण्यास मदत करतं का. तुमच्याकडे 100 स्वयंसेवक आहेत. तुम्ही अभ्यास कसा डिझाइन कराल?" },
+                choices: [
+                  { label:{en:"Randomly split volunteers into two groups — one gets the supplement, one gets a placebo, and compare results", hi:"वालंटियर को यादृच्छिक रूप से दो समूहों में बाँटो — एक को सप्लीमेंट मिलता है, एक को प्लेसीबो, और नतीजों की तुलना करो", mr:"स्वयंसेवकांना यादृच्छिकपणे दोन गटांत विभागा — एकाला सप्लिमेंट मिळतं, एकाला प्लासिबो, आणि निकालांची तुलना करा"}, quality:"best",
+                    outcome:{en:"Excellent design! Random assignment to a supplement group versus a placebo group is the standard way to fairly test whether something actually works.",hi:"बेहतरीन डिज़ाइन! सप्लीमेंट समूह बनाम प्लेसीबो समूह के लिए यादृच्छिक असाइनमेंट यह निष्पक्ष रूप से टेस्ट करने का मानक तरीका है कि क्या कुछ असल में काम करता है।",mr:"उत्तम डिझाइन! सप्लिमेंट गट विरुद्ध प्लासिबो गटासाठी यादृच्छिक नियुक्ती हा एखादी गोष्ट खरंच काम करते का हे निष्पक्षपणे तपासण्याचा मानक मार्ग आहे."} },
+                  { label:{en:"Give everyone the supplement and just ask if they slept better afterward", hi:"सबको सप्लीमेंट दो और बस पूछो कि क्या उन्हें बाद में बेहतर नींद आई", mr:"सर्वांना सप्लिमेंट द्या आणि नंतर त्यांना चांगली झोप आली का ते फक्त विचारा"}, quality:"risky",
+                    outcome:{en:"This design has a real problem — without a comparison group, you can't tell if any improvement was actually due to the supplement, or just people expecting it to work.",hi:"इस डिज़ाइन में एक असली समस्या है — बिना तुलना समूह के, तुम यह नहीं बता सकते कि कोई सुधार असल में सप्लीमेंट की वजह से था, या बस लोगों की उम्मीद थी कि यह काम करेगा।",mr:"या डिझाइनमध्ये एक खरी समस्या आहे — तुलना गटाशिवाय, तुम्ही सांगू शकत नाही की कोणतीही सुधारणा खरंच सप्लिमेंटमुळे होती, की फक्त लोकांची अपेक्षा होती की ते काम करेल."} }
+                ]
+              },
+              {
+                situation: { en:"Your results show the supplement group slept slightly better. A colleague suggests publishing this as proof the supplement works. What do you consider?",
+                             hi:"तुम्हारे नतीजे दिखाते हैं कि सप्लीमेंट समूह थोड़ा बेहतर सोया। एक सहकर्मी सुझाव देता है कि इसे सप्लीमेंट के काम करने के प्रमाण के रूप में प्रकाशित करो। तुम क्या मानते हो?",
+                             mr:"तुमचे निकाल दाखवतात की सप्लिमेंट गट थोडी चांगली झोपली. एक सहकारी सुचवतो की सप्लिमेंट काम करतं याचा पुरावा म्हणून हे प्रकाशित करा. तुम्ही काय विचारात घेता?" },
+                choices: [
+                  { label:{en:"Consider whether the difference is large enough to be meaningful, and whether the study should be repeated before strong claims", hi:"विचार करो कि क्या अंतर मायने रखने के लिए काफ़ी बड़ा है, और क्या मज़बूत दावों से पहले स्टडी को दोहराया जाना चाहिए", mr:"विचार करा की फरक अर्थपूर्ण असण्याइतका मोठा आहे का, आणि जोरदार दाव्यांआधी अभ्यास पुन्हा करावा का"}, quality:"best",
+                    outcome:{en:"Excellent scientific thinking! Real researchers consider whether results are statistically meaningful and often replicate studies before making strong claims — one study rarely proves something conclusively.",hi:"बेहतरीन वैज्ञानिक सोच! असली शोधकर्ता विचार करते हैं कि क्या नतीजे सांख्यिकीय रूप से मायने रखते हैं और मज़बूत दावे करने से पहले अक्सर स्टडी को दोहराते हैं — एक स्टडी शायद ही कभी किसी चीज़ को निर्णायक रूप से साबित करती है।",mr:"उत्तम वैज्ञानिक विचार! खरे संशोधक विचार करतात की निकाल सांख्यिकीयदृष्ट्या अर्थपूर्ण आहेत का आणि जोरदार दावे करण्याआधी अनेकदा अभ्यासाची पुनरावृत्ती करतात — एक अभ्यास क्वचितच एखादी गोष्ट निर्णायकपणे सिद्ध करतो."} },
+                  { label:{en:"Publish immediately since the results look promising", hi:"तुरंत प्रकाशित करो क्योंकि नतीजे आशाजनक लगते हैं", mr:"लगेच प्रकाशित करा कारण निकाल आशादायक दिसतात"}, quality:"risky",
+                    outcome:{en:"This could be premature. A single study with a small difference doesn't automatically prove something works — rushing to publish strong claims can mislead people.",hi:"यह जल्दबाज़ी हो सकती है। छोटे अंतर वाली एक अकेली स्टडी स्वतः यह साबित नहीं करती कि कुछ काम करता है — मज़बूत दावों को प्रकाशित करने में जल्दबाज़ी लोगों को गुमराह कर सकती है।",mr:"हे घाईचं असू शकतं. लहान फरक असलेला एकच अभ्यास आपोआप सिद्ध करत नाही की काहीतरी काम करतं — जोरदार दावे प्रकाशित करण्याची घाई लोकांची दिशाभूल करू शकते."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🔬", title: "Explore good study design", mentorVisual: "🔬",
+              mentorIntro: {
+                en: "Let's explore what makes a research study genuinely trustworthy.",
+                hi: "चलो एक्सप्लोर करते हैं कि एक रिसर्च स्टडी को वाकई भरोसेमंद क्या बनाता है।",
+                mr: "चला एक्सप्लोर करूया की एक संशोधन अभ्यास खरंच विश्वासार्ह काय बनवतो."
+              },
+              data: { visual: "🔬", hotspots: [
+              { label:{en:"Comparison groups",hi:"तुलना समूह",mr:"तुलना गट"}, fact:{en:"Good studies compare a treatment group to a similar group that doesn't get it, isolating what's really causing any effect!"} },
+              { label:{en:"Sample size",hi:"नमूना आकार",mr:"नमुना आकार"}, fact:{en:"Bigger, more diverse groups of study participants generally make results more trustworthy!"} },
+              { label:{en:"Repeating studies",hi:"स्टडी दोहराना",mr:"अभ्यासाची पुनरावृत्ती"}, fact:{en:"Scientists trust findings much more once other researchers can repeat the study and get similar results!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Research study design quiz",
+              desc: { en:"A real quiz on what makes medical research studies trustworthy and well-designed.", hi:"मेडिकल रिसर्च स्टडी को भरोसेमंद और अच्छी तरह से डिज़ाइन किया हुआ क्या बनाता है, इस पर एक असली क्विज़।", mr:"वैद्यकीय संशोधन अभ्यास विश्वासार्ह आणि नीट डिझाइन केलेले काय बनवतं, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Patience in science",
+              desc: { en:"Why do you think good research often takes a long time and multiple studies, rather than one quick experiment giving a final answer?", hi:"तुम्हें क्यों लगता है कि अच्छी रिसर्च में अक्सर लंबा समय और कई स्टडी लगती हैं, एक त्वरित प्रयोग के बजाय जो अंतिम जवाब दे?", mr:"चांगल्या संशोधनाला अनेकदा जास्त वेळ आणि अनेक अभ्यास का लागतात, एक जलद प्रयोग जो अंतिम उत्तर देतो त्याऐवजी, असं तुम्हाला का वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Study Design Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced research study fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस रिसर्च स्टडी तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत संशोधन अभ्यास तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Double-blind studies?",hi:"डबल-ब्लाइंड स्टडी?",mr:"डबल-ब्लाइंड अभ्यास?"}, back:{en:"In 'double-blind' studies, neither the patient nor the researcher knows who got the real treatment — this helps prevent bias! 👁️",hi:"'डबल-ब्लाइंड' स्टडी में, न तो मरीज़ और न ही शोधकर्ता जानते हैं कि किसे असली इलाज मिला — यह पूर्वाग्रह को रोकने में मदद करता है! 👁️",mr:"'डबल-ब्लाइंड' अभ्यासात, ना रुग्ण ना संशोधकाला माहीत असतं की कोणाला खरा उपचार मिळाला — हे पूर्वग्रह रोखण्यास मदत करतं! 👁️"} },
+              { front:{en:"Peer review process?",hi:"पीयर रिव्यू प्रक्रिया?",mr:"पीअर रिव्ह्यू प्रक्रिया?"}, back:{en:"Before publishing, other scientists review a study's methods and results — this is called peer review! 📝",hi:"प्रकाशित करने से पहले, अन्य वैज्ञानिक एक स्टडी के तरीकों और नतीजों की समीक्षा करते हैं — इसे पीयर रिव्यू कहते हैं! 📝",mr:"प्रकाशित करण्याआधी, इतर शास्त्रज्ञ एका अभ्यासाच्या पद्धती आणि निकालांचं पुनरावलोकन करतात — याला पीअर रिव्ह्यू म्हणतात! 📝"} },
+              { front:{en:"Sample size matters a lot?",hi:"नमूना आकार बहुत मायने रखता है?",mr:"नमुना आकार खूप महत्त्वाचा आहे?"}, back:{en:"A study with only 10 people is much less trustworthy than one with 10,000 — bigger samples reduce the chance results were just luck! 📊",hi:"केवल 10 लोगों वाली एक स्टडी 10,000 वाली से कहीं कम भरोसेमंद है — बड़े नमूने इस संभावना को कम करते हैं कि नतीजे बस संयोग थे! 📊",mr:"फक्त 10 लोकांचा अभ्यास 10,000 लोकांच्या अभ्यासापेक्षा खूप कमी विश्वासार्ह आहे — मोठे नमुने निकाल फक्त नशीब असण्याची शक्यता कमी करतात! 📊"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Study Design or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your research study knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो रिसर्च स्टडी के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला संशोधन अभ्यासाच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A single study with promising results is always enough proof that a treatment works.",hi:"आशाजनक नतीजों वाली एक अकेली स्टडी हमेशा इस बात का काफ़ी सबूत है कि एक इलाज काम करता है।",mr:"आशादायक निकालांसह एकच अभ्यास नेहमी उपचार काम करतो याचा पुरेसा पुरावा आहे."}, answer:false, explain:{en:"Myth! Scientists usually want to see results repeated across multiple studies before making strong claims.",hi:"मिथक! वैज्ञानिक आमतौर पर मज़बूत दावे करने से पहले कई स्टडी में दोहराए गए नतीजे देखना चाहते हैं।",mr:"मिथक! शास्त्रज्ञ सहसा जोरदार दावे करण्याआधी अनेक अभ्यासांमध्ये पुनरावृत्ती झालेले निकाल बघू इच्छितात."} },
+              { text:{en:"Comparing a treatment group to a similar group without the treatment helps isolate real effects.",hi:"इलाज समूह की तुलना बिना इलाज वाले समान समूह से करना असली प्रभावों को अलग करने में मदद करता है।",mr:"उपचार गटाची तुलना उपचाराशिवाय समान गटाशी केल्याने खरे परिणाम वेगळे करण्यास मदत होते."}, answer:true, explain:{en:"True! Comparison groups are essential for figuring out what's genuinely causing an effect.",hi:"सच! तुलना समूह यह पता लगाने के लिए ज़रूरी हैं कि असल में किसी असर का कारण क्या है।",mr:"खरं! खरंच काय परिणाम घडवत आहे हे शोधण्यासाठी तुलना गट आवश्यक असतात."} },
+              { text:{en:"Study results are automatically published as soon as researchers finish collecting data, with no further review.",hi:"शोधकर्ताओं के डेटा इकट्ठा करना खत्म करते ही स्टडी नतीजे स्वतः प्रकाशित हो जाते हैं, बिना किसी और समीक्षा के।",mr:"संशोधकांनी डेटा गोळा करणं संपल्यावर अभ्यासाचे निकाल आपोआप प्रकाशित होतात, पुढील कोणत्याही पुनरावलोकनाशिवाय."}, answer:false, explain:{en:"Myth! Studies typically go through peer review by other scientists before being published.",hi:"मिथक! स्टडी आमतौर पर प्रकाशित होने से पहले अन्य वैज्ञानिकों द्वारा पीयर रिव्यू से गुज़रती हैं।",mr:"मिथक! अभ्यास सहसा प्रकाशित होण्याआधी इतर शास्त्रज्ञांद्वारे पीअर रिव्ह्यूमधून जातात."} }
+            ]}}
+          ]},
+          { label: "Specialist Referral",
+            bonusAssignment: {
+              title: { en: "Referral Reasoning Card", hi: "रेफरल तर्क कार्ड", mr: "रेफरल तर्क कार्ड" },
+              prompt: { en: "Write about a situation where you think a general doctor should refer a patient to a specialist, and why. Take a photo!",
+                        hi: "एक ऐसी स्थिति के बारे में लिखो जहाँ तुम्हें लगता है कि एक जनरल डॉक्टर को मरीज़ को एक विशेषज्ञ के पास रेफर करना चाहिए, और क्यों। फोटो लो!",
+                        mr: "अशा परिस्थितीबद्दल लिहा जिथे तुम्हाला वाटतं की एका सामान्य डॉक्टरने रुग्णाला तज्ज्ञाकडे रेफर करावं, आणि का. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🔀", title: "Decide When to Refer", mentorVisual: "🔀",
+              mentorIntro: {
+                en: "Knowing when to refer a patient to a specialist — rather than trying to handle everything yourself — is a real mark of good judgment. Let's work through it.",
+                hi: "यह जानना कि कब एक मरीज़ को विशेषज्ञ के पास रेफर करना है — बजाय खुद सब कुछ संभालने की कोशिश करने के — अच्छे निर्णय का असली संकेत है। चलो इससे गुज़रते हैं।",
+                mr: "एका रुग्णाला तज्ज्ञाकडे कधी रेफर करायचं हे जाणून घेणं — स्वतः सर्वकाही हाताळण्याचा प्रयत्न करण्याऐवजी — चांगल्या निर्णयाचं खरं लक्षण आहे. चला यातून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient comes to you with persistent joint pain that hasn't improved with basic treatment over several weeks. What's your next move?",
+                             hi:"एक मरीज़ लगातार जोड़ों के दर्द के साथ तुम्हारे पास आता है जो कई हफ़्तों में बुनियादी इलाज से नहीं सुधरा। तुम्हारा अगला कदम क्या है?",
+                             mr:"एक रुग्ण सतत सांधेदुखीसह तुमच्याकडे येतो जी अनेक आठवड्यांत मूलभूत उपचाराने सुधारली नाही. तुमची पुढची कृती काय आहे?" },
+                choices: [
+                  { label:{en:"Refer to a rheumatologist or orthopedic specialist for further, more specialized evaluation", hi:"आगे, ज़्यादा विशेष मूल्यांकन के लिए एक रयूमेटोलॉजिस्ट या ऑर्थोपेडिक विशेषज्ञ के पास रेफर करो", mr:"पुढील, अधिक विशेष मूल्यमापनासाठी संधिवाततज्ज्ञ किंवा ऑर्थोपेडिक तज्ज्ञाकडे रेफर करा"}, quality:"best",
+                    outcome:{en:"Good judgment! Persistent joint pain not responding to basic treatment is exactly the kind of case that benefits from specialist expertise and more advanced evaluation.",hi:"अच्छा निर्णय! बुनियादी इलाज का जवाब न देने वाला लगातार जोड़ों का दर्द बिल्कुल वैसा मामला है जिसे विशेषज्ञ ज्ञान और ज़्यादा एडवांस मूल्यांकन से फ़ायदा होता है।",mr:"चांगला निर्णय! मूलभूत उपचाराला प्रतिसाद न देणारी सतत सांधेदुखी अगदी अशीच केस आहे जिला तज्ज्ञ ज्ञान आणि अधिक प्रगत मूल्यमापनाचा फायदा होतो."} },
+                  { label:{en:"Keep trying different basic treatments yourself indefinitely", hi:"खुद अलग-अलग बुनियादी इलाज अनिश्चित काल तक आज़माते रहो", mr:"स्वतः वेगवेगळे मूलभूत उपचार अनिश्चित काळासाठी करत राहा"}, quality:"risky",
+                    outcome:{en:"This could delay proper care. When basic treatment genuinely isn't working after a reasonable trial, continuing without specialist input can mean missing a real underlying issue.",hi:"यह उचित देखभाल में देरी कर सकता है। जब बुनियादी इलाज एक उचित परीक्षण के बाद वाकई काम नहीं कर रहा हो, तो विशेषज्ञ इनपुट के बिना जारी रखने का मतलब हो सकता है एक असली अंतर्निहित समस्या को छोड़ देना।",mr:"यामुळे योग्य काळजीस उशीर होऊ शकतो. वाजवी चाचणीनंतर मूलभूत उपचार खरंच काम करत नसताना, तज्ज्ञ इनपुटशिवाय सुरू ठेवणं म्हणजे खरी मूळ समस्या सोडून देणं असू शकतं."} }
+                ]
+              },
+              {
+                situation: { en:"The patient is nervous about seeing a specialist and asks if it means something is 'seriously wrong.' How do you respond?",
+                             hi:"मरीज़ एक विशेषज्ञ से मिलने को लेकर घबराया हुआ है और पूछता है कि क्या इसका मतलब है कि 'कुछ गंभीर गड़बड़' है। तुम कैसे जवाब देते हो?",
+                             mr:"रुग्ण तज्ज्ञाला भेटण्याबद्दल घाबरलेला आहे आणि विचारतो की याचा अर्थ 'काहीतरी गंभीर चुकीचं' आहे का. तुम्ही कसं उत्तर देता?" },
+                choices: [
+                  { label:{en:"Reassure them that referral is a normal, common step to get the best possible care, not a sign of something necessarily serious", hi:"उन्हें आश्वस्त करो कि रेफरल सबसे अच्छी संभव देखभाल पाने के लिए एक सामान्य, आम कदम है, ज़रूरी नहीं कि कुछ गंभीर का संकेत हो", mr:"त्यांना आश्वासन द्या की रेफरल हे सर्वोत्तम शक्य काळजी मिळवण्यासाठी एक सामान्य, नेहमीचं पाऊल आहे, आवश्यक नाही की काहीतरी गंभीर असल्याचं लक्षण"}, quality:"best",
+                    outcome:{en:"Great communication! Explaining that referral is a normal step toward better care, not automatically a bad sign, helps reduce unnecessary anxiety while still being honest.",hi:"बेहतरीन बातचीत! यह समझाना कि रेफरल बेहतर देखभाल की ओर एक सामान्य कदम है, स्वतः एक बुरा संकेत नहीं, ईमानदार रहते हुए अनावश्यक चिंता कम करने में मदद करता है।",mr:"उत्तम संवाद! रेफरल हे चांगल्या काळजीकडे एक सामान्य पाऊल आहे, आपोआप वाईट लक्षण नाही, हे समजावून सांगणं प्रामाणिक राहत अनावश्यक चिंता कमी करण्यास मदत करतं."} },
+                  { label:{en:"Avoid answering directly and just tell them to go see the specialist", hi:"सीधे जवाब देने से बचो और बस उन्हें विशेषज्ञ को देखने के लिए कहो", mr:"थेट उत्तर देणं टाळा आणि त्यांना फक्त तज्ज्ञाला भेटायला सांगा"}, quality:"risky",
+                    outcome:{en:"This misses a chance to genuinely reassure a worried patient. Avoiding their question can leave them more anxious than necessary, when clear communication could have helped.",hi:"यह एक चिंतित मरीज़ को वाकई आश्वस्त करने का मौका छोड़ देता है। उनके सवाल से बचना उन्हें ज़रूरत से ज़्यादा चिंतित छोड़ सकता है, जब स्पष्ट बातचीत मदद कर सकती थी।",mr:"यामुळे काळजीत असलेल्या रुग्णाला खरंच आश्वस्त करण्याची संधी चुकते. त्यांच्या प्रश्नाला टाळणं त्यांना गरजेपेक्षा जास्त काळजीत ठेवू शकतं, जेव्हा स्पष्ट संवाद मदत करू शकला असता."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🔀", title: "Explore the referral system", mentorVisual: "🔀",
+              mentorIntro: {
+                en: "Let's explore how the referral system connects general doctors to specialists.",
+                hi: "चलो एक्सप्लोर करते हैं रेफरल सिस्टम जनरल डॉक्टरों को विशेषज्ञों से कैसे जोड़ता है।",
+                mr: "चला एक्सप्लोर करूया रेफरल यंत्रणा सामान्य डॉक्टरांना तज्ज्ञांशी कशी जोडते."
+              },
+              data: { visual: "🔀", hotspots: [
+              { label:{en:"General doctors as gatekeepers",hi:"द्वारपाल के रूप में जनरल डॉक्टर",mr:"द्वारपाल म्हणून सामान्य डॉक्टर"}, fact:{en:"General doctors often act as a first point of contact, deciding when specialist care is genuinely needed!"} },
+              { label:{en:"Timely referral matters",hi:"समय पर रेफरल मायने रखता है",mr:"वेळेवर रेफरल महत्त्वाचं आहे"}, fact:{en:"Referring too late can delay important care — good doctors recognize when it's time to bring in specialist expertise!"} },
+              { label:{en:"Communication between doctors",hi:"डॉक्टरों के बीच बातचीत",mr:"डॉक्टरांमधील संवाद"}, fact:{en:"When referring a patient, doctors typically share detailed notes so the specialist has full context!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Specialist referral quiz",
+              desc: { en:"A real quiz on when and why doctors refer patients to specialists.", hi:"डॉक्टर कब और क्यों मरीज़ों को विशेषज्ञों के पास रेफर करते हैं, इस पर एक असली क्विज़।", mr:"डॉक्टर कधी आणि का रुग्णांना तज्ज्ञांकडे रेफर करतात, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Knowing your limits",
+              desc: { en:"Why do you think it takes real maturity and confidence for a doctor to recognize when a case is beyond what they should handle alone?", hi:"तुम्हें क्यों लगता है कि एक डॉक्टर के लिए यह पहचानना कि एक मामला उससे आगे है जिसे उसे अकेले संभालना चाहिए, असली परिपक्वता और आत्मविश्वास लेता है?", mr:"एखादी केस स्वतः एकट्याने हाताळण्यापलीकडे आहे हे ओळखण्यासाठी डॉक्टरला खरी परिपक्वता आणि आत्मविश्वास का लागतो असं तुम्हाला वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Referral Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced referral fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस रेफरल तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत रेफरल तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Referral letters exist?",hi:"रेफरल पत्र मौजूद हैं?",mr:"रेफरल पत्रं अस्तित्वात आहेत?"}, back:{en:"Doctors often write detailed referral letters, summarizing the case so the specialist doesn't start from scratch! ✉️",hi:"डॉक्टर अक्सर विस्तृत रेफरल पत्र लिखते हैं, मामले का सारांश देते हुए ताकि विशेषज्ञ शुरुआत से न शुरू करे! ✉️",mr:"डॉक्टर अनेकदा तपशीलवार रेफरल पत्रं लिहितात, केसचा सारांश देत जेणेकरून तज्ज्ञाला सुरुवातीपासून सुरुवात करावी लागू नये! ✉️"} },
+              { front:{en:"Second opinions differ from referrals?",hi:"दूसरी राय रेफरल से अलग है?",mr:"दुसरं मत रेफरलपेक्षा वेगळं आहे?"}, back:{en:"A referral for specialist treatment is different from simply seeking a second opinion — though both involve another doctor's input! 🔄",hi:"विशेषज्ञ इलाज के लिए रेफरल सिर्फ़ दूसरी राय लेने से अलग है — हालांकि दोनों में एक अन्य डॉक्टर का इनपुट शामिल है! 🔄",mr:"तज्ज्ञ उपचारासाठी रेफरल फक्त दुसरं मत घेण्यापेक्षा वेगळं आहे — जरी दोन्हींमध्ये दुसऱ्या डॉक्टरचं इनपुट समाविष्ट आहे! 🔄"} },
+              { front:{en:"Referral doesn't mean handing off completely?",hi:"रेफरल का मतलब पूरी तरह सौंप देना नहीं है?",mr:"रेफरलचा अर्थ पूर्णपणे सोपवणं नाही?"}, back:{en:"Often, the referring doctor stays involved in the patient's overall care, working alongside the specialist! 🤝",hi:"अक्सर, रेफर करने वाला डॉक्टर मरीज़ की समग्र देखभाल में शामिल रहता है, विशेषज्ञ के साथ काम करते हुए! 🤝",mr:"अनेकदा, रेफर करणारा डॉक्टर रुग्णाच्या एकूण काळजीत सामील राहतो, तज्ज्ञासोबत काम करत! 🤝"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Referral or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your referral knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो रेफरल के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला रेफरलच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A referral to a specialist always means something is seriously wrong.",hi:"एक विशेषज्ञ के पास रेफरल का हमेशा मतलब है कि कुछ गंभीर गड़बड़ है।",mr:"तज्ज्ञाकडे रेफरल म्हणजे नेहमी काहीतरी गंभीर चुकीचं असतं."}, answer:false, explain:{en:"Myth! Referral is a normal step to get the best possible care, not automatically a sign of something serious.",hi:"मिथक! रेफरल सबसे अच्छी संभव देखभाल पाने के लिए एक सामान्य कदम है, स्वतः किसी गंभीर चीज़ का संकेत नहीं।",mr:"मिथक! रेफरल हे सर्वोत्तम शक्य काळजी मिळवण्यासाठी एक सामान्य पाऊल आहे, आपोआप गंभीर काहीतरी असल्याचं लक्षण नाही."} },
+              { text:{en:"Doctors typically share detailed notes when referring a patient to a specialist.",hi:"डॉक्टर आमतौर पर मरीज़ को विशेषज्ञ के पास रेफर करते समय विस्तृत नोट्स साझा करते हैं।",mr:"डॉक्टर सहसा रुग्णाला तज्ज्ञाकडे रेफर करताना तपशीलवार नोंदी सांगतात."}, answer:true, explain:{en:"True! Sharing detailed notes helps the specialist understand the full context of the case.",hi:"सच! विस्तृत नोट्स साझा करना विशेषज्ञ को मामले के पूरे संदर्भ को समझने में मदद करता है।",mr:"खरं! तपशीलवार नोंदी सांगणं तज्ज्ञाला केसचा संपूर्ण संदर्भ समजून घेण्यास मदत करतं."} },
+              { text:{en:"Once a patient is referred, the original doctor has no further involvement in their care.",hi:"एक बार जब एक मरीज़ को रेफर कर दिया जाता है, मूल डॉक्टर की उनकी देखभाल में आगे कोई भागीदारी नहीं होती।",mr:"एकदा रुग्णाला रेफर केलं की, मूळ डॉक्टरचा त्यांच्या काळजीत पुढे कोणताही सहभाग नसतो."}, answer:false, explain:{en:"Myth! The referring doctor often stays involved, working alongside the specialist in the patient's overall care.",hi:"मिथक! रेफर करने वाला डॉक्टर अक्सर शामिल रहता है, मरीज़ की समग्र देखभाल में विशेषज्ञ के साथ काम करते हुए।",mr:"मिथक! रेफर करणारा डॉक्टर अनेकदा सामील राहतो, रुग्णाच्या एकूण काळजीत तज्ज्ञासोबत काम करत."} }
+            ]}}
+          ]},
+          { label: "Patient Communication",
+            bonusAssignment: {
+              title: { en: "Explain a Diagnosis Simply", hi: "एक निदान को सरलता से समझाओ", mr: "एक निदान सोप्या भाषेत समजावून सांगा" },
+              prompt: { en: "Pick a medical term (like 'hypertension') and write how you'd explain it simply to a worried patient. Take a photo!",
+                        hi: "एक मेडिकल शब्द चुनो (जैसे 'हाइपरटेंशन') और लिखो कि तुम इसे एक चिंतित मरीज़ को कैसे सरलता से समझाओगे। फोटो लो!",
+                        mr: "एक वैद्यकीय संज्ञा निवडा (जसं 'हायपरटेन्शन') आणि तुम्ही ती काळजीत असलेल्या रुग्णाला सोप्या भाषेत कशी समजावाल ते लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "💬", title: "Communicate a Diagnosis", mentorVisual: "💬",
+              mentorIntro: {
+                en: "How you explain something to a patient matters just as much as being medically correct. Let's practice a real conversation.",
+                hi: "तुम एक मरीज़ को कुछ कैसे समझाते हो यह मेडिकली सही होने जितना ही मायने रखता है। चलो एक असली बातचीत का अभ्यास करते हैं।",
+                mr: "तुम्ही रुग्णाला काहीतरी कसं समजावता हे वैद्यकीयदृष्ट्या बरोबर असण्याइतकंच महत्त्वाचं आहे. चला एका खऱ्या संभाषणाचा सराव करूया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"You need to tell a patient they have a chronic condition (like diabetes) that will require lifelong management. What's your approach?",
+                             hi:"तुम्हें एक मरीज़ को बताना है कि उन्हें एक क्रॉनिक स्थिति है (जैसे डायबिटीज़) जिसके लिए जीवनभर प्रबंधन की ज़रूरत होगी। तुम्हारा तरीका क्या है?",
+                             mr:"तुम्हाला एका रुग्णाला सांगायचं आहे की त्यांना एक दीर्घकालीन स्थिती आहे (जसं मधुमेह) ज्यासाठी आयुष्यभर व्यवस्थापन लागेल. तुमची पद्धत काय आहे?" },
+                choices: [
+                  { label:{en:"Explain clearly using simple language, check their understanding, and give them space to ask questions", hi:"साधी भाषा का इस्तेमाल करते हुए स्पष्ट रूप से समझाओ, उनकी समझ जाँचो, और उन्हें सवाल पूछने की जगह दो", mr:"साधी भाषा वापरून स्पष्टपणे समजावून सांगा, त्यांची समज तपासा, आणि त्यांना प्रश्न विचारायला जागा द्या"}, quality:"best",
+                    outcome:{en:"Excellent communication! Clear, simple language combined with checking understanding and inviting questions helps patients genuinely process difficult news.",hi:"बेहतरीन बातचीत! समझ जाँचने और सवाल पूछने के लिए आमंत्रित करने के साथ मिली स्पष्ट, साधी भाषा मरीज़ों को मुश्किल खबर को वाकई प्रोसेस करने में मदद करती है।",mr:"उत्तम संवाद! समज तपासणं आणि प्रश्न विचारायला आमंत्रित करणं यासोबत स्पष्ट, साधी भाषा रुग्णांना कठीण बातमी खरंच प्रोसेस करण्यास मदत करते."} },
+                  { label:{en:"Use technical medical terms quickly and move on to the next patient", hi:"जल्दी से तकनीकी मेडिकल शब्दों का इस्तेमाल करो और अगले मरीज़ की ओर बढ़ो", mr:"पटकन तांत्रिक वैद्यकीय संज्ञा वापरा आणि पुढच्या रुग्णाकडे जा"}, quality:"risky",
+                    outcome:{en:"This risks leaving the patient confused and overwhelmed. Technical language without checking understanding can mean they leave without truly grasping what's happening.",hi:"इसमें मरीज़ को भ्रमित और अभिभूत छोड़ने का जोखिम है। समझ जाँचे बिना तकनीकी भाषा का मतलब हो सकता है कि वे बिना यह वाकई समझे चले जाएँ कि क्या हो रहा है।",mr:"यात रुग्णाला गोंधळलेलं आणि दडपलेलं सोडण्याचा धोका आहे. समज न तपासता तांत्रिक भाषा म्हणजे ते खरंच काय होत आहे हे न समजता निघून जाऊ शकतात."} }
+                ]
+              },
+              {
+                situation: { en:"The patient becomes emotional and says they're scared about managing this condition for the rest of their life. How do you respond?",
+                             hi:"मरीज़ भावुक हो जाता है और कहता है कि वे अपनी बाकी ज़िंदगी इस स्थिति को संभालने से डरे हुए हैं। तुम कैसे जवाब देते हो?",
+                             mr:"रुग्ण भावूक होतो आणि म्हणतो की आयुष्यभर ही स्थिती व्यवस्थापित करण्याबद्दल ते घाबरलेले आहेत. तुम्ही कसं उत्तर देता?" },
+                choices: [
+                  { label:{en:"Acknowledge their feelings genuinely, then offer concrete next steps and support resources to make it feel manageable", hi:"वाकई उनकी भावनाओं को स्वीकार करो, फिर ठोस अगले कदम और सहायता संसाधन दो ताकि यह प्रबंधनीय महसूस हो", mr:"त्यांच्या भावना खरंच मान्य करा, मग ठोस पुढची पावलं आणि सहाय्यक साधनं द्या जेणेकरून ते व्यवस्थापित करण्यायोग्य वाटेल"}, quality:"best",
+                    outcome:{en:"Great empathy! Acknowledging real emotions before moving to practical next steps helps patients feel heard while also feeling equipped to move forward.",hi:"बेहतरीन सहानुभूति! व्यावहारिक अगले कदमों की ओर बढ़ने से पहले असली भावनाओं को स्वीकार करना मरीज़ों को सुना हुआ महसूस कराने में मदद करता है साथ ही आगे बढ़ने के लिए सुसज्जित भी।",mr:"उत्तम सहानुभूती! व्यावहारिक पुढच्या पावलांकडे जाण्याआधी खऱ्या भावना मान्य करणं रुग्णांना ऐकल्यासारखं वाटण्यास मदत करतं तसंच पुढे जाण्यास सुसज्जही वाटतं."} },
+                  { label:{en:"Quickly reassure them it'll be fine without really addressing their fear", hi:"बिना असल में उनके डर को संबोधित किए जल्दी से उन्हें आश्वस्त करो कि सब ठीक होगा", mr:"त्यांच्या भीतीला खरंच संबोधित न करता पटकन त्यांना आश्वस्त करा की सर्व ठीक होईल"}, quality:"risky",
+                    outcome:{en:"This can feel dismissive. A quick reassurance without truly addressing their fear may leave the patient feeling unheard, even if well-intentioned.",hi:"यह खारिज करने वाला महसूस हो सकता है। उनके डर को वाकई संबोधित किए बिना एक त्वरित आश्वासन मरीज़ को अनसुना महसूस करा सकता है, भले ही यह अच्छे इरादे से हो।",mr:"हे नाकारल्यासारखं वाटू शकतं. त्यांच्या भीतीला खरंच संबोधित न करता जलद आश्वासन रुग्णाला ऐकलं न गेल्यासारखं वाटू शकतं, जरी हे चांगल्या हेतूने असलं तरी."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "💬", title: "Explore communication skills", mentorVisual: "💬",
+              mentorIntro: {
+                en: "Let's explore what makes patient communication genuinely effective.",
+                hi: "चलो एक्सप्लोर करते हैं मरीज़ की बातचीत को वाकई असरदार क्या बनाता है।",
+                mr: "चला एक्सप्लोर करूया रुग्ण संवाद खरंच प्रभावी काय बनवतो."
+              },
+              data: { visual: "💬", hotspots: [
+              { label:{en:"Plain language",hi:"सादी भाषा",mr:"साधी भाषा"}, fact:{en:"Skilled doctors translate complex medical terms into language patients can genuinely understand!"} },
+              { label:{en:"Active listening",hi:"सक्रिय सुनना",mr:"सक्रिय ऐकणं"}, fact:{en:"Truly listening to a patient's concerns, not just talking at them, builds real trust!"} },
+              { label:{en:"Checking understanding",hi:"समझ जाँचना",mr:"समज तपासणं"}, fact:{en:"Good doctors ask patients to repeat back what they understood, catching any confusion early!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Patient communication quiz",
+              desc: { en:"A real quiz on effective, empathetic patient communication.", hi:"असरदार, सहानुभूतिपूर्ण मरीज़ बातचीत पर एक असली क्विज़।", mr:"प्रभावी, सहानुभूतीपूर्ण रुग्ण संवादावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Delivering hard news",
+              desc: { en:"How do you think you'd feel delivering difficult news to a patient? What communication skills do you think you'd want to build?", hi:"तुम्हें क्या लगता है एक मरीज़ को मुश्किल खबर देना कैसा महसूस होगा? तुम्हें क्या लगता है तुम कौन से बातचीत कौशल बनाना चाहोगे?", mr:"रुग्णाला कठीण बातमी देणं कसं वाटेल असं तुम्हाला वाटतं? तुम्हाला कोणती संवाद कौशल्यं तयार करायला आवडतील असं वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Communication Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced communication fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस बातचीत तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत संवाद तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Communication is taught formally?",hi:"बातचीत औपचारिक रूप से सिखाई जाती है?",mr:"संवाद औपचारिकपणे शिकवला जातो?"}, back:{en:"Many medical schools now have dedicated courses on patient communication, recognizing how important it genuinely is! 🎓",hi:"कई मेडिकल स्कूलों में अब मरीज़ बातचीत पर समर्पित कोर्स होते हैं, यह पहचानते हुए कि यह वाकई कितना ज़रूरी है! 🎓",mr:"अनेक वैद्यकीय शाळांमध्ये आता रुग्ण संवादावर समर्पित अभ्यासक्रम असतात, हे किती खरंच महत्त्वाचं आहे हे ओळखत! 🎓"} },
+              { front:{en:"Trust affects outcomes?",hi:"भरोसा नतीजों को प्रभावित करता है?",mr:"विश्वास निकालांवर परिणाम करतो?"}, back:{en:"Research shows patients who trust their doctor's communication often follow treatment plans more closely! 📈",hi:"रिसर्च दिखाती है कि जो मरीज़ अपने डॉक्टर की बातचीत पर भरोसा करते हैं वे अक्सर इलाज योजनाओं का ज़्यादा बारीकी से पालन करते हैं! 📈",mr:"संशोधन दाखवतं की जे रुग्ण त्यांच्या डॉक्टरच्या संवादावर विश्वास ठेवतात ते अनेकदा उपचार योजनांचं अधिक बारकाईने पालन करतात! 📈"} },
+              { front:{en:"Interpreters matter?",hi:"अनुवादक मायने रखते हैं?",mr:"भाषांतरकार महत्त्वाचे आहेत?"}, back:{en:"When language barriers exist, professional medical interpreters help ensure patients truly understand their care! 🗣️",hi:"जब भाषा की बाधाएँ होती हैं, पेशेवर मेडिकल अनुवादक यह सुनिश्चित करने में मदद करते हैं कि मरीज़ वाकई अपनी देखभाल को समझें! 🗣️",mr:"जेव्हा भाषेच्या अडचणी असतात, व्यावसायिक वैद्यकीय भाषांतरकार रुग्ण खरंच त्यांची काळजी समजून घेतात याची खात्री करण्यास मदत करतात! 🗣️"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Communication or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your patient communication knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो मरीज़ बातचीत के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला रुग्ण संवादाच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Using complex medical terms always makes a doctor sound more credible to patients.",hi:"जटिल मेडिकल शब्दों का इस्तेमाल हमेशा एक डॉक्टर को मरीज़ों के लिए ज़्यादा विश्वसनीय बनाता है।",mr:"जटिल वैद्यकीय संज्ञा वापरणं नेहमी डॉक्टरला रुग्णांसाठी अधिक विश्वासार्ह बनवतं."}, answer:false, explain:{en:"Myth! Clear, simple language that patients genuinely understand is usually far more effective and builds more trust than complex terms.",hi:"मिथक! स्पष्ट, साधी भाषा जिसे मरीज़ वाकई समझते हैं आमतौर पर जटिल शब्दों से कहीं ज़्यादा असरदार होती है और ज़्यादा भरोसा बनाती है।",mr:"मिथक! स्पष्ट, साधी भाषा जी रुग्ण खरंच समजतात सहसा जटिल संज्ञांपेक्षा खूप जास्त प्रभावी असते आणि जास्त विश्वास निर्माण करते."} },
+              { text:{en:"Checking whether a patient understood what you explained can catch confusion early.",hi:"यह जाँचना कि क्या एक मरीज़ ने वह समझा जो तुमने समझाया, जल्दी भ्रम पकड़ सकता है।",mr:"रुग्णाला तुम्ही समजावलेलं समजलं का हे तपासणं गोंधळ लवकर पकडू शकतं."}, answer:true, explain:{en:"True! Checking understanding is a simple but powerful way to catch miscommunication before it causes problems.",hi:"सच! समझ जाँचना गलत संचार को पकड़ने का एक साधा लेकिन शक्तिशाली तरीका है इससे पहले कि यह समस्याएँ पैदा करे।",mr:"खरं! समज तपासणं गैरसंवाद तो समस्या निर्माण करण्याआधी पकडण्याचा एक साधा पण शक्तिशाली मार्ग आहे."} },
+              { text:{en:"Patient communication skills are considered unimportant compared to medical knowledge.",hi:"मरीज़ बातचीत कौशल को मेडिकल ज्ञान की तुलना में महत्वहीन माना जाता है।",mr:"रुग्ण संवाद कौशल्यं वैद्यकीय ज्ञानाच्या तुलनेत बिनमहत्त्वाची मानली जातात."}, answer:false, explain:{en:"Myth! Communication skills are now widely recognized as genuinely essential, taught formally in many medical schools.",hi:"मिथक! बातचीत कौशल को अब व्यापक रूप से वाकई ज़रूरी माना जाता है, कई मेडिकल स्कूलों में औपचारिक रूप से पढ़ाया जाता है।",mr:"मिथक! संवाद कौशल्यं आता मोठ्या प्रमाणावर खरंच आवश्यक मानली जातात, अनेक वैद्यकीय शाळांमध्ये औपचारिकपणे शिकवली जातात."} }
+            ]}}
+          ]},
+          { label: "Public Health Crisis",
+            bonusAssignment: {
+              title: { en: "Crisis Response Plan", hi: "संकट प्रतिक्रिया योजना", mr: "संकट प्रतिसाद योजना" },
+              prompt: { en: "Research a historical public health crisis (like an outbreak) and write 3-4 sentences on how it was managed. Take a photo!",
+                        hi: "एक ऐतिहासिक पब्लिक हेल्थ संकट (जैसे एक प्रकोप) पर रिसर्च करो और लिखो इसे कैसे संभाला गया, 3-4 वाक्यों में। फोटो लो!",
+                        mr: "एका ऐतिहासिक सार्वजनिक आरोग्य संकटावर (जसं एक उद्रेक) संशोधन करा आणि ते कसं व्यवस्थापित केलं गेलं याबद्दल 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🌍", title: "Manage a Health Crisis", mentorVisual: "🌍",
+              mentorIntro: {
+                en: "During a public health crisis, decisions affect entire communities, not just one patient. Let's work through a realistic scenario.",
+                hi: "एक पब्लिक हेल्थ संकट के दौरान, फ़ैसले पूरे समुदायों को प्रभावित करते हैं, सिर्फ़ एक मरीज़ को नहीं। चलो एक यथार्थवादी परिदृश्य से गुज़रते हैं।",
+                mr: "सार्वजनिक आरोग्य संकटादरम्यान, निर्णय संपूर्ण समुदायांवर परिणाम करतात, फक्त एका रुग्णावर नाही. चला एका वास्तववादी परिस्थितीतून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A new, fast-spreading illness is affecting your town. Hospitals are getting busy quickly. As part of the response team, what's your first priority?",
+                             hi:"एक नई, तेज़ी से फैलने वाली बीमारी तुम्हारे शहर को प्रभावित कर रही है। अस्पताल तेज़ी से व्यस्त हो रहे हैं। रिस्पॉन्स टीम के हिस्से के रूप में, तुम्हारी पहली प्राथमिकता क्या है?",
+                             mr:"एक नवीन, वेगाने पसरणारा आजार तुमच्या गावाला प्रभावित करत आहे. रुग्णालयं वेगाने व्यस्त होत आहेत. प्रतिसाद टीमचा भाग म्हणून, तुमचं पहिलं प्राधान्य काय आहे?" },
+                choices: [
+                  { label:{en:"Communicate clear, accurate information to the public about symptoms and prevention", hi:"लक्षणों और बचाव के बारे में जनता को स्पष्ट, सटीक जानकारी दो", mr:"लक्षणं आणि प्रतिबंधाबद्दल जनतेला स्पष्ट, अचूक माहिती द्या"}, quality:"best",
+                    outcome:{en:"Excellent priority! Clear, accurate public communication is one of the most powerful tools in a health crisis — it helps people protect themselves and reduces panic caused by misinformation.",hi:"बेहतरीन प्राथमिकता! स्पष्ट, सटीक सार्वजनिक बातचीत एक स्वास्थ्य संकट में सबसे शक्तिशाली उपकरणों में से एक है — यह लोगों को खुद की रक्षा करने में मदद करती है और गलत सूचना से होने वाली घबराहट को कम करती है।",mr:"उत्तम प्राधान्य! स्पष्ट, अचूक सार्वजनिक संवाद हे आरोग्य संकटातील सर्वात शक्तिशाली साधनांपैकी एक आहे — हे लोकांना स्वतःचं रक्षण करण्यास मदत करतं आणि चुकीच्या माहितीमुळे होणारी घबराट कमी करतं."} },
+                  { label:{en:"Wait for official confirmation before saying anything to avoid causing worry", hi:"चिंता पैदा करने से बचने के लिए कुछ भी कहने से पहले आधिकारिक पुष्टि की प्रतीक्षा करो", mr:"काळजी निर्माण होऊ नये म्हणून काहीही बोलण्याआधी अधिकृत पुष्टीची वाट बघा"}, quality:"risky",
+                    outcome:{en:"This delay could backfire. In fast-moving crises, silence often gets filled with misinformation and rumors, which can be more harmful than timely, honest communication.",hi:"यह देरी उल्टा असर डाल सकती है। तेज़ी से बदलते संकटों में, चुप्पी अक्सर गलत सूचना और अफ़वाहों से भर जाती है, जो समय पर, ईमानदार बातचीत से ज़्यादा हानिकारक हो सकती है।",mr:"हा विलंब उलटा परिणाम करू शकतो. वेगाने बदलणाऱ्या संकटांमध्ये, शांतता अनेकदा चुकीची माहिती आणि अफवांनी भरली जाते, जी वेळेवर, प्रामाणिक संवादापेक्षा जास्त हानिकारक असू शकते."} }
+                ]
+              },
+              {
+                situation: { en:"Hospitals are now nearly full. The team must decide how to allocate limited resources fairly. What guides this decision?",
+                             hi:"अस्पताल अब लगभग पूरे भर गए हैं। टीम को यह तय करना होगा कि सीमित संसाधनों को निष्पक्ष रूप से कैसे बाँटा जाए। यह फ़ैसला किससे निर्देशित होता है?",
+                             mr:"रुग्णालयं आता जवळजवळ भरली आहेत. टीमने मर्यादित साधनं निष्पक्षपणे कशी वाटायची हे ठरवावं लागेल. हा निर्णय कशाने मार्गदर्शित होतो?" },
+                choices: [
+                  { label:{en:"Follow established medical priority guidelines, treating those with the most urgent need first, regardless of other factors", hi:"स्थापित मेडिकल प्राथमिकता दिशानिर्देशों का पालन करो, अन्य कारकों की परवाह किए बिना सबसे अत्यावश्यक ज़रूरत वालों का पहले इलाज करो", mr:"स्थापित वैद्यकीय प्राधान्य मार्गदर्शक तत्त्वांचं पालन करा, इतर घटकांची पर्वा न करता सर्वात तातडीची गरज असलेल्यांवर आधी उपचार करा"}, quality:"best",
+                    outcome:{en:"Right approach! Following established, fair medical guidelines rather than ad-hoc decisions helps ensure resources go where they're most medically needed, treating everyone fairly.",hi:"सही तरीका! तदर्थ फ़ैसलों के बजाय स्थापित, निष्पक्ष मेडिकल दिशानिर्देशों का पालन करना यह सुनिश्चित करने में मदद करता है कि संसाधन वहाँ जाएँ जहाँ उनकी मेडिकली सबसे ज़्यादा ज़रूरत है, सबके साथ निष्पक्ष व्यवहार करते हुए।",mr:"योग्य पद्धत! तात्पुरत्या निर्णयांऐवजी स्थापित, निष्पक्ष वैद्यकीय मार्गदर्शक तत्त्वांचं पालन करणं साधनं जिथे वैद्यकीयदृष्ट्या सर्वात जास्त गरज आहे तिथे जातील याची खात्री करण्यास मदत करतं, सर्वांशी निष्पक्ष वागत."} },
+                  { label:{en:"Let each individual doctor decide case-by-case with no shared guidelines", hi:"हर अलग-अलग डॉक्टर को बिना किसी साझा दिशानिर्देश के केस-दर-केस तय करने दो", mr:"प्रत्येक वेगळ्या डॉक्टरला कोणत्याही सामायिक मार्गदर्शक तत्त्वांशिवाय केस-दर-केस ठरवू द्या"}, quality:"risky",
+                    outcome:{en:"Without shared guidelines, decisions could become inconsistent and potentially unfair — clear, agreed-upon protocols help ensure everyone is treated by the same fair standard.",hi:"साझा दिशानिर्देशों के बिना, फ़ैसले असंगत और संभावित रूप से अनुचित हो सकते हैं — स्पष्ट, सहमत प्रोटोकॉल यह सुनिश्चित करने में मदद करते हैं कि सबके साथ एक ही निष्पक्ष मानक से व्यवहार हो।",mr:"सामायिक मार्गदर्शक तत्त्वांशिवाय, निर्णय विसंगत आणि शक्यतो अन्यायकारक होऊ शकतात — स्पष्ट, मान्य केलेले प्रोटोकॉल सर्वांशी त्याच निष्पक्ष मानकाने वागवलं जातं याची खात्री करण्यास मदत करतात."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🌍", title: "Explore crisis response principles", mentorVisual: "🌍",
+              mentorIntro: {
+                en: "Let's explore the key principles behind managing a public health crisis effectively.",
+                hi: "चलो पब्लिक हेल्थ संकट को असरदार तरीके से संभालने के पीछे के मुख्य सिद्धांतों को एक्सप्लोर करते हैं।",
+                mr: "चला सार्वजनिक आरोग्य संकट प्रभावीपणे व्यवस्थापित करण्यामागील मुख्य तत्त्वं एक्सप्लोर करूया."
+              },
+              data: { visual: "🌍", hotspots: [
+              { label:{en:"Speed matters",hi:"गति मायने रखती है",mr:"वेग महत्त्वाचा आहे"}, fact:{en:"In fast-spreading crises, quick, well-informed action can genuinely limit how much a problem grows!"} },
+              { label:{en:"Coordination across teams",hi:"टीमों में समन्वय",mr:"टीम्समध्ये समन्वय"}, fact:{en:"Public health crises require hospitals, government, and communities all working together, not in isolation!"} },
+              { label:{en:"Learning afterward",hi:"बाद में सीखना",mr:"नंतर शिकणं"}, fact:{en:"After a crisis passes, teams carefully review what worked and what didn't, to prepare better for next time!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Public health crisis quiz",
+              desc: { en:"A real quiz on how public health crises are managed at a community level.", hi:"सामुदायिक स्तर पर पब्लिक हेल्थ संकट कैसे संभाले जाते हैं, इस पर एक असली क्विज़।", mr:"सामुदायिक पातळीवर सार्वजनिक आरोग्य संकट कसं व्यवस्थापित केलं जातं, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Decisions affecting many",
+              desc: { en:"How do you think it feels to make decisions that affect an entire community, not just one patient? What would help you handle that responsibility?", hi:"तुम्हें क्या लगता है ऐसे फ़ैसले लेना कैसा महसूस होगा जो पूरे समुदाय को प्रभावित करते हैं, सिर्फ़ एक मरीज़ को नहीं? इस ज़िम्मेदारी को संभालने में तुम्हें क्या मदद करेगा?", mr:"संपूर्ण समुदायावर परिणाम करणारे निर्णय घेणं कसं वाटेल असं तुम्हाला वाटतं, फक्त एका रुग्णावर नाही? ती जबाबदारी हाताळण्यास तुम्हाला काय मदत करेल?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Crisis Response Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced crisis response fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस संकट प्रतिक्रिया तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत संकट प्रतिसाद तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Surge capacity plans?",hi:"सर्ज कैपेसिटी योजनाएँ?",mr:"सर्ज क्षमता योजना?"}, back:{en:"Hospitals often have 'surge capacity' plans ready in advance, for quickly expanding care during a crisis! 📈",hi:"अस्पतालों में अक्सर संकट के दौरान तेज़ी से देखभाल बढ़ाने के लिए पहले से 'सर्ज कैपेसिटी' योजनाएँ तैयार होती हैं! 📈",mr:"रुग्णालयांकडे अनेकदा संकटादरम्यान त्वरित काळजी वाढवण्यासाठी आधीच 'सर्ज क्षमता' योजना तयार असतात! 📈"} },
+              { front:{en:"Global coordination?",hi:"वैश्विक समन्वय?",mr:"जागतिक समन्वय?"}, back:{en:"For crises crossing borders, organizations coordinate globally to share information and resources quickly! 🌐",hi:"सीमाओं को पार करने वाले संकटों के लिए, संगठन जल्दी से जानकारी और संसाधन साझा करने के लिए वैश्विक रूप से समन्वय करते हैं! 🌐",mr:"सीमा ओलांडणाऱ्या संकटांसाठी, संघटना माहिती आणि साधनं त्वरित सामायिक करण्यासाठी जागतिक स्तरावर समन्वय साधतात! 🌐"} },
+              { front:{en:"Communication in multiple languages?",hi:"कई भाषाओं में बातचीत?",mr:"अनेक भाषांमध्ये संवाद?"}, back:{en:"Effective crisis communication often needs to reach people in multiple languages, to protect entire diverse communities! 🗣️",hi:"असरदार संकट बातचीत को अक्सर पूरे विविध समुदायों की रक्षा के लिए लोगों तक कई भाषाओं में पहुँचने की ज़रूरत होती है! 🗣️",mr:"प्रभावी संकट संवादाला अनेकदा संपूर्ण वैविध्यपूर्ण समुदायांचं रक्षण करण्यासाठी अनेक भाषांमध्ये लोकांपर्यंत पोहोचण्याची गरज असते! 🗣️"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Crisis Response or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your crisis-response knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो संकट-प्रतिक्रिया के तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला संकट-प्रतिसादाच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Staying silent until everything is fully confirmed is always the best crisis communication approach.",hi:"जब तक सब कुछ पूरी तरह पुष्टि न हो जाए तब तक चुप रहना हमेशा सबसे अच्छा संकट बातचीत तरीका है।",mr:"सर्वकाही पूर्णपणे पुष्टी होईपर्यंत गप्प राहणं नेहमी सर्वोत्तम संकट संवाद पद्धत आहे."}, answer:false, explain:{en:"Myth! Timely, honest communication, even with some uncertainty, often prevents misinformation and panic better than prolonged silence.",hi:"मिथक! समय पर, ईमानदार बातचीत, कुछ अनिश्चितता के साथ भी, अक्सर लंबी चुप्पी से बेहतर गलत सूचना और घबराहट को रोकती है।",mr:"मिथक! वेळेवर, प्रामाणिक संवाद, काही अनिश्चिततेसहही, अनेकदा दीर्घकाळ गप्प राहण्यापेक्षा चुकीची माहिती आणि घबराट चांगली रोखतो."} },
+              { text:{en:"Hospitals often prepare 'surge capacity' plans in advance for crisis situations.",hi:"अस्पताल अक्सर संकट स्थितियों के लिए पहले से 'सर्ज कैपेसिटी' योजनाएँ तैयार करते हैं।",mr:"रुग्णालयं अनेकदा संकट परिस्थितींसाठी आधीच 'सर्ज क्षमता' योजना तयार करतात."}, answer:true, explain:{en:"True! Advance planning for surge capacity is a real, common practice to help hospitals respond quickly.",hi:"सच! सर्ज कैपेसिटी के लिए पहले से योजना बनाना अस्पतालों को तेज़ी से जवाब देने में मदद करने के लिए एक असली, आम अभ्यास है।",mr:"खरं! सर्ज क्षमतेसाठी आधीच नियोजन करणं रुग्णालयांना त्वरित प्रतिसाद देण्यास मदत करण्यासाठी एक खरं, सामान्य पद्धत आहे."} },
+              { text:{en:"Resource allocation during a crisis should be decided randomly with no shared guidelines.",hi:"संकट के दौरान संसाधन आवंटन को बिना किसी साझा दिशानिर्देश के बेतरतीब ढंग से तय किया जाना चाहिए।",mr:"संकटादरम्यान साधन वाटप कोणत्याही सामायिक मार्गदर्शक तत्त्वांशिवाय यादृच्छिकपणे ठरवलं जावं."}, answer:false, explain:{en:"Myth! Fair, established medical guidelines are used to ensure resources go where medically needed most, treating everyone consistently.",hi:"मिथक! निष्पक्ष, स्थापित मेडिकल दिशानिर्देशों का इस्तेमाल यह सुनिश्चित करने के लिए किया जाता है कि संसाधन वहाँ जाएँ जहाँ मेडिकली सबसे ज़्यादा ज़रूरत है, सबके साथ लगातार व्यवहार करते हुए।",mr:"मिथक! निष्पक्ष, स्थापित वैद्यकीय मार्गदर्शक तत्त्वं साधनं जिथे वैद्यकीयदृष्ट्या सर्वात जास्त गरज आहे तिथे जातील याची खात्री करण्यासाठी वापरली जातात, सर्वांशी सातत्याने वागत."} }
+            ]}}
+          ]},
+          { label: "Specialty Deep Dive",
+            bonusAssignment: {
+              title: { en: "My Specialty Choice Reflection", hi: "मेरी स्पेशलिटी पसंद पर विचार", mr: "माझी खासियत निवड विचार" },
+              prompt: { en: "Out of all the specialties you've explored (cardiology, pediatrics, radiology, etc.), pick your top choice and write 3-4 sentences on why. Take a photo!",
+                        hi: "तुमने जितनी स्पेशलिटी एक्सप्लोर कीं (कार्डियोलॉजी, पीडियाट्रिक्स, रेडियोलॉजी, आदि) उनमें से अपनी टॉप पसंद चुनो और 3-4 वाक्य लिखो कि क्यों। फोटो लो!",
+                        mr: "तुम्ही एक्सप्लोर केलेल्या सर्व खासियतींपैकी (कार्डिओलॉजी, पीडियाट्रिक्स, रेडिओलॉजी, इ.) तुमची पहिली पसंती निवडा आणि का याबद्दल 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "tap-discover", icon: "🎯", title: "Revisit your favorite specialties", mentorVisual: "🎯",
+              mentorIntro: {
+                en: "You've explored many specialties across Std 10 and 11. Let's revisit a few and think about what genuinely stood out to you.",
+                hi: "तुमने Std 10 और 11 में कई स्पेशलिटी एक्सप्लोर कीं। चलो कुछ को फिर से देखते हैं और सोचते हैं कि तुम्हें असल में क्या पसंद आया।",
+                mr: "तुम्ही Std 10 आणि 11 मध्ये अनेक खासियती एक्सप्लोर केल्या. चला काहींना पुन्हा भेटूया आणि विचार करूया की तुम्हाला खरंच काय आवडलं."
+              },
+              data: { visual: "🎯", hotspots: [
+              { label:{en:"Hands-on specialties",hi:"हाथों-हाथ स्पेशलिटी",mr:"प्रत्यक्ष खासियती"}, fact:{en:"Specialties like surgery and emergency medicine involve a lot of direct, hands-on action!"} },
+              { label:{en:"Thoughtful specialties",hi:"विचारशील स्पेशलिटी",mr:"विचारशील खासियती"}, fact:{en:"Specialties like pathology and psychiatry involve more careful analysis and deep thinking!"} },
+              { label:{en:"People-focused specialties",hi:"लोगों पर केंद्रित स्पेशलिटी",mr:"लोकांवर केंद्रित खासियती"}, fact:{en:"Specialties like pediatrics and public health involve deep connection with patients or whole communities!"} }
+            ]}},
+            { engine: "build-match", icon: "🎯", title: "Match your interests to a specialty type", mentorVisual: "🩺",
+              mentorIntro: {
+                en: "Let's think about what kind of work genuinely excites you, and connect that to real specialty types.",
+                hi: "चलो सोचते हैं कि किस तरह का काम तुम्हें वाकई उत्साहित करता है, और उसे असली स्पेशलिटी प्रकारों से जोड़ते हैं।",
+                mr: "चला विचार करूया कोणत्या प्रकारचं काम तुम्हाला खरंच उत्साहित करतं, आणि ते खऱ्या खासियत प्रकारांशी जोडूया."
+              },
+              data: { noStakes: true, zones: [
+              { id: "action", label: { en:"I like fast-paced, hands-on action", hi:"मुझे तेज़-रफ़्तार, हाथों-हाथ काम पसंद है", mr:"मला वेगवान, प्रत्यक्ष कृती आवडते" } },
+              { id: "thinking", label: { en:"I like careful analysis and problem-solving", hi:"मुझे सावधान विश्लेषण और समस्या-समाधान पसंद है", mr:"मला काळजीपूर्वक विश्लेषण आणि समस्या-सोडवणं आवडतं" } },
+              { id: "people", label: { en:"I like building relationships and helping people directly", hi:"मुझे रिश्ते बनाना और लोगों की सीधे मदद करना पसंद है", mr:"मला नाती बनवणं आणि लोकांना थेट मदत करणं आवडतं" } }
+            ], chips: ["action","thinking","people"] }},
+            { type: "Quiz", icon: "📝", title: "Specialty deep dive quiz",
+              desc: { en:"A real quiz reviewing key facts about the specialties you've explored across Std 10-11.", hi:"Std 10-11 में तुमने जो स्पेशलिटी एक्सप्लोर कीं उनके बारे में मुख्य तथ्यों की समीक्षा करने वाला एक असली क्विज़।", mr:"Std 10-11 मध्ये तुम्ही एक्सप्लोर केलेल्या खासियतींबद्दलच्या मुख्य तथ्यांचा आढावा घेणारा एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Your top specialty pick",
+              desc: { en:"Out of everything you've explored so far, which specialty genuinely interests you the most right now, and why?", hi:"अब तक जो कुछ भी तुमने एक्सप्लोर किया उसमें से, कौन सी स्पेशलिटी अभी वाकई तुम्हें सबसे ज़्यादा दिलचस्प लगती है, और क्यों?", mr:"आतापर्यंत तुम्ही एक्सप्लोर केलेल्या सर्व गोष्टींपैकी, कोणती खासियत आत्ता खरंच तुम्हाला सर्वात जास्त रुचकर वाटते, आणि का?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Specialty Path Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about choosing a specialty path!",
+                hi: "चलो और गहराई में जाते हैं — एक स्पेशलिटी रास्ता चुनने के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — खासियत मार्ग निवडण्याबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Choices can change?",hi:"पसंद बदल सकती है?",mr:"निवड बदलू शकते?"}, back:{en:"Many doctors change their specialty interest during medical training as they gain real experience — it's normal to evolve! 🔄",hi:"कई डॉक्टर मेडिकल प्रशिक्षण के दौरान अपनी स्पेशलिटी की दिलचस्पी बदलते हैं जैसे-जैसे उन्हें असली अनुभव मिलता है — विकसित होना सामान्य है! 🔄",mr:"अनेक डॉक्टर वैद्यकीय प्रशिक्षणादरम्यान त्यांची खासियत आवड बदलतात जसजसा त्यांना खरा अनुभव मिळतो — विकसित होणं सामान्य आहे! 🔄"} },
+              { front:{en:"Exposure matters?",hi:"अनुभव मायने रखता है?",mr:"अनुभव महत्त्वाचा आहे?"}, back:{en:"Real hands-on exposure to different specialties, like what you've done here, genuinely helps people find the right fit! 🔍",hi:"अलग-अलग स्पेशलिटी के असली हाथों-हाथ अनुभव, जैसा तुमने यहाँ किया, वाकई लोगों को सही फिट खोजने में मदद करते हैं! 🔍",mr:"वेगवेगळ्या खासियतींचा खरा प्रत्यक्ष अनुभव, जसं तुम्ही इथे केलं, खरंच लोकांना योग्य जुळणी शोधण्यास मदत करतो! 🔍"} },
+              { front:{en:"No single 'right' path?",hi:"कोई एक 'सही' रास्ता नहीं?",mr:"कोणताही एक 'योग्य' मार्ग नाही?"}, back:{en:"There's no single 'best' specialty — the right choice is genuinely personal, based on what excites and fulfills each individual! ✨",hi:"कोई एक 'सबसे अच्छी' स्पेशलिटी नहीं है — सही पसंद वाकई व्यक्तिगत है, इस पर आधारित कि हर व्यक्ति को क्या उत्साहित और संतुष्ट करता है! ✨",mr:"एकही 'सर्वोत्तम' खासियत नाही — योग्य निवड खरंच वैयक्तिक आहे, प्रत्येक व्यक्तीला काय उत्साहित आणि संतुष्ट करतं यावर आधारित! ✨"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Specialty Choice or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge about choosing a specialty! Decide if each statement is true or a myth.",
+                hi: "चलो एक स्पेशलिटी चुनने के बारे में तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला खासियत निवडण्याबद्दलच्या तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Once someone picks a medical specialty interest, they can never change their mind.",hi:"एक बार जब कोई एक मेडिकल स्पेशलिटी में दिलचस्पी चुन लेता है, तो वे कभी अपना मन नहीं बदल सकते।",mr:"एकदा कोणीतरी वैद्यकीय खासियतीत रस निवडला की, ते कधीच त्यांचं मन बदलू शकत नाहीत."}, answer:false, explain:{en:"Myth! It's completely normal for people to change their specialty interest as they gain more real experience.",hi:"मिथक! लोगों के लिए ज़्यादा असली अनुभव पाने पर अपनी स्पेशलिटी की दिलचस्पी बदलना बिल्कुल सामान्य है।",mr:"मिथक! अधिक खरा अनुभव मिळाल्यावर लोकांची खासियत आवड बदलणं पूर्णपणे सामान्य आहे."} },
+              { text:{en:"There's a single 'best' medical specialty that's objectively right for everyone.",hi:"एक अकेली 'सबसे अच्छी' मेडिकल स्पेशलिटी है जो हर किसी के लिए वस्तुनिष्ठ रूप से सही है।",mr:"एक 'सर्वोत्तम' वैद्यकीय खासियत आहे जी प्रत्येकासाठी वस्तुनिष्ठपणे योग्य आहे."}, answer:false, explain:{en:"Myth! The right specialty is genuinely personal, depending on what excites and fits each individual person.",hi:"मिथक! सही स्पेशलिटी वाकई व्यक्तिगत है, इस पर निर्भर करती है कि हर व्यक्ति को क्या उत्साहित करता है और फिट बैठता है।",mr:"मिथक! योग्य खासियत खरंच वैयक्तिक आहे, प्रत्येक व्यक्तीला काय उत्साहित करतं आणि जुळतं यावर अवलंबून."} },
+              { text:{en:"Hands-on exposure to different specialties genuinely helps people find the right fit for them.",hi:"अलग-अलग स्पेशलिटी में हाथों-हाथ अनुभव वाकई लोगों को उनके लिए सही फिट खोजने में मदद करता है।",mr:"वेगवेगळ्या खासियतींमधील प्रत्यक्ष अनुभव खरंच लोकांना त्यांच्यासाठी योग्य जुळणी शोधण्यास मदत करतो."}, answer:true, explain:{en:"True! Real exposure, like what this year's missions gave you, is a genuinely valuable way to explore fit.",hi:"सच! असली अनुभव, जैसा इस साल के मिशन ने तुम्हें दिया, जुळणी एक्सप्लोर करने का एक वाकई मूल्यवान तरीका है।",mr:"खरं! खरा अनुभव, जसं या वर्षीच्या मिशन्सनी तुम्हाला दिला, जुळणी एक्सप्लोर करण्याचा एक खरंच मौल्यवान मार्ग आहे."} }
+            ]}}
+          ]},
+          { label: "Capstone: Full Patient Journey",
+            bonusAssignment: {
+              title: { en: "My Full Patient Case", hi: "मेरा पूरा मरीज़ केस", mr: "माझी संपूर्ण रुग्ण केस" },
+              prompt: { en: "Write a full fictional patient journey — from first symptom, through diagnosis, to treatment plan. Take a photo of your story!",
+                        hi: "एक पूरी काल्पनिक मरीज़ यात्रा लिखो — पहले लक्षण से, निदान के ज़रिए, इलाज योजना तक। अपनी कहानी की फोटो लो!",
+                        mr: "एक संपूर्ण काल्पनिक रुग्ण प्रवास लिहा — पहिल्या लक्षणापासून, निदानातून, उपचार योजनेपर्यंत. तुमच्या गोष्टीचा फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🎓", title: "Guide the Complete Journey", mentorVisual: "🎓",
+              mentorIntro: {
+                en: "This is it — your Std 11 capstone! Let's combine everything you've learned this year into one complete patient journey, from first contact to final plan.",
+                hi: "यह है — तुम्हारा Std 11 कैपस्टोन! चलो इस साल तुमने जो कुछ भी सीखा है उसे एक पूरी मरीज़ यात्रा में मिलाते हैं, पहले संपर्क से अंतिम योजना तक।",
+                mr: "हे आहे — तुमचं Std 11 कॅपस्टोन! चला या वर्षी तुम्ही जे काही शिकलात ते एका संपूर्ण रुग्ण प्रवासात एकत्र करूया, पहिल्या संपर्कापासून अंतिम योजनेपर्यंत."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient arrives describing fatigue, occasional dizziness, and a fast heartbeat that's been going on for two weeks. What's your first priority?",
+                             hi:"एक मरीज़ थकान, कभी-कभी चक्कर, और तेज़ दिल की धड़कन का वर्णन करते हुए आता है जो दो हफ़्तों से चल रहा है। तुम्हारी पहली प्राथमिकता क्या है?",
+                             mr:"एक रुग्ण थकवा, अधूनमधून चक्कर, आणि दोन आठवड्यांपासून सुरू असलेली जलद हृदयगती वर्णन करत येतो. तुमचं पहिलं प्राधान्य काय आहे?" },
+                choices: [
+                  { label:{en:"Check full vitals and get an ECG, since these symptoms together could point to a cardiac issue", hi:"पूरे वाइटल्स जाँचो और ईसीजी करो, क्योंकि ये लक्षण एक साथ दिल की समस्या की ओर इशारा कर सकते हैं", mr:"संपूर्ण व्हायटल्स तपासा आणि ईसीजी करा, कारण ही लक्षणं एकत्र हृदयाच्या समस्येकडे निर्देश करू शकतात"}, quality:"best",
+                    outcome:{en:"Great instinct! Fatigue, dizziness, and rapid heartbeat together are exactly the kind of combination that warrants a full vitals check and ECG — real diagnostic thinking from this whole year.",hi:"बेहतरीन सोच! थकान, चक्कर, और तेज़ दिल की धड़कन एक साथ बिल्कुल वैसा संयोजन है जो पूरी वाइटल्स जाँच और ईसीजी की माँग करता है — इस पूरे साल की असली निदान सोच।",mr:"उत्तम अंतःप्रेरणा! थकवा, चक्कर, आणि जलद हृदयगती एकत्र अगदी असंच संयोजन आहे जे पूर्ण व्हायटल्स तपासणी आणि ईसीजीची मागणी करतं — या संपूर्ण वर्षाचा खरा निदान विचार."} },
+                  { label:{en:"Assume it's just stress and send them home without further checks", hi:"मान लो कि यह बस तनाव है और बिना और जाँच के उन्हें घर भेज दो", mr:"असं गृहीत धरा की हा फक्त तणाव आहे आणि पुढील तपासणीशिवाय त्यांना घरी पाठवा"}, quality:"risky",
+                    outcome:{en:"This risks missing something important. While stress could be a factor, these specific symptoms together deserve proper investigation before ruling out anything more serious.",hi:"इससे कुछ ज़रूरी छूटने का जोखिम है। तनाव एक कारक हो सकता है, लेकिन ये खास लक्षण एक साथ किसी और गंभीर चीज़ को खारिज करने से पहले उचित जांच के हकदार हैं।",mr:"यात काहीतरी महत्त्वाचं चुकण्याचा धोका आहे. तणाव एक घटक असू शकतो, पण ही विशिष्ट लक्षणं एकत्र अधिक गंभीर काहीही नाकारण्याआधी योग्य तपासणीस पात्र आहेत."} }
+                ]
+              },
+              {
+                situation: { en:"Tests reveal a mild but genuine heart rhythm irregularity. The patient is anxious and asks what happens next. How do you guide them forward?",
+                             hi:"टेस्ट एक हल्की लेकिन असली दिल की लय की अनियमितता दिखाते हैं। मरीज़ चिंतित है और पूछता है कि आगे क्या होता है। तुम उन्हें आगे कैसे निर्देशित करते हो?",
+                             mr:"चाचण्या एक सौम्य पण खरी हृदय तालाची अनियमितता दाखवतात. रुग्ण चिंतित आहे आणि विचारतो पुढे काय होतं. तुम्ही त्यांना पुढे कसं मार्गदर्शन करता?" },
+                choices: [
+                  { label:{en:"Explain the finding clearly, refer them to a cardiologist for specialist follow-up, and reassure them this is a manageable, well-understood next step", hi:"निष्कर्ष को स्पष्ट रूप से समझाओ, विशेषज्ञ फ़ॉलो-अप के लिए उन्हें कार्डियोलॉजिस्ट के पास रेफर करो, और उन्हें आश्वस्त करो कि यह एक प्रबंधनीय, अच्छी तरह समझा गया अगला कदम है", mr:"निष्कर्ष स्पष्टपणे समजावून सांगा, तज्ज्ञ फॉलो-अपसाठी त्यांना कार्डिओलॉजिस्टकडे रेफर करा, आणि त्यांना आश्वासन द्या की हे व्यवस्थापित करण्यायोग्य, नीट समजलेलं पुढचं पाऊल आहे"}, quality:"best",
+                    outcome:{en:"Perfect integration of everything you've learned this year! Clear communication, appropriate specialist referral, and genuine reassurance — this is exactly what real Specialist-level judgment looks like.",hi:"इस साल तुमने जो कुछ भी सीखा उसका बेहतरीन एकीकरण! स्पष्ट बातचीत, उचित विशेषज्ञ रेफरल, और असली आश्वासन — यही बिल्कुल असली स्पेशलिस्ट-स्तर के निर्णय जैसा दिखता है।",mr:"या वर्षी तुम्ही जे काही शिकलात त्याचं उत्तम एकत्रीकरण! स्पष्ट संवाद, योग्य तज्ज्ञ रेफरल, आणि खरं आश्वासन — हेच अगदी खऱ्या स्पेशालिस्ट-पातळीच्या निर्णयासारखं दिसतं."} },
+                  { label:{en:"Just tell them the test results without explaining what happens next", hi:"बस उन्हें टेस्ट के नतीजे बताओ बिना यह समझाए कि आगे क्या होता है", mr:"फक्त त्यांना चाचणी निकाल सांगा पुढे काय होतं ते न समजावता"}, quality:"risky",
+                    outcome:{en:"This leaves the patient without a clear path forward. After a whole year learning communication, referral, and reassurance, a complete patient journey needs all three working together.",hi:"यह मरीज़ को आगे के स्पष्ट रास्ते के बिना छोड़ देता है। बातचीत, रेफरल, और आश्वासन सीखने के एक पूरे साल के बाद, एक पूरी मरीज़ यात्रा को तीनों को एक साथ काम करने की ज़रूरत है।",mr:"यामुळे रुग्ण पुढच्या स्पष्ट मार्गाशिवाय राहतो. संवाद, रेफरल, आणि आश्वासन शिकण्याच्या संपूर्ण वर्षानंतर, संपूर्ण रुग्ण प्रवासाला तिन्ही एकत्र काम करण्याची गरज असते."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🏆", title: "Celebrate your Specialist-level growth", mentorVisual: "🏆",
+              mentorIntro: {
+                en: "Look how far you've come this year — real judgment calls, real communication, real specialist thinking. Let's celebrate.",
+                hi: "देखो इस साल तुम कितनी दूर आए — असली फ़ैसले, असली बातचीत, असली स्पेशलिस्ट सोच। चलो जश्न मनाते हैं।",
+                mr: "बघा या वर्षी तुम्ही किती पुढे आलात — खरे निर्णय, खरा संवाद, खरा स्पेशालिस्ट विचार. चला उत्सव साजरा करूया."
+              },
+              data: { visual: "🏆", hotspots: [
+              { label:{en:"Real judgment calls",hi:"असली फ़ैसले",mr:"खरे निर्णय"}, fact:{en:"This year, you practiced making genuine judgment calls with real consequences, not just picking the 'right' answer!"} },
+              { label:{en:"Multiple specialties explored",hi:"कई स्पेशलिटी एक्सप्लोर कीं",mr:"अनेक खासियती एक्सप्लोर केल्या"}, fact:{en:"You explored diagnosis, dosage, surgery, ethics, research, referral, communication, crisis response, and more!"} },
+              { label:{en:"Ready for the final year",hi:"आखिरी साल के लिए तैयार",mr:"शेवटच्या वर्षासाठी तयार"}, fact:{en:"Std 12, your final year in this journey, will bring it all together in even more advanced ways!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Std 11 capstone recap",
+              desc: { en:"A comprehensive recap quiz combining everything from this year's Specialist-level missions.", hi:"इस साल के स्पेशलिस्ट-स्तर के मिशन से सब कुछ मिलाकर एक व्यापक रीकैप क्विज़।", mr:"या वर्षीच्या स्पेशालिस्ट-पातळीच्या मिशन्समधून सर्वकाही एकत्र करणारा एक सर्वसमावेशक रीकॅप क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "A message to Std 12 you",
+              desc: { en:"Write a message to yourself about how it felt to make real judgment calls this year, and what you're ready for in your final year.", hi:"अपने आप को एक संदेश लिखो कि इस साल असली फ़ैसले लेना कैसा महसूस हुआ, और तुम अपने आखिरी साल में किसके लिए तैयार हो।", mr:"या वर्षी खरे निर्णय घेणं कसं वाटलं आणि तुमच्या शेवटच्या वर्षात तुम्ही कशासाठी तयार आहात याबद्दल स्वतःला संदेश लिहा." } },
+            { engine: "flip-cards", icon: "🃏", title: "Std 11 Year Highlights", mentorVisual: "🎉",
+              mentorIntro: {
+                en: "What a year of real judgment! Flip each card for a fun recap of your journey.",
+                hi: "क्या असली निर्णय का साल रहा! अपनी यात्रा का मज़ेदार सारांश देखने के लिए हर कार्ड पलटो।",
+                mr: "काय खऱ्या निर्णयाचं वर्ष होतं! तुमच्या प्रवासाचा मजेदार आढावा बघण्यासाठी प्रत्येक कार्ड उलटा."
+              },
+              data: { cards: [
+              { front:{en:"Where did we start?",hi:"हमने कहाँ से शुरुआत की?",mr:"आपण कुठून सुरुवात केली?"}, back:{en:"You started this year facing your very first branching scenario — a real diagnosis judgment call! 🩺",hi:"तुमने इस साल की शुरुआत अपने बिल्कुल पहले ब्रांचिंग परिदृश्य का सामना करके की — एक असली निदान फ़ैसला! 🩺",mr:"तुम्ही या वर्षाची सुरुवात तुमच्या अगदी पहिल्या ब्रँचिंग परिस्थितीला सामोरं जाऊन केली — एक खरा निदान निर्णय! 🩺"} },
+              { front:{en:"Ethics and judgment?",hi:"नैतिकता और निर्णय?",mr:"नैतिकता आणि निर्णय?"}, back:{en:"You navigated real ethical situations, like confidentiality — genuine judgment, not just facts! ⚖️",hi:"तुमने असली नैतिक स्थितियों को नेविगेट किया, जैसे गोपनीयता — असली निर्णय, सिर्फ़ तथ्य नहीं! ⚖️",mr:"तुम्ही खऱ्या नैतिक परिस्थितींमधून मार्ग काढला, जसं गोपनीयता — खरा निर्णय, फक्त तथ्यं नाही! ⚖️"} },
+              { front:{en:"What's next?",hi:"आगे क्या?",mr:"पुढे काय?"}, back:{en:"Next year in Std 12, your final year, brings everything together at the highest level yet! 🚀",hi:"अगले साल Std 12 में, तुम्हारा आखिरी साल, अब तक के सबसे ऊँचे स्तर पर सब कुछ एक साथ लाता है! 🚀",mr:"पुढच्या वर्षी Std 12 मध्ये, तुमचं शेवटचं वर्ष, आतापर्यंतच्या सर्वोच्च पातळीवर सर्वकाही एकत्र आणतं! 🚀"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "How Much Do You Remember?", mentorVisual: "🏆",
+              mentorIntro: {
+                en: "One last check-in before the year wraps up! Let's see what stuck from this whole year.",
+                hi: "साल खत्म होने से पहले एक आखिरी जांच! देखते हैं इस पूरे साल से क्या याद रहा।",
+                mr: "वर्ष संपण्याआधी शेवटची एक तपासणी! बघूया या संपूर्ण वर्षातून काय लक्षात राहिलं."
+              },
+              data: { statements: [
+              { text:{en:"This year's branching scenarios always had one obviously perfect choice with no real trade-offs.",hi:"इस साल के ब्रांचिंग परिदृश्यों में हमेशा एक स्पष्ट रूप से सही विकल्प था जिसमें कोई असली ट्रेड-ऑफ नहीं था।",mr:"या वर्षीच्या ब्रँचिंग परिस्थितींमध्ये नेहमी एक स्पष्टपणे परिपूर्ण पर्याय होता ज्यात कोणतेही खरे तडजोड नव्हते."}, answer:false, explain:{en:"Myth! Real judgment calls, like the ones you practiced, involve weighing genuine trade-offs — that's exactly what makes them real decisions.",hi:"मिथक! असली फ़ैसले, जैसे तुमने अभ्यास किए, में असली ट्रेड-ऑफ को तौलना शामिल है — यही बिल्कुल है जो उन्हें असली फ़ैसले बनाता है।",mr:"मिथक! खरे निर्णय, जसे तुम्ही सराव केले, त्यात खऱ्या तडजोडींचं वजन करणं समाविष्ट आहे — हेच अगदी त्यांना खरे निर्णय बनवतं."} },
+              { text:{en:"Clear communication, appropriate referral, and genuine care all work together in real patient care.",hi:"स्पष्ट बातचीत, उचित रेफरल, और असली देखभाल सब असली मरीज़ देखभाल में एक साथ काम करते हैं।",mr:"स्पष्ट संवाद, योग्य रेफरल, आणि खरी काळजी सर्व खऱ्या रुग्ण काळजीत एकत्र काम करतात."}, answer:true, explain:{en:"True! You practiced exactly this integration throughout Std 11 — these skills genuinely work best together.",hi:"सच! तुमने Std 11 भर बिल्कुल इसी एकीकरण का अभ्यास किया — ये कौशल वाकई साथ में सबसे अच्छे काम करते हैं।",mr:"खरं! तुम्ही Std 11 भर अगदी हेच एकत्रीकरण सराव केलं — ही कौशल्यं खरंच एकत्र सर्वोत्तम काम करतात."} },
+              { text:{en:"This is the last year you'll ever explore Doctor & Healthcare topics.",hi:"यह आखिरी साल है जब तुम कभी डॉक्टर और स्वास्थ्य से जुड़े विषय एक्सप्लोर करोगे।",mr:"डॉक्टर आणि आरोग्य विषय एक्सप्लोर करण्याचं हे शेवटचं वर्ष आहे."}, answer:false, explain:{en:"Myth! Std 12, your final year, still awaits — the deepest, most advanced year in this whole journey.",hi:"मिथक! Std 12, तुम्हारा आखिरी साल, अभी बाकी है — इस पूरी यात्रा का सबसे गहरा, सबसे एडवांस साल।",mr:"मिथक! Std 12, तुमचं शेवटचं वर्ष, अजून बाकी आहे — या संपूर्ण प्रवासातील सर्वात खोल, सर्वात प्रगत वर्ष."} }
+            ]}}
+          ]}
+        ]
+      },
+      "12": {
+        band: "Specialist",
+        bandTagline: "The final year — complex, multi-layered cases requiring everything you've built across 6 years.",
+        months: [
+          { label: "Advanced Cardiology Case",
+            bonusAssignment: {
+              title: { en: "Complex Cardiology Case Write-Up", hi: "जटिल कार्डियोलॉजी केस लेखन", mr: "जटिल कार्डिओलॉजी केस लेखन" },
+              prompt: { en: "Write a fictional case involving a heart condition with more than one complicating factor. Take a photo!",
+                        hi: "एक से ज़्यादा जटिल करने वाले कारक वाली दिल की स्थिति से जुड़ा एक काल्पनिक केस लिखो। फोटो लो!",
+                        mr: "एकापेक्षा जास्त गुंतागुंतीचे घटक असलेल्या हृदयाच्या स्थितीशी संबंधित एक काल्पनिक केस लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "❤️‍🩹", title: "The Complex Cardiology Case", mentorVisual: "❤️‍🩹",
+              mentorIntro: {
+                en: "This year, cases get genuinely complex — more than one thing happening at once, just like in real medicine. Let's work through your first advanced case.",
+                hi: "इस साल, मामले वाकई जटिल हो जाते हैं — एक साथ एक से ज़्यादा चीज़ें हो रही हैं, बिल्कुल असली चिकित्सा की तरह। चलो तुम्हारे पहले एडवांस केस से गुज़रते हैं।",
+                mr: "या वर्षी, केसेस खरंच जटिल होतात — एकाच वेळी एकापेक्षा जास्त गोष्टी घडत आहेत, अगदी खऱ्या वैद्यकशास्त्रासारखं. चला तुमच्या पहिल्या प्रगत केसमधून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"An older patient with existing diabetes now also shows signs of irregular heartbeat and mild chest discomfort. Their diabetes complicates typical heart treatment options. What's your priority?",
+                             hi:"पहले से डायबिटीज़ वाला एक बुज़ुर्ग मरीज़ अब अनियमित दिल की धड़कन और हल्की सीने की बेचैनी के संकेत भी दिखाता है। उनकी डायबिटीज़ सामान्य दिल के इलाज विकल्पों को जटिल बनाती है। तुम्हारी प्राथमिकता क्या है?",
+                             mr:"आधीच मधुमेह असलेला एक वृद्ध रुग्ण आता अनियमित हृदयगती आणि सौम्य छातीतील अस्वस्थतेची लक्षणंही दाखवतो. त्यांचा मधुमेह ठराविक हृदय उपचार पर्यायांना गुंतागुंतीचं बनवतो. तुमचं प्राधान्य काय आहे?" },
+                choices: [
+                  { label:{en:"Coordinate with an endocrinologist alongside cardiology, since both conditions need to be managed together", hi:"कार्डियोलॉजी के साथ एक एंडोक्राइनोलॉजिस्ट के साथ समन्वय करो, क्योंकि दोनों स्थितियों को साथ में संभालने की ज़रूरत है", mr:"कार्डिओलॉजीसोबत एंडोक्रायनोलॉजिस्टशी समन्वय साधा, कारण दोन्ही स्थिती एकत्र व्यवस्थापित करण्याची गरज आहे"}, quality:"best",
+                    outcome:{en:"Excellent multi-specialty thinking! Complex cases with multiple conditions genuinely benefit from coordinated care across specialties, not treating each issue in isolation.",hi:"बेहतरीन बहु-विशेषज्ञता सोच! कई स्थितियों वाले जटिल मामले वाकई विशेषज्ञताओं में समन्वित देखभाल से लाभान्वित होते हैं, हर समस्या को अलग-अलग इलाज करने से नहीं।",mr:"उत्तम बहु-खासियत विचार! अनेक स्थिती असलेल्या जटिल केसेसना खरंच खासियतींमध्ये समन्वित काळजीचा फायदा होतो, प्रत्येक समस्येवर वेगळं उपचार करण्यापेक्षा."} },
+                  { label:{en:"Treat only the heart symptoms and ignore how the diabetes might interact", hi:"केवल दिल के लक्षणों का इलाज करो और यह नज़रअंदाज़ करो कि डायबिटीज़ कैसे परस्पर क्रिया कर सकती है", mr:"फक्त हृदयाच्या लक्षणांवर उपचार करा आणि मधुमेह कसा परस्परसंवाद करू शकतो ते दुर्लक्षित करा"}, quality:"risky",
+                    outcome:{en:"This misses crucial complexity. Treating conditions in isolation, without considering how they interact, can lead to treatment decisions that don't account for the whole picture.",hi:"यह महत्वपूर्ण जटिलता छोड़ देता है। स्थितियों का अलग-अलग इलाज करना, यह विचार किए बिना कि वे कैसे परस्पर क्रिया करती हैं, इलाज के फ़ैसलों की ओर ले जा सकता है जो पूरी तस्वीर को ध्यान में नहीं रखते।",mr:"यात महत्त्वाची गुंतागुंत चुकते. स्थितींवर वेगळं उपचार करणं, त्या कशा परस्परसंवाद करतात याचा विचार न करता, संपूर्ण चित्र विचारात न घेणाऱ्या उपचार निर्णयांकडे नेऊ शकतं."} }
+                ]
+              },
+              {
+                situation: { en:"The endocrinologist and cardiologist now need to agree on a treatment plan that manages both conditions safely together. What guides this joint decision?",
+                             hi:"एंडोक्राइनोलॉजिस्ट और कार्डियोलॉजिस्ट को अब एक इलाज योजना पर सहमत होने की ज़रूरत है जो दोनों स्थितियों को सुरक्षित रूप से एक साथ संभाले। इस संयुक्त फ़ैसले का मार्गदर्शन क्या करता है?",
+                             mr:"एंडोक्रायनोलॉजिस्ट आणि कार्डिओलॉजिस्टला आता दोन्ही स्थिती सुरक्षितपणे एकत्र व्यवस्थापित करणाऱ्या उपचार योजनेवर सहमत होण्याची गरज आहे. या संयुक्त निर्णयाला काय मार्गदर्शन करतं?" },
+                choices: [
+                  { label:{en:"Choose treatments that are proven safe for patients with both conditions together, even if it means a more conservative approach", hi:"ऐसे इलाज चुनो जो दोनों स्थितियों वाले मरीज़ों के लिए सुरक्षित साबित हुए हैं, भले ही इसका मतलब एक ज़्यादा कंज़र्वेटिव तरीका हो", mr:"असे उपचार निवडा जे दोन्ही स्थिती एकत्र असलेल्या रुग्णांसाठी सुरक्षित सिद्ध झाले आहेत, जरी याचा अर्थ अधिक कंझर्व्हेटिव्ह पद्धत असला तरी"}, quality:"best",
+                    outcome:{en:"Wise judgment! When conditions interact, choosing proven-safe combined approaches — even if more conservative — protects the patient better than aggressive treatment for just one condition.",hi:"बुद्धिमान निर्णय! जब स्थितियाँ परस्पर क्रिया करती हैं, साबित-सुरक्षित संयुक्त तरीकों को चुनना — भले ही ज़्यादा कंज़र्वेटिव हो — सिर्फ़ एक स्थिति के लिए आक्रामक इलाज से मरीज़ की बेहतर रक्षा करता है।",mr:"शहाणा निर्णय! जेव्हा स्थिती परस्परसंवाद करतात, सिद्ध-सुरक्षित संयुक्त पद्धती निवडणं — जरी अधिक कंझर्व्हेटिव्ह असल्या तरी — फक्त एका स्थितीसाठी आक्रमक उपचारापेक्षा रुग्णाचं चांगलं रक्षण करतं."} },
+                  { label:{en:"Just go with the most aggressive heart treatment available, without considering the diabetes interaction", hi:"बस उपलब्ध सबसे आक्रामक दिल के इलाज के साथ जाओ, डायबिटीज़ की परस्पर क्रिया पर विचार किए बिना", mr:"डायबिटीजच्या परस्परसंवादाचा विचार न करता, उपलब्ध सर्वात आक्रमक हृदय उपचारासोबत जा"}, quality:"risky",
+                    outcome:{en:"This could be dangerous. Aggressive treatment without considering how it interacts with existing conditions can create new, avoidable risks for the patient.",hi:"यह खतरनाक हो सकता है। यह विचार किए बिना कि यह मौजूदा स्थितियों के साथ कैसे परस्पर क्रिया करता है, आक्रामक इलाज मरीज़ के लिए नए, टालने योग्य जोखिम पैदा कर सकता है।",mr:"हे धोकादायक असू शकतं. ते विद्यमान स्थितींशी कसा परस्परसंवाद करतं याचा विचार न करता, आक्रमक उपचार रुग्णासाठी नवीन, टाळता येण्याजोगे धोके निर्माण करू शकतो."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "❤️‍🩹", title: "Explore complex cardiac cases", mentorVisual: "❤️‍🩹",
+              mentorIntro: {
+                en: "Let's explore why cardiology cases become more complex when other conditions are involved.",
+                hi: "चलो एक्सप्लोर करते हैं कि जब अन्य स्थितियाँ शामिल होती हैं तो कार्डियोलॉजी मामले ज़्यादा जटिल क्यों हो जाते हैं।",
+                mr: "चला एक्सप्लोर करूया की इतर स्थिती सामील असताना कार्डिओलॉजी केसेस अधिक जटिल का होतात."
+              },
+              data: { visual: "❤️‍🩹", hotspots: [
+              { label:{en:"Comorbidities",hi:"सह-रुग्णताएँ",mr:"सह-आजार"}, fact:{en:"When a patient has multiple conditions at once (called comorbidities), treatment decisions become genuinely more complex!"} },
+              { label:{en:"Drug interactions",hi:"दवा परस्पर क्रियाएँ",mr:"औषध परस्परसंवाद"}, fact:{en:"Medicines for one condition can sometimes affect another — doctors must carefully check for interactions!"} },
+              { label:{en:"Team-based care",hi:"टीम-आधारित देखभाल",mr:"संघ-आधारित काळजी"}, fact:{en:"Complex cases like this often need multiple specialists working together as one coordinated team!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Advanced cardiology quiz",
+              desc: { en:"A real quiz on managing complex cardiology cases involving multiple conditions.", hi:"कई स्थितियों वाले जटिल कार्डियोलॉजी मामलों को संभालने पर एक असली क्विज़।", mr:"अनेक स्थिती असलेल्या जटिल कार्डिओलॉजी केसेस व्यवस्थापित करण्यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Complexity and teamwork",
+              desc: { en:"How do you think working as part of a specialist team, rather than alone, changes how you'd approach a complex case?", hi:"तुम्हें क्या लगता है अकेले के बजाय एक विशेषज्ञ टीम के हिस्से के रूप में काम करना एक जटिल मामले के प्रति तुम्हारे तरीके को कैसे बदलता है?", mr:"एकट्याऐवजी तज्ज्ञ टीमचा भाग म्हणून काम करणं जटिल केसकडे तुमचा दृष्टिकोन कसा बदलतं असं तुम्हाला वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Complex Cardiology Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about complex cardiology cases!",
+                hi: "चलो और गहराई में जाते हैं — जटिल कार्डियोलॉजी मामलों के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — जटिल कार्डिओलॉजी केसेसबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Multidisciplinary rounds?",hi:"बहु-विषयक राउंड?",mr:"बहु-विद्याशाखीय फेऱ्या?"}, back:{en:"Hospitals often hold 'multidisciplinary rounds' where different specialists discuss complex patients together! 👥",hi:"अस्पताल अक्सर 'मल्टीडिसिप्लिनरी राउंड' आयोजित करते हैं जहाँ अलग-अलग विशेषज्ञ जटिल मरीज़ों पर एक साथ चर्चा करते हैं! 👥",mr:"रुग्णालयं अनेकदा 'मल्टीडिसिप्लिनरी फेऱ्या' आयोजित करतात जिथे वेगवेगळे तज्ज्ञ जटिल रुग्णांबद्दल एकत्र चर्चा करतात! 👥"} },
+              { front:{en:"Electronic records help?",hi:"इलेक्ट्रॉनिक रिकॉर्ड मदद करते हैं?",mr:"इलेक्ट्रॉनिक नोंदी मदत करतात?"}, back:{en:"Electronic health records help different specialists see a patient's full history, supporting better coordinated care! 💻",hi:"इलेक्ट्रॉनिक हेल्थ रिकॉर्ड अलग-अलग विशेषज्ञों को मरीज़ का पूरा इतिहास देखने में मदद करते हैं, बेहतर समन्वित देखभाल का समर्थन करते हुए! 💻",mr:"इलेक्ट्रॉनिक आरोग्य नोंदी वेगवेगळ्या तज्ज्ञांना रुग्णाचा संपूर्ण इतिहास बघण्यास मदत करतात, चांगल्या समन्वित काळजीला समर्थन देत! 💻"} },
+              { front:{en:"Complexity is common?",hi:"जटिलता आम है?",mr:"गुंतागुंत सामान्य आहे?"}, back:{en:"As people age, having multiple health conditions at once becomes increasingly common — complex cases aren't rare exceptions! 📈",hi:"जैसे-जैसे लोग बड़े होते हैं, एक साथ कई स्वास्थ्य स्थितियों का होना तेज़ी से आम हो जाता है — जटिल मामले दुर्लभ अपवाद नहीं हैं! 📈",mr:"लोक वयस्क होतात तसतसं, एकाच वेळी अनेक आरोग्य स्थिती असणं वाढत्या प्रमाणात सामान्य होतं — जटिल केसेस दुर्मिळ अपवाद नाहीत! 📈"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Complex Cardiology or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Having multiple health conditions at once is a rare, unusual situation for doctors to encounter.",hi:"एक साथ कई स्वास्थ्य स्थितियों का होना डॉक्टरों के लिए सामना करने की एक दुर्लभ, असामान्य स्थिति है।",mr:"एकाच वेळी अनेक आरोग्य स्थिती असणं ही डॉक्टरांना सामोरं जाण्याची दुर्मिळ, असामान्य परिस्थिती आहे."}, answer:false, explain:{en:"Myth! As people age especially, having multiple conditions together becomes increasingly common, not rare.",hi:"मिथक! खासकर जैसे-जैसे लोग बड़े होते हैं, एक साथ कई स्थितियों का होना दुर्लभ नहीं, तेज़ी से आम हो जाता है।",mr:"मिथक! विशेषतः लोक वयस्क होतात तसतसं, एकत्र अनेक स्थिती असणं दुर्मिळ नाही, वाढत्या प्रमाणात सामान्य होतं."} },
+              { text:{en:"Specialists often coordinate together through multidisciplinary rounds for complex cases.",hi:"जटिल मामलों के लिए विशेषज्ञ अक्सर मल्टीडिसिप्लिनरी राउंड के ज़रिए एक साथ समन्वय करते हैं।",mr:"जटिल केसेससाठी तज्ज्ञ अनेकदा मल्टीडिसिप्लिनरी फेऱ्यांद्वारे एकत्र समन्वय साधतात."}, answer:true, explain:{en:"True! This kind of coordinated, multidisciplinary approach is a real and common practice in hospitals.",hi:"सच! इस तरह का समन्वित, बहु-विषयक तरीका अस्पतालों में एक असली और आम अभ्यास है।",mr:"खरं! अशा प्रकारचा समन्वित, बहु-विद्याशाखीय दृष्टिकोन रुग्णालयांमध्ये एक खरी आणि सामान्य पद्धत आहे."} },
+              { text:{en:"Treatment decisions never need to consider how a patient's other health conditions might interact.",hi:"इलाज के फ़ैसलों को कभी भी यह विचार करने की ज़रूरत नहीं है कि मरीज़ की अन्य स्वास्थ्य स्थितियाँ कैसे परस्पर क्रिया कर सकती हैं।",mr:"उपचार निर्णयांना रुग्णाच्या इतर आरोग्य स्थिती कशा परस्परसंवाद करू शकतात याचा कधीच विचार करण्याची गरज नसते."}, answer:false, explain:{en:"Myth! Considering interactions between multiple conditions is essential for safe, effective treatment decisions.",hi:"मिथक! कई स्थितियों के बीच परस्पर क्रिया पर विचार करना सुरक्षित, असरदार इलाज के फ़ैसलों के लिए ज़रूरी है।",mr:"मिथक! अनेक स्थितींमधील परस्परसंवादाचा विचार करणं सुरक्षित, प्रभावी उपचार निर्णयांसाठी आवश्यक आहे."} }
+            ]}}
+          ]},
+          { label: "Advanced Orthopedic Case",
+            bonusAssignment: {
+              title: { en: "Complex Orthopedic Case Write-Up", hi: "जटिल ऑर्थोपेडिक केस लेखन", mr: "जटिल ऑर्थोपेडिक केस लेखन" },
+              prompt: { en: "Write a fictional case involving an orthopedic injury complicated by another factor (like age or a prior injury). Take a photo!",
+                        hi: "एक और कारक (जैसे उम्र या पिछली चोट) से जटिल एक ऑर्थोपेडिक चोट से जुड़ा काल्पनिक केस लिखो। फोटो लो!",
+                        mr: "दुसऱ्या घटकाने (जसं वय किंवा आधीची दुखापत) गुंतागुंतीची झालेली ऑर्थोपेडिक दुखापत असलेली काल्पनिक केस लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🦴", title: "The Complex Orthopedic Case", mentorVisual: "🦴",
+              mentorIntro: {
+                en: "Let's work through an orthopedic case with real complexity — an injury combined with a complicating factor.",
+                hi: "चलो असली जटिलता वाले एक ऑर्थोपेडिक केस से गुज़रते हैं — एक जटिल करने वाले कारक के साथ मिली एक चोट।",
+                mr: "चला खऱ्या गुंतागुंतीसह एका ऑर्थोपेडिक केसमधून जाऊया — एका गुंतागुंतीच्या घटकासह मिळालेली दुखापत."
+              },
+              data: { steps: [
+              {
+                situation: { en:"An elderly patient with osteoporosis (weakened bones) has fractured their hip in a fall. Their weakened bones make standard treatment riskier. What's your priority?",
+                             hi:"ऑस्टियोपोरोसिस (कमज़ोर हड्डियों) वाला एक बुज़ुर्ग मरीज़ गिरने में अपने कूल्हे को फ्रैक्चर कर चुका है। उनकी कमज़ोर हड्डियाँ मानक इलाज को ज़्यादा जोखिम भरा बनाती हैं। तुम्हारी प्राथमिकता क्या है?",
+                             mr:"ऑस्टियोपोरोसिस (कमकुवत हाडं) असलेल्या एका वृद्ध रुग्णाने पडल्यामुळे त्यांचा नितंब फ्रॅक्चर केला आहे. त्यांची कमकुवत हाडं मानक उपचार अधिक धोकादायक बनवतात. तुमचं प्राधान्य काय आहे?" },
+                choices: [
+                  { label:{en:"Consult with a specialist experienced in treating fractures in osteoporotic bone, adjusting the surgical approach accordingly", hi:"ऑस्टियोपोरोटिक हड्डी में फ्रैक्चर के इलाज में अनुभवी एक विशेषज्ञ से सलाह लो, तदनुसार सर्जिकल तरीके को समायोजित करते हुए", mr:"ऑस्टियोपोरोटिक हाडातील फ्रॅक्चरवर उपचार करण्याचा अनुभव असलेल्या तज्ज्ञाचा सल्ला घ्या, त्यानुसार शस्त्रक्रिया पद्धत समायोजित करत"}, quality:"best",
+                    outcome:{en:"Smart approach! Weakened bone from osteoporosis genuinely changes surgical risk and technique — bringing in specialized expertise for this specific complication is exactly right.",hi:"स्मार्ट तरीका! ऑस्टियोपोरोसिस से कमज़ोर हड्डी वाकई सर्जिकल जोखिम और तकनीक को बदलती है — इस खास जटिलता के लिए विशेष विशेषज्ञता लाना बिल्कुल सही है।",mr:"स्मार्ट पद्धत! ऑस्टियोपोरोसिसमुळे कमकुवत हाड खरंच शस्त्रक्रियेचा धोका आणि तंत्र बदलतं — या विशिष्ट गुंतागुंतीसाठी विशेष तज्ज्ञता आणणं अगदी बरोबर आहे."} },
+                  { label:{en:"Use the exact same standard surgical approach as for a younger patient with strong bones", hi:"मज़बूत हड्डियों वाले एक छोटी उम्र के मरीज़ के लिए बिल्कुल वैसा ही मानक सर्जिकल तरीका इस्तेमाल करो", mr:"मजबूत हाडं असलेल्या तरुण रुग्णासाठी जसा आहे तसाच मानक शस्त्रक्रिया पद्धत वापरा"}, quality:"risky",
+                    outcome:{en:"This ignores an important complication. Weakened bone needs adjusted technique — using a standard approach without accounting for osteoporosis increases real surgical risk.",hi:"यह एक ज़रूरी जटिलता को नज़रअंदाज़ करता है। कमज़ोर हड्डी को समायोजित तकनीक चाहिए — ऑस्टियोपोरोसिस को ध्यान में रखे बिना मानक तरीके का इस्तेमाल असली सर्जिकल जोखिम बढ़ाता है।",mr:"हे एक महत्त्वाची गुंतागुंत दुर्लक्षित करतं. कमकुवत हाडाला समायोजित तंत्र हवं — ऑस्टियोपोरोसिस विचारात न घेता मानक पद्धत वापरणं खरा शस्त्रक्रिया धोका वाढवतं."} }
+                ]
+              },
+              {
+                situation: { en:"Surgery goes well, but now the patient needs a recovery plan. Given their osteoporosis, what should guide the rehabilitation approach?",
+                             hi:"सर्जरी अच्छी तरह होती है, लेकिन अब मरीज़ को एक रिकवरी योजना चाहिए। उनके ऑस्टियोपोरोसिस को देखते हुए, रिहैबिलिटेशन तरीके का मार्गदर्शन क्या करना चाहिए?",
+                             mr:"शस्त्रक्रिया चांगली होते, पण आता रुग्णाला रिकव्हरी योजना हवी. त्यांचा ऑस्टियोपोरोसिस लक्षात घेता, पुनर्वसन पद्धतीला काय मार्गदर्शन करावं?" },
+                choices: [
+                  { label:{en:"Design a careful, gradual rehabilitation plan that accounts for weaker bone strength, coordinating with physical therapy specialists", hi:"एक सावधान, क्रमिक रिहैबिलिटेशन योजना डिज़ाइन करो जो कमज़ोर हड्डी की मज़बूती को ध्यान में रखे, फिज़िकल थेरेपी विशेषज्ञों के साथ समन्वय करते हुए", mr:"कमकुवत हाडांची ताकद लक्षात घेणारी काळजीपूर्वक, हळूहळू पुनर्वसन योजना डिझाइन करा, फिजिकल थेरपी तज्ज्ञांशी समन्वय साधत"}, quality:"best",
+                    outcome:{en:"Excellent complete-picture thinking! Recovery plans need to account for the patient's specific complications, not just follow a generic template — this is real Specialist-level care.",hi:"बेहतरीन पूरी-तस्वीर सोच! रिकवरी योजनाओं को मरीज़ की खास जटिलताओं को ध्यान में रखने की ज़रूरत है, सिर्फ़ एक सामान्य टेम्पलेट का पालन नहीं — यह असली स्पेशलिस्ट-स्तर की देखभाल है।",mr:"उत्तम संपूर्ण-चित्र विचार! रिकव्हरी योजनांना रुग्णाच्या विशिष्ट गुंतागुंती लक्षात घेण्याची गरज आहे, फक्त सामान्य टेम्प्लेट फॉलो न करता — ही खरी स्पेशालिस्ट-पातळीची काळजी आहे."} },
+                  { label:{en:"Give them the same generic rehabilitation plan used for all hip fracture patients", hi:"उन्हें सभी कूल्हे फ्रैक्चर मरीज़ों के लिए इस्तेमाल होने वाली वही सामान्य रिहैबिलिटेशन योजना दो", mr:"त्यांना सर्व नितंब फ्रॅक्चर रुग्णांसाठी वापरली जाणारी तीच सामान्य पुनर्वसन योजना द्या"}, quality:"risky",
+                    outcome:{en:"This misses their specific complication. A generic plan that doesn't account for weakened bone could put them at unnecessary risk during recovery.",hi:"यह उनकी खास जटिलता छोड़ देता है। एक सामान्य योजना जो कमज़ोर हड्डी को ध्यान में नहीं रखती, रिकवरी के दौरान उन्हें अनावश्यक जोखिम में डाल सकती है।",mr:"यात त्यांची विशिष्ट गुंतागुंत चुकते. कमकुवत हाड लक्षात न घेणारी सामान्य योजना रिकव्हरीदरम्यान त्यांना अनावश्यक धोक्यात टाकू शकते."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🦴", title: "Explore complex orthopedic factors", mentorVisual: "🦴",
+              mentorIntro: {
+                en: "Let's explore what makes orthopedic cases more complex when other factors are involved.",
+                hi: "चलो एक्सप्लोर करते हैं कि जब अन्य कारक शामिल होते हैं तो ऑर्थोपेडिक मामले ज़्यादा जटिल क्यों हो जाते हैं।",
+                mr: "चला एक्सप्लोर करूया की इतर घटक सामील असताना ऑर्थोपेडिक केसेस अधिक जटिल का होतात."
+              },
+              data: { visual: "🦴", hotspots: [
+              { label:{en:"Bone quality varies",hi:"हड्डी की गुणवत्ता अलग होती है",mr:"हाडांची गुणवत्ता बदलते"}, fact:{en:"Conditions like osteoporosis genuinely change how surgeons approach fractures, since the bone itself is different!"} },
+              { label:{en:"Age affects healing",hi:"उम्र ठीक होने को प्रभावित करती है",mr:"वय बरं होण्यावर परिणाम करतं"}, fact:{en:"Recovery time and approach often need adjusting based on a patient's age and overall health!"} },
+              { label:{en:"Prevention matters too",hi:"बचाव भी मायने रखता है",mr:"प्रतिबंधही महत्त्वाचा आहे"}, fact:{en:"After treating a fracture from weak bones, doctors often also address the underlying bone health to prevent future fractures!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Advanced orthopedics quiz",
+              desc: { en:"A real quiz on managing complex orthopedic cases with complicating factors.", hi:"जटिल करने वाले कारकों वाले जटिल ऑर्थोपेडिक मामलों को संभालने पर एक असली क्विज़।", mr:"गुंतागुंतीचे घटक असलेल्या जटिल ऑर्थोपेडिक केसेस व्यवस्थापित करण्यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Adjusting for the individual",
+              desc: { en:"Why do you think it's important for doctors to adjust their approach for each specific patient, rather than using the same plan for everyone?", hi:"तुम्हें क्यों लगता है कि डॉक्टरों के लिए हर खास मरीज़ के लिए अपना तरीका समायोजित करना ज़रूरी है, सबके लिए एक ही योजना इस्तेमाल करने के बजाय?", mr:"डॉक्टरांनी सर्वांसाठी एकच योजना वापरण्याऐवजी प्रत्येक विशिष्ट रुग्णासाठी त्यांचा दृष्टिकोन समायोजित करणं का महत्त्वाचं आहे असं तुम्हाला वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Complex Orthopedics Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about complex orthopedic cases!",
+                hi: "चलो और गहराई में जाते हैं — जटिल ऑर्थोपेडिक मामलों के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — जटिल ऑर्थोपेडिक केसेसबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Bone density scans?",hi:"बोन डेंसिटी स्कैन?",mr:"हाड घनता स्कॅन?"}, back:{en:"Special scans can measure bone density, helping doctors identify osteoporosis before a fracture even happens! 📊",hi:"खास स्कैन बोन डेंसिटी को माप सकते हैं, डॉक्टरों को फ्रैक्चर होने से पहले ही ऑस्टियोपोरोसिस की पहचान करने में मदद करते हुए! 📊",mr:"खास स्कॅन हाडांची घनता मोजू शकतात, डॉक्टरांना फ्रॅक्चर होण्याआधीच ऑस्टियोपोरोसिस ओळखण्यास मदत करत! 📊"} },
+              { front:{en:"Special implants exist?",hi:"खास इम्प्लांट मौजूद हैं?",mr:"खास इम्प्लांट अस्तित्वात आहेत?"}, back:{en:"Surgeons have special implant designs specifically for weaker, osteoporotic bone! 🔩",hi:"सर्जनों के पास खास तौर पर कमज़ोर, ऑस्टियोपोरोटिक हड्डी के लिए विशेष इम्प्लांट डिज़ाइन होते हैं! 🔩",mr:"सर्जनकडे विशेषतः कमकुवत, ऑस्टियोपोरोटिक हाडासाठी खास इम्प्लांट डिझाइन असतात! 🔩"} },
+              { front:{en:"Fall prevention matters too?",hi:"गिरने से बचाव भी मायने रखता है?",mr:"पडणं टाळणंही महत्त्वाचं आहे?"}, back:{en:"After treating a fracture, doctors often also address fall risk, since preventing future falls is just as important! 🏠",hi:"फ्रैक्चर का इलाज करने के बाद, डॉक्टर अक्सर गिरने के जोखिम को भी संबोधित करते हैं, क्योंकि भविष्य में गिरने से बचाव उतना ही ज़रूरी है! 🏠",mr:"फ्रॅक्चरवर उपचार केल्यानंतर, डॉक्टर अनेकदा पडण्याच्या धोक्यालाही संबोधित करतात, कारण भविष्यातील पडणं टाळणं तितकंच महत्त्वाचं आहे! 🏠"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Complex Orthopedics or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Bone quality is exactly the same for every patient, regardless of conditions like osteoporosis.",hi:"बोन क्वालिटी हर मरीज़ के लिए बिल्कुल एक जैसी है, ऑस्टियोपोरोसिस जैसी स्थितियों की परवाह किए बिना।",mr:"हाडाची गुणवत्ता ऑस्टियोपोरोसिससारख्या स्थितींची पर्वा न करता प्रत्येक रुग्णासाठी अगदी सारखीच असते."}, answer:false, explain:{en:"Myth! Conditions like osteoporosis genuinely change bone quality, which affects surgical approach and risk.",hi:"मिथक! ऑस्टियोपोरोसिस जैसी स्थितियाँ वाकई बोन क्वालिटी बदलती हैं, जो सर्जिकल तरीके और जोखिम को प्रभावित करती हैं।",mr:"मिथक! ऑस्टियोपोरोसिससारख्या स्थिती खरंच हाडाची गुणवत्ता बदलतात, जी शस्त्रक्रिया पद्धत आणि धोक्यावर परिणाम करते."} },
+              { text:{en:"Special scans can measure bone density to help identify weakened bone before a fracture.",hi:"खास स्कैन फ्रैक्चर से पहले कमज़ोर हड्डी की पहचान में मदद के लिए बोन डेंसिटी को माप सकते हैं।",mr:"खास स्कॅन फ्रॅक्चरआधी कमकुवत हाड ओळखण्यास मदत करण्यासाठी हाडांची घनता मोजू शकतात."}, answer:true, explain:{en:"True! Bone density scans are a real, useful tool for identifying osteoporosis risk.",hi:"सच! बोन डेंसिटी स्कैन ऑस्टियोपोरोसिस के जोखिम की पहचान के लिए एक असली, उपयोगी उपकरण हैं।",mr:"खरं! हाडांची घनता स्कॅन ऑस्टियोपोरोसिस धोका ओळखण्यासाठी एक खरं, उपयुक्त साधन आहे."} },
+              { text:{en:"Recovery plans should always be exactly identical for every hip fracture patient, regardless of their other conditions.",hi:"रिकवरी योजनाएँ हमेशा हर कूल्हे फ्रैक्चर मरीज़ के लिए बिल्कुल एक जैसी होनी चाहिए, उनकी अन्य स्थितियों की परवाह किए बिना।",mr:"रिकव्हरी योजना नेहमी प्रत्येक नितंब फ्रॅक्चर रुग्णासाठी अगदी सारख्याच असाव्यात, त्यांच्या इतर स्थितींची पर्वा न करता."}, answer:false, explain:{en:"Myth! Recovery plans genuinely need to account for individual complications like osteoporosis, not follow one generic template.",hi:"मिथक! रिकवरी योजनाओं को वाकई ऑस्टियोपोरोसिस जैसी व्यक्तिगत जटिलताओं को ध्यान में रखने की ज़रूरत है, एक सामान्य टेम्पलेट का पालन नहीं।",mr:"मिथक! रिकव्हरी योजनांना खरंच ऑस्टियोपोरोसिससारख्या वैयक्तिक गुंतागुंती लक्षात घेण्याची गरज आहे, एक सामान्य टेम्प्लेट फॉलो न करता."} }
+            ]}}
+          ]},
+          { label: "Advanced Neurology Case",
+            bonusAssignment: {
+              title: { en: "Complex Neurology Case Write-Up", hi: "जटिल न्यूरोलॉजी केस लेखन", mr: "जटिल न्यूरोलॉजी केस लेखन" },
+              prompt: { en: "Write a fictional case involving a neurological symptom with an unclear cause. Take a photo of your case!",
+                        hi: "अस्पष्ट कारण वाले न्यूरोलॉजिकल लक्षण से जुड़ा एक काल्पनिक केस लिखो। अपने केस की फोटो लो!",
+                        mr: "अस्पष्ट कारण असलेल्या न्यूरोलॉजिकल लक्षणाशी संबंधित काल्पनिक केस लिहा. तुमच्या केसचा फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🧠", title: "The Complex Neurology Case", mentorVisual: "🧠",
+              mentorIntro: {
+                en: "Neurological cases can be some of the most puzzling in medicine, since the brain is still not fully understood. Let's work through one.",
+                hi: "न्यूरोलॉजिकल मामले चिकित्सा में सबसे उलझाने वाले हो सकते हैं, क्योंकि दिमाग़ अभी भी पूरी तरह समझा नहीं गया है। चलो एक से गुज़रते हैं।",
+                mr: "न्यूरोलॉजिकल केसेस वैद्यकशास्त्रातील सर्वात कोड्यात टाकणाऱ्या असू शकतात, कारण मेंदू अजूनही पूर्णपणे समजलेला नाही. चला एकातून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient reports recurring episodes of numbness in one hand, lasting a few minutes each time, then fully resolving. Initial scans show nothing unusual. What's your approach?",
+                             hi:"एक मरीज़ एक हाथ में सुन्नपन के बार-बार होने वाले एपिसोड की रिपोर्ट करता है, हर बार कुछ मिनट तक रहते हुए, फिर पूरी तरह ठीक हो जाते हैं। शुरुआती स्कैन कुछ भी असामान्य नहीं दिखाते। तुम्हारा तरीका क्या है?",
+                             mr:"एक रुग्ण एका हातात बधीरपणाच्या वारंवार होणाऱ्या भागांची तक्रार करतो, प्रत्येक वेळी काही मिनिटं टिकत, मग पूर्णपणे बरं होत. सुरुवातीचे स्कॅन काहीही असामान्य दाखवत नाहीत. तुमचा दृष्टिकोन काय आहे?" },
+                choices: [
+                  { label:{en:"Keep investigating with a detailed history and possibly further specialized testing, rather than dismissing it since initial scans were normal", hi:"एक विस्तृत इतिहास और संभवतः और विशेष टेस्टिंग के साथ जांच जारी रखो, बजाय इसे खारिज करने के क्योंकि शुरुआती स्कैन सामान्य थे", mr:"तपशीलवार इतिहास आणि शक्यतो पुढील विशेष चाचणीने तपासणी सुरू ठेवा, सुरुवातीचे स्कॅन सामान्य होते म्हणून ते फेटाळण्याऐवजी"}, quality:"best",
+                    outcome:{en:"Good persistence! Normal initial scans don't automatically rule out something real — continuing to investigate recurring symptoms with more detail is exactly the right instinct.",hi:"अच्छी दृढ़ता! सामान्य शुरुआती स्कैन स्वतः किसी असली चीज़ को खारिज नहीं करते — ज़्यादा विवरण के साथ बार-बार होने वाले लक्षणों की जांच जारी रखना बिल्कुल सही सोच है।",mr:"चांगली चिकाटी! सामान्य सुरुवातीचे स्कॅन आपोआप काहीतरी खरं नाकारत नाहीत — अधिक तपशीलासह वारंवार होणाऱ्या लक्षणांची तपासणी सुरू ठेवणं अगदी योग्य अंतःप्रेरणा आहे."} },
+                  { label:{en:"Dismiss the symptoms since the scans came back normal", hi:"लक्षणों को खारिज कर दो क्योंकि स्कैन सामान्य आए", mr:"लक्षणं फेटाळून द्या कारण स्कॅन सामान्य आले"}, quality:"risky",
+                    outcome:{en:"This could miss something real. Some neurological conditions don't always show up on initial scans — recurring, specific symptoms deserve continued attention even with normal early results.",hi:"यह कुछ असली छोड़ सकता है। कुछ न्यूरोलॉजिकल स्थितियाँ हमेशा शुरुआती स्कैन में नहीं दिखतीं — बार-बार होने वाले, खास लक्षण सामान्य शुरुआती नतीजों के साथ भी लगातार ध्यान के हकदार हैं।",mr:"यात काहीतरी खरं चुकू शकतं. काही न्यूरोलॉजिकल स्थिती नेहमी सुरुवातीच्या स्कॅनमध्ये दिसत नाहीत — वारंवार होणारी, विशिष्ट लक्षणं सामान्य सुरुवातीच्या निकालांसहही सतत लक्ष देण्यास पात्र आहेत."} }
+                ]
+              },
+              {
+                situation: { en:"Further testing eventually reveals a rare but real underlying issue. The patient asks why it took so long to find. How do you respond?",
+                             hi:"आगे की टेस्टिंग आख़िरकार एक दुर्लभ लेकिन असली अंतर्निहित समस्या दिखाती है। मरीज़ पूछता है कि इसे खोजने में इतना समय क्यों लगा। तुम कैसे जवाब देते हो?",
+                             mr:"पुढील चाचणीत अखेर एक दुर्मिळ पण खरी मूळ समस्या दिसते. रुग्ण विचारतो हे शोधायला इतका वेळ का लागला. तुम्ही कसं उत्तर देता?" },
+                choices: [
+                  { label:{en:"Honestly explain that rare conditions can genuinely take time and careful investigation to diagnose, and that persistence was necessary and worthwhile", hi:"ईमानदारी से समझाओ कि दुर्लभ स्थितियों का निदान करने में वाकई समय और सावधान जांच लग सकती है, और यह दृढ़ता ज़रूरी और सार्थक थी", mr:"प्रामाणिकपणे समजावून सांगा की दुर्मिळ स्थितींचं निदान करण्यासाठी खरंच वेळ आणि काळजीपूर्वक तपासणी लागू शकते, आणि ही चिकाटी आवश्यक आणि सार्थक होती"}, quality:"best",
+                    outcome:{en:"Excellent honesty! Explaining the genuine complexity of diagnosing rare conditions, rather than minimizing it, helps the patient understand and trust the process.",hi:"बेहतरीन ईमानदारी! दुर्लभ स्थितियों के निदान की असली जटिलता को समझाना, इसे कम आँकने के बजाय, मरीज़ को प्रक्रिया को समझने और भरोसा करने में मदद करता है।",mr:"उत्तम प्रामाणिकपणा! दुर्मिळ स्थितींच्या निदानाची खरी गुंतागुंत कमी न लेखता समजावून सांगणं रुग्णाला प्रक्रिया समजून घेण्यास आणि विश्वास ठेवण्यास मदत करतं."} },
+                  { label:{en:"Brush off the question without really explaining the diagnostic process", hi:"बिना असल में निदान प्रक्रिया समझाए सवाल को टाल दो", mr:"निदान प्रक्रिया खरंच न समजावता प्रश्न टाळा"}, quality:"risky",
+                    outcome:{en:"This misses a chance to build trust. Patients often appreciate understanding why something took time — avoiding the question can leave them feeling dismissed.",hi:"यह भरोसा बनाने का मौका छोड़ देता है। मरीज़ अक्सर यह समझने की सराहना करते हैं कि किसी चीज़ में समय क्यों लगा — सवाल से बचना उन्हें खारिज किया हुआ महसूस करा सकता है।",mr:"यामुळे विश्वास निर्माण करण्याची संधी चुकते. रुग्ण अनेकदा एखाद्या गोष्टीला वेळ का लागला हे समजून घेण्याचं कौतुक करतात — प्रश्न टाळल्याने त्यांना दुर्लक्षित केल्यासारखं वाटू शकतं."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🧠", title: "Explore diagnostic persistence", mentorVisual: "🧠",
+              mentorIntro: {
+                en: "Let's explore why persistence matters so much in neurology specifically.",
+                hi: "चलो एक्सप्लोर करते हैं कि न्यूरोलॉजी में विशेष रूप से दृढ़ता इतनी मायने क्यों रखती है।",
+                mr: "चला एक्सप्लोर करूया न्यूरोलॉजीमध्ये विशेषतः चिकाटी इतकी का महत्त्वाची आहे."
+              },
+              data: { visual: "🧠", hotspots: [
+              { label:{en:"Intermittent symptoms",hi:"रुक-रुक कर आने वाले लक्षण",mr:"मधूनमधून येणारी लक्षणं"}, fact:{en:"Some neurological conditions come and go, making them genuinely harder to catch on a single scan or visit!"} },
+              { label:{en:"Rare conditions exist",hi:"दुर्लभ स्थितियाँ मौजूद हैं",mr:"दुर्मिळ स्थिती अस्तित्वात आहेत"}, fact:{en:"There are thousands of rare neurological conditions — recognizing an unusual pattern takes real expertise!"} },
+              { label:{en:"Patient history matters deeply",hi:"मरीज़ का इतिहास गहराई से मायने रखता है",mr:"रुग्णाचा इतिहास खोलवर महत्त्वाचा आहे"}, fact:{en:"A detailed patient history often reveals more clues than a single test — the story matters!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Advanced neurology quiz",
+              desc: { en:"A real quiz on diagnostic persistence in complex neurological cases.", hi:"जटिल न्यूरोलॉजिकल मामलों में निदान दृढ़ता पर एक असली क्विज़।", mr:"जटिल न्यूरोलॉजिकल केसेसमधील निदान चिकाटीवर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Living with uncertainty",
+              desc: { en:"How would you handle the pressure of not having an immediate answer, while still needing to reassure and support a worried patient?", hi:"तुरंत जवाब न होने के दबाव को कैसे संभालोगे, फिर भी एक चिंतित मरीज़ को आश्वस्त और सहायता देने की ज़रूरत के साथ?", mr:"त्वरित उत्तर नसण्याचा दबाव तुम्ही कसे हाताळाल, तरीही काळजीत असलेल्या रुग्णाला आश्वस्त आणि सहाय्य करण्याची गरज असताना?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Complex Neurology Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about complex neurological cases!",
+                hi: "चलो और गहराई में जाते हैं — जटिल न्यूरोलॉजिकल मामलों के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — जटिल न्यूरोलॉजिकल केसेसबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Diagnostic odysseys?",hi:"निदान ओडिसी?",mr:"निदान ओडिसी?"}, back:{en:"Some rare conditions take years and many doctors to finally diagnose — this is sometimes called a 'diagnostic odyssey'! 🗺️",hi:"कुछ दुर्लभ स्थितियों का आख़िरकार निदान होने में सालों और कई डॉक्टर लगते हैं — इसे कभी-कभी 'डायग्नोस्टिक ओडिसी' कहा जाता है! 🗺️",mr:"काही दुर्मिळ स्थितींचं अखेर निदान होण्यास वर्षं आणि अनेक डॉक्टर लागतात — याला कधीकधी 'डायग्नोस्टिक ओडिसी' म्हणतात! 🗺️"} },
+              { front:{en:"Specialized neuro-tests exist?",hi:"विशेष न्यूरो-टेस्ट मौजूद हैं?",mr:"विशेष न्यूरो-चाचण्या अस्तित्वात आहेत?"}, back:{en:"Beyond basic scans, specialized tests like nerve conduction studies can reveal issues standard imaging misses! 🔬",hi:"बुनियादी स्कैन से आगे, नर्व कंडक्शन स्टडी जैसे विशेष टेस्ट उन समस्याओं को दिखा सकते हैं जो मानक इमेजिंग छोड़ देती है! 🔬",mr:"मूलभूत स्कॅनच्या पलीकडे, नर्व्ह कंडक्शन अभ्यासासारख्या विशेष चाचण्या मानक इमेजिंग चुकवणाऱ्या समस्या दाखवू शकतात! 🔬"} },
+              { front:{en:"Patient advocacy groups help?",hi:"मरीज़ वकालत समूह मदद करते हैं?",mr:"रुग्ण समर्थन गट मदत करतात?"}, back:{en:"For rare conditions, patient advocacy groups often help connect people with specialists experienced in that specific issue! 🤝",hi:"दुर्लभ स्थितियों के लिए, मरीज़ वकालत समूह अक्सर लोगों को उस खास समस्या में अनुभवी विशेषज्ञों से जोड़ने में मदद करते हैं! 🤝",mr:"दुर्मिळ स्थितींसाठी, रुग्ण समर्थन गट अनेकदा लोकांना त्या विशिष्ट समस्येचा अनुभव असलेल्या तज्ज्ञांशी जोडण्यास मदत करतात! 🤝"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Complex Neurology or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A normal initial scan always means there's nothing neurologically wrong.",hi:"एक सामान्य शुरुआती स्कैन का हमेशा मतलब है कि न्यूरोलॉजिकल रूप से कुछ भी गलत नहीं है।",mr:"सामान्य सुरुवातीचा स्कॅन नेहमी न्यूरोलॉजिकलदृष्ट्या काहीही चुकीचं नाही असा अर्थ असतो."}, answer:false, explain:{en:"Myth! Some conditions don't show up on initial scans, especially intermittent symptoms — continued investigation can still be necessary.",hi:"मिथक! कुछ स्थितियाँ शुरुआती स्कैन में नहीं दिखतीं, खासकर रुक-रुक कर आने वाले लक्षण — लगातार जांच अभी भी ज़रूरी हो सकती है।",mr:"मिथक! काही स्थिती सुरुवातीच्या स्कॅनमध्ये दिसत नाहीत, विशेषतः मधूनमधून येणारी लक्षणं — सतत तपासणी अजूनही आवश्यक असू शकते."} },
+              { text:{en:"Detailed patient history can reveal important clues that a single test might miss.",hi:"विस्तृत मरीज़ इतिहास महत्वपूर्ण सुराग दिखा सकता है जिसे एक अकेला टेस्ट छोड़ सकता है।",mr:"तपशीलवार रुग्ण इतिहास महत्त्वाचे सुगावे दाखवू शकतो जे एक चाचणी चुकवू शकते."}, answer:true, explain:{en:"True! A patient's detailed story often provides context and clues that go beyond what a single test can show.",hi:"सच! एक मरीज़ की विस्तृत कहानी अक्सर ऐसा संदर्भ और सुराग देती है जो एक अकेला टेस्ट दिखाने से आगे जाता है।",mr:"खरं! रुग्णाची तपशीलवार गोष्ट अनेकदा एक चाचणी दाखवू शकते त्यापलीकडचा संदर्भ आणि सुगावे देते."} },
+              { text:{en:"Rare neurological conditions are always diagnosed quickly and easily.",hi:"दुर्लभ न्यूरोलॉजिकल स्थितियों का हमेशा जल्दी और आसानी से निदान हो जाता है।",mr:"दुर्मिळ न्यूरोलॉजिकल स्थितींचं नेहमी लवकर आणि सहज निदान होतं."}, answer:false, explain:{en:"Myth! Rare conditions can sometimes take years and multiple doctors to accurately diagnose, sometimes called a diagnostic odyssey.",hi:"मिथक! दुर्लभ स्थितियों का सही निदान करने में कभी-कभी सालों और कई डॉक्टर लग सकते हैं, जिसे कभी-कभी डायग्नोस्टिक ओडिसी कहा जाता है।",mr:"मिथक! दुर्मिळ स्थितींचं अचूक निदान करण्यास कधीकधी वर्षं आणि अनेक डॉक्टर लागू शकतात, याला कधीकधी डायग्नोस्टिक ओडिसी म्हणतात."} }
+            ]}}
+          ]},
+          { label: "Diagnosis Under Uncertainty",
+            bonusAssignment: {
+              title: { en: "Uncertainty Reflection", hi: "अनिश्चितता पर विचार", mr: "अनिश्चितता विचार" },
+              prompt: { en: "Write 3-4 sentences on how you imagine doctors stay confident while acting without 100% certainty. Take a photo!",
+                        hi: "3-4 वाक्य लिखो कि तुम कैसे कल्पना करते हो कि डॉक्टर 100% निश्चितता के बिना काम करते हुए आत्मविश्वास कैसे बनाए रखते हैं। फोटो लो!",
+                        mr: "डॉक्टर 100% खात्रीशिवाय काम करताना आत्मविश्वास कसा राखतात अशी तुमची कल्पना आहे, याबद्दल 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "❓", title: "Act Despite Uncertainty", mentorVisual: "❓",
+              mentorIntro: {
+                en: "Real medicine rarely offers 100% certainty. Learning to act wisely despite uncertainty is one of the most important Specialist-level skills. Let's practice.",
+                hi: "असली चिकित्सा शायद ही कभी 100% निश्चितता देती है। अनिश्चितता के बावजूद बुद्धिमानी से काम करना सीखना सबसे ज़रूरी स्पेशलिस्ट-स्तर के कौशलों में से एक है। चलो अभ्यास करते हैं।",
+                mr: "खरं वैद्यकशास्त्र क्वचितच 100% खात्री देतं. अनिश्चिततेमध्येही शहाणपणाने कृती करायला शिकणं हे सर्वात महत्त्वाच्या स्पेशालिस्ट-पातळीच्या कौशल्यांपैकी एक आहे. चला सराव करूया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient's symptoms could fit two different possible conditions — one common and mild, one rare but more serious. Tests so far are inconclusive. What do you do?",
+                             hi:"एक मरीज़ के लक्षण दो अलग-अलग संभावित स्थितियों में फ़िट हो सकते हैं — एक आम और हल्की, एक दुर्लभ लेकिन ज़्यादा गंभीर। अब तक के टेस्ट अनिर्णायक हैं। तुम क्या करते हो?",
+                             mr:"रुग्णाची लक्षणं दोन वेगवेगळ्या शक्य स्थितींना जुळू शकतात — एक सामान्य आणि सौम्य, एक दुर्मिळ पण अधिक गंभीर. आतापर्यंतच्या चाचण्या अनिर्णायक आहेत. तुम्ही काय करता?" },
+                choices: [
+                  { label:{en:"Proceed cautiously — start monitoring closely and order the specific test that would rule out the more serious possibility first", hi:"सावधानी से आगे बढ़ो — बारीकी से निगरानी शुरू करो और वह खास टेस्ट ऑर्डर करो जो पहले ज़्यादा गंभीर संभावना को खारिज करे", mr:"सावधपणे पुढे जा — बारकाईने निरीक्षण सुरू करा आणि आधी अधिक गंभीर शक्यता नाकारणारी विशिष्ट चाचणी ऑर्डर करा"}, quality:"best",
+                    outcome:{en:"Wise judgment under uncertainty! When you can't be 100% sure, prioritizing ruling out the more dangerous possibility first, while monitoring closely, is exactly the right balance of caution and action.",hi:"अनिश्चितता में बुद्धिमान निर्णय! जब तुम 100% निश्चित नहीं हो सकते, बारीकी से निगरानी करते हुए पहले ज़्यादा खतरनाक संभावना को खारिज करने को प्राथमिकता देना बिल्कुल सावधानी और कार्रवाई का सही संतुलन है।",mr:"अनिश्चिततेत शहाणा निर्णय! जेव्हा तुम्ही 100% खात्रीशीर नसता, बारकाईने निरीक्षण करत आधी अधिक धोकादायक शक्यता नाकारण्यास प्राधान्य देणं अगदी सावधगिरी आणि कृतीचं योग्य संतुलन आहे."} },
+                  { label:{en:"Wait until you're completely certain before doing anything further", hi:"आगे कुछ भी करने से पहले तब तक इंतज़ार करो जब तक तुम पूरी तरह निश्चित न हो", mr:"पुढे काहीही करण्याआधी तुम्ही पूर्णपणे खात्रीशीर होईपर्यंत वाट बघा"}, quality:"risky",
+                    outcome:{en:"This could be dangerous. Waiting for complete certainty, when a serious possibility exists, could allow a real problem to progress unchecked in the meantime.",hi:"यह खतरनाक हो सकता है। जब एक गंभीर संभावना मौजूद हो, पूरी निश्चितता का इंतज़ार करना, इस बीच एक असली समस्या को बिना जाँच के आगे बढ़ने दे सकता है।",mr:"हे धोकादायक असू शकतं. एक गंभीर शक्यता अस्तित्वात असताना, पूर्ण खात्रीची वाट बघणं, दरम्यान एक खरी समस्या तपासणीशिवाय पुढे जाऊ देऊ शकतं."} }
+                ]
+              },
+              {
+                situation: { en:"The targeted test comes back and rules out the serious condition — it really was the common, mild issue. Looking back, was your approach the right one, even though it turned out to be the milder condition?",
+                             hi:"लक्षित टेस्ट वापस आता है और गंभीर स्थिति को खारिज कर देता है — यह वाकई आम, हल्की समस्या थी। पीछे मुड़कर देखते हुए, क्या तुम्हारा तरीका सही था, भले ही यह हल्की स्थिति निकली?",
+                             mr:"लक्ष्यित चाचणी परत येते आणि गंभीर स्थिती नाकारते — ती खरंच सामान्य, सौम्य समस्या होती. मागे वळून बघता, तुमचा दृष्टिकोन बरोबर होता का, जरी ती सौम्य स्थिती निघाली तरी?" },
+                choices: [
+                  { label:{en:"Yes — the approach was correct because it appropriately addressed the uncertainty at the time, regardless of the eventual outcome", hi:"हाँ — तरीका सही था क्योंकि इसने उस समय की अनिश्चितता को उचित रूप से संबोधित किया, अंतिम नतीजे की परवाह किए बिना", mr:"हो — दृष्टिकोन बरोबर होता कारण त्याने त्यावेळच्या अनिश्चिततेला योग्यरित्या संबोधित केलं, अंतिम निकालाची पर्वा न करता"}, quality:"best",
+                    outcome:{en:"Excellent insight! This is a crucial lesson — a good decision is judged by whether it was reasonable given what was known AT THE TIME, not just by how things eventually turned out.",hi:"बेहतरीन अंतर्दृष्टि! यह एक महत्वपूर्ण सबक है — एक अच्छे फ़ैसले को इस आधार पर आँका जाता है कि क्या यह उस समय जो जाना गया था उसे देखते हुए उचित था, सिर्फ़ अंततः चीज़ें कैसे निकलीं इससे नहीं।",mr:"उत्तम अंतर्दृष्टी! हा एक महत्त्वाचा धडा आहे — एक चांगला निर्णय त्यावेळी जे माहीत होतं ते बघता तो वाजवी होता का यावरून तपासला जातो, फक्त गोष्टी अखेर कशा निघाल्या यावरून नाही."} },
+                  { label:{en:"No — since it turned out mild, the extra testing was probably unnecessary", hi:"नहीं — चूंकि यह हल्की निकली, अतिरिक्त टेस्टिंग शायद अनावश्यक थी", mr:"नाही — ती सौम्य निघाली म्हणून, अतिरिक्त चाचणी बहुधा अनावश्यक होती"}, quality:"risky",
+                    outcome:{en:"This is a common but flawed way to think. Judging a decision only by the outcome, rather than by whether it was reasonable given the uncertainty at the time, can lead to bad habits in future cases.",hi:"यह सोचने का एक आम लेकिन दोषपूर्ण तरीका है। किसी फ़ैसले को केवल नतीजे से आँकना, बजाय इसके कि उस समय की अनिश्चितता को देखते हुए यह उचित था या नहीं, भविष्य के मामलों में बुरी आदतों की ओर ले जा सकता है।",mr:"हा विचार करण्याचा एक सामान्य पण त्रुटीयुक्त मार्ग आहे. एखाद्या निर्णयाला फक्त निकालावरून तपासणं, त्यावेळच्या अनिश्चिततेला बघता तो वाजवी होता का यापेक्षा, भविष्यातील केसेसमध्ये वाईट सवयींकडे नेऊ शकतं."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "❓", title: "Explore decision-making under uncertainty", mentorVisual: "❓",
+              mentorIntro: {
+                en: "Let's explore how experienced doctors think about acting wisely when they can't be 100% certain.",
+                hi: "चलो एक्सप्लोर करते हैं अनुभवी डॉक्टर कैसे सोचते हैं जब वे 100% निश्चित नहीं हो सकते, बुद्धिमानी से काम करने के बारे में।",
+                mr: "चला एक्सप्लोर करूया अनुभवी डॉक्टर 100% खात्रीशीर नसताना शहाणपणाने कृती करण्याबद्दल कसा विचार करतात."
+              },
+              data: { visual: "❓", hotspots: [
+              { label:{en:"Probability thinking",hi:"संभावना सोच",mr:"संभाव्यता विचार"}, fact:{en:"Doctors often think in terms of likelihood — acting on the most probable explanation while staying open to others!"} },
+              { label:{en:"Judged by process, not just outcome",hi:"नतीजे से नहीं, प्रक्रिया से आँका जाता है",mr:"निकालावरून नाही, प्रक्रियेवरून तपासलं जातं"}, fact:{en:"A good medical decision is judged by whether it was reasonable at the time, not just by how it eventually turned out!"} },
+              { label:{en:"Staying flexible",hi:"लचीला बने रहना",mr:"लवचिक राहणं"}, fact:{en:"Skilled doctors stay ready to update their thinking as new information comes in, rather than locking into one idea too early!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Diagnosis under uncertainty quiz",
+              desc: { en:"A real quiz on how doctors make sound decisions despite genuine uncertainty.", hi:"असली अनिश्चितता के बावजूद डॉक्टर कैसे सही फ़ैसले लेते हैं, इस पर एक असली क्विज़।", mr:"खऱ्या अनिश्चिततेतही डॉक्टर योग्य निर्णय कसे घेतात, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Judging decisions fairly",
+              desc: { en:"Why do you think it's important to judge a decision by whether it was reasonable at the time, rather than only by how things eventually turned out?", hi:"तुम्हें क्यों लगता है कि एक फ़ैसले को इस आधार पर आँकना ज़रूरी है कि क्या यह उस समय उचित था, सिर्फ़ अंततः चीज़ें कैसे निकलीं इससे नहीं?", mr:"निर्णयाला त्यावेळी तो वाजवी होता का यावरून तपासणं महत्त्वाचं का आहे, फक्त गोष्टी अखेर कशा निघाल्या यावरून नाही, असं तुम्हाला का वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Uncertainty Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about decision-making under uncertainty!",
+                hi: "चलो और गहराई में जाते हैं — अनिश्चितता के तहत निर्णय लेने के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अनिश्चिततेत निर्णय घेण्याबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Bayesian thinking?",hi:"बेएशियन सोच?",mr:"बेयशियन विचार?"}, back:{en:"Doctors often use a kind of probability thinking, updating their beliefs as new evidence comes in — this is related to a concept called Bayesian reasoning! 📊",hi:"डॉक्टर अक्सर एक तरह की संभावना सोच का इस्तेमाल करते हैं, नए सबूत आने पर अपनी मान्यताओं को अपडेट करते हुए — यह बेएशियन तर्क नाम की एक अवधारणा से संबंधित है! 📊",mr:"डॉक्टर अनेकदा एक प्रकारचा संभाव्यता विचार वापरतात, नवीन पुरावा आल्यावर त्यांच्या विश्वासांना अद्ययावत करत — हे बेयशियन तर्क नावाच्या संकल्पनेशी संबंधित आहे! 📊"} },
+              { front:{en:"Watchful waiting is a real strategy?",hi:"सतर्क प्रतीक्षा एक असली रणनीति है?",mr:"सजग प्रतीक्षा ही खरी रणनीती आहे?"}, back:{en:"'Watchful waiting' — closely monitoring without immediate aggressive treatment — is a legitimate, deliberate medical strategy in uncertain cases! 👀",hi:"'सतर्क प्रतीक्षा' — बिना तुरंत आक्रामक इलाज के बारीकी से निगरानी करना — अनिश्चित मामलों में एक वैध, जानबूझकर की गई मेडिकल रणनीति है! 👀",mr:"'सजग प्रतीक्षा' — त्वरित आक्रमक उपचाराशिवाय बारकाईने निरीक्षण करणं — अनिश्चित केसेसमध्ये एक वैध, जाणीवपूर्वक वैद्यकीय रणनीती आहे! 👀"} },
+              { front:{en:"Second opinions help with uncertainty?",hi:"दूसरी राय अनिश्चितता में मदद करती है?",mr:"दुसरं मत अनिश्चिततेत मदत करतं?"}, back:{en:"When facing real uncertainty, seeking another doctor's perspective can genuinely add valuable insight! 🤝",hi:"असली अनिश्चितता का सामना करते समय, किसी दूसरे डॉक्टर का नज़रिया लेना वाकई मूल्यवान अंतर्दृष्टि जोड़ सकता है! 🤝",mr:"खऱ्या अनिश्चिततेला सामोरं जाताना, दुसऱ्या डॉक्टरचा दृष्टिकोन घेणं खरंच मौल्यवान अंतर्दृष्टी जोडू शकतं! 🤝"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Uncertainty or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A good medical decision is judged only by whether the outcome turned out well.",hi:"एक अच्छे मेडिकल फ़ैसले को केवल इस आधार पर आँका जाता है कि नतीजा अच्छा निकला या नहीं।",mr:"चांगल्या वैद्यकीय निर्णयाला फक्त निकाल चांगला निघाला का यावरूनच तपासलं जातं."}, answer:false, explain:{en:"Myth! Good decisions are judged by whether they were reasonable given what was known at the time, not just by the eventual outcome.",hi:"मिथक! अच्छे फ़ैसलों को इस आधार पर आँका जाता है कि उस समय जो जाना गया था उसे देखते हुए यह उचित था या नहीं, सिर्फ़ अंतिम नतीजे से नहीं।",mr:"मिथक! चांगल्या निर्णयांना त्यावेळी जे माहीत होतं ते बघता ते वाजवी होते का यावरून तपासलं जातं, फक्त अंतिम निकालावरून नाही."} },
+              { text:{en:"'Watchful waiting' can be a legitimate, deliberate medical strategy.",hi:"'सतर्क प्रतीक्षा' एक वैध, जानबूझकर की गई मेडिकल रणनीति हो सकती है।",mr:"'सजग प्रतीक्षा' ही एक वैध, जाणीवपूर्वक वैद्यकीय रणनीती असू शकते."}, answer:true, explain:{en:"True! Watchful waiting is a real, thoughtful approach used when immediate aggressive action isn't clearly warranted.",hi:"सच! सतर्क प्रतीक्षा एक असली, विचारशील तरीका है जिसका इस्तेमाल तब होता है जब तुरंत आक्रामक कार्रवाई स्पष्ट रूप से ज़रूरी नहीं है।",mr:"खरं! सजग प्रतीक्षा हा एक खरा, विचारशील दृष्टिकोन आहे जो त्वरित आक्रमक कृती स्पष्टपणे आवश्यक नसताना वापरला जातो."} },
+              { text:{en:"Doctors should always wait for 100% certainty before taking any action.",hi:"डॉक्टरों को कोई भी कार्रवाई करने से पहले हमेशा 100% निश्चितता का इंतज़ार करना चाहिए।",mr:"डॉक्टरांनी कोणतीही कृती करण्याआधी नेहमी 100% खात्रीची वाट बघावी."}, answer:false, explain:{en:"Myth! Waiting for complete certainty can allow real problems to progress — doctors often need to act wisely despite some uncertainty.",hi:"मिथक! पूरी निश्चितता का इंतज़ार करना असली समस्याओं को आगे बढ़ने दे सकता है — डॉक्टरों को अक्सर कुछ अनिश्चितता के बावजूद बुद्धिमानी से काम करने की ज़रूरत होती है।",mr:"मिथक! पूर्ण खात्रीची वाट बघणं खऱ्या समस्यांना पुढे जाऊ देऊ शकतं — डॉक्टरांना अनेकदा काही अनिश्चिततेतही शहाणपणाने कृती करण्याची गरज असते."} }
+            ]}}
+          ]},
+          { label: "Multi-Specialty Referral",
+            bonusAssignment: {
+              title: { en: "Coordinated Care Plan", hi: "समन्वित देखभाल योजना", mr: "समन्वित काळजी योजना" },
+              prompt: { en: "Write about a fictional patient who needs input from 3 different specialists at once, and how you'd coordinate their care. Take a photo!",
+                        hi: "एक काल्पनिक मरीज़ के बारे में लिखो जिसे एक साथ 3 अलग-अलग विशेषज्ञों के इनपुट की ज़रूरत है, और तुम उनकी देखभाल को कैसे समन्वित करोगे। फोटो लो!",
+                        mr: "एका काल्पनिक रुग्णाबद्दल लिहा ज्याला एकाच वेळी 3 वेगवेगळ्या तज्ज्ञांच्या इनपुटची गरज आहे, आणि तुम्ही त्यांची काळजी कशी समन्वित कराल. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🔀", title: "Coordinate Multiple Specialists", mentorVisual: "🔀",
+              mentorIntro: {
+                en: "The most complex cases sometimes need input from several specialists at once. Coordinating that well is a genuine Specialist-level skill. Let's practice.",
+                hi: "सबसे जटिल मामलों को कभी-कभी एक साथ कई विशेषज्ञों के इनपुट की ज़रूरत होती है। इसे अच्छी तरह समन्वित करना एक असली स्पेशलिस्ट-स्तर का कौशल है। चलो अभ्यास करते हैं।",
+                mr: "सर्वात जटिल केसेसना कधीकधी एकाच वेळी अनेक तज्ज्ञांच्या इनपुटची गरज असते. ते चांगलं समन्वित करणं हे एक खरं स्पेशालिस्ट-पातळीचं कौशल्य आहे. चला सराव करूया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient with kidney disease also needs heart surgery, and the anesthesiologist has concerns about how the two conditions interact during the procedure. Who needs to be involved in this decision?",
+                             hi:"किडनी रोग वाले एक मरीज़ को दिल की सर्जरी भी चाहिए, और एनेस्थीसियोलॉजिस्ट को चिंता है कि प्रक्रिया के दौरान दोनों स्थितियाँ कैसे परस्पर क्रिया करती हैं। इस फ़ैसले में किसे शामिल होने की ज़रूरत है?",
+                             mr:"किडनी रोग असलेल्या रुग्णाला हृदय शस्त्रक्रियाही हवी आहे, आणि प्रक्रियेदरम्यान दोन्ही स्थिती कशा परस्परसंवाद करतात याबद्दल भूलतज्ज्ञाला चिंता आहे. या निर्णयात कोणाचा सहभाग हवा?" },
+                choices: [
+                  { label:{en:"Bring together the cardiologist, nephrologist (kidney specialist), and anesthesiologist to jointly plan the safest approach", hi:"सबसे सुरक्षित तरीके की संयुक्त योजना बनाने के लिए कार्डियोलॉजिस्ट, नेफ्रोलॉजिस्ट (किडनी विशेषज्ञ), और एनेस्थीसियोलॉजिस्ट को एक साथ लाओ", mr:"सर्वात सुरक्षित पद्धतीची संयुक्त योजना बनवण्यासाठी कार्डिओलॉजिस्ट, नेफ्रोलॉजिस्ट (किडनी तज्ज्ञ), आणि भूलतज्ज्ञाला एकत्र आणा"}, quality:"best",
+                    outcome:{en:"Excellent multi-specialty coordination! When multiple body systems are involved, bringing all relevant specialists together to plan jointly is exactly the right approach for patient safety.",hi:"बेहतरीन बहु-विशेषज्ञता समन्वय! जब कई शरीर सिस्टम शामिल होते हैं, संयुक्त रूप से योजना बनाने के लिए सभी संबंधित विशेषज्ञों को एक साथ लाना मरीज़ की सुरक्षा के लिए बिल्कुल सही तरीका है।",mr:"उत्तम बहु-खासियत समन्वय! जेव्हा अनेक शरीर यंत्रणा सामील असतात, संयुक्तपणे योजना बनवण्यासाठी सर्व संबंधित तज्ज्ञांना एकत्र आणणं रुग्णाच्या सुरक्षिततेसाठी अगदी योग्य पद्धत आहे."} },
+                  { label:{en:"Let the cardiac surgeon proceed alone without consulting the other specialists", hi:"अन्य विशेषज्ञों से सलाह लिए बिना कार्डियक सर्जन को अकेले आगे बढ़ने दो", mr:"इतर तज्ज्ञांचा सल्ला न घेता कार्डियाक सर्जनला एकट्याने पुढे जाऊ द्या"}, quality:"risky",
+                    outcome:{en:"This is genuinely risky. When multiple systems are involved, proceeding without input from all relevant specialists could lead to serious complications that a coordinated team would have anticipated.",hi:"यह वाकई जोखिम भरा है। जब कई सिस्टम शामिल होते हैं, सभी संबंधित विशेषज्ञों के इनपुट के बिना आगे बढ़ना गंभीर जटिलताओं की ओर ले जा सकता है जिनका एक समन्वित टीम ने अनुमान लगाया होता।",mr:"हे खरंच धोकादायक आहे. जेव्हा अनेक यंत्रणा सामील असतात, सर्व संबंधित तज्ज्ञांच्या इनपुटशिवाय पुढे जाणं गंभीर गुंतागुंतीकडे नेऊ शकतं ज्याचा समन्वित टीमने अंदाज बांधला असता."} }
+                ]
+              },
+              {
+                situation: { en:"The three specialists disagree slightly on timing — one wants to proceed soon, another wants more preparation time. How should this disagreement be resolved?",
+                             hi:"तीनों विशेषज्ञ समय को लेकर थोड़ा असहमत हैं — एक जल्द आगे बढ़ना चाहता है, दूसरा ज़्यादा तैयारी का समय चाहता है। इस असहमति को कैसे हल किया जाना चाहिए?",
+                             mr:"तिन्ही तज्ज्ञ वेळेबाबत थोडे असहमत आहेत — एकाला लवकर पुढे जायचं आहे, दुसऱ्याला अधिक तयारीचा वेळ हवा आहे. हा मतभेद कसा सोडवला जावा?" },
+                choices: [
+                  { label:{en:"Facilitate an open discussion where each specialist explains their reasoning, working toward a plan that addresses everyone's genuine concerns", hi:"एक खुली चर्चा को सुगम बनाओ जहाँ हर विशेषज्ञ अपना तर्क समझाए, एक ऐसी योजना की ओर काम करते हुए जो सबकी असली चिंताओं को संबोधित करे", mr:"एक खुली चर्चा सुलभ करा जिथे प्रत्येक तज्ज्ञ त्यांचं तर्क समजावून सांगेल, सर्वांच्या खऱ्या चिंतांना संबोधित करणाऱ्या योजनेकडे काम करत"}, quality:"best",
+                    outcome:{en:"Great leadership! Facilitating genuine dialogue between disagreeing experts, rather than picking a side arbitrarily, leads to a more thoughtful plan that accounts for everyone's real concerns.",hi:"बेहतरीन नेतृत्व! असहमत विशेषज्ञों के बीच असली संवाद को सुगम बनाना, बजाय मनमाने ढंग से एक पक्ष चुनने के, एक ज़्यादा विचारशील योजना की ओर ले जाता है जो सबकी असली चिंताओं को ध्यान में रखती है।",mr:"उत्तम नेतृत्व! असहमत तज्ज्ञांमध्ये खरा संवाद सुलभ करणं, अनियंत्रितपणे एक बाजू निवडण्याऐवजी, सर्वांच्या खऱ्या चिंता लक्षात घेणाऱ्या अधिक विचारशील योजनेकडे नेतं."} },
+                  { label:{en:"Just go with whichever specialist has seniority, without discussing the actual reasoning", hi:"बस उस विशेषज्ञ के साथ जाओ जिसकी वरिष्ठता है, असली तर्क पर चर्चा किए बिना", mr:"खऱ्या तर्कावर चर्चा न करता, फक्त ज्या तज्ज्ञाची ज्येष्ठता आहे त्याच्यासोबत जा"}, quality:"risky",
+                    outcome:{en:"This misses valuable input. Deferring to seniority alone, without discussing the actual medical reasoning, could overlook a genuinely important concern from another specialist.",hi:"यह मूल्यवान इनपुट छोड़ देता है। असली मेडिकल तर्क पर चर्चा किए बिना, केवल वरिष्ठता को मानना, किसी अन्य विशेषज्ञ की वाकई ज़रूरी चिंता को नज़रअंदाज़ कर सकता है।",mr:"यात मौल्यवान इनपुट चुकतो. खऱ्या वैद्यकीय तर्कावर चर्चा न करता, फक्त ज्येष्ठतेला मान देणं, दुसऱ्या तज्ज्ञाच्या खरोखर महत्त्वाच्या चिंतेकडे दुर्लक्ष करू शकतं."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🔀", title: "Explore multi-specialty coordination", mentorVisual: "🔀",
+              mentorIntro: {
+                en: "Let's explore how hospitals actually coordinate care across multiple specialists.",
+                hi: "चलो एक्सप्लोर करते हैं अस्पताल असल में कई विशेषज्ञों में देखभाल को कैसे समन्वित करते हैं।",
+                mr: "चला एक्सप्लोर करूया रुग्णालयं खरंच अनेक तज्ज्ञांमध्ये काळजी कशी समन्वित करतात."
+              },
+              data: { visual: "🔀", hotspots: [
+              { label:{en:"Case conferences",hi:"केस कॉन्फ्रेंस",mr:"केस परिषदा"}, fact:{en:"Complex cases are often discussed in formal case conferences, where every specialist shares their perspective!"} },
+              { label:{en:"A lead coordinator",hi:"एक मुख्य समन्वयक",mr:"एक मुख्य समन्वयक"}, fact:{en:"Often, one doctor takes on the role of coordinating the overall plan across all the involved specialists!"} },
+              { label:{en:"Shared documentation",hi:"साझा दस्तावेज़ीकरण",mr:"सामायिक दस्तऐवजीकरण"}, fact:{en:"Detailed shared records help every specialist stay updated on the full picture, not just their own piece!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Multi-specialty referral quiz",
+              desc: { en:"A real quiz on coordinating care across multiple medical specialties.", hi:"कई मेडिकल स्पेशलिटी में देखभाल को समन्वित करने पर एक असली क्विज़।", mr:"अनेक वैद्यकीय खासियतींमध्ये काळजी समन्वित करण्यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Leading through disagreement",
+              desc: { en:"How do you think you'd handle facilitating a disagreement between multiple experts, each with valid points? What skills would that require?", hi:"तुम्हें क्या लगता है कई विशेषज्ञों के बीच असहमति को सुगम बनाना कैसा होगा, हर एक के वैध बिंदु के साथ? इसके लिए कौन से कौशल चाहिए होंगे?", mr:"अनेक तज्ज्ञांमधील मतभेद सुलभ करणं कसं असेल असं तुम्हाला वाटतं, प्रत्येकाचे वैध मुद्दे असताना? त्यासाठी कोणती कौशल्यं लागतील?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Multi-Specialty Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about multi-specialty coordination!",
+                hi: "चलो और गहराई में जाते हैं — बहु-विशेषज्ञता समन्वय के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — बहु-खासियत समन्वयाबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Tumor boards revisited?",hi:"ट्यूमर बोर्ड फिर से?",mr:"ट्यूमर बोर्ड पुन्हा?"}, back:{en:"Complex cancer cases often use 'tumor boards' — a specific type of multi-specialty case conference! 👥",hi:"जटिल कैंसर मामलों में अक्सर 'ट्यूमर बोर्ड' का इस्तेमाल होता है — बहु-विशेषज्ञता केस कॉन्फ्रेंस का एक खास प्रकार! 👥",mr:"जटिल कर्करोग केसेसमध्ये अनेकदा 'ट्यूमर बोर्ड' वापरले जातात — बहु-खासियत केस परिषदेचा एक खास प्रकार! 👥"} },
+              { front:{en:"Communication failures are a real risk?",hi:"बातचीत की विफलताएँ एक असली जोखिम हैं?",mr:"संवाद अपयश हा खरा धोका आहे?"}, back:{en:"Studies show that poor communication between specialists is a common cause of medical errors — coordination genuinely matters! ⚠️",hi:"स्टडी दिखाती हैं कि विशेषज्ञों के बीच खराब बातचीत मेडिकल गलतियों का एक आम कारण है — समन्वय वाकई मायने रखता है! ⚠️",mr:"अभ्यास दाखवतात की तज्ज्ञांमधील खराब संवाद हे वैद्यकीय चुकांचं एक सामान्य कारण आहे — समन्वय खरंच महत्त्वाचा आहे! ⚠️"} },
+              { front:{en:"Care coordinators exist as a role?",hi:"केयर कोऑर्डिनेटर एक भूमिका के रूप में मौजूद हैं?",mr:"केअर कोऑर्डिनेटर एक भूमिका म्हणून अस्तित्वात आहे?"}, back:{en:"Some hospitals have dedicated 'care coordinators' whose entire job is managing communication across specialists for complex patients! 📋",hi:"कुछ अस्पतालों में समर्पित 'केयर कोऑर्डिनेटर' होते हैं जिनका पूरा काम जटिल मरीज़ों के लिए विशेषज्ञों में बातचीत का प्रबंधन करना है! 📋",mr:"काही रुग्णालयांमध्ये समर्पित 'केअर कोऑर्डिनेटर' असतात ज्यांचं संपूर्ण काम जटिल रुग्णांसाठी तज्ज्ञांमधील संवाद व्यवस्थापित करणं आहे! 📋"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Multi-Specialty or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"When multiple specialists are involved, seniority alone should always decide any disagreement.",hi:"जब कई विशेषज्ञ शामिल होते हैं, केवल वरिष्ठता को हमेशा किसी भी असहमति का फ़ैसला करना चाहिए।",mr:"जेव्हा अनेक तज्ज्ञ सामील असतात, केवळ ज्येष्ठतेने नेहमी कोणताही मतभेद ठरवावा."}, answer:false, explain:{en:"Myth! Genuine dialogue about the actual medical reasoning, not just seniority, leads to better decisions.",hi:"मिथक! असली मेडिकल तर्क के बारे में असली संवाद, सिर्फ़ वरिष्ठता नहीं, बेहतर फ़ैसलों की ओर ले जाता है।",mr:"मिथक! खऱ्या वैद्यकीय तर्काबद्दल खरा संवाद, फक्त ज्येष्ठता नाही, चांगल्या निर्णयांकडे नेतो."} },
+              { text:{en:"Poor communication between specialists is a recognized, common cause of medical errors.",hi:"विशेषज्ञों के बीच खराब बातचीत मेडिकल गलतियों का एक पहचाना गया, आम कारण है।",mr:"तज्ज्ञांमधील खराब संवाद हे वैद्यकीय चुकांचं एक ओळखलेलं, सामान्य कारण आहे."}, answer:true, explain:{en:"True! Studies genuinely show that communication gaps between specialists are a real risk factor for errors.",hi:"सच! स्टडी वाकई दिखाती हैं कि विशेषज्ञों के बीच बातचीत में कमी गलतियों के लिए एक असली जोखिम कारक है।",mr:"खरं! अभ्यास खरंच दाखवतात की तज्ज्ञांमधील संवादातील त्रुटी चुकांसाठी एक खरा धोका घटक आहे."} },
+              { text:{en:"Some hospitals have dedicated staff whose job is coordinating communication between specialists.",hi:"कुछ अस्पतालों में समर्पित स्टाफ़ होता है जिसका काम विशेषज्ञों के बीच बातचीत का समन्वय करना है।",mr:"काही रुग्णालयांमध्ये समर्पित कर्मचारी असतात ज्यांचं काम तज्ज्ञांमधील संवाद समन्वित करणं आहे."}, answer:true, explain:{en:"True! Care coordinators are a real role dedicated specifically to this kind of communication management.",hi:"सच! केयर कोऑर्डिनेटर एक असली भूमिका है जो विशेष रूप से इस तरह के बातचीत प्रबंधन के लिए समर्पित है।",mr:"खरं! केअर कोऑर्डिनेटर ही एक खरी भूमिका आहे जी विशेषतः अशा प्रकारच्या संवाद व्यवस्थापनासाठी समर्पित आहे."} }
+            ]}}
+          ]},
+          { label: "Critique a Research Study",
+            bonusAssignment: {
+              title: { en: "Study Critique Write-Up", hi: "स्टडी समीक्षा लेखन", mr: "अभ्यास समीक्षा लेखन" },
+              prompt: { en: "Find a real health-related news article about a study (with an adult's help) and write 3-4 sentences evaluating whether it seems well-designed. Take a photo!",
+                        hi: "किसी बड़े की मदद से एक स्टडी के बारे में एक असली स्वास्थ्य से जुड़ा न्यूज़ आर्टिकल ढूंढो और 3-4 वाक्य लिखो कि क्या यह अच्छी तरह डिज़ाइन किया हुआ लगता है। फोटो लो!",
+                        mr: "मोठ्यांच्या मदतीने एका अभ्यासाबद्दल एक खरा आरोग्य-संबंधित बातम्यांचा लेख शोधा आणि तो नीट डिझाइन केलेला वाटतो का याचं मूल्यमापन करणारी 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🔍", title: "Critique the Study", mentorVisual: "🔍",
+              mentorIntro: {
+                en: "Being able to critically evaluate research, not just accept headlines, is a genuine Specialist-level skill. Let's practice on a realistic study.",
+                hi: "रिसर्च का आलोचनात्मक मूल्यांकन करने में सक्षम होना, सिर्फ़ हेडलाइन को स्वीकार करना नहीं, एक असली स्पेशलिस्ट-स्तर का कौशल है। चलो एक यथार्थवादी स्टडी पर अभ्यास करते हैं।",
+                mr: "संशोधनाचं समीक्षात्मक मूल्यमापन करण्यास सक्षम असणं, फक्त हेडलाइन्स स्वीकारणं नाही, हे एक खरं स्पेशालिस्ट-पातळीचं कौशल्य आहे. चला एका वास्तववादी अभ्यासावर सराव करूया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A news headline claims 'New Supplement Cures Fatigue in Just One Week!' based on a study. What's your first question before accepting this claim?",
+                             hi:"एक न्यूज़ हेडलाइन एक स्टडी के आधार पर दावा करती है 'नया सप्लीमेंट सिर्फ़ एक हफ़्ते में थकान ठीक करता है!'। इस दावे को स्वीकार करने से पहले तुम्हारा पहला सवाल क्या है?",
+                             mr:"एक बातमी हेडलाइन एका अभ्यासावर आधारित दावा करते 'नवीन सप्लिमेंट फक्त एका आठवड्यात थकवा बरा करतं!'. हा दावा स्वीकारण्याआधी तुमचा पहिला प्रश्न काय आहे?" },
+                choices: [
+                  { label:{en:"How was the study actually designed — was there a comparison group, and how many people were involved?", hi:"स्टडी असल में कैसे डिज़ाइन की गई थी — क्या कोई तुलना समूह था, और कितने लोग शामिल थे?", mr:"अभ्यास खरंच कसा डिझाइन केला होता — तुलना गट होता का, आणि किती लोक सामील होते?" }, quality:"best",
+                    outcome:{en:"Excellent critical thinking! Headlines often oversimplify — checking the actual study design, sample size, and methodology is exactly how to evaluate whether a claim is genuinely trustworthy.",hi:"बेहतरीन आलोचनात्मक सोच! हेडलाइन अक्सर सरलीकृत होती हैं — असली स्टडी डिज़ाइन, नमूना आकार, और तरीके की जाँच करना बिल्कुल वैसा है जैसे यह मूल्यांकन किया जाए कि क्या एक दावा वाकई भरोसेमंद है।",mr:"उत्तम समीक्षात्मक विचार! हेडलाइन्स अनेकदा अतिसुलभ करतात — खरा अभ्यास डिझाइन, नमुना आकार, आणि पद्धत तपासणं अगदी असंच आहे जसं एखादा दावा खरंच विश्वासार्ह आहे का हे मूल्यमापन करणं."} },
+                  { label:{en:"Just accept the headline as true since it's based on a study", hi:"बस हेडलाइन को सच मान लो क्योंकि यह एक स्टडी पर आधारित है", mr:"फक्त हेडलाइन खरी माना कारण ती एका अभ्यासावर आधारित आहे"}, quality:"risky",
+                    outcome:{en:"This misses important critical thinking. Not all studies are equally well-designed, and headlines often exaggerate — accepting claims without checking methodology can be misleading.",hi:"यह महत्वपूर्ण आलोचनात्मक सोच छोड़ देता है। सभी स्टडी समान रूप से अच्छी तरह डिज़ाइन नहीं होतीं, और हेडलाइन अक्सर बढ़ा-चढ़ाकर बताती हैं — तरीके की जाँच किए बिना दावों को स्वीकार करना गुमराह कर सकता है।",mr:"यात महत्त्वाचा समीक्षात्मक विचार चुकतो. सर्व अभ्यास समानपणे नीट डिझाइन केलेले नसतात, आणि हेडलाइन्स अनेकदा अतिशयोक्ती करतात — पद्धत न तपासता दावे स्वीकारणं दिशाभूल करणारं असू शकतं."} }
+                ]
+              },
+              {
+                situation: { en:"You find the actual study only tested 15 people with no comparison group, over just 3 days. How should this shape your evaluation of the headline?",
+                             hi:"तुम्हें पता चलता है कि असली स्टडी ने बिना किसी तुलना समूह के केवल 15 लोगों का टेस्ट किया, सिर्फ़ 3 दिनों में। इसे हेडलाइन के तुम्हारे मूल्यांकन को कैसे आकार देना चाहिए?",
+                             mr:"तुम्हाला कळतं की खऱ्या अभ्यासात कोणत्याही तुलना गटाशिवाय फक्त 15 लोकांची चाचणी झाली, फक्त 3 दिवसांत. याने हेडलाइनच्या तुमच्या मूल्यमापनाला कसा आकार द्यावा?" },
+                choices: [
+                  { label:{en:"Recognize the headline is likely overstating the evidence — a small, short, uncontrolled study can't support such a strong claim", hi:"पहचानो कि हेडलाइन शायद सबूत को बढ़ा-चढ़ाकर बता रही है — एक छोटी, छोटी अवधि की, अनियंत्रित स्टडी इतने मज़बूत दावे का समर्थन नहीं कर सकती", mr:"ओळखा की हेडलाइन कदाचित पुरावा अतिशयोक्तीने सांगत आहे — एक लहान, कमी कालावधीचा, अनियंत्रित अभ्यास इतका मजबूत दावा समर्थित करू शकत नाही"}, quality:"best",
+                    outcome:{en:"Excellent evaluation! Recognizing that a small, short, uncontrolled study can't support a strong headline claim is exactly the kind of research literacy that protects against misinformation.",hi:"बेहतरीन मूल्यांकन! यह पहचानना कि एक छोटी, छोटी अवधि की, अनियंत्रित स्टडी एक मज़बूत हेडलाइन दावे का समर्थन नहीं कर सकती, बिल्कुल वैसी रिसर्च साक्षरता है जो गलत सूचना से बचाती है।",mr:"उत्तम मूल्यमापन! एक लहान, कमी कालावधीचा, अनियंत्रित अभ्यास मजबूत हेडलाइन दाव्याला समर्थन देऊ शकत नाही हे ओळखणं अगदी अशाच प्रकारचं संशोधन साक्षरता आहे जी चुकीच्या माहितीपासून वाचवते."} },
+                  { label:{en:"Still trust the headline since a real study was involved", hi:"फिर भी हेडलाइन पर भरोसा करो क्योंकि एक असली स्टडी शामिल थी", mr:"तरीही हेडलाइनवर विश्वास ठेवा कारण खरा अभ्यास सामील होता"}, quality:"risky",
+                    outcome:{en:"This overlooks serious limitations. A study existing doesn't automatically make its conclusions strong — a small, short, uncontrolled study has real limits on what it can actually prove.",hi:"यह गंभीर सीमाओं को नज़रअंदाज़ करता है। एक स्टडी का अस्तित्व स्वतः इसके निष्कर्षों को मज़बूत नहीं बनाता — एक छोटी, छोटी अवधि की, अनियंत्रित स्टडी की असली सीमाएँ हैं कि यह असल में क्या साबित कर सकती है।",mr:"यात गंभीर मर्यादा दुर्लक्षित होतात. अभ्यास अस्तित्वात असणं आपोआप त्याचे निष्कर्ष मजबूत बनवत नाही — एका लहान, कमी कालावधीच्या, अनियंत्रित अभ्यासाला तो खरंच काय सिद्ध करू शकतो यावर खऱ्या मर्यादा आहेत."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🔍", title: "Explore research literacy", mentorVisual: "🔍",
+              mentorIntro: {
+                en: "Let's explore the key questions that help evaluate whether a study's claims are trustworthy.",
+                hi: "चलो उन मुख्य सवालों को एक्सप्लोर करते हैं जो यह मूल्यांकन करने में मदद करते हैं कि क्या एक स्टडी के दावे भरोसेमंद हैं।",
+                mr: "चला त्या मुख्य प्रश्नांना एक्सप्लोर करूया जे एका अभ्यासाचे दावे विश्वासार्ह आहेत का हे मूल्यमापन करण्यास मदत करतात."
+              },
+              data: { visual: "🔍", hotspots: [
+              { label:{en:"Sample size",hi:"नमूना आकार",mr:"नमुना आकार"}, fact:{en:"A study with 15 people is much weaker evidence than one with 15,000 — size genuinely matters!"} },
+              { label:{en:"Comparison groups",hi:"तुलना समूह",mr:"तुलना गट"}, fact:{en:"Without a comparison group, it's hard to know if an effect was really due to the treatment being tested!"} },
+              { label:{en:"Headlines vs. actual studies",hi:"हेडलाइन बनाम असली स्टडी",mr:"हेडलाइन्स विरुद्ध खरे अभ्यास"}, fact:{en:"News headlines often simplify or exaggerate — the actual study details tell a more accurate story!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Research critique quiz",
+              desc: { en:"A real quiz on critically evaluating research studies and health claims.", hi:"रिसर्च स्टडी और स्वास्थ्य दावों का आलोचनात्मक मूल्यांकन करने पर एक असली क्विज़।", mr:"संशोधन अभ्यास आणि आरोग्य दाव्यांचं समीक्षात्मक मूल्यमापन करण्यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Being a critical reader",
+              desc: { en:"Why do you think it's important for everyone, not just doctors, to critically evaluate health claims in the news rather than accepting headlines at face value?", hi:"तुम्हें क्यों लगता है कि हर किसी के लिए, सिर्फ़ डॉक्टरों के लिए नहीं, न्यूज़ में स्वास्थ्य दावों का आलोचनात्मक मूल्यांकन करना ज़रूरी है, बजाय हेडलाइन को जैसा है वैसा स्वीकार करने के?", mr:"हेडलाइन्स जशा आहेत तशा स्वीकारण्याऐवजी, फक्त डॉक्टरांसाठीच नाही तर प्रत्येकासाठी बातम्यांमधील आरोग्य दाव्यांचं समीक्षात्मक मूल्यमापन करणं का महत्त्वाचं आहे असं तुम्हाला वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Research Critique Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about evaluating research!",
+                hi: "चलो और गहराई में जाते हैं — रिसर्च का मूल्यांकन करने के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — संशोधनाचं मूल्यमापन करण्याबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Correlation vs. causation?",hi:"सहसंबंध बनाम कारण?",mr:"सहसंबंध विरुद्ध कारण?"}, back:{en:"Just because two things happen together doesn't mean one caused the other — this is a classic research pitfall! 🔗",hi:"सिर्फ़ इसलिए कि दो चीज़ें एक साथ होती हैं इसका मतलब नहीं कि एक ने दूसरे को कारण बनाया — यह एक क्लासिक रिसर्च जाल है! 🔗",mr:"फक्त दोन गोष्टी एकत्र घडतात याचा अर्थ एकाने दुसऱ्याला कारणीभूत केलं असा होत नाही — हा एक ठराविक संशोधन सापळा आहे! 🔗"} },
+              { front:{en:"Funding sources matter?",hi:"फंडिंग स्रोत मायने रखते हैं?",mr:"निधीचे स्रोत महत्त्वाचे आहेत?"}, back:{en:"Knowing who funded a study can help evaluate potential bias — good research discloses this openly! 💰",hi:"यह जानना कि किसने एक स्टडी को फंड किया, संभावित पूर्वाग्रह का मूल्यांकन करने में मदद कर सकता है — अच्छी रिसर्च इसे खुले तौर पर प्रकट करती है! 💰",mr:"एका अभ्यासाला कोणी निधी दिला हे जाणून घेणं संभाव्य पूर्वग्रह मूल्यमापन करण्यास मदत करू शकतं — चांगलं संशोधन हे उघडपणे उघड करतं! 💰"} },
+              { front:{en:"Media exaggeration is common?",hi:"मीडिया अतिशयोक्ति आम है?",mr:"माध्यमांची अतिशयोक्ती सामान्य आहे?"}, back:{en:"Studies show that news coverage of research often exaggerates findings beyond what the actual study supports! 📰",hi:"स्टडी दिखाती हैं कि रिसर्च की न्यूज़ कवरेज अक्सर वास्तविक स्टडी के समर्थन से ज़्यादा निष्कर्षों को बढ़ा-चढ़ाकर बताती है! 📰",mr:"अभ्यास दाखवतात की संशोधनाचं बातम्यांतील कव्हरेज अनेकदा प्रत्यक्ष अभ्यासाच्या समर्थनापेक्षा निष्कर्षांची अतिशयोक्ती करतं! 📰"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Research Critique or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"If two things happen together, one must have caused the other.",hi:"अगर दो चीज़ें एक साथ होती हैं, एक ने दूसरे को ज़रूर कारण बनाया होगा।",mr:"जर दोन गोष्टी एकत्र घडल्या, तर एकाने दुसऱ्याला नक्कीच कारणीभूत केलं असेल."}, answer:false, explain:{en:"Myth! Correlation doesn't necessarily mean causation — this is one of the most important concepts in evaluating research.",hi:"मिथक! सहसंबंध का ज़रूरी नहीं कि कारण हो — यह रिसर्च का मूल्यांकन करने में सबसे ज़रूरी अवधारणाओं में से एक है।",mr:"मिथक! सहसंबंधाचा अर्थ कारण असणं गरजेचं नाही — संशोधनाचं मूल्यमापन करण्यातील ही सर्वात महत्त्वाची संकल्पनांपैकी एक आहे."} },
+              { text:{en:"News headlines about research studies always accurately represent the actual findings.",hi:"रिसर्च स्टडी के बारे में न्यूज़ हेडलाइन हमेशा असली निष्कर्षों का सटीक प्रतिनिधित्व करती हैं।",mr:"संशोधन अभ्यासांबद्दलच्या बातम्यांच्या हेडलाइन्स नेहमी प्रत्यक्ष निष्कर्षांचं अचूक प्रतिनिधित्व करतात."}, answer:false, explain:{en:"Myth! Studies show that media coverage often exaggerates findings beyond what the actual research supports.",hi:"मिथक! स्टडी दिखाती हैं कि मीडिया कवरेज अक्सर वास्तविक रिसर्च के समर्थन से ज़्यादा निष्कर्षों को बढ़ा-चढ़ाकर बताती है।",mr:"मिथक! अभ्यास दाखवतात की माध्यमांचं कव्हरेज अनेकदा प्रत्यक्ष संशोधनाच्या समर्थनापेक्षा निष्कर्षांची अतिशयोक्ती करतं."} },
+              { text:{en:"A study's sample size and whether it has a comparison group genuinely affect how trustworthy its conclusions are.",hi:"एक स्टडी का नमूना आकार और क्या इसमें एक तुलना समूह है, वाकई प्रभावित करता है कि इसके निष्कर्ष कितने भरोसेमंद हैं।",mr:"अभ्यासाचा नमुना आकार आणि तुलना गट आहे का, हे खरंच त्याचे निष्कर्ष किती विश्वासार्ह आहेत यावर परिणाम करतं."}, answer:true, explain:{en:"True! Both sample size and study design genuinely shape how much a study's conclusions can be trusted.",hi:"सच! नमूना आकार और स्टडी डिज़ाइन दोनों वाकई प्रभावित करते हैं कि एक स्टडी के निष्कर्षों पर कितना भरोसा किया जा सकता है।",mr:"खरं! नमुना आकार आणि अभ्यास डिझाइन दोन्ही खरंच अभ्यासाच्या निष्कर्षांवर किती विश्वास ठेवता येईल यावर परिणाम करतात."} }
+            ]}}
+          ]},
+          { label: "Healthcare Policy Scenario",
+            bonusAssignment: {
+              title: { en: "Policy Trade-Off Reflection", hi: "नीति ट्रेड-ऑफ पर विचार", mr: "धोरण तडजोड विचार" },
+              prompt: { en: "Write 3-4 sentences on a healthcare policy trade-off you find interesting (like cost vs. access). Take a photo!",
+                        hi: "एक हेल्थकेयर नीति ट्रेड-ऑफ पर 3-4 वाक्य लिखो जो तुम्हें दिलचस्प लगे (जैसे लागत बनाम पहुँच)। फोटो लो!",
+                        mr: "तुम्हाला रुचकर वाटणाऱ्या आरोग्यसेवा धोरण तडजोडीबद्दल (जसं खर्च विरुद्ध पोहोच) 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🏛️", title: "Navigate a Policy Trade-Off", mentorVisual: "🏛️",
+              mentorIntro: {
+                en: "Healthcare policy often involves genuine trade-offs, without a perfect answer. Let's work through a realistic scenario.",
+                hi: "हेल्थकेयर नीति में अक्सर असली ट्रेड-ऑफ शामिल होते हैं, बिना किसी परफेक्ट जवाब के। चलो एक यथार्थवादी परिदृश्य से गुज़रते हैं।",
+                mr: "आरोग्यसेवा धोरणात अनेकदा खऱ्या तडजोडी समाविष्ट असतात, कोणतंही परिपूर्ण उत्तर नसताना. चला एका वास्तववादी परिस्थितीतून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A region has limited healthcare funding. They must choose between building one advanced specialty hospital in the city, or funding several smaller clinics across rural areas. What factors matter most?",
+                             hi:"एक क्षेत्र में सीमित हेल्थकेयर फंडिंग है। उन्हें शहर में एक एडवांस स्पेशलिटी अस्पताल बनाने, या ग्रामीण क्षेत्रों में कई छोटे क्लीनिकों को फंड करने के बीच चुनना है। कौन से कारक सबसे ज़्यादा मायने रखते हैं?",
+                             mr:"एका प्रदेशात मर्यादित आरोग्यसेवा निधी आहे. त्यांना शहरात एक प्रगत खासियत रुग्णालय बांधणं, किंवा ग्रामीण भागांत अनेक लहान दवाखान्यांना निधी देणं यामध्ये निवडायचं आहे. कोणते घटक सर्वात जास्त महत्त्वाचे आहेत?" },
+                choices: [
+                  { label:{en:"Consider how many total people each option would reach, and how urgently rural areas currently lack any care at all", hi:"विचार करो हर विकल्प कितने कुल लोगों तक पहुँचेगा, और ग्रामीण क्षेत्रों में अभी कितनी अत्यावश्यकता से कोई देखभाल बिल्कुल नहीं है", mr:"विचार करा प्रत्येक पर्याय एकूण किती लोकांपर्यंत पोहोचेल, आणि ग्रामीण भागांत सध्या कोणतीही काळजी अजिबात नसण्याची तातडी किती आहे"}, quality:"best",
+                    outcome:{en:"Thoughtful policy reasoning! Considering total population reached and existing gaps in care is exactly the kind of evidence-based thinking that guides good healthcare policy decisions.",hi:"विचारशील नीति तर्क! पहुँची गई कुल आबादी और देखभाल में मौजूदा कमियों पर विचार करना बिल्कुल वैसी सबूत-आधारित सोच है जो अच्छी हेल्थकेयर नीति के फ़ैसलों का मार्गदर्शन करती है।",mr:"विचारशील धोरण तर्क! पोहोचलेली एकूण लोकसंख्या आणि काळजीतील विद्यमान त्रुटींचा विचार करणं अगदी अशाच प्रकारचा पुरावा-आधारित विचार आहे जो चांगल्या आरोग्यसेवा धोरण निर्णयांना मार्गदर्शन करतो."} },
+                  { label:{en:"Just choose whichever option seems more impressive or prestigious", hi:"बस वह विकल्प चुनो जो ज़्यादा प्रभावशाली या प्रतिष्ठित लगे", mr:"फक्त जो पर्याय अधिक प्रभावी किंवा प्रतिष्ठित वाटतो तो निवडा"}, quality:"risky",
+                    outcome:{en:"This overlooks the real goal. Choosing based on prestige rather than actual population impact could mean fewer people genuinely get access to needed care.",hi:"यह असली लक्ष्य को नज़रअंदाज़ करता है। प्रतिष्ठा के आधार पर चुनना, असली जनसंख्या प्रभाव के बजाय, इसका मतलब हो सकता है कि कम लोगों को वाकई ज़रूरी देखभाल मिले।",mr:"यात खरं उद्दिष्ट दुर्लक्षित होतं. प्रतिष्ठेवर आधारित निवडणं, प्रत्यक्ष लोकसंख्या परिणामाऐवजी, याचा अर्थ कमी लोकांना खरंच आवश्यक काळजी मिळणं असू शकतो."} }
+                ]
+              },
+              {
+                situation: { en:"Data shows the rural clinics option would help more total people, but the specialty hospital could save more lives per person treated for severe cases. How do you think about this trade-off?",
+                             hi:"डेटा दिखाता है कि ग्रामीण क्लीनिक विकल्प ज़्यादा कुल लोगों की मदद करेगा, लेकिन स्पेशलिटी अस्पताल गंभीर मामलों के लिए इलाज किए गए प्रति व्यक्ति ज़्यादा जानें बचा सकता है। तुम इस ट्रेड-ऑफ के बारे में कैसे सोचते हो?",
+                             mr:"डेटा दाखवतो की ग्रामीण दवाखाना पर्याय जास्त एकूण लोकांना मदत करेल, पण खासियत रुग्णालय गंभीर केसेससाठी उपचार केलेल्या प्रति व्यक्ती जास्त जीव वाचवू शकतं. तुम्ही या तडजोडीबद्दल कसा विचार करता?" },
+                choices: [
+                  { label:{en:"Recognize this as a genuine values question with no single 'correct' answer, and consider what the community itself prioritizes", hi:"इसे बिना किसी एक 'सही' जवाब के एक असली मूल्यों का सवाल मानो, और विचार करो कि समुदाय खुद क्या प्राथमिकता देता है", mr:"हा कोणत्याही एका 'योग्य' उत्तराशिवाय खरा मूल्यांचा प्रश्न म्हणून ओळखा, आणि समुदाय स्वतः कशाला प्राधान्य देतो याचा विचार करा"}, quality:"best",
+                    outcome:{en:"Mature reasoning! Recognizing that this is a genuine values trade-off, not a simple math problem, and considering community input, reflects real-world policy complexity honestly.",hi:"परिपक्व तर्क! यह पहचानना कि यह एक साधी गणित की समस्या नहीं, एक असली मूल्यों का ट्रेड-ऑफ है, और सामुदायिक इनपुट पर विचार करना, ईमानदारी से वास्तविक दुनिया की नीति जटिलता को दर्शाता है।",mr:"प्रौढ तर्क! हा साधा गणिताचा प्रश्न नाही, हा खरा मूल्यांचा तडजोड आहे हे ओळखणं, आणि सामुदायिक इनपुटचा विचार करणं, प्रामाणिकपणे वास्तविक जगातील धोरण गुंतागुंत प्रतिबिंबित करतं."} },
+                  { label:{en:"Assume there's obviously one mathematically correct answer and ignore the values dimension entirely", hi:"मान लो कि स्पष्ट रूप से एक गणितीय रूप से सही जवाब है और मूल्यों के आयाम को पूरी तरह नज़रअंदाज़ करो", mr:"असं गृहीत धरा की स्पष्टपणे एक गणितीयदृष्ट्या योग्य उत्तर आहे आणि मूल्यांच्या आयामाला पूर्णपणे दुर्लक्षित करा"}, quality:"risky",
+                    outcome:{en:"This oversimplifies a genuinely complex issue. Real healthcare policy decisions involve real value trade-offs, not just numbers — ignoring that dimension misses something important.",hi:"यह एक वाकई जटिल मुद्दे को बहुत सरल बना देता है। असली हेल्थकेयर नीति के फ़ैसलों में असली मूल्यों के ट्रेड-ऑफ शामिल हैं, सिर्फ़ संख्याएँ नहीं — उस आयाम को नज़रअंदाज़ करना कुछ ज़रूरी छोड़ देता है।",mr:"हे खरंच जटिल मुद्दा खूप सोपं करतं. खऱ्या आरोग्यसेवा धोरण निर्णयांमध्ये खऱ्या मूल्यांच्या तडजोडी समाविष्ट आहेत, फक्त संख्या नाही — तो आयाम दुर्लक्षित करणं काहीतरी महत्त्वाचं चुकतं."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🏛️", title: "Explore policy trade-offs", mentorVisual: "🏛️",
+              mentorIntro: {
+                en: "Let's explore some of the real trade-offs healthcare policymakers regularly face.",
+                hi: "चलो कुछ असली ट्रेड-ऑफ को एक्सप्लोर करते हैं जिनका हेल्थकेयर नीति निर्माता नियमित रूप से सामना करते हैं।",
+                mr: "चला काही खऱ्या तडजोडींना एक्सप्लोर करूया ज्यांना आरोग्यसेवा धोरणकर्ते नियमितपणे सामोरे जातात."
+              },
+              data: { visual: "🏛️", hotspots: [
+              { label:{en:"Breadth vs. depth",hi:"व्यापकता बनाम गहराई",mr:"विस्तार विरुद्ध खोली"}, fact:{en:"Policymakers often weigh helping many people a little versus helping fewer people a lot!"} },
+              { label:{en:"Limited resources",hi:"सीमित संसाधन",mr:"मर्यादित साधनं"}, fact:{en:"No healthcare system has unlimited money — every decision genuinely means choosing what NOT to fund too!"} },
+              { label:{en:"Community input matters",hi:"सामुदायिक इनपुट मायने रखता है",mr:"सामुदायिक इनपुट महत्त्वाचा आहे"}, fact:{en:"Good policy processes often involve asking the affected community what they value most!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Healthcare policy quiz",
+              desc: { en:"A real quiz on the genuine trade-offs involved in healthcare policy decisions.", hi:"हेल्थकेयर नीति फ़ैसलों में शामिल असली ट्रेड-ऑफ पर एक असली क्विज़।", mr:"आरोग्यसेवा धोरण निर्णयांमध्ये समाविष्ट खऱ्या तडजोडींवर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Decisions without perfect answers",
+              desc: { en:"How do you feel about decisions that don't have one clearly 'correct' answer, just genuine trade-offs? How would you approach making peace with that?", hi:"उन फ़ैसलों के बारे में तुम्हें कैसा लगता है जिनका कोई स्पष्ट रूप से 'सही' जवाब नहीं है, बस असली ट्रेड-ऑफ हैं? तुम इसके साथ शांति बनाने का तरीका कैसे अपनाओगे?", mr:"ज्यांना कोणतंही स्पष्टपणे 'योग्य' उत्तर नाही, फक्त खऱ्या तडजोडी आहेत अशा निर्णयांबद्दल तुम्हाला कसं वाटतं? त्यासोबत शांती करण्याचा तुम्ही कसा दृष्टिकोन घ्याल?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Policy Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced healthcare policy fact!",
+                hi: "चलो और गहराई में जाते हैं — एक ज़्यादा एडवांस हेल्थकेयर नीति तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — अधिक प्रगत आरोग्यसेवा धोरण तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Health economists exist?",hi:"स्वास्थ्य अर्थशास्त्री मौजूद हैं?",mr:"आरोग्य अर्थतज्ज्ञ अस्तित्वात आहेत?"}, back:{en:"There's an entire field called 'health economics' dedicated to studying exactly these kinds of resource trade-offs! 📊",hi:"'हेल्थ इकोनॉमिक्स' नाम का एक पूरा क्षेत्र है जो बिल्कुल इसी तरह के संसाधन ट्रेड-ऑफ का अध्ययन करने के लिए समर्पित है! 📊",mr:"'आरोग्य अर्थशास्त्र' नावाचं एक संपूर्ण क्षेत्र आहे जे अगदी अशाच प्रकारच्या साधन तडजोडींचा अभ्यास करण्यासाठी समर्पित आहे! 📊"} },
+              { front:{en:"Policy pilots exist?",hi:"नीति पायलट मौजूद हैं?",mr:"धोरण पायलट अस्तित्वात आहेत?"}, back:{en:"Policymakers sometimes test a policy in one small area first (a 'pilot'), before deciding whether to expand it! 🧪",hi:"नीति निर्माता कभी-कभी इसे विस्तारित करने का फ़ैसला लेने से पहले पहले एक छोटे से क्षेत्र में एक नीति का परीक्षण करते हैं (एक 'पायलट')! 🧪",mr:"धोरणकर्ते कधीकधी ते विस्तारायचं की नाही हे ठरवण्याआधी आधी एका लहान भागात एक धोरण चाचणी करतात (एक 'पायलट')! 🧪"} },
+              { front:{en:"Trade-offs shift over time?",hi:"ट्रेड-ऑफ समय के साथ बदलते हैं?",mr:"तडजोडी कालांतराने बदलतात?"}, back:{en:"As populations and needs change, healthcare policy trade-offs are regularly reevaluated, not decided once forever! 🔄",hi:"जैसे-जैसे आबादी और ज़रूरतें बदलती हैं, हेल्थकेयर नीति ट्रेड-ऑफ नियमित रूप से फिर से मूल्यांकित होते हैं, एक बार हमेशा के लिए तय नहीं होते! 🔄",mr:"लोकसंख्या आणि गरजा बदलतात तसतसं, आरोग्यसेवा धोरण तडजोडी नियमितपणे पुन्हा मूल्यमापित केल्या जातात, एकदाच कायमचं ठरवल्या जात नाहीत! 🔄"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Healthcare Policy or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Healthcare policy decisions always have one clearly correct mathematical answer.",hi:"हेल्थकेयर नीति फ़ैसलों में हमेशा एक स्पष्ट रूप से सही गणितीय जवाब होता है।",mr:"आरोग्यसेवा धोरण निर्णयांना नेहमी एक स्पष्टपणे योग्य गणिती उत्तर असतं."}, answer:false, explain:{en:"Myth! Many healthcare policy decisions involve genuine values trade-offs without one single correct answer.",hi:"मिथक! कई हेल्थकेयर नीति फ़ैसलों में बिना किसी एक सही जवाब के असली मूल्यों के ट्रेड-ऑफ शामिल हैं।",mr:"मिथक! अनेक आरोग्यसेवा धोरण निर्णयांमध्ये कोणत्याही एका योग्य उत्तराशिवाय खऱ्या मूल्यांच्या तडजोडी समाविष्ट असतात."} },
+              { text:{en:"Policymakers sometimes test policies in a small pilot area before wider rollout.",hi:"नीति निर्माता कभी-कभी व्यापक रोलआउट से पहले एक छोटे पायलट क्षेत्र में नीतियों का परीक्षण करते हैं।",mr:"धोरणकर्ते कधीकधी व्यापक अंमलबजावणीआधी एका लहान पायलट भागात धोरणांची चाचणी करतात."}, answer:true, explain:{en:"True! Pilot testing is a real, common practice before expanding a policy more broadly.",hi:"सच! पायलट टेस्टिंग एक असली, आम अभ्यास है नीति को ज़्यादा व्यापक रूप से विस्तारित करने से पहले।",mr:"खरं! पायलट चाचणी ही एक खरी, सामान्य पद्धत आहे धोरण अधिक व्यापकपणे विस्तारण्याआधी."} },
+              { text:{en:"Healthcare resources are unlimited, so funding decisions don't really involve trade-offs.",hi:"हेल्थकेयर संसाधन असीमित हैं, इसलिए फंडिंग फ़ैसलों में वाकई ट्रेड-ऑफ शामिल नहीं होते।",mr:"आरोग्यसेवा साधनं अमर्याद आहेत, त्यामुळे निधी निर्णयांमध्ये खरंच तडजोडी समाविष्ट नसतात."}, answer:false, explain:{en:"Myth! Healthcare resources are always limited, meaning every funding decision genuinely involves trade-offs about what not to fund.",hi:"मिथक! हेल्थकेयर संसाधन हमेशा सीमित हैं, मतलब हर फंडिंग फ़ैसले में वाकई ट्रेड-ऑफ शामिल हैं कि क्या फंड नहीं करना है।",mr:"मिथक! आरोग्यसेवा साधनं नेहमी मर्यादित असतात, म्हणजे प्रत्येक निधी निर्णयात खरंच काय निधी द्यायचं नाही याबद्दल तडजोडी समाविष्ट असतात."} }
+            ]}}
+          ]},
+          { label: "Complex Consent Ethics",
+            bonusAssignment: {
+              title: { en: "Consent Complexity Reflection", hi: "सहमति जटिलता पर विचार", mr: "संमती गुंतागुंत विचार" },
+              prompt: { en: "Write 3-4 sentences on why getting truly informed consent can sometimes be more complicated than just asking someone to sign a form. Take a photo!",
+                        hi: "3-4 वाक्य लिखो कि वाकई सूचित सहमति पाना कभी-कभी किसी को फ़ॉर्म पर हस्ताक्षर करने के लिए कहने से ज़्यादा जटिल क्यों हो सकता है। फोटो लो!",
+                        mr: "खरोखर माहितीपूर्ण संमती मिळवणं कधीकधी एखाद्याला फॉर्मवर सही करायला सांगण्यापेक्षा जास्त गुंतागुंतीचं का असू शकतं याबद्दल 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "✍️", title: "Navigate Complex Consent", mentorVisual: "✍️",
+              mentorIntro: {
+                en: "Sometimes getting truly informed consent is more complicated than a simple signature. Let's work through a genuinely nuanced situation.",
+                hi: "कभी-कभी वाकई सूचित सहमति पाना एक साधे हस्ताक्षर से ज़्यादा जटिल होता है। चलो एक वाकई सूक्ष्म स्थिति से गुज़रते हैं।",
+                mr: "कधीकधी खरोखर माहितीपूर्ण संमती मिळवणं एका साध्या सहीपेक्षा जास्त गुंतागुंतीचं असतं. चला एका खरोखर सूक्ष्म परिस्थितीतून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"An elderly patient needs to consent to a procedure, but seems confused during your explanation and their family member keeps answering questions for them. What's your priority?",
+                             hi:"एक बुज़ुर्ग मरीज़ को एक प्रक्रिया के लिए सहमति देनी है, लेकिन तुम्हारे स्पष्टीकरण के दौरान वे उलझे हुए लगते हैं और उनके परिवार का सदस्य उनके लिए सवालों का जवाब देता रहता है। तुम्हारी प्राथमिकता क्या है?",
+                             mr:"एका वृद्ध रुग्णाला एका प्रक्रियेसाठी संमती द्यायची आहे, पण तुमच्या स्पष्टीकरणादरम्यान ते गोंधळलेले दिसतात आणि त्यांचा कुटुंब सदस्य त्यांच्यासाठी प्रश्नांची उत्तरं देत राहतो. तुमचं प्राधान्य काय आहे?" },
+                choices: [
+                  { label:{en:"Gently redirect to speak directly with the patient, checking their own understanding, rather than relying on the family member's answers", hi:"धीरे से मरीज़ के साथ सीधे बात करने की ओर पुनर्निर्देशित करो, उनकी अपनी समझ की जाँच करते हुए, परिवार के सदस्य के जवाबों पर निर्भर होने के बजाय", mr:"रुग्णाशी थेट बोलण्याकडे हळुवारपणे पुनर्निर्देशित करा, त्यांची स्वतःची समज तपासत, कुटुंब सदस्याच्या उत्तरांवर अवलंबून राहण्याऐवजी"}, quality:"best",
+                    outcome:{en:"Excellent ethical instinct! True informed consent requires the patient themselves to understand, not just a family member answering on their behalf — this respects the patient's own autonomy.",hi:"बेहतरीन नैतिक सोच! असली सूचित सहमति के लिए मरीज़ को खुद समझने की ज़रूरत है, सिर्फ़ एक परिवार के सदस्य के उनकी ओर से जवाब देने की नहीं — यह मरीज़ की अपनी स्वायत्तता का सम्मान करता है।",mr:"उत्तम नैतिक अंतःप्रेरणा! खरी माहितीपूर्ण संमतीसाठी रुग्णाला स्वतःला समजून घेण्याची गरज आहे, फक्त कुटुंब सदस्याने त्यांच्या वतीने उत्तर देण्याची नाही — हे रुग्णाच्या स्वतःच्या स्वायत्ततेचा आदर करतं."} },
+                  { label:{en:"Just accept the family member's answers to speed up the process", hi:"प्रक्रिया को तेज़ करने के लिए बस परिवार के सदस्य के जवाबों को स्वीकार कर लो", mr:"प्रक्रिया वेगवान करण्यासाठी फक्त कुटुंब सदस्याची उत्तरं स्वीकारा"}, quality:"risky",
+                    outcome:{en:"This risks the core principle of consent. If the patient themselves doesn't genuinely understand, consent obtained mainly through a family member isn't truly informed consent from the patient.",hi:"यह सहमति के मुख्य सिद्धांत को जोखिम में डालता है। अगर मरीज़ खुद वाकई नहीं समझता, तो मुख्य रूप से परिवार के सदस्य के ज़रिए ली गई सहमति मरीज़ की वाकई सूचित सहमति नहीं है।",mr:"यात संमतीच्या मुख्य तत्त्वाला धोका आहे. जर रुग्णाला स्वतःला खरंच समजत नसेल, तर मुख्यतः कुटुंब सदस्याद्वारे मिळालेली संमती रुग्णाची खरी माहितीपूर्ण संमती नाही."} }
+                ]
+              },
+              {
+                situation: { en:"After checking directly, you realize the patient genuinely doesn't fully understand the procedure, even after your explanation. What do you do?",
+                             hi:"सीधे जाँचने के बाद, तुम्हें एहसास होता है कि मरीज़ वाकई तुम्हारे स्पष्टीकरण के बाद भी प्रक्रिया को पूरी तरह नहीं समझता। तुम क्या करते हो?",
+                             mr:"थेट तपासल्यानंतर, तुम्हाला जाणवतं की रुग्णाला तुमच्या स्पष्टीकरणानंतरही प्रक्रिया खरंच पूर्णपणे समजलेली नाही. तुम्ही काय करता?" },
+                choices: [
+                  { label:{en:"Take more time, try a different, simpler way of explaining, and involve family appropriately as support rather than a replacement for the patient's own understanding", hi:"और समय लो, समझाने का एक अलग, आसान तरीका आज़माओ, और मरीज़ की अपनी समझ के प्रतिस्थापन के बजाय सहायता के रूप में परिवार को उचित रूप से शामिल करो", mr:"अधिक वेळ घ्या, समजावण्याचा एक वेगळा, सोपा मार्ग वापरून बघा, आणि रुग्णाच्या स्वतःच्या समजुतीच्या पर्यायाऐवजी सहाय्य म्हणून कुटुंबाला योग्यरित्या सामील करा"}, quality:"best",
+                    outcome:{en:"Great ethical care! Taking the time to genuinely ensure understanding, rather than rushing, respects the patient while still appropriately including supportive family involvement.",hi:"बेहतरीन नैतिक देखभाल! जल्दबाज़ी करने के बजाय वाकई समझ सुनिश्चित करने के लिए समय लेना, मरीज़ का सम्मान करते हुए भी उचित रूप से सहायक परिवार की भागीदारी को शामिल करता है।",mr:"उत्तम नैतिक काळजी! घाई करण्याऐवजी खरंच समज सुनिश्चित करण्यासाठी वेळ घेणं, रुग्णाचा आदर करत तरीही योग्यरित्या सहाय्यक कुटुंब सहभाग समाविष्ट करतं."} },
+                  { label:{en:"Proceed with the family's consent anyway, since time is limited", hi:"फिर भी परिवार की सहमति के साथ आगे बढ़ो, क्योंकि समय सीमित है", mr:"तरीही कुटुंबाच्या संमतीने पुढे जा, कारण वेळ मर्यादित आहे"}, quality:"risky",
+                    outcome:{en:"This compromises a core ethical principle. Proceeding without the patient's own genuine understanding, even under time pressure, risks violating true informed consent.",hi:"यह एक मुख्य नैतिक सिद्धांत से समझौता करता है। मरीज़ की अपनी असली समझ के बिना आगे बढ़ना, समय के दबाव में भी, असली सूचित सहमति का उल्लंघन करने का जोखिम है।",mr:"हे एका मुख्य नैतिक तत्त्वाशी तडजोड करतं. रुग्णाच्या स्वतःच्या खऱ्या समजुतीशिवाय पुढे जाणं, वेळेच्या दबावातही, खऱ्या माहितीपूर्ण संमतीचं उल्लंघन करण्याचा धोका आहे."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "✍️", title: "Explore genuine informed consent", mentorVisual: "✍️",
+              mentorIntro: {
+                en: "Let's explore what makes consent genuinely 'informed,' beyond just a signature.",
+                hi: "चलो एक्सप्लोर करते हैं कि सिर्फ़ एक हस्ताक्षर से आगे, सहमति को वाकई 'सूचित' क्या बनाता है।",
+                mr: "चला एक्सप्लोर करूया की फक्त सहीच्या पलीकडे, संमतीला खरंच 'माहितीपूर्ण' काय बनवतं."
+              },
+              data: { visual: "✍️", hotspots: [
+              { label:{en:"Genuine understanding",hi:"असली समझ",mr:"खरी समज"}, fact:{en:"True informed consent requires the patient to genuinely understand, not just sign a document!"} },
+              { label:{en:"Cognitive factors",hi:"संज्ञानात्मक कारक",mr:"संज्ञानात्मक घटक"}, fact:{en:"Age, confusion, or stress can genuinely affect someone's ability to fully understand in the moment!"} },
+              { label:{en:"Supportive involvement, not replacement",hi:"सहायक भागीदारी, प्रतिस्थापन नहीं",mr:"सहाय्यक सहभाग, पर्याय नाही"}, fact:{en:"Family can support understanding, but shouldn't replace the patient's own genuine comprehension when possible!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Complex consent ethics quiz",
+              desc: { en:"A real quiz on what makes informed consent genuinely meaningful in complex situations.", hi:"जटिल स्थितियों में सूचित सहमति को वाकई सार्थक क्या बनाता है, इस पर एक असली क्विज़।", mr:"जटिल परिस्थितींमध्ये माहितीपूर्ण संमती खरंच अर्थपूर्ण काय बनवते, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Respecting autonomy",
+              desc: { en:"Why do you think respecting a patient's own understanding and choice, even when it takes more time, matters so deeply in medicine?", hi:"तुम्हें क्यों लगता है कि मरीज़ की अपनी समझ और पसंद का सम्मान करना, तब भी जब इसमें ज़्यादा समय लगे, चिकित्सा में इतनी गहराई से मायने रखता है?", mr:"रुग्णाच्या स्वतःच्या समजुतीचा आणि निवडीचा आदर करणं, जरी त्यात जास्त वेळ लागला तरी, वैद्यकशास्त्रात इतकं खोलवर महत्त्वाचं का आहे असं तुम्हाला वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Consent Ethics Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more thoughtful fact about consent ethics!",
+                hi: "चलो और गहराई में जाते हैं — सहमति नैतिकता के बारे में एक ज़्यादा विचारशील तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — संमती नैतिकतेबद्दल अधिक विचारशील तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Capacity assessments exist?",hi:"क्षमता मूल्यांकन मौजूद हैं?",mr:"क्षमता मूल्यमापन अस्तित्वात आहे?"}, back:{en:"Doctors sometimes use formal 'capacity assessments' to check whether a patient can genuinely understand and decide! 📋",hi:"डॉक्टर कभी-कभी यह जाँचने के लिए औपचारिक 'क्षमता मूल्यांकन' का इस्तेमाल करते हैं कि क्या मरीज़ वाकई समझ और फ़ैसला ले सकता है! 📋",mr:"डॉक्टर कधीकधी रुग्ण खरंच समजू आणि निर्णय घेऊ शकतो का हे तपासण्यासाठी औपचारिक 'क्षमता मूल्यमापन' वापरतात! 📋"} },
+              { front:{en:"Consent can be withdrawn?",hi:"सहमति वापस ली जा सकती है?",mr:"संमती मागे घेता येते?"}, back:{en:"Informed consent isn't a one-time thing — patients can withdraw consent at any point, even after initially agreeing! 🔄",hi:"सूचित सहमति एक बार की चीज़ नहीं है — मरीज़ किसी भी बिंदु पर सहमति वापस ले सकते हैं, शुरुआत में सहमत होने के बाद भी! 🔄",mr:"माहितीपूर्ण संमती ही एकदाची गोष्ट नाही — रुग्ण कोणत्याही क्षणी संमती मागे घेऊ शकतात, सुरुवातीला सहमत झाल्यानंतरही! 🔄"} },
+              { front:{en:"Plain language matters legally too?",hi:"सादी भाषा कानूनी रूप से भी मायने रखती है?",mr:"साधी भाषा कायदेशीरदृष्ट्याही महत्त्वाची आहे?"}, back:{en:"Many places now legally require consent forms to be written in plain, understandable language, not just dense medical jargon! ⚖️",hi:"कई जगहों पर अब कानूनी रूप से यह ज़रूरी है कि सहमति फ़ॉर्म सादी, समझने योग्य भाषा में लिखे जाएँ, सिर्फ़ घने मेडिकल शब्दजाल में नहीं! ⚖️",mr:"अनेक ठिकाणी आता कायदेशीरदृष्ट्या संमती फॉर्म साध्या, समजण्यासारख्या भाषेत लिहिणं आवश्यक आहे, फक्त दाट वैद्यकीय शब्दजालात नाही! ⚖️"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Consent Ethics or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"A family member's signature can always fully substitute for the patient's own understanding.",hi:"एक परिवार के सदस्य का हस्ताक्षर हमेशा मरीज़ की अपनी समझ का पूरी तरह विकल्प हो सकता है।",mr:"कुटुंब सदस्याची सही नेहमी रुग्णाच्या स्वतःच्या समजुतीचा पूर्णपणे पर्याय असू शकते."}, answer:false, explain:{en:"Myth! True informed consent requires the patient's own genuine understanding whenever possible, not just a family signature.",hi:"मिथक! असली सूचित सहमति के लिए जब भी संभव हो मरीज़ की अपनी असली समझ की ज़रूरत है, सिर्फ़ परिवार के हस्ताक्षर की नहीं।",mr:"मिथक! खऱ्या माहितीपूर्ण संमतीसाठी शक्य असेल तेव्हा रुग्णाच्या स्वतःच्या खऱ्या समजुतीची गरज आहे, फक्त कुटुंबाच्या सहीची नाही."} },
+              { text:{en:"A patient can withdraw consent even after initially agreeing to a procedure.",hi:"एक मरीज़ एक प्रक्रिया के लिए शुरुआत में सहमत होने के बाद भी सहमति वापस ले सकता है।",mr:"रुग्ण एका प्रक्रियेला सुरुवातीला सहमत झाल्यानंतरही संमती मागे घेऊ शकतो."}, answer:true, explain:{en:"True! Consent can genuinely be withdrawn at any point, reflecting ongoing respect for patient autonomy.",hi:"सच! सहमति वाकई किसी भी बिंदु पर वापस ली जा सकती है, मरीज़ की स्वायत्तता के लिए चल रहे सम्मान को दर्शाते हुए।",mr:"खरं! संमती खरंच कोणत्याही क्षणी मागे घेता येते, रुग्णाच्या स्वायत्ततेसाठी सुरू असलेला आदर प्रतिबिंबित करत."} },
+              { text:{en:"Consent forms are always written in complex medical language, with no requirement for plain language.",hi:"सहमति फ़ॉर्म हमेशा जटिल मेडिकल भाषा में लिखे जाते हैं, सादी भाषा की कोई ज़रूरत नहीं।",mr:"संमती फॉर्म नेहमी जटिल वैद्यकीय भाषेत लिहिले जातात, साध्या भाषेची कोणतीही आवश्यकता नाही."}, answer:false, explain:{en:"Myth! Many places now legally require consent forms to use plain, understandable language.",hi:"मिथक! कई जगहों पर अब कानूनी रूप से सहमति फ़ॉर्म को सादी, समझने योग्य भाषा इस्तेमाल करने की ज़रूरत है।",mr:"मिथक! अनेक ठिकाणी आता कायदेशीरदृष्ट्या संमती फॉर्मने साधी, समजण्यासारखी भाषा वापरणं आवश्यक आहे."} }
+            ]}}
+          ]},
+          { label: "Rural Healthcare Challenge",
+            bonusAssignment: {
+              title: { en: "Rural Solution Proposal", hi: "ग्रामीण समाधान प्रस्ताव", mr: "ग्रामीण उपाय प्रस्ताव" },
+              prompt: { en: "Propose a creative solution for getting specialist care to a rural area with no local specialists. Take a photo!",
+                        hi: "किसी ग्रामीण क्षेत्र में स्थानीय विशेषज्ञों के बिना विशेषज्ञ देखभाल पहुँचाने के लिए एक रचनात्मक समाधान प्रस्तावित करो। फोटो लो!",
+                        mr: "स्थानिक तज्ज्ञ नसलेल्या ग्रामीण भागात तज्ज्ञ काळजी पोहोचवण्यासाठी एक सर्जनशील उपाय प्रस्तावित करा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🌾", title: "Solve a Rural Access Challenge", mentorVisual: "🌾",
+              mentorIntro: {
+                en: "Bringing specialist-level care to under-resourced areas is one of medicine's genuine ongoing challenges. Let's work through a realistic case.",
+                hi: "कम संसाधन वाले क्षेत्रों में स्पेशलिस्ट-स्तर की देखभाल पहुँचाना चिकित्सा की असली चल रही चुनौतियों में से एक है। चलो एक यथार्थवादी मामले से गुज़रते हैं।",
+                mr: "कमी साधनसंपत्ती असलेल्या भागांत स्पेशालिस्ट-पातळीची काळजी पोहोचवणं हे वैद्यकशास्त्रातील खरं सुरू असलेल्या आव्हानांपैकी एक आहे. चला एका वास्तववादी केसमधून जाऊया."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A rural clinic has a patient needing specialist cardiology input, but the nearest cardiologist is 6 hours away. What's your first step?",
+                             hi:"एक ग्रामीण क्लीनिक में एक मरीज़ को स्पेशलिस्ट कार्डियोलॉजी इनपुट चाहिए, लेकिन सबसे नज़दीकी कार्डियोलॉजिस्ट 6 घंटे दूर है। तुम्हारा पहला कदम क्या है?",
+                             mr:"एका ग्रामीण दवाखान्यात एका रुग्णाला तज्ज्ञ कार्डिओलॉजी इनपुट हवं आहे, पण सर्वात जवळचा कार्डिओलॉजिस्ट 6 तास दूर आहे. तुमचं पहिलं पाऊल काय आहे?" },
+                choices: [
+                  { label:{en:"Use telemedicine to connect the local clinic with the distant cardiologist for a remote consultation", hi:"दूर के कार्डियोलॉजिस्ट के साथ स्थानीय क्लीनिक को जोड़ने के लिए टेलीमेडिसिन का इस्तेमाल करो एक दूरस्थ परामर्श के लिए", mr:"दूरच्या कार्डिओलॉजिस्टशी स्थानिक दवाखाना जोडण्यासाठी टेलिमेडिसिनचा वापर करा दूरस्थ सल्लामसलतीसाठी"}, quality:"best",
+                    outcome:{en:"Smart, practical solution! Telemedicine genuinely bridges distance gaps, letting patients access specialist expertise without the burden of long travel — a real modern tool for rural access.",hi:"स्मार्ट, व्यावहारिक समाधान! टेलीमेडिसिन वाकई दूरी के अंतर को पाटती है, मरीज़ों को लंबी यात्रा के बोझ के बिना विशेषज्ञ ज्ञान तक पहुँचने देती है — ग्रामीण पहुँच के लिए एक असली आधुनिक उपकरण।",mr:"स्मार्ट, व्यावहारिक उपाय! टेलिमेडिसिन खरंच अंतराची तफावत भरून काढते, रुग्णांना लांब प्रवासाच्या भाराशिवाय तज्ज्ञ ज्ञानापर्यंत पोहोचू देते — ग्रामीण पोहोचीसाठी एक खरं आधुनिक साधन."} },
+                  { label:{en:"Just tell the patient to figure out their own transportation to the distant specialist", hi:"बस मरीज़ को दूर के विशेषज्ञ तक अपना खुद का परिवहन का पता लगाने के लिए कहो", mr:"फक्त रुग्णाला दूरच्या तज्ज्ञापर्यंत स्वतःची वाहतूक शोधायला सांगा"}, quality:"risky",
+                    outcome:{en:"This overlooks a real barrier. Long travel can genuinely be difficult or impossible for many rural patients — not exploring alternatives like telemedicine can mean care simply doesn't happen.",hi:"यह एक असली बाधा को नज़रअंदाज़ करता है। लंबी यात्रा कई ग्रामीण मरीज़ों के लिए वाकई मुश्किल या असंभव हो सकती है — टेलीमेडिसिन जैसे विकल्पों को एक्सप्लोर न करना मतलब हो सकता है कि देखभाल बस नहीं होती।",mr:"यात एक खरी अडचण दुर्लक्षित होते. लांब प्रवास अनेक ग्रामीण रुग्णांसाठी खरंच कठीण किंवा अशक्य असू शकतो — टेलिमेडिसिनसारखे पर्याय एक्सप्लोर न करणं म्हणजे काळजी फक्त होतच नाही असं असू शकतं."} }
+                ]
+              },
+              {
+                situation: { en:"The telemedicine consultation reveals the patient needs an in-person procedure the local clinic can't perform. How do you plan the next steps?",
+                             hi:"टेलीमेडिसिन परामर्श से पता चलता है कि मरीज़ को एक व्यक्तिगत प्रक्रिया चाहिए जो स्थानीय क्लीनिक नहीं कर सकता। तुम अगले कदमों की योजना कैसे बनाते हो?",
+                             mr:"टेलिमेडिसिन सल्लामसलतीत कळतं की रुग्णाला एक प्रत्यक्ष प्रक्रिया हवी आहे जी स्थानिक दवाखाना करू शकत नाही. तुम्ही पुढच्या पावलांची योजना कशी बनवता?" },
+                choices: [
+                  { label:{en:"Coordinate a well-planned transfer, ensuring the receiving facility has full context and the patient understands the plan clearly", hi:"एक अच्छी तरह से योजनाबद्ध स्थानांतरण का समन्वय करो, यह सुनिश्चित करते हुए कि प्राप्त करने वाली सुविधा के पास पूरा संदर्भ है और मरीज़ योजना को स्पष्ट रूप से समझता है", mr:"एक चांगली नियोजित स्थलांतर समन्वयित करा, प्राप्त करणाऱ्या सुविधेकडे संपूर्ण संदर्भ आहे आणि रुग्णाला योजना स्पष्टपणे समजते याची खात्री करत"}, quality:"best",
+                    outcome:{en:"Excellent coordination! A thoughtful, well-communicated transfer, rather than a rushed one, genuinely gives the patient the best chance of a smooth, effective transition to specialized care.",hi:"बेहतरीन समन्वय! एक विचारशील, अच्छी तरह से संप्रेषित स्थानांतरण, जल्दबाज़ी वाले के बजाय, वाकई मरीज़ को विशेष देखभाल में एक सहज, असरदार बदलाव का सबसे अच्छा मौका देता है।",mr:"उत्तम समन्वय! एक विचारशील, चांगल्या प्रकारे संवाद साधलेलं स्थलांतर, घाईच्या ऐवजी, खरंच रुग्णाला विशेष काळजीत सुरळीत, प्रभावी संक्रमणाची सर्वोत्तम संधी देतं."} },
+                  { label:{en:"Just send the patient off without coordinating with the receiving facility", hi:"रिसीविंग फ़ैसिलिटी के साथ समन्वय किए बिना बस मरीज़ को भेज दो", mr:"प्राप्त करणाऱ्या सुविधेशी समन्वय न साधता फक्त रुग्णाला पाठवा"}, quality:"risky",
+                    outcome:{en:"This risks a poor transition. Without proper coordination and shared context, the receiving facility may lack important information, and the patient may be confused about the plan.",hi:"इससे खराब बदलाव का जोखिम है। उचित समन्वय और साझा संदर्भ के बिना, प्राप्त करने वाली सुविधा में ज़रूरी जानकारी की कमी हो सकती है, और मरीज़ योजना के बारे में उलझन में हो सकता है।",mr:"यामुळे खराब संक्रमणाचा धोका आहे. योग्य समन्वय आणि सामायिक संदर्भाशिवाय, प्राप्त करणाऱ्या सुविधेकडे महत्त्वाची माहिती नसू शकते, आणि रुग्ण योजनेबद्दल गोंधळलेला असू शकतो."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🌾", title: "Explore rural healthcare solutions", mentorVisual: "🌾",
+              mentorIntro: {
+                en: "Let's explore real, creative solutions being used to bring specialist care to under-resourced areas.",
+                hi: "चलो असली, रचनात्मक समाधानों को एक्सप्लोर करते हैं जो कम संसाधन वाले क्षेत्रों में विशेषज्ञ देखभाल लाने के लिए इस्तेमाल हो रहे हैं।",
+                mr: "चला खरे, सर्जनशील उपाय एक्सप्लोर करूया जे कमी साधनसंपत्ती असलेल्या भागांत तज्ज्ञ काळजी आणण्यासाठी वापरले जात आहेत."
+              },
+              data: { visual: "🌾", hotspots: [
+              { label:{en:"Telemedicine bridges distance",hi:"टेलीमेडिसिन दूरी को पाटती है",mr:"टेलिमेडिसिन अंतर भरून काढतं"}, fact:{en:"Video consultations let rural patients access specialist opinions without long, difficult travel!"} },
+              { label:{en:"Mobile specialist visits",hi:"मोबाइल विशेषज्ञ यात्राएँ",mr:"मोबाइल तज्ज्ञ भेटी"}, fact:{en:"Some programs send specialists to rotate through rural areas periodically, bringing expertise directly to communities!"} },
+              { label:{en:"Training local providers",hi:"स्थानीय प्रदाताओं को प्रशिक्षण",mr:"स्थानिक पुरवठादारांना प्रशिक्षण"}, fact:{en:"Training local healthcare workers in more advanced skills can genuinely reduce the need for distant specialist referral!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "Rural healthcare challenge quiz",
+              desc: { en:"A real quiz on creative solutions for bringing specialist care to rural areas.", hi:"ग्रामीण क्षेत्रों में विशेषज्ञ देखभाल लाने के लिए रचनात्मक समाधानों पर एक असली क्विज़।", mr:"ग्रामीण भागांत तज्ज्ञ काळजी आणण्यासाठी सर्जनशील उपायांवर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Creative problem-solving",
+              desc: { en:"Why do you think creative solutions, not just 'more doctors,' are often needed to solve rural healthcare access challenges?", hi:"तुम्हें क्यों लगता है कि ग्रामीण हेल्थकेयर पहुँच चुनौतियों को हल करने के लिए अक्सर रचनात्मक समाधान चाहिए, सिर्फ़ 'ज़्यादा डॉक्टर' नहीं?", mr:"ग्रामीण आरोग्यसेवा पोहोच आव्हानं सोडवण्यासाठी अनेकदा सर्जनशील उपायांची गरज असते, फक्त 'जास्त डॉक्टर' नाही, असं तुम्हाला का वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Rural Access Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about rural healthcare access!",
+                hi: "चलो और गहराई में जाते हैं — ग्रामीण हेल्थकेयर पहुँच के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — ग्रामीण आरोग्यसेवा पोहोचीबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Telemedicine grew fast?",hi:"टेलीमेडिसिन तेज़ी से बढ़ी?",mr:"टेलिमेडिसिन वेगाने वाढली?"}, back:{en:"Telemedicine use expanded dramatically in recent years, genuinely transforming rural healthcare access! 📈",hi:"हाल के सालों में टेलीमेडिसिन का इस्तेमाल नाटकीय रूप से बढ़ा, ग्रामीण हेल्थकेयर पहुँच को वाकई बदलते हुए! 📈",mr:"अलिकडच्या वर्षांत टेलिमेडिसिनचा वापर नाट्यमयरीत्या वाढला, ग्रामीण आरोग्यसेवा पोहोच खरंच बदलत! 📈"} },
+              { front:{en:"Drone delivery for medicine?",hi:"दवा के लिए ड्रोन डिलीवरी?",mr:"औषधासाठी ड्रोन डिलिव्हरी?"}, back:{en:"Some remote regions now use drones to deliver medical supplies to areas roads can't easily reach! 🚁",hi:"कुछ दूरदराज़ क्षेत्र अब उन क्षेत्रों में मेडिकल सप्लाई पहुँचाने के लिए ड्रोन का इस्तेमाल करते हैं जहाँ सड़कें आसानी से नहीं पहुँच सकतीं! 🚁",mr:"काही दुर्गम प्रदेश आता रस्ते सहज पोहोचू शकत नाहीत अशा भागांत वैद्यकीय पुरवठा पोहोचवण्यासाठी ड्रोन वापरतात! 🚁"} },
+              { front:{en:"Community health workers scale expertise?",hi:"सामुदायिक स्वास्थ्य कार्यकर्ता विशेषज्ञता को बढ़ाते हैं?",mr:"सामुदायिक आरोग्य कर्मचारी तज्ज्ञता वाढवतात?"}, back:{en:"Training local community health workers helps extend limited specialist expertise to many more people! 👥",hi:"स्थानीय सामुदायिक स्वास्थ्य कार्यकर्ताओं को प्रशिक्षित करना सीमित विशेषज्ञ ज्ञान को कई और लोगों तक बढ़ाने में मदद करता है! 👥",mr:"स्थानिक सामुदायिक आरोग्य कर्मचाऱ्यांना प्रशिक्षित करणं मर्यादित तज्ज्ञ ज्ञान अधिक लोकांपर्यंत वाढवण्यास मदत करतं! 👥"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Rural Healthcare or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"Telemedicine can genuinely help rural patients access specialist opinions without long travel.",hi:"टेलीमेडिसिन वाकई ग्रामीण मरीज़ों को बिना लंबी यात्रा के विशेषज्ञ राय तक पहुँचने में मदद कर सकता है।",mr:"टेलिमेडिसिन खरंच ग्रामीण रुग्णांना लांब प्रवासाशिवाय तज्ज्ञ मत मिळवण्यास मदत करू शकतं."}, answer:true, explain:{en:"True! Telemedicine is a real, valuable tool for bridging distance-related access gaps.",hi:"सच! टेलीमेडिसिन दूरी से जुड़े पहुँच अंतर को पाटने के लिए एक असली, मूल्यवान उपकरण है।",mr:"खरं! टेलिमेडिसिन अंतर-संबंधित पोहोच तफावत भरून काढण्यासाठी एक खरं, मौल्यवान साधन आहे."} },
+              { text:{en:"The only real solution to rural healthcare access is simply having more specialist doctors everywhere.",hi:"ग्रामीण हेल्थकेयर पहुँच का एकमात्र असली समाधान बस हर जगह ज़्यादा विशेषज्ञ डॉक्टरों का होना है।",mr:"ग्रामीण आरोग्यसेवा पोहोचीचा एकमेव खरा उपाय म्हणजे फक्त सर्वत्र जास्त तज्ज्ञ डॉक्टर असणं."}, answer:false, explain:{en:"Myth! Creative solutions like telemedicine, mobile visits, and training local providers all genuinely help, not just adding more specialists everywhere.",hi:"मिथक! टेलीमेडिसिन, मोबाइल विज़िट, और स्थानीय प्रदाताओं को प्रशिक्षण जैसे रचनात्मक समाधान सब वाकई मदद करते हैं, सिर्फ़ हर जगह ज़्यादा विशेषज्ञ जोड़ना नहीं।",mr:"मिथक! टेलिमेडिसिन, मोबाइल भेटी, आणि स्थानिक पुरवठादारांना प्रशिक्षण यासारखे सर्जनशील उपाय सर्व खरंच मदत करतात, फक्त सर्वत्र जास्त तज्ज्ञ जोडणं नाही."} },
+              { text:{en:"Training local community health workers can help extend limited specialist expertise further.",hi:"स्थानीय सामुदायिक स्वास्थ्य कार्यकर्ताओं को प्रशिक्षण देना सीमित विशेषज्ञ ज्ञान को आगे बढ़ाने में मदद कर सकता है।",mr:"स्थानिक सामुदायिक आरोग्य कर्मचाऱ्यांना प्रशिक्षण देणं मर्यादित तज्ज्ञ ज्ञान आणखी वाढवण्यास मदत करू शकतं."}, answer:true, explain:{en:"True! Training local providers is a genuinely effective way to extend the reach of limited specialist knowledge.",hi:"सच! स्थानीय प्रदाताओं को प्रशिक्षित करना सीमित विशेषज्ञ ज्ञान की पहुँच बढ़ाने का एक वाकई असरदार तरीका है।",mr:"खरं! स्थानिक पुरवठादारांना प्रशिक्षण देणं मर्यादित तज्ज्ञ ज्ञानाची पोहोच वाढवण्याचा एक खरंच प्रभावी मार्ग आहे."} }
+            ]}}
+          ]},
+          { label: "Global Health Comparison",
+            bonusAssignment: {
+              title: { en: "Healthcare Systems Comparison", hi: "हेल्थकेयर सिस्टम तुलना", mr: "आरोग्यसेवा यंत्रणा तुलना" },
+              prompt: { en: "Research one other country's healthcare system (with an adult's help) and write 3-4 sentences comparing it to what you've learned. Take a photo!",
+                        hi: "किसी बड़े की मदद से किसी और देश के हेल्थकेयर सिस्टम पर रिसर्च करो और 3-4 वाक्य लिखो जो तुमने सीखा उससे इसकी तुलना करते हुए। फोटो लो!",
+                        mr: "मोठ्यांच्या मदतीने दुसऱ्या एखाद्या देशाच्या आरोग्यसेवा यंत्रणेवर संशोधन करा आणि तुम्ही जे शिकलात त्याशी तुलना करणारी 3-4 वाक्यं लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "tap-discover", icon: "🌐", title: "Explore different healthcare systems", mentorVisual: "🌐",
+              mentorIntro: {
+                en: "Different countries organize healthcare in genuinely different ways. Let's explore a few approaches from around the world.",
+                hi: "अलग-अलग देश हेल्थकेयर को वाकई अलग-अलग तरीकों से व्यवस्थित करते हैं। चलो दुनिया भर से कुछ तरीकों को एक्सप्लोर करते हैं।",
+                mr: "वेगवेगळे देश आरोग्यसेवा खरंच वेगवेगळ्या प्रकारे व्यवस्थित करतात. चला जगभरातील काही दृष्टिकोन एक्सप्लोर करूया."
+              },
+              data: { visual: "🌐", hotspots: [
+              { label:{en:"Universal coverage systems",hi:"सार्वभौमिक कवरेज सिस्टम",mr:"सार्वत्रिक कव्हरेज यंत्रणा"}, fact:{en:"Some countries provide healthcare to all citizens through government-funded systems, aiming for universal access!"} },
+              { label:{en:"Mixed systems",hi:"मिश्रित सिस्टम",mr:"संमिश्र यंत्रणा"}, fact:{en:"Many countries, including India, use a mix of public and private healthcare working alongside each other!"} },
+              { label:{en:"No single 'best' system",hi:"कोई एक 'सबसे अच्छा' सिस्टम नहीं",mr:"कोणतीही एक 'सर्वोत्तम' यंत्रणा नाही"}, fact:{en:"Each system has genuine trade-offs — there's ongoing debate worldwide about which approaches work best for different contexts!"} }
+            ]}},
+            { engine: "build-match", icon: "🌐", title: "Match healthcare system feature to what it prioritizes", mentorVisual: "🩺",
+              mentorIntro: {
+                en: "Let's practice matching different healthcare system features to what they're generally designed to prioritize.",
+                hi: "चलो अलग-अलग हेल्थकेयर सिस्टम की विशेषताओं को यह मैच करने का अभ्यास करते हैं कि वे आमतौर पर किसे प्राथमिकता देने के लिए डिज़ाइन की गई हैं।",
+                mr: "चला वेगवेगळ्या आरोग्यसेवा यंत्रणा वैशिष्ट्यं ती सहसा कशाला प्राधान्य देण्यासाठी डिझाइन केलेली आहेत याच्याशी जुळवण्याचा सराव करूया."
+              },
+              data: { noStakes: false, zones: [
+              { id: "universal", label: { en:"Ensures everyone has some access, regardless of income", hi:"सुनिश्चित करता है सबकी कुछ पहुँच है, आय की परवाह किए बिना", mr:"प्रत्येकाला काही पोहोच आहे याची खात्री करते, उत्पन्नाची पर्वा न करता" } },
+              { id: "private", label: { en:"Often offers more choice and faster access for those who can pay", hi:"अक्सर उनके लिए ज़्यादा पसंद और तेज़ पहुँच देता है जो भुगतान कर सकते हैं", mr:"अनेकदा जे पैसे देऊ शकतात त्यांच्यासाठी जास्त निवड आणि जलद पोहोच देते" } },
+              { id: "mixed", label: { en:"Tries to combine benefits of both public and private options", hi:"पब्लिक और प्राइवेट दोनों विकल्पों के लाभों को मिलाने की कोशिश करता है", mr:"सार्वजनिक आणि खासगी दोन्ही पर्यायांचे फायदे एकत्र करण्याचा प्रयत्न करते" } }
+            ], chips: ["universal","private","mixed"], facts: {
+              universal:"That's universal coverage — designed to prioritize access for all!",
+              private:"That's private-focused — designed to prioritize choice and speed for payers!",
+              mixed:"That's a mixed system — trying to combine strengths of both approaches!"
+            }}},
+            { type: "Quiz", icon: "📝", title: "Global health comparison quiz",
+              desc: { en:"A real quiz on comparing different healthcare system approaches around the world.", hi:"दुनिया भर में अलग-अलग हेल्थकेयर सिस्टम तरीकों की तुलना करने पर एक असली क्विज़।", mr:"जगभरातील वेगवेगळ्या आरोग्यसेवा यंत्रणा दृष्टिकोनांची तुलना करण्यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Systems and values",
+              desc: { en:"Why do you think a country's healthcare system often reflects its broader values about fairness, choice, and community responsibility?", hi:"तुम्हें क्यों लगता है कि एक देश का हेल्थकेयर सिस्टम अक्सर निष्पक्षता, पसंद, और सामुदायिक ज़िम्मेदारी के बारे में इसके व्यापक मूल्यों को दर्शाता है?", mr:"एका देशाची आरोग्यसेवा यंत्रणा अनेकदा निष्पक्षता, निवड, आणि सामुदायिक जबाबदारीबद्दलची तिची व्यापक मूल्यं प्रतिबिंबित करते असं तुम्हाला का वाटतं?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Global Health Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's go deeper — flip each card for a more advanced fact about global healthcare systems!",
+                hi: "चलो और गहराई में जाते हैं — वैश्विक हेल्थकेयर सिस्टम के बारे में एक ज़्यादा एडवांस तथ्य देखने के लिए हर कार्ड पलटो!",
+                mr: "चला अधिक खोलात जाऊया — जागतिक आरोग्यसेवा यंत्रणांबद्दल अधिक प्रगत तथ्य बघण्यासाठी प्रत्येक कार्ड उलटा!"
+              },
+              data: { cards: [
+              { front:{en:"Systems keep evolving?",hi:"सिस्टम विकसित होते रहते हैं?",mr:"यंत्रणा विकसित होत राहतात?"}, back:{en:"Healthcare systems worldwide constantly reform and change, responding to new challenges and evolving values! 🔄",hi:"दुनिया भर में हेल्थकेयर सिस्टम लगातार सुधार और बदलते हैं, नई चुनौतियों और विकसित होते मूल्यों का जवाब देते हुए! 🔄",mr:"जगभरातील आरोग्यसेवा यंत्रणा सतत सुधारणा आणि बदलत असतात, नवीन आव्हानं आणि विकसित होणाऱ्या मूल्यांना प्रतिसाद देत! 🔄"} },
+              { front:{en:"WHO tracks global comparisons?",hi:"डब्ल्यूएचओ वैश्विक तुलनाओं को ट्रैक करता है?",mr:"डब्ल्यूएचओ जागतिक तुलना ट्रॅक करतं?"}, back:{en:"The World Health Organization regularly compares health outcomes across countries to help guide global policy! 📊",hi:"वर्ल्ड हेल्थ ऑर्गनाइज़ेशन नियमित रूप से वैश्विक नीति का मार्गदर्शन करने में मदद के लिए देशों में स्वास्थ्य नतीजों की तुलना करता है! 📊",mr:"जागतिक आरोग्य संघटना नियमितपणे जागतिक धोरणाला मार्गदर्शन करण्यास मदत करण्यासाठी देशांतील आरोग्य निकालांची तुलना करते! 📊"} },
+              { front:{en:"India's system is genuinely mixed?",hi:"भारत का सिस्टम वाकई मिश्रित है?",mr:"भारताची यंत्रणा खरंच संमिश्र आहे?"}, back:{en:"India uses a genuine mix of government hospitals, private hospitals, and various insurance schemes working together! 🇮🇳",hi:"भारत सरकारी अस्पतालों, निजी अस्पतालों, और विभिन्न बीमा योजनाओं का एक असली मिश्रण इस्तेमाल करता है जो साथ में काम करते हैं! 🇮🇳",mr:"भारत सरकारी रुग्णालयं, खासगी रुग्णालयं, आणि विविध विमा योजनांचं खरं मिश्रण वापरतो जे एकत्र काम करतात! 🇮🇳"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Global Health or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's test your knowledge! Decide if each statement is true or a myth.",
+                hi: "चलो तुम्हारे ज्ञान की जांच करते हैं! तय करो हर बात सच है या मिथक।",
+                mr: "चला तुमच्या ज्ञानाची चाचणी घेऊया! प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"There's one universally agreed 'best' healthcare system that every country should copy.",hi:"एक सार्वभौमिक रूप से सहमत 'सबसे अच्छा' हेल्थकेयर सिस्टम है जिसे हर देश को कॉपी करना चाहिए।",mr:"एक सार्वत्रिकरित्या मान्य 'सर्वोत्तम' आरोग्यसेवा यंत्रणा आहे जी प्रत्येक देशाने कॉपी करावी."}, answer:false, explain:{en:"Myth! Different systems have genuine trade-offs, and what works well often depends on a country's specific context and values.",hi:"मिथक! अलग-अलग सिस्टम में असली ट्रेड-ऑफ हैं, और जो अच्छी तरह काम करता है वह अक्सर एक देश के खास संदर्भ और मूल्यों पर निर्भर करता है।",mr:"मिथक! वेगवेगळ्या यंत्रणांमध्ये खऱ्या तडजोडी आहेत, आणि जे चांगलं काम करतं ते अनेकदा देशाच्या विशिष्ट संदर्भ आणि मूल्यांवर अवलंबून असतं."} },
+              { text:{en:"India uses a mix of government and private healthcare working alongside each other.",hi:"भारत एक साथ काम करने वाले सरकारी और निजी हेल्थकेयर के मिश्रण का इस्तेमाल करता है।",mr:"भारत एकत्र काम करणाऱ्या सरकारी आणि खासगी आरोग्यसेवेचं मिश्रण वापरतो."}, answer:true, explain:{en:"True! India's healthcare system genuinely combines public and private elements.",hi:"सच! भारत का हेल्थकेयर सिस्टम वाकई पब्लिक और प्राइवेट तत्वों को मिलाता है।",mr:"खरं! भारताची आरोग्यसेवा यंत्रणा खरंच सार्वजनिक आणि खासगी घटक एकत्र करते."} },
+              { text:{en:"Healthcare systems around the world stay exactly the same forever, without ever reforming.",hi:"दुनिया भर के हेल्थकेयर सिस्टम बिना कभी सुधार के हमेशा के लिए बिल्कुल एक जैसे रहते हैं।",mr:"जगभरातील आरोग्यसेवा यंत्रणा कधीही सुधारणा न करता कायमच अगदी सारख्याच राहतात."}, answer:false, explain:{en:"Myth! Healthcare systems constantly evolve and reform in response to new challenges and changing values.",hi:"मिथक! हेल्थकेयर सिस्टम नई चुनौतियों और बदलते मूल्यों के जवाब में लगातार विकसित और सुधरते हैं।",mr:"मिथक! आरोग्यसेवा यंत्रणा नवीन आव्हानं आणि बदलत्या मूल्यांना प्रतिसाद म्हणून सतत विकसित आणि सुधारत असतात."} }
+            ]}}
+          ]},
+          { label: "Beyond One Exam",
+            bonusAssignment: {
+              title: { en: "My Path Forward Letter", hi: "मेरा आगे का रास्ता पत्र", mr: "माझा पुढचा मार्ग पत्र" },
+              prompt: { en: "Write a letter to your future self about the different paths that could lead you toward a career you love, beyond any single exam. Take a photo!",
+                        hi: "अपने भविष्य के खुद को एक पत्र लिखो कि कौन से अलग-अलग रास्ते तुम्हें एक ऐसे करियर की ओर ले जा सकते हैं जो तुम्हें पसंद है, किसी एक अकेली परीक्षा से आगे। फोटो लो!",
+                        mr: "तुम्हाला आवडणाऱ्या करिअरकडे नेणारे वेगवेगळे मार्ग, कोणत्याही एका परीक्षेच्या पलीकडे, याबद्दल तुमच्या भविष्यातील स्वतःला एक पत्र लिहा. फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "tap-discover", icon: "🌱", title: "Explore the many paths in medicine", mentorVisual: "🌱",
+              mentorIntro: {
+                en: "There are so many ways to build a meaningful career connected to health and medicine — let's explore some paths beyond just one exam or one route.",
+                hi: "स्वास्थ्य और चिकित्सा से जुड़ा एक सार्थक करियर बनाने के इतने सारे तरीके हैं — चलो सिर्फ़ एक परीक्षा या एक रास्ते से आगे कुछ रास्तों को एक्सप्लोर करते हैं।",
+                mr: "आरोग्य आणि वैद्यकशास्त्राशी जोडलेलं अर्थपूर्ण करिअर बनवण्याचे इतके सारे मार्ग आहेत — चला फक्त एका परीक्षेच्या किंवा एका मार्गाच्या पलीकडे काही मार्ग एक्सप्लोर करूया."
+              },
+              data: { visual: "🌱", hotspots: [
+              { label:{en:"Many roads into healthcare",hi:"स्वास्थ्य सेवा में कई रास्ते",mr:"आरोग्यसेवेत अनेक मार्ग"}, fact:{en:"Beyond becoming a doctor, there are meaningful paths in nursing, research, public health, allied health, and more!"} },
+              { label:{en:"Timing looks different for everyone",hi:"हर किसी के लिए समय अलग दिखता है",mr:"प्रत्येकासाठी वेळ वेगळी दिसते"}, fact:{en:"Some people find their path quickly, others take longer or change direction — both are completely valid journeys!"} },
+              { label:{en:"Passion matters as much as the exam",hi:"जुनून परीक्षा जितना ही मायने रखता है",mr:"आवड परीक्षेइतकीच महत्त्वाची आहे"}, fact:{en:"The genuine curiosity and care you've brought to this whole journey matters just as much as any single test score!"} }
+            ]}},
+            { engine: "build-match", icon: "🌱", title: "Match career path to its focus", mentorVisual: "🩺",
+              mentorIntro: {
+                en: "Let's explore a few different health-related career paths and what each genuinely focuses on.",
+                hi: "चलो कुछ अलग-अलग स्वास्थ्य से जुड़े करियर रास्तों और हर एक वाकई किस पर केंद्रित है, इसे एक्सप्लोर करते हैं।",
+                mr: "चला काही वेगवेगळे आरोग्य-संबंधित करिअर मार्ग आणि प्रत्येक खरंच कशावर केंद्रित आहे ते एक्सप्लोर करूया."
+              },
+              data: { noStakes: true, zones: [
+              { id: "clinical", label: { en:"Directly treating patients", hi:"सीधे मरीज़ों का इलाज करना", mr:"थेट रुग्णांवर उपचार करणं" } },
+              { id: "research", label: { en:"Discovering new treatments and knowledge", hi:"नए इलाज और ज्ञान की खोज करना", mr:"नवीन उपचार आणि ज्ञान शोधणं" } },
+              { id: "public_health", label: { en:"Improving health for whole communities", hi:"पूरे समुदायों के लिए स्वास्थ्य में सुधार करना", mr:"संपूर्ण समुदायांसाठी आरोग्य सुधारणं" } }
+            ], chips: ["clinical","research","public_health"] }},
+            { type: "Quiz", icon: "📝", title: "Paths in medicine quiz",
+              desc: { en:"A gentle quiz exploring the many different career paths connected to health and medicine.", hi:"स्वास्थ्य और चिकित्सा से जुड़े कई अलग-अलग करियर रास्तों को एक्सप्लोर करने वाला एक सौम्य क्विज़।", mr:"आरोग्य आणि वैद्यकशास्त्राशी जोडलेल्या अनेक वेगवेगळ्या करिअर मार्गांना एक्सप्लोर करणारा एक सौम्य क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "What you've genuinely built",
+              desc: { en:"Regardless of any single exam or outcome, what's something you've genuinely built in yourself over this whole journey — a skill, a way of thinking, a piece of curiosity?", hi:"किसी भी एक परीक्षा या नतीजे की परवाह किए बिना, इस पूरी यात्रा में तुमने अपने आप में वाकई क्या बनाया है — एक कौशल, सोचने का एक तरीका, जिज्ञासा का एक टुकड़ा?", mr:"कोणत्याही एका परीक्षेची किंवा निकालाची पर्वा न करता, या संपूर्ण प्रवासात तुम्ही स्वतःमध्ये खरंच काय तयार केलं आहे — एक कौशल्य, विचार करण्याचा एक मार्ग, कुतूहलाचा एक तुकडा?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Many Paths Deep Facts", mentorVisual: "🃏",
+              mentorIntro: {
+                en: "Let's explore a few encouraging facts about the many paths into meaningful health-related careers.",
+                hi: "चलो अर्थपूर्ण स्वास्थ्य से जुड़े करियर में जाने के कई रास्तों के बारे में कुछ उत्साहजनक तथ्य एक्सप्लोर करते हैं।",
+                mr: "चला अर्थपूर्ण आरोग्य-संबंधित करिअरमध्ये जाण्याच्या अनेक मार्गांबद्दल काही उत्साहवर्धक तथ्यं एक्सप्लोर करूया."
+              },
+              data: { cards: [
+              { front:{en:"Many people change direction?",hi:"कई लोग दिशा बदलते हैं?",mr:"अनेक लोक दिशा बदलतात?"}, back:{en:"Many successful people in healthcare careers took winding paths — changing direction is genuinely common, not a failure! 🛤️",hi:"हेल्थकेयर करियर में कई सफल लोगों ने घुमावदार रास्ते अपनाए — दिशा बदलना वाकई आम है, कोई असफलता नहीं! 🛤️",mr:"आरोग्यसेवा करिअरमधील अनेक यशस्वी लोकांनी वळणदार मार्ग घेतले — दिशा बदलणं खरंच सामान्य आहे, अपयश नाही! 🛤️"} },
+              { front:{en:"Skills transfer across paths?",hi:"कौशल रास्तों के पार स्थानांतरित होते हैं?",mr:"कौशल्यं मार्गांमध्ये स्थानांतरित होतात?"}, back:{en:"The curiosity, care, and problem-solving you've built genuinely transfer to many different careers, not just one specific path! 🔀",hi:"तुमने जो जिज्ञासा, देखभाल, और समस्या-समाधान बनाया है वह वाकई कई अलग-अलग करियर में स्थानांतरित होता है, सिर्फ़ एक खास रास्ते में नहीं! 🔀",mr:"तुम्ही तयार केलेली कुतूहल, काळजी, आणि समस्या-सोडवणूक खरंच अनेक वेगवेगळ्या करिअरमध्ये स्थानांतरित होते, फक्त एका विशिष्ट मार्गात नाही! 🔀"} },
+              { front:{en:"Whole-person growth matters?",hi:"पूरे व्यक्ति की वृद्धि मायने रखती है?",mr:"संपूर्ण व्यक्तीची वाढ महत्त्वाची आहे?"}, back:{en:"This journey has been about growing as a thinker and a caring person, which matters in every path you might choose! 🌟",hi:"यह यात्रा एक सोचने वाले और देखभाल करने वाले व्यक्ति के रूप में बढ़ने के बारे में रही है, जो तुम जो भी रास्ता चुनो उसमें मायने रखता है! 🌟",mr:"हा प्रवास एक विचारवंत आणि काळजी घेणारी व्यक्ती म्हणून वाढण्याबद्दल होता, जो तुम्ही निवडलेल्या कोणत्याही मार्गात महत्त्वाचा आहे! 🌟"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Many Paths or Myth?", mentorVisual: "🤔",
+              mentorIntro: {
+                en: "Let's gently check a few common beliefs about paths into healthcare careers. Decide if each statement is true or a myth.",
+                hi: "चलो हेल्थकेयर करियर में जाने के रास्तों के बारे में कुछ आम मान्यताओं की धीरे से जाँच करते हैं। तय करो हर बात सच है या मिथक।",
+                mr: "चला आरोग्यसेवा करिअरमध्ये जाण्याच्या मार्गांबद्दलच्या काही सामान्य समजुतींची हळुवारपणे तपासणी करूया. प्रत्येक विधान खरं आहे की मिथक ठरवा."
+              },
+              data: { statements: [
+              { text:{en:"There's only one single correct path or timeline for building a meaningful career in health or medicine.",hi:"स्वास्थ्य या चिकित्सा में एक सार्थक करियर बनाने के लिए केवल एक अकेला सही रास्ता या समय है।",mr:"आरोग्य किंवा वैद्यकशास्त्रात अर्थपूर्ण करिअर बनवण्यासाठी फक्त एकच योग्य मार्ग किंवा वेळापत्रक आहे."}, answer:false, explain:{en:"Myth! There are genuinely many valid paths and timelines — different routes and different paces are both completely normal.",hi:"मिथक! वाकई कई वैध रास्ते और समय हैं — अलग-अलग मार्ग और अलग-अलग गति दोनों बिल्कुल सामान्य हैं।",mr:"मिथक! खरंच अनेक वैध मार्ग आणि वेळापत्रकं आहेत — वेगवेगळे मार्ग आणि वेगवेगळा वेग दोन्ही पूर्णपणे सामान्य आहेत."} },
+              { text:{en:"Skills like curiosity and careful thinking genuinely transfer across many different career paths.",hi:"जिज्ञासा और सावधान सोच जैसे कौशल वाकई कई अलग-अलग करियर रास्तों में स्थानांतरित होते हैं।",mr:"कुतूहल आणि काळजीपूर्वक विचार यासारखी कौशल्यं खरंच अनेक वेगवेगळ्या करिअर मार्गांमध्ये स्थानांतरित होतात."}, answer:true, explain:{en:"True! The genuine skills and mindset you've built have real value across many possible paths, not just one.",hi:"सच! तुमने जो असली कौशल और मानसिकता बनाई है उसका कई संभावित रास्तों में असली मूल्य है, सिर्फ़ एक में नहीं।",mr:"खरं! तुम्ही तयार केलेली खरी कौशल्यं आणि मानसिकता अनेक शक्य मार्गांमध्ये खरं मूल्य ठेवतात, फक्त एकातच नाही."} },
+              { text:{en:"Changing direction during a career journey always means someone has failed.",hi:"करियर यात्रा के दौरान दिशा बदलने का हमेशा मतलब है कि कोई असफल हो गया।",mr:"करिअर प्रवासादरम्यान दिशा बदलणं म्हणजे नेहमी कोणीतरी अयशस्वी झालं आहे असा अर्थ असतो."}, answer:false, explain:{en:"Myth! Changing direction is a genuinely common, normal part of many meaningful career journeys, not a sign of failure.",hi:"मिथक! दिशा बदलना वाकई कई सार्थक करियर यात्राओं का एक आम, सामान्य हिस्सा है, असफलता का संकेत नहीं।",mr:"मिथक! दिशा बदलणं हा खरंच अनेक अर्थपूर्ण करिअर प्रवासांचा एक सामान्य, नैसर्गिक भाग आहे, अपयशाचं लक्षण नाही."} }
+            ]}}
+          ]},
+          { label: "Capstone: The Complete Case Study",
+            bonusAssignment: {
+              title: { en: "My 7-Year Journey Portfolio", hi: "मेरा 7-साल का यात्रा पोर्टफोलियो", mr: "माझा 7-वर्षांचा प्रवास पोर्टफोलिओ" },
+              prompt: { en: "Create a final page reflecting on your entire 7-year journey through Doctor & Healthcare, from Std 6 to now. What are you most proud of? Take a photo!",
+                        hi: "Std 6 से अब तक, डॉक्टर एंड हेल्थकेयर के ज़रिए अपनी पूरी 7-साल की यात्रा पर विचार करते हुए एक आखिरी पेज बनाओ। तुम्हें किस बात पर सबसे ज़्यादा गर्व है? फोटो लो!",
+                        mr: "Std 6 पासून आतापर्यंत, डॉक्टर आणि हेल्थकेअरमधून तुमच्या संपूर्ण 7-वर्षांच्या प्रवासावर विचार करणारं एक अंतिम पान तयार करा. तुम्हाला कशाचा सर्वात जास्त अभिमान आहे? फोटो घ्या!" }
+            },
+            tasks: [
+            { engine: "branching", icon: "🎓", title: "The Complete Case", mentorVisual: "🎓",
+              mentorIntro: {
+                en: "This is it — the final case of your entire 7-year journey. Everything you've learned, from Std 6 all the way here, comes together in this one complete case.",
+                hi: "यह है — तुम्हारी पूरी 7-साल की यात्रा का आखिरी केस। Std 6 से लेकर यहाँ तक जो कुछ भी तुमने सीखा, वह इस एक पूरे केस में एक साथ आता है।",
+                mr: "हे आहे — तुमच्या संपूर्ण 7-वर्षांच्या प्रवासाची शेवटची केस. Std 6 पासून इथपर्यंत तुम्ही जे काही शिकलात, ते या एका संपूर्ण केसमध्ये एकत्र येतं."
+              },
+              data: { steps: [
+              {
+                situation: { en:"A patient arrives with fatigue, joint pain, and a mild fever that's been going on for two weeks. Their medical history includes diabetes. Where do you begin?",
+                             hi:"एक मरीज़ थकान, जोड़ों के दर्द, और हल्के बुखार के साथ आता है जो दो हफ़्तों से चल रहा है। उनके मेडिकल इतिहास में डायबिटीज़ शामिल है। तुम कहाँ से शुरू करते हो?",
+                             mr:"एक रुग्ण थकवा, सांधेदुखी, आणि दोन आठवड्यांपासून सुरू असलेल्या सौम्य तापासह येतो. त्यांच्या वैद्यकीय इतिहासात मधुमेह समाविष्ट आहे. तुम्ही कुठून सुरुवात करता?" },
+                choices: [
+                  { label:{en:"Check full vitals, take a detailed history, and consider how the diabetes might be connected to or complicating these symptoms", hi:"पूरे वाइटल्स जाँचो, विस्तृत इतिहास लो, और विचार करो कि डायबिटीज़ इन लक्षणों से कैसे जुड़ी या इन्हें जटिल बना रही हो सकती है", mr:"संपूर्ण व्हायटल्स तपासा, तपशीलवार इतिहास घ्या, आणि मधुमेह या लक्षणांशी कसा जोडलेला किंवा गुंतागुंतीचा असू शकतो याचा विचार करा"}, quality:"best",
+                    outcome:{en:"Perfect starting point! This combines everything from your journey — vitals from Std 8, thorough history-taking, and considering how existing conditions interact, just like you practiced in Std 12.",hi:"बेहतरीन शुरुआती बिंदु! यह तुम्हारी यात्रा से सब कुछ मिलाता है — Std 8 से वाइटल्स, पूरी तरह इतिहास लेना, और यह विचार करना कि मौजूदा स्थितियाँ कैसे परस्पर क्रिया करती हैं, बिल्कुल जैसे तुमने Std 12 में अभ्यास किया।",mr:"उत्तम सुरुवातीचा बिंदू! हे तुमच्या प्रवासातील सर्वकाही एकत्र करतं — Std 8 मधील व्हायटल्स, संपूर्ण इतिहास घेणं, आणि विद्यमान स्थिती कशा परस्परसंवाद करतात याचा विचार करणं, अगदी जसं तुम्ही Std 12 मध्ये सराव केला."} },
+                  { label:{en:"Treat only the most obvious symptom without considering the fuller picture", hi:"पूरी तस्वीर पर विचार किए बिना केवल सबसे स्पष्ट लक्षण का इलाज करो", mr:"संपूर्ण चित्राचा विचार न करता फक्त सर्वात स्पष्ट लक्षणावर उपचार करा"}, quality:"risky",
+                    outcome:{en:"After this whole journey, you know better! Treating in isolation without the fuller picture misses everything you've learned about connected systems and complex cases.",hi:"इस पूरी यात्रा के बाद, तुम बेहतर जानते हो! पूरी तस्वीर के बिना अलग-अलग इलाज करना उस सब कुछ को छोड़ देता है जो तुमने जुड़े हुए सिस्टम और जटिल मामलों के बारे में सीखा है।",mr:"या संपूर्ण प्रवासानंतर, तुम्हाला चांगलं माहीत आहे! संपूर्ण चित्राशिवाय वेगळं उपचार करणं तुम्ही जोडलेल्या यंत्रणा आणि जटिल केसेसबद्दल जे शिकलात ते सर्व चुकवतं."} }
+                ]
+              },
+              {
+                situation: { en:"Tests reveal a joint condition connected to their diabetes, requiring both a rheumatologist and ongoing diabetes management. The patient is worried about managing multiple things at once. How do you guide them?",
+                             hi:"टेस्ट उनकी डायबिटीज़ से जुड़ी एक जोड़ों की स्थिति दिखाते हैं, जिसके लिए एक रयूमेटोलॉजिस्ट और चल रहे डायबिटीज़ प्रबंधन दोनों की ज़रूरत है। मरीज़ एक साथ कई चीज़ों को संभालने को लेकर चिंतित है। तुम उन्हें कैसे मार्गदर्शन करते हो?",
+                             mr:"चाचण्या त्यांच्या मधुमेहाशी जोडलेली सांध्याची स्थिती दाखवतात, ज्यासाठी संधिवाततज्ज्ञ आणि सुरू असलेलं मधुमेह व्यवस्थापन दोन्हीची गरज आहे. रुग्ण एकाच वेळी अनेक गोष्टी व्यवस्थापित करण्याबद्दल काळजीत आहे. तुम्ही त्यांना कसं मार्गदर्शन करता?" },
+                choices: [
+                  { label:{en:"Coordinate the referral clearly, communicate each step in plain language, and reassure them that a coordinated team will support the whole journey", hi:"रेफरल को स्पष्ट रूप से समन्वित करो, हर कदम को सादी भाषा में बताओ, और उन्हें आश्वस्त करो कि एक समन्वित टीम पूरी यात्रा में सहायता करेगी", mr:"रेफरल स्पष्टपणे समन्वित करा, प्रत्येक पायरी साध्या भाषेत सांगा, आणि त्यांना आश्वस्त करा की एक समन्वित टीम संपूर्ण प्रवासात सहाय्य करेल"}, quality:"best",
+                    outcome:{en:"This is everything you've built across 7 years — coordinated referral, clear communication, genuine reassurance, and complex-case thinking, all working together. This is exactly what real Specialist-level care looks like.",hi:"यह वह सब कुछ है जो तुमने 7 सालों में बनाया — समन्वित रेफरल, स्पष्ट बातचीत, असली आश्वासन, और जटिल-मामले की सोच, सब एक साथ काम करते हुए। यह बिल्कुल वैसा दिखता है जैसी असली स्पेशलिस्ट-स्तर की देखभाल होती है।",mr:"हे 7 वर्षांत तुम्ही तयार केलेलं सर्वकाही आहे — समन्वित रेफरल, स्पष्ट संवाद, खरं आश्वासन, आणि जटिल-केस विचार, सर्व एकत्र काम करत. हे अगदी खऱ्या स्पेशालिस्ट-पातळीच्या काळजीसारखं दिसतं."} },
+                  { label:{en:"Give them a referral slip without explanation and move to the next patient", hi:"बिना स्पष्टीकरण के उन्हें एक रेफरल स्लिप दो और अगले मरीज़ की ओर बढ़ो", mr:"स्पष्टीकरणाशिवाय त्यांना रेफरल स्लिप द्या आणि पुढच्या रुग्णाकडे जा"}, quality:"risky",
+                    outcome:{en:"After everything you've learned, you know this misses so much — clear communication, genuine reassurance, and thoughtful coordination are exactly what turn a referral into real care.",hi:"तुमने जो कुछ भी सीखा है उसके बाद, तुम जानते हो कि यह बहुत कुछ छोड़ देता है — स्पष्ट बातचीत, असली आश्वासन, और विचारशील समन्वय बिल्कुल वही हैं जो एक रेफरल को असली देखभाल में बदल देते हैं।",mr:"तुम्ही जे काही शिकलात त्यानंतर, तुम्हाला माहीत आहे की हे खूप काही चुकतं — स्पष्ट संवाद, खरं आश्वासन, आणि विचारशील समन्वय अगदी हेच आहे जे रेफरलला खऱ्या काळजीत बदलतं."} }
+                ]
+              }
+            ]}},
+            { engine: "tap-discover", icon: "🏆", title: "Celebrate 7 years of growth", mentorVisual: "🏆",
+              mentorIntro: {
+                en: "From Std 6 to Std 12 — seven years of genuine growth. Let's look back at the full journey.",
+                hi: "Std 6 से Std 12 तक — सात साल की असली वृद्धि। चलो पूरी यात्रा को याद करते हैं।",
+                mr: "Std 6 पासून Std 12 पर्यंत — सात वर्षांची खरी वाढ. चला संपूर्ण प्रवासाकडे मागे वळून बघूया."
+              },
+              data: { visual: "🏆", hotspots: [
+              { label:{en:"Where you started",hi:"तुमने कहाँ शुरुआत की",mr:"तुम्ही कुठे सुरुवात केली"}, fact:{en:"Back in Std 6, you started with pure curiosity — discovering your own beating heart for the very first time!"} },
+              { label:{en:"How far you've come",hi:"तुम कितनी दूर आए",mr:"तुम्ही किती पुढे आलात"}, fact:{en:"By Std 12, you've handled complex diagnosis, ethics, policy, uncertainty, and multi-specialty care — genuine growth!"} },
+              { label:{en:"What you carry forward",hi:"तुम आगे क्या ले जाते हो",mr:"तुम्ही पुढे काय घेऊन जाता"}, fact:{en:"Whatever path you choose next, the curiosity, care, and careful thinking you've built here goes with you!"} }
+            ]}},
+            { type: "Quiz", icon: "📝", title: "The complete journey recap",
+              desc: { en:"A comprehensive final quiz celebrating key moments and lessons from your entire 7-year Doctor & Healthcare journey.", hi:"तुम्हारी पूरी 7-साल की डॉक्टर एंड हेल्थकेयर यात्रा के मुख्य पलों और सबकों का जश्न मनाने वाला एक व्यापक आखिरी क्विज़।", mr:"तुमच्या संपूर्ण 7-वर्षांच्या डॉक्टर आणि हेल्थकेअर प्रवासातील महत्त्वाचे क्षण आणि धडे साजरे करणारा एक सर्वसमावेशक अंतिम क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "A message to yourself, years from now",
+              desc: { en:"Write a message to your future self about this whole 7-year journey — what it taught you, and what you hope to carry forward, whatever path you choose.", hi:"अपने भविष्य के खुद को इस पूरी 7-साल की यात्रा के बारे में एक संदेश लिखो — इसने तुम्हें क्या सिखाया, और तुम्हें उम्मीद है कि तुम आगे क्या ले जाओगे, चाहे तुम कोई भी रास्ता चुनो।", mr:"तुमच्या भविष्यातील स्वतःला या संपूर्ण 7-वर्षांच्या प्रवासाबद्दल एक संदेश लिहा — याने तुम्हाला काय शिकवलं, आणि तुम्ही पुढे काय घेऊन जाल अशी आशा आहे, तुम्ही कोणताही मार्ग निवडलात तरी." } },
+            { engine: "flip-cards", icon: "🃏", title: "The Full 7-Year Journey", mentorVisual: "🎉",
+              mentorIntro: {
+                en: "What a journey this has been! Flip each card for a celebration of your full 7 years exploring Doctor & Healthcare.",
+                hi: "क्या यात्रा रही यह! डॉक्टर एंड हेल्थकेयर एक्सप्लोर करने के अपने पूरे 7 सालों के जश्न के लिए हर कार्ड पलटो।",
+                mr: "काय प्रवास होता हा! डॉक्टर आणि हेल्थकेअर एक्सप्लोर करण्याच्या तुमच्या संपूर्ण 7 वर्षांच्या उत्सवासाठी प्रत्येक कार्ड उलटा."
+              },
+              data: { cards: [
+              { front:{en:"Std 6-7: Explorer",hi:"Std 6-7: एक्सप्लोरर",mr:"Std 6-7: एक्सप्लोरर"}, back:{en:"Pure wonder — discovering your heart, bones, senses, and brain for the first time, no stakes, just curiosity! ❤️",hi:"शुद्ध विस्मय — पहली बार अपने दिल, हड्डियों, इंद्रियों, और दिमाग़ की खोज, कोई दांव नहीं, बस जिज्ञासा! ❤️",mr:"शुद्ध आश्चर्य — पहिल्यांदाच तुमचं हृदय, हाडं, इंद्रिये, आणि मेंदू शोधणं, कोणतेही धोके नाहीत, फक्त कुतूहल! ❤️"} },
+              { front:{en:"Std 8-9: Builder",hi:"Std 8-9: बिल्डर",mr:"Std 8-9: बिल्डर"}, back:{en:"Real skills began — labeling chambers correctly, reading real X-rays, sorting genuine urgency! 🎯",hi:"असली कौशल शुरू हुए — कक्षों को सही तरीके से लेबल करना, असली एक्स-रे पढ़ना, असली तात्कालिकता छाँटना! 🎯",mr:"खरी कौशल्यं सुरू झाली — कप्पे बरोबर लेबल करणं, खरे एक्स-रे वाचणं, खरी तातडी वर्गीकृत करणं! 🎯"} },
+              { front:{en:"Std 10: Decision-Prep",hi:"Std 10: डिसीज़न-प्रेप",mr:"Std 10: डिसिजन-प्रेप"}, back:{en:"You connected to real specialties for the first time — cardiology, pediatrics, psychiatry, and beyond! 🩺",hi:"तुम पहली बार असली स्पेशलिटी से जुड़े — कार्डियोलॉजी, पीडियाट्रिक्स, साइकियाट्री, और आगे! 🩺",mr:"तुम्ही पहिल्यांदाच खऱ्या खासियतींशी जोडले गेलात — कार्डिओलॉजी, पीडियाट्रिक्स, सायकियाट्री, आणि पुढे! 🩺"} },
+              { front:{en:"Std 11-12: Specialist",hi:"Std 11-12: स्पेशलिस्ट",mr:"Std 11-12: स्पेशालिस्ट"}, back:{en:"Real judgment calls, real ethics, real complexity — you handled it all with genuine, earned confidence! 🏆",hi:"असली फ़ैसले, असली नैतिकता, असली जटिलता — तुमने इस सब को असली, अर्जित आत्मविश्वास के साथ संभाला! 🏆",mr:"खरे निर्णय, खरी नैतिकता, खरी गुंतागुंत — तुम्ही हे सर्व खऱ्या, कमावलेल्या आत्मविश्वासाने हाताळलं! 🏆"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Your Whole Journey — Fact Check", mentorVisual: "🏆",
+              mentorIntro: {
+                en: "One final, comprehensive check-in — the very last one of this entire journey! Let's see what stuck across all 7 years.",
+                hi: "एक आखिरी, व्यापक जांच — इस पूरी यात्रा की बिल्कुल आखिरी! देखते हैं सभी 7 सालों से क्या याद रहा।",
+                mr: "एक शेवटची, सर्वसमावेशक तपासणी — या संपूर्ण प्रवासाची अगदी शेवटची! बघूया सर्व 7 वर्षांतून काय लक्षात राहिलं."
+              },
+              data: { statements: [
+              { text:{en:"This whole journey was only ever about memorizing facts, with no real skill-building involved.",hi:"यह पूरी यात्रा हमेशा केवल तथ्यों को याद रखने के बारे में थी, कोई असली कौशल-निर्माण शामिल नहीं था।",mr:"हा संपूर्ण प्रवास फक्त तथ्यं लक्षात ठेवण्याबद्दल होता, कोणतंही खरं कौशल्य-निर्माण समाविष्ट नव्हतं."}, answer:false, explain:{en:"Myth! This journey built genuine skills — precision, judgment, communication, ethics, and complex thinking — far beyond just memorizing facts.",hi:"मिथक! इस यात्रा ने असली कौशल बनाए — सटीकता, निर्णय, बातचीत, नैतिकता, और जटिल सोच — सिर्फ़ तथ्यों को याद रखने से कहीं आगे।",mr:"मिथक! या प्रवासाने खरी कौशल्यं तयार केली — अचूकता, निर्णय, संवाद, नैतिकता, आणि जटिल विचार — फक्त तथ्यं लक्षात ठेवण्यापेक्षा खूप पुढे."} },
+              { text:{en:"The curiosity and careful thinking you've built genuinely matter, whatever path you choose next.",hi:"तुमने जो जिज्ञासा और सावधान सोच बनाई है, वह वाकई मायने रखती है, चाहे तुम आगे कोई भी रास्ता चुनो।",mr:"तुम्ही तयार केलेली कुतूहल आणि काळजीपूर्वक विचार खरंच महत्त्वाची आहे, तुम्ही पुढे कोणताही मार्ग निवडलात तरी."}, answer:true, explain:{en:"True! These genuine skills and mindsets carry real value into whatever comes next, wherever your path leads.",hi:"सच! ये असली कौशल और मानसिकताएँ आगे जो कुछ भी आए उसमें असली मूल्य ले जाती हैं, चाहे तुम्हारा रास्ता कहीं भी ले जाए।",mr:"खरं! ही खरी कौशल्यं आणि मानसिकता पुढे जे काही येईल त्यात खरं मूल्य घेऊन जातात, तुमचा मार्ग कुठेही नेला तरी."} },
+              { text:{en:"This is truly the end of learning — there's nothing more to discover about health and medicine after this.",hi:"यह वाकई सीखने का अंत है — इसके बाद स्वास्थ्य और चिकित्सा के बारे में खोजने के लिए कुछ भी नहीं बचा।",mr:"हा खरंच शिकण्याचा शेवट आहे — यानंतर आरोग्य आणि वैद्यकशास्त्राबद्दल शोधण्यासारखं काहीही उरलेलं नाही."}, answer:false, explain:{en:"Myth! This is a genuine foundation, not an ending — medicine keeps evolving, and there's always more to learn, wherever this journey leads you next.",hi:"मिथक! यह एक असली नींव है, कोई अंत नहीं — चिकित्सा विकसित होती रहती है, और हमेशा और सीखने को है, यह यात्रा तुम्हें आगे जहाँ भी ले जाए।",mr:"मिथक! ही एक खरी पायाभूत रचना आहे, शेवट नाही — वैद्यकशास्त्र विकसित होत राहतं, आणि नेहमी अधिक शिकण्यासारखं असतं, हा प्रवास तुम्हाला पुढे कुठेही घेऊन गेला तरी."} }
+            ]}}
+          ]}
+        ]
+      }
     }
   }
 };
