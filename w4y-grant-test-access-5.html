@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>W4Y Testing Access Grant</title>
+<style>
+:root{--coral:#FF6F61;--magenta:#D6336C;--orange:#FF9349;--gold:#F5C453;--plum:#4A1942;--plumdeep:#2E0F2A;--cream:#FFF6EC;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif;}
+body{min-height:100vh;color:var(--cream);display:flex;align-items:center;justify-content:center;padding:20px;
+background:linear-gradient(160deg,var(--plumdeep) 0%,var(--plum) 55%,#611D45 100%);}
+.card{width:100%;max-width:460px;background:rgba(255,255,255,.07);border:1px solid rgba(255,246,236,.15);
+border-radius:20px;padding:32px 28px;}
+h1{font-size:20px;margin-bottom:6px;}
+p{font-size:13.5px;opacity:.85;line-height:1.55;margin-bottom:14px;}
+.status{background:rgba(255,255,255,.06);border-radius:12px;padding:14px 16px;font-size:13px;margin:16px 0;}
+.status b{color:var(--gold);}
+button{width:100%;padding:14px;border:none;border-radius:12px;cursor:pointer;font-weight:700;font-size:15px;margin-top:10px;}
+.grant-btn{background:linear-gradient(135deg,var(--orange),var(--coral));color:#fff;}
+.grant-btn:disabled{opacity:.5;cursor:wait;}
+.login-btn{background:rgba(255,255,255,.1);color:var(--cream);border:1px solid rgba(255,246,236,.25);text-decoration:none;display:block;text-align:center;}
+.msg{margin-top:14px;font-size:13px;text-align:center;min-height:18px;}
+.msg.ok{color:#8CF5B5;} .msg.err{color:#FFB3A9;}
+.grade-row{display:flex;gap:8px;margin-top:10px;}
+select{flex:1;padding:10px;border-radius:10px;background:rgba(255,255,255,.08);color:var(--cream);border:1px solid rgba(255,246,236,.2);}
+.note{background:rgba(245,196,83,.12);border:1px solid rgba(245,196,83,.3);border-radius:10px;padding:10px 12px;font-size:11.5px;line-height:1.5;margin-top:14px;color:var(--gold);}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>🔑 W4Y Testing Access</h1>
+<p>Grants the <strong>currently logged-in account</strong> full access to everything on the site — every paid course at Masterclass tier, every Future Studio profession fully enrolled, no free-preview limits.</p>
+
+<div id="notLoggedIn">
+<p>You're not logged in yet. Log in or create the account you want to use for testing first, then come back to this page.</p>
+<a class="login-btn" href="login.html">Go to Login →</a>
+</div>
+
+<div id="passwordGate" style="display:none;">
+<p>Enter the testing-access password to continue.</p>
+<input type="password" id="gatePass" placeholder="Password" style="width:100%;padding:12px 14px;border-radius:11px;border:1px solid rgba(255,246,236,.2);background:rgba(255,255,255,.08);color:var(--cream);font-size:14px;" />
+<button class="grant-btn" style="margin-top:12px;" onclick="checkGatePass()">Unlock →</button>
+</div>
+
+<div id="loggedIn" style="display:none;">
+<div class="status">Logged in as: <b id="whoami"></b></div>
+
+<label style="font-size:12.5px;opacity:.85;">Which grade should this account see? <span style="opacity:.7">(Std 6-10 now have real curriculum — 11-12 not built yet)</span></label>
+<div class="grade-row">
+<select id="gradeSelect">
+<option value="6">Std 6</option>
+<option value="7">Std 7</option>
+<option value="8">Std 8</option>
+<option value="9">Std 9</option>
+<option value="10">Std 10</option>
+<option value="11">Std 11 (not built yet)</option>
+<option value="12">Std 12 (not built yet)</option>
+</select>
+</div>
+
+<button class="grant-btn" id="grantBtn" onclick="grantAccess()">Grant Full Test Access →</button>
+
+<label style="font-size:12.5px;opacity:.85;margin-top:18px;display:block;">Testing shortcut — unlock every month instantly</label>
+<p style="font-size:11.5px;color:var(--muted);margin:4px 0 8px;">Normally Month 2 only unlocks after finishing all 6 tasks in Month 1. This marks every task in every month of the selected grade as already passed, so you can freely click into any month to review content without playing through each one.</p>
+<button class="grant-btn" id="unlockBtn" onclick="unlockAllMonths()" style="background:linear-gradient(135deg,#4CE0B3,#2FB88A);">Unlock All Months (Doctor & Healthcare) →</button>
+
+<div class="note">⚠️ This is a testing utility, not something to link from your live site. Anyone logged in who visits this page can grant themselves full access — keep this file's URL private, and consider deleting it once you're done testing.</div>
+</div>
+
+<div id="msg" class="msg"></div>
+</div>
+
+<script type="module">
+import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
+authDomain: "waves4youth-4f239.firebaseapp.com",
+projectId: "waves4youth-4f239",
+storageBucket: "waves4youth-4f239.firebasestorage.app",
+messagingSenderId: "828101805925",
+appId: "1:828101805925:web:f4cd245254aed07ec9438c"
+};
+
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const $ = (id) => document.getElementById(id);
+
+// All 6 paid course tracks, maxed to tier 3 (Masterclass = all phases)
+const PAID_TRACKS = ["animation-vfx","digital-content","video-editing","game-design","ai-creative-tech","entrepreneurship"];
+
+// All 16 Future Studio professions, matching profession-catalog.js exactly
+const ALL_PROFESSIONS = [
+"doctor-healthcare","engineer-technologist","space-astro-tech","entrepreneur-founder",
+"law-policy-justice","scientist-researcher","pilot-aviation","ai-coding-robotics",
+"gaming-esports","film-animation-creator","civil-services","architecture-design",
+"media-communication","sports-personality","hotel-management-chef","ca-finance-investment"
+];
+
+let currentUser = null;
+
+onAuthStateChanged(auth, (user) => {
+if (user){
+currentUser = user;
+$("notLoggedIn").style.display = "none";
+$("passwordGate").style.display = "block";
+} else {
+$("notLoggedIn").style.display = "block";
+$("passwordGate").style.display = "none";
+$("loggedIn").style.display = "none";
+}
+});
+
+// Change this to whatever password you want to use — it's stored in this file's
+// source, so it only deters casual/accidental use, not a determined person who
+// views page source. Fine for a private testing tool, not a real security boundary.
+const GATE_PASSWORD = "w4y-test-2026";
+
+window.checkGatePass = () => {
+if ($("gatePass").value === GATE_PASSWORD){
+$("passwordGate").style.display = "none";
+$("loggedIn").style.display = "block";
+$("whoami").textContent = currentUser.email;
+} else {
+alert("Incorrect password.");
+}
+};
+
+window.grantAccess = async () => {
+if (!currentUser) return;
+$("grantBtn").disabled = true;
+const setMsg = (t, ok=false) => { const m=$("msg"); m.textContent=t; m.className="msg "+(ok?"ok":"err"); };
+setMsg("");
+
+try {
+  const unlockedTiers = {};
+  PAID_TRACKS.forEach(t => unlockedTiers[t] = 3); // 3 = Masterclass, all 6 phases
+
+  const enrolledProfessions = {};
+  ALL_PROFESSIONS.forEach((slug, i) => {
+    enrolledProfessions[slug] = {
+      enrolledAt: new Date().toISOString(),
+      basePlanSlot: i < 3,   // first 3 as "base plan" slots, rest as individually paid — doesn't matter, all paid:true anyway
+      paid: true
+    };
+  });
+
+  await setDoc(doc(db, "students", currentUser.uid), {
+    name: "Waves4Youth Testing",
+    grade: $("gradeSelect").value,
+    approvalStatus: "Approved",
+    paymentStatus: "Paid",
+    plan: "Masterclass",
+    basePlanPaid: true,
+    unlockedTiers,
+    enrolledProfessions,
+    freeTasksByProfession: {},   // irrelevant now since fully enrolled, but reset cleanly
+    isTestAccount: true,
+    updatedAt: serverTimestamp()
+  }, { merge: true });
+
+  setMsg("✅ Full access granted! Go explore any course or Future Studio profession.", true);
+} catch(e){
+  console.error(e);
+  setMsg("Something went wrong — check the browser console for details.");
+}
+$("grantBtn").disabled = false;
+};
+
+// Testing shortcut: marks every task in every month as "passed" for
+// Doctor & Healthcare, so month tabs unlock instantly without actually
+// playing through each mini-game. Task IDs follow the same pattern
+// regardless of grade (SLUG-m{monthIndex}-t{taskIndex}), so this unlocks
+// whichever grade's content is currently active for this account.
+window.unlockAllMonths = async () => {
+if (!currentUser) return;
+const btn = $("unlockBtn");
+btn.disabled = true; btn.textContent = "Unlocking...";
+const setMsg = (t, ok=false) => { const m=$("msg"); m.textContent=t; m.className="msg "+(ok?"ok":"err"); };
+setMsg("");
+
+try {
+  const SLUG = "doctor-healthcare";
+  const MONTHS = 12;   // all grades 6-10 have 12 months
+  const TASKS_PER_MONTH = 6;
+  const update = {};
+  for (let m = 0; m < MONTHS; m++){
+    for (let t = 0; t < TASKS_PER_MONTH; t++){
+      const taskId = `${SLUG}-m${m}-t${t}`;
+      update[`missionSubmissions.${SLUG}.${taskId}`] = {
+        status: "passed",
+        coinsAwarded: true,
+        submittedAt: new Date().toISOString(),
+        note: "auto-marked by testing tool"
+      };
+    }
+  }
+  await setDoc(doc(db, "students", currentUser.uid), update, { merge: true });
+  setMsg("✅ All 12 months unlocked! Go check any month in Doctor & Healthcare.", true);
+} catch(e){
+  console.error(e);
+  setMsg("Something went wrong — check the browser console for details.");
+}
+btn.disabled = false; btn.textContent = "Unlock All Months (Doctor & Healthcare) →";
+};
+</script>
+</body>
+</html>
