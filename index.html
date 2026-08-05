@@ -505,114 +505,132 @@ track.addEventListener('touchend', function(){ track.style.animationPlayState='r
 </div>
 </div>
 </section>
-<!-- ============ FUTURE STUDIO SCROLLER ============ -->
+<!-- ============ FUTURE STUDIO ORBIT ============ -->
 <style>
-.fs-scroll-section{ padding:70px 0; }
-.fs-scroll-viewport{ overflow:hidden; margin-top:6px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
-.fs-scroll-row{ display:flex; gap:16px; width:max-content; padding:6px 4px 18px; animation:fsScroll 42s linear infinite; }
-.fs-scroll-row:hover{ animation-play-state:paused; }
-@keyframes fsScroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-.fs-card{ text-decoration:none; display:block; cursor:pointer; flex:0 0 auto; width:230px; }
-.fs-card{ flex:0 0 220px; scroll-snap-align:start; text-align:center; padding:0 0 20px; overflow:hidden; }
-.fs-img{ width:100%; height:140px; object-fit:cover; border-radius:14px 14px 0 0; display:block; }
-.fs-card h4{ font-size:15px; margin:14px 18px 6px; }
-.fs-card p{ font-size:12.5px; color:var(--ink-3,#6B5E7D); margin:0 18px; }
-.fs-cta-row{ text-align:center; margin-top:8px; }
+.orbit-section{ padding:80px 0 70px; background:radial-gradient(ellipse 120% 80% at 50% 0%,#241247 0%,#160B2E 45%,#0D0620 100%); position:relative; overflow:hidden; }
+.orbit-section::before{ content:""; position:absolute; inset:0; background-image:radial-gradient(1.5px 1.5px at 20% 30%,rgba(255,255,255,.5),transparent),radial-gradient(1.5px 1.5px at 75% 15%,rgba(255,255,255,.4),transparent),radial-gradient(1px 1px at 60% 70%,rgba(255,255,255,.35),transparent),radial-gradient(1.5px 1.5px at 90% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1px 1px at 12% 80%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 40% 55%,rgba(255,255,255,.3),transparent); pointer-events:none; }
+.orbit-section .section-head{ position:relative; z-index:2; }
+.orbit-section .section-head p{ color:rgba(255,255,255,.65); }
+.orbit-section .section-head h2{ color:#fff; }
+.orbit-stage{ position:relative; z-index:2; width:100%; max-width:600px; aspect-ratio:1/1; margin:56px auto 8px; }
+.orbit-ring{ position:absolute; inset:0; border-radius:50%; border:1px dashed rgba(255,255,255,.16); animation:orbitSpin 70s linear infinite; }
+.orbit-ring::before{ content:""; position:absolute; inset:14%; border-radius:50%; border:1px dashed rgba(255,255,255,.09); }
+@media (prefers-reduced-motion:no-preference){ .orbit-stage:hover .orbit-ring, .orbit-stage:focus-within .orbit-ring{ animation-play-state:paused; } .orbit-stage:hover .orbit-node-spin, .orbit-stage:focus-within .orbit-node-spin{ animation-play-state:paused; } }
+@media (prefers-reduced-motion:reduce){ .orbit-ring,.orbit-node-spin{ animation:none !important; } }
+@keyframes orbitSpin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+@keyframes orbitSpinBack{ from{ transform:rotate(0deg); } to{ transform:rotate(-360deg); } }
+.orbit-center{ position:absolute; top:50%; left:50%; width:34%; height:34%; margin-left:-17%; margin-top:-17%; border-radius:50%; z-index:3; display:flex; align-items:center; justify-content:center; text-align:center; background:radial-gradient(circle at 32% 28%,#3D1E68,#170A30 72%); box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 44px rgba(214,58,255,.4),inset 0 0 24px rgba(255,255,255,.06); }
+.orbit-center-inner{ padding:8%; }
+.orbit-center-spark{ display:block; font-size:1.7rem; line-height:1; margin-bottom:6px; background:linear-gradient(135deg,#FF6B6B,#D63AFF 55%,#F6B84B); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.orbit-center-label{ font-family:'Poppins',sans-serif; font-weight:700; font-size:.78rem; line-height:1.35; color:#fff; }
+.orbit-node{ position:absolute; top:50%; left:50%; width:0; height:0; transform:rotate(var(--angle)) translateX(var(--r)); }
+.orbit-node-fix{ transform:rotate(calc(-1 * var(--angle))); }
+.orbit-node-spin{ animation:orbitSpinBack 70s linear infinite; }
+.orbit-node-inner{ position:absolute; left:0; top:0; transform:translate(-50%,-50%); width:96px; text-decoration:none; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.orbit-node-photo{ width:64px; height:64px; border-radius:50%; object-fit:cover; border:2.5px solid rgba(255,255,255,.85); box-shadow:0 4px 18px rgba(0,0,0,.4); transition:transform .25s ease,border-color .25s ease; }
+.orbit-node-inner:hover .orbit-node-photo,.orbit-node-inner:focus .orbit-node-photo{ transform:scale(1.1); border-color:#F6B84B; }
+.orbit-node-label{ font-family:'Poppins',sans-serif; font-weight:600; font-size:.68rem; line-height:1.25; color:#fff; margin-top:8px; max-width:96px; }
+.orbit-cta-row{ position:relative; z-index:2; text-align:center; margin-top:36px; }
+@media (max-width:760px){
+  .orbit-stage{ max-width:420px; }
+  .orbit-node-inner{ width:78px; }
+  .orbit-node-photo{ width:52px; height:52px; }
+  .orbit-node-label{ font-size:.62rem; max-width:80px; }
+  .orbit-center-label{ font-size:.68rem; }
+}
+@media (max-width:640px){
+  .orbit-stage{ aspect-ratio:auto; max-width:340px; margin:40px auto 0; }
+  .orbit-ring,.orbit-ring::before{ display:none; }
+  .orbit-center{ position:static; width:150px; height:150px; margin:0 auto 28px; }
+  .orbit-node{ position:static; width:auto; height:auto; transform:none; display:inline-block; }
+  .orbit-node-fix,.orbit-node-spin{ transform:none; animation:none; }
+  .orbit-node-inner{ position:static; transform:none; width:auto; }
+  .orbit-grid-mobile{ display:flex; flex-wrap:wrap; justify-content:center; gap:22px 18px; }
+}
 </style>
-<section class="fs-scroll-section" id="future-studio-preview">
+<section class="orbit-section" id="future-studio-preview">
 <div class="container">
-<img src="assets/w4y-dream-hero.png" alt="A boy and girl dreaming of their future with Waves4Youth" style="width:100%;height:auto;border-radius:20px;display:block;margin-bottom:32px">
 <div class="section-head text-center mx-auto">
-<span class="eyebrow" style="justify-content:center">W4Y Future Studio</span>
+<span class="eyebrow" style="justify-content:center;color:#F6B84B">W4Y Future Studio</span>
 <h2>Your Child Dreams It. <span class="text-gradient">W4Y Helps Build It.</span></h2>
 <p>Std 6 to 12 students explore real careers through real monthly missions — before they ever have to choose one.</p>
 </div>
-<div class="fs-scroll-viewport">
-<div class="fs-scroll-row">
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-doctor-healthcare.jpg" alt="Doctor &amp; Healthcare">
-<h4>Doctor &amp; Healthcare</h4>
-<p>Medicine, surgery, healthcare AI.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-engineer-technologist.jpg" alt="Engineer &amp; Technologist">
-<h4>Engineer &amp; Technologist</h4>
-<p>Robots, EVs, software, infrastructure.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-space-aerospace.jpg" alt="Space &amp; Aerospace">
-<h4>Space &amp; Aerospace</h4>
-<p>India's next mission, your role in it.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-entrepreneur-founder.jpg" alt="Entrepreneur &amp; Founder">
-<h4>Entrepreneur &amp; Founder</h4>
-<p>Idea. Plan. Build. Impact.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-law-policy-justice.jpg" alt="Law, Policy &amp; Justice">
-<h4>Law, Policy &amp; Justice</h4>
-<p>Rights, justice, a fairer India.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-scientist-researcher.jpg" alt="Scientist &amp; Researcher">
-<h4>Scientist &amp; Researcher</h4>
-<p>Explore. Discover. Innovate.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-pilot-aviation.jpg" alt="Pilot &amp; Aviation">
-<h4>Pilot &amp; Aviation</h4>
-<p>Your future cockpit awaits.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-ca-finance-investment.jpg" alt="CA, Finance &amp; Investment">
-<h4>CA, Finance &amp; Investment</h4>
-<p>Numbers today. Wealth tomorrow.</p>
-</a>
-<!-- duplicate set, exact copy, so the marquee loop is seamless at -50% -->
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-doctor-healthcare.jpg" alt="">
-<h4>Doctor &amp; Healthcare</h4>
-<p>Medicine, surgery, healthcare AI.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-engineer-technologist.jpg" alt="">
-<h4>Engineer &amp; Technologist</h4>
-<p>Robots, EVs, software, infrastructure.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-space-aerospace.jpg" alt="">
-<h4>Space &amp; Aerospace</h4>
-<p>India's next mission, your role in it.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-entrepreneur-founder.jpg" alt="">
-<h4>Entrepreneur &amp; Founder</h4>
-<p>Idea. Plan. Build. Impact.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-law-policy-justice.jpg" alt="">
-<h4>Law, Policy &amp; Justice</h4>
-<p>Rights, justice, a fairer India.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-scientist-researcher.jpg" alt="">
-<h4>Scientist &amp; Researcher</h4>
-<p>Explore. Discover. Innovate.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-pilot-aviation.jpg" alt="">
-<h4>Pilot &amp; Aviation</h4>
-<p>Your future cockpit awaits.</p>
-</a>
-<a href="Future-Studio/index.html#futures" class="card fs-card reveal" aria-hidden="true">
-<img class="fs-img" src="Future-Studio/assets/career-images/career-ca-finance-investment.jpg" alt="">
-<h4>CA, Finance &amp; Investment</h4>
-<p>Numbers today. Wealth tomorrow.</p>
-</a>
+<div class="orbit-stage">
+<div class="orbit-ring"></div>
+<div class="orbit-center">
+<div class="orbit-center-inner">
+<span class="orbit-center-spark">✦</span>
+<span class="orbit-center-label">Whatever you dream, we help build it.</span>
 </div>
 </div>
-<div class="fs-cta-row">
+<div class="orbit-grid-mobile">
+<div class="orbit-node" style="--angle:0deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-doctor-healthcare.jpg" alt="Doctor &amp; Healthcare">
+<span class="orbit-node-label">Doctor &amp; Healthcare</span>
+</a>
+</div></div>
+</div>
+<div class="orbit-node" style="--angle:45deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-engineer-technologist.jpg" alt="Engineer &amp; Technologist">
+<span class="orbit-node-label">Engineer &amp; Technologist</span>
+</a>
+</div></div>
+</div>
+<div class="orbit-node" style="--angle:90deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-space-aerospace.jpg" alt="Space &amp; Aerospace">
+<span class="orbit-node-label">Space &amp; Aerospace</span>
+</a>
+</div></div>
+</div>
+<div class="orbit-node" style="--angle:135deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-entrepreneur-founder.jpg" alt="Entrepreneur &amp; Founder">
+<span class="orbit-node-label">Entrepreneur &amp; Founder</span>
+</a>
+</div></div>
+</div>
+<div class="orbit-node" style="--angle:180deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-law-policy-justice.jpg" alt="Law, Policy &amp; Justice">
+<span class="orbit-node-label">Law, Policy &amp; Justice</span>
+</a>
+</div></div>
+</div>
+<div class="orbit-node" style="--angle:225deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-scientist-researcher.jpg" alt="Scientist &amp; Researcher">
+<span class="orbit-node-label">Scientist &amp; Researcher</span>
+</a>
+</div></div>
+</div>
+<div class="orbit-node" style="--angle:270deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-pilot-aviation.jpg" alt="Pilot &amp; Aviation">
+<span class="orbit-node-label">Pilot &amp; Aviation</span>
+</a>
+</div></div>
+</div>
+<div class="orbit-node" style="--angle:315deg;--r:230px">
+<div class="orbit-node-fix"><div class="orbit-node-spin">
+<a href="Future-Studio/index.html#futures" class="orbit-node-inner">
+<img class="orbit-node-photo" src="Future-Studio/assets/career-images/career-ca-finance-investment.jpg" alt="CA, Finance &amp; Investment">
+<span class="orbit-node-label">CA, Finance &amp; Investment</span>
+</a>
+</div></div>
+</div>
+</div>
+</div>
+<div class="orbit-cta-row">
 <a href="Future-Studio/index.html" class="btn btn-primary">Explore All 16 Futures →</a>
 </div>
 </div>
