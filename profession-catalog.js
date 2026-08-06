@@ -4870,8 +4870,9 @@ export const PROFESSION_CATALOG = {
   },
 
   "film-animation-creator": {
-    title: "Film, Animation & Creator",
+    title: "Film & Script Writing",
     icon: "🎬",
+    mentorBannerImg: "assets/mentors/mentor-film-banner.jpg",
     months: [
       { label: "What creators actually do", tasks: [
         { type: "Observe", icon: "🔭", title: "A story that moved you", desc: "Think of a film, video, or show that made you feel something strongly." },
