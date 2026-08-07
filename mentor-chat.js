@@ -1,24 +1,27 @@
 /**
  * Waves4Youth — Shared AI Mentor Chat Widget
- * Used by all 6 learn-*.html track pages.
+ * Used by all learn-*.html track pages.
  *
- * ⚠️ IMPORTANT — READ BEFORE DEPLOYING:
- * The fetchMentorReply() function below is a PLACEHOLDER. I don't have the source
- * of your existing Deno proxy (solar-armadillo-4814.waves4youth.deno.net) or the
- * meera-mentor.html / asha-mentor.html pages that were working yesterday, so I can't
- * guarantee this matches your real endpoint contract (URL path, request/response shape).
+ * ⚠️ CARRIED OVER FROM THE PREVIOUS VERSION — STILL TRUE, PLEASE READ:
+ * fetchMentorReply() below matches the request/response shape used elsewhere in this
+ * codebase (the Phase Checkpoint feature in learn-video-editing.html posts to the same
+ * MENTOR_PROXY_URL with the same {system, messages, max_tokens} body), which is a good
+ * sign it's correct — but it has not been confirmed working live against a real reply.
+ * Test one real message end-to-end before relying on this across all tracks.
  *
- * If mentors aren't responding after you wire this in, the fastest fix is to send me
- * either (a) your Deno proxy's source, or (b) one working mentor HTML page (e.g.
- * neel-mentor.html) so I can match the exact request format instead of guessing.
- *
- * SEPARATELY: if Meera/Asha specifically stopped working "yesterday" after being fine
- * before, the most likely causes are — in order of likelihood:
- *   1. The exposed Anthropic API key (noted as a pending fix) was rotated/revoked,
- *      and the Deno proxy is still using the old key.
- *   2. The proxy hit a rate limit or quota cap.
- *   3. A CORS or domain-allowlist change on the proxy blocked requests from these pages.
- * Check your Deno Deploy logs for the exact error — that will confirm which of these it is.
+ * WHAT'S NEW IN THIS VERSION:
+ * The mentor avatar is no longer a static 36px thumbnail. It's now a larger, animated
+ * character portrait that:
+ *   - idles with a slow, subtle breathing motion (so it reads as "alive", not a photo)
+ *   - lights up with a glowing ring + gentle talking bounce + animated sound-wave bars
+ *     whenever the mentor's voice is actually speaking (synced to real speech start/end,
+ *     not a decorative loop)
+ *   - respects prefers-reduced-motion — every animation degrades to a static state
+ * This uses the same free browser Web Speech API voice that was already wired up here.
+ * It is NOT a photorealistic lip-synced video avatar — that would require a paid
+ * third-party avatar API (e.g. D-ID, HeyGen) with its own cost and integration work.
+ * This is the strongest version of "animated talking mentor" buildable with free,
+ * already-available browser tech.
  */
 
 const MENTOR_PROXY_URL = "https://solar-armadillo-4814.waves4youth.deno.net";
@@ -45,8 +48,10 @@ const SPEECH_LOCALES = {
 // Consistent gender per mentor character, so switching languages doesn't
 // flip Neel from a male-sounding voice to a female one or vice versa.
 const MENTOR_GENDER = {
-  Neel: "male", Vikram: "male", Aarav: "male",
-  Asha: "female", Meera: "female", Diya: "female", Kiran: "female"
+  Neel: "male", Vikram: "male", Aarav: "male", Rohan: "male", Arjun: "male",
+  Sudhanshu: "male", Prithvi: "male", Rey: "male",
+  Asha: "female", Meera: "female", Diya: "female", Kiran: "female", Zara: "female", Ira: "female",
+  Devika: "female"
 };
 
 // Strips markdown/formatting symbols and emoji before speaking, so the
@@ -77,6 +82,14 @@ function pickVoice(locale, genderPref){
   return pool[0] || null;
 }
 
+// Toggles the "speaking" animation state on every avatar currently on the page
+// (in practice there's only ever one mentor chat panel open at a time).
+function setAvatarSpeaking(isSpeaking){
+  document.querySelectorAll(".mentor-avatar-wrap").forEach(el => {
+    el.classList.toggle("is-speaking", isSpeaking);
+  });
+}
+
 function speak(text, language, mentorName){
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel(); // stop any current speech first
@@ -86,13 +99,26 @@ function speak(text, language, mentorName){
   utter.rate = 0.95;
   const voice = pickVoice(locale, MENTOR_GENDER[mentorName]);
   if (voice) utter.voice = voice;
+  utter.onstart = () => setAvatarSpeaking(true);
+  utter.onend = () => setAvatarSpeaking(false);
+  utter.onerror = () => setAvatarSpeaking(false);
   window.speechSynthesis.speak(utter);
 }
 
 function buildMentorChatHTML(mentorName, mentorImageUrl){
-  const avatarHtml = mentorImageUrl
+  const avatarInner = mentorImageUrl
     ? `<img class="mentor-avatar-img" src="${mentorImageUrl}" alt="${mentorName}">`
     : `<span class="mentor-avatar">💬</span>`;
+  // The ring + wave bars are purely visual — they only animate while is-speaking is set.
+  const avatarHtml = `
+    <div class="mentor-avatar-wrap" aria-hidden="true">
+      <span class="mentor-avatar-ring"></span>
+      ${avatarInner}
+      <span class="mentor-wave">
+        <span></span><span></span><span></span><span></span>
+      </span>
+    </div>
+  `;
   return `
     <div class="mentor-chat-panel">
       <div class="mentor-chat-head">
@@ -118,14 +144,50 @@ function buildMentorChatHTML(mentorName, mentorImageUrl){
 
 const MENTOR_CHAT_CSS = `
 .mentor-chat-panel{border:1px solid var(--border);border-radius:16px;background:#fff;margin-top:20px;display:flex;flex-direction:column;overflow:hidden}
-.mentor-chat-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.mentor-chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
 @media(max-width:420px){
   .mentor-chat-head{gap:8px}
   .mentor-lang-select{margin-left:0;order:3;flex:1;min-width:120px}
   .mentor-speak-toggle{order:4}
 }
-.mentor-avatar{font-size:22px}
-.mentor-avatar-img{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0}
+
+/* --- Animated avatar --- */
+.mentor-avatar-wrap{position:relative;width:60px;height:60px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.mentor-avatar{font-size:26px}
+.mentor-avatar-img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;position:relative;z-index:2;
+  border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.12);
+  animation:mentorIdle 4.5s ease-in-out infinite}
+.mentor-avatar-ring{position:absolute;inset:-4px;border-radius:50%;z-index:1;
+  background:conic-gradient(from 0deg,#FF6B6B,#D63AFF,#8A6BFF,#FF6B6B);
+  opacity:0;transform:scale(.85);transition:opacity .3s ease,transform .3s ease}
+.mentor-wave{position:absolute;bottom:-9px;left:50%;transform:translateX(-50%);display:flex;align-items:flex-end;gap:2px;
+  height:10px;opacity:0;transition:opacity .2s ease;z-index:3}
+.mentor-wave span{width:3px;border-radius:2px;background:linear-gradient(180deg,#D63AFF,#FF6B6B);height:3px}
+
+/* Idle breathing motion — subtle, always on for a static photo to feel alive */
+@keyframes mentorIdle{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+
+/* Speaking state: ring glows + pulses, avatar gets a livelier bounce, wave bars animate */
+.mentor-avatar-wrap.is-speaking .mentor-avatar-ring{opacity:1;transform:scale(1);animation:mentorRingPulse 1.1s ease-in-out infinite}
+.mentor-avatar-wrap.is-speaking .mentor-avatar-img{animation:mentorTalk 0.5s ease-in-out infinite}
+.mentor-avatar-wrap.is-speaking .mentor-wave{opacity:1}
+.mentor-avatar-wrap.is-speaking .mentor-wave span{animation:mentorWave .9s ease-in-out infinite}
+.mentor-avatar-wrap.is-speaking .mentor-wave span:nth-child(1){animation-delay:0s}
+.mentor-avatar-wrap.is-speaking .mentor-wave span:nth-child(2){animation-delay:.15s}
+.mentor-avatar-wrap.is-speaking .mentor-wave span:nth-child(3){animation-delay:.3s}
+.mentor-avatar-wrap.is-speaking .mentor-wave span:nth-child(4){animation-delay:.45s}
+
+@keyframes mentorRingPulse{0%,100%{box-shadow:0 0 0 0 rgba(214,58,255,.35)}50%{box-shadow:0 0 0 6px rgba(214,58,255,0)}}
+@keyframes mentorTalk{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.06) translateY(-1px)}}
+@keyframes mentorWave{0%,100%{height:3px}50%{height:10px}}
+
+@media (prefers-reduced-motion: reduce){
+  .mentor-avatar-img{animation:none}
+  .mentor-avatar-wrap.is-speaking .mentor-avatar-ring{animation:none;opacity:1;transform:scale(1)}
+  .mentor-avatar-wrap.is-speaking .mentor-avatar-img{animation:none}
+  .mentor-avatar-wrap.is-speaking .mentor-wave span{animation:none;height:7px}
+}
+
 .mentor-name{font-weight:800;font-family:Poppins,sans-serif}
 .mentor-sub{font-size:.75rem;color:var(--muted)}
 .mentor-lang-select{margin-left:auto;font-size:.8rem;border-radius:8px;border:1px solid var(--border);padding:4px 8px}
@@ -170,7 +232,7 @@ function initMentorChat(containerEl, getContext){
     speakingModeOn = !speakingModeOn;
     speakToggle.setAttribute("aria-pressed", String(speakingModeOn));
     speakToggle.title = speakingModeOn ? "Turn off speaking mode" : "Turn on speaking mode";
-    if (!speakingModeOn && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+    if (!speakingModeOn && 'speechSynthesis' in window) { window.speechSynthesis.cancel(); setAvatarSpeaking(false); }
   });
 
   function appendMsg(role, text){
