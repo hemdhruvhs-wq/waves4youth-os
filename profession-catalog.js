@@ -6,6 +6,55 @@
 
 export const PROFESSION_CATALOG = {
 
+  "electronics-telecom-engineer": {
+    title: "Electronics & Telecommunication Engineer",
+    icon: "📡",
+    mentorBannerImg: "assets/mentors/mentor-devika-banner.jpg",
+    grades: {
+      "6": {
+        band: "Explorer",
+        bandTagline: "Pure curiosity — no stakes, just discovering how circuits, signals and networks actually work.",
+        months: [
+          { label: "Meet Electronics & Telecommunication Engineering",
+            bonusAssignment: { title: { en: "Explore an Electrical Career", hi: "एक इलेक्ट्रिकल करियर एक्सप्लोर करो", mr: "एक इलेक्ट्रिकल करिअर एक्सप्लोर करा" }, prompt: { en: "Research one real electrical engineering job (power systems, electronics, telecom) and describe what excites you about it. Take a photo!", hi: "एक असली इलेक्ट्रिकल इंजीनियरिंग नौकरी पर रिसर्च करो और बताओ इसके बारे में क्या तुम्हें उत्साहित करता है। फोटो लो!", mr: "एका खऱ्या इलेक्ट्रिकल अभियांत्रिकी नोकरीवर संशोधन करा आणि त्याबद्दल तुम्हाला काय उत्साहित करतं ते सांगा. फोटो घ्या!" } },
+            tasks: [
+            { engine: "tap-discover", icon: "⚡", title: "Explore electrical engineering as a career", mentorVisual: "⚡", animation: "circuit",
+              mentorIntro: { en: "Electrical engineers power and connect the modern world! Let's discover what a real career in electrical engineering actually looks like.", hi: "इलेक्ट्रिकल इंजीनियर आधुनिक दुनिया को शक्ति और जोड़ते हैं! चलो खोजते हैं इलेक्ट्रिकल इंजीनियरिंग में एक असली करियर असल में कैसा दिखता है।", mr: "इलेक्ट्रिकल इंजिनियर आधुनिक जगाला ऊर्जा देतात आणि जोडतात! चला शोधूया इलेक्ट्रिकल अभियांत्रिकीतील खरं करिअर खरंच कसं दिसतं." },
+              data: { visual: "⚡", animation: "circuit", hotspots: [
+              { label:{en:"Power and electronics are separate paths",hi:"पावर और इलेक्ट्रॉनिक्स अलग रास्ते हैं",mr:"पॉवर आणि इलेक्ट्रॉनिक्स वेगळे मार्ग आहेत"}, fact:{en:"Electrical engineering splits into paths like power systems (large-scale) and electronics (small-scale circuits)!",hi:"इलेक्ट्रिकल इंजीनियरिंग पावर सिस्टम और इलेक्ट्रॉनिक्स जैसे रास्तों में बंटती है!",mr:"इलेक्ट्रिकल अभियांत्रिकी पॉवर यंत्रणा आणि इलेक्ट्रॉनिक्ससारख्या मार्गांत विभागते!"} },
+              { label:{en:"Telecom is a major hiring field",hi:"टेलीकॉम एक बड़ा भर्ती क्षेत्र है",mr:"टेलिकॉम एक मोठं भरती क्षेत्र आहे"}, fact:{en:"India's massive telecom industry hires enormous numbers of electrical and electronics engineers!",hi:"भारत का विशाल टेलीकॉम उद्योग इलेक्ट्रिकल और इलेक्ट्रॉनिक्स इंजीनियरों की बड़ी संख्या को नौकरी देता है!",mr:"भारताचा प्रचंड टेलिकॉम उद्योग इलेक्ट्रिकल आणि इलेक्ट्रॉनिक्स इंजिनियरांची मोठी संख्या नोकरी देतो!"} },
+              { label:{en:"Renewable energy is a growing area",hi:"नवीकरणीय ऊर्जा एक बढ़ता क्षेत्र है",mr:"नूतनीकरणयोग्य ऊर्जा वाढतं क्षेत्र आहे"}, fact:{en:"Electrical engineers increasingly work on solar, wind, and other renewable energy systems!",hi:"इलेक्ट्रिकल इंजीनियर तेज़ी से सौर, पवन, और अन्य नवीकरणीय ऊर्जा सिस्टम पर काम करते हैं!",mr:"इलेक्ट्रिकल इंजिनियर वाढत्या प्रमाणात सौर, पवन, आणि इतर नूतनीकरणयोग्य ऊर्जा यंत्रणांवर काम करतात!"} }
+            ]}},
+            { engine: "build-match", icon: "⚡", title: "Match electrical role to its exact focus", mentorVisual: "🧩",
+              mentorIntro: { en: "Let's match these electrical engineering roles exactly!", hi: "चलो इन इलेक्ट्रिकल इंजीनियरिंग भूमिकाओं को बिल्कुल मैच करते हैं!", mr: "चला या इलेक्ट्रिकल अभियांत्रिकी भूमिका अगदी जुळवूया!" },
+              data: { noStakes: false, zones: [
+              { id: "power_electrical", label: {en:"Works on large-scale electricity generation and grids",hi:"बड़े पैमाने पर बिजली उत्पादन और ग्रिड पर काम करता है",mr:"मोठ्या प्रमाणावर वीज निर्मिती आणि ग्रिडवर काम करतो"} },
+              { id: "electronics_electrical", label: {en:"Works on small-scale circuits inside devices",hi:"डिवाइस के अंदर छोटे पैमाने के सर्किट पर काम करता है",mr:"उपकरणांच्या आत लहान प्रमाणातील सर्किटवर काम करतो"} },
+              { id: "telecom_electrical", label: {en:"Works on communication networks and signals",hi:"संचार नेटवर्क और सिग्नल पर काम करता है",mr:"संवाद नेटवर्क आणि सिग्नलवर काम करतो"} }
+            ], chips: ["power_electrical","electronics_electrical","telecom_electrical"], facts: { power_electrical:"Correct — that's power systems engineering!", electronics_electrical:"Correct — that's electronics engineering!", telecom_electrical:"Correct — that's telecom engineering!" }}},
+            { type: "Quiz", icon: "📝", title: "Electrical engineering deep dive quiz", desc: { en:"A real quiz on what a career in electrical engineering actually involves.", hi:"इलेक्ट्रिकल इंजीनियरिंग में करियर असल में क्या शामिल करता है, इस पर एक असली क्विज़।", mr:"इलेक्ट्रिकल अभियांत्रिकीतील करिअरमध्ये खरंच काय समाविष्ट असतं, यावर एक खरा क्विझ." } },
+            { type: "Reflect", icon: "💭", title: "Does this interest you?", desc: { en:"After exploring electrical engineering as a real career, does it genuinely interest you? Why or why not?", hi:"इलेक्ट्रिकल इंजीनियरिंग को एक असली करियर के रूप में एक्सप्लोर करने के बाद, क्या यह वाकई तुम्हें दिलचस्प लगता है? क्यों या क्यों नहीं?", mr:"इलेक्ट्रिकल अभियांत्रिकी खरं करिअर म्हणून एक्सप्लोर केल्यानंतर, ते खरंच तुम्हाला रुचकर वाटतं का? का किंवा का नाही?" } },
+            { engine: "flip-cards", icon: "🃏", title: "Electrical Engineering Deep Facts", mentorVisual: "🃏",
+              mentorIntro: { en: "Let's go deeper — flip each card for a more advanced electrical engineering career fact!", hi: "चलो और गहराई में जाते हैं — हर कार्ड पलटो!", mr: "चला अधिक खोलात जाऊया — प्रत्येक कार्ड उलटा!" },
+              data: { cards: [
+              { front:{en:"India is a global electronics manufacturing hub?",hi:"भारत एक वैश्विक इलेक्ट्रॉनिक्स निर्माण केंद्र है?",mr:"भारत एक जागतिक इलेक्ट्रॉनिक्स उत्पादन केंद्र आहे?"}, back:{en:"India has genuinely grown into a major global hub for electronics manufacturing and design! 🌏",hi:"भारत वाकई इलेक्ट्रॉनिक्स निर्माण और डिज़ाइन के लिए एक प्रमुख वैश्विक केंद्र बन गया है! 🌏",mr:"भारत खरंच इलेक्ट्रॉनिक्स उत्पादन आणि डिझाइनसाठी एक प्रमुख जागतिक केंद्र बनला आहे! 🌏"} },
+              { front:{en:"5G expansion needs electrical engineers?",hi:"5G विस्तार को इलेक्ट्रिकल इंजीनियर चाहिए?",mr:"5G विस्तारासाठी इलेक्ट्रिकल इंजिनियर हवेत?"}, back:{en:"India's ongoing 5G network expansion genuinely requires huge numbers of skilled telecom engineers! 📡",hi:"भारत का चल रहा 5G नेटवर्क विस्तार वाकई कुशल टेलीकॉम इंजीनियरों की बड़ी संख्या चाहता है! 📡",mr:"भारताचा सुरू असलेला 5G नेटवर्क विस्तार खरंच कुशल टेलिकॉम इंजिनियरांची मोठी संख्या मागतो! 📡"} },
+              { front:{en:"Electrical engineers design medical devices too?",hi:"इलेक्ट्रिकल इंजीनियर मेडिकल डिवाइस भी डिज़ाइन करते हैं?",mr:"इलेक्ट्रिकल इंजिनियर वैद्यकीय उपकरणंही डिझाइन करतात?"}, back:{en:"Many life-saving medical devices, like pacemakers, genuinely rely on precise electrical engineering! 🏥",hi:"पेसमेकर जैसे कई जीवन-रक्षक मेडिकल डिवाइस वाकई सटीक इलेक्ट्रिकल इंजीनियरिंग पर निर्भर करते हैं! 🏥",mr:"पेसमेकरसारखी अनेक जीवन-रक्षक वैद्यकीय उपकरणं खरंच अचूक इलेक्ट्रिकल अभियांत्रिकीवर अवलंबून असतात! 🏥"} }
+            ]}},
+            { engine: "true-false", icon: "✅", title: "Electrical Engineering or Myth?", mentorVisual: "🤔",
+              mentorIntro: { en: "Let's test your electrical engineering knowledge! Decide if each statement is true or a myth.", hi: "चलो इलेक्ट्रिकल इंजीनियरिंग के ज्ञान की जांच करते हैं!", mr: "चला इलेक्ट्रिकल अभियांत्रिकीच्या ज्ञानाची चाचणी घेऊया!" },
+              data: { statements: [
+              { text:{en:"Electrical engineering only involves working on large power grids, with no smaller-scale work available.",hi:"इलेक्ट्रिकल इंजीनियरिंग में केवल बड़े पावर ग्रिड पर काम करना शामिल है, कोई छोटे पैमाने का काम उपलब्ध नहीं।",mr:"इलेक्ट्रिकल अभियांत्रिकीत फक्त मोठ्या पॉवर ग्रिडवर काम करणं समाविष्ट आहे, कोणतंही लहान प्रमाणातील काम उपलब्ध नाही."}, answer:false, explain:{en:"Myth! Electrical engineering genuinely spans both large-scale power systems and small-scale electronics.",hi:"मिथक! इलेक्ट्रिकल इंजीनियरिंग वाकई बड़े पैमाने के पावर सिस्टम और छोटे पैमाने के इलेक्ट्रॉनिक्स दोनों तक फैली है।",mr:"मिथक! इलेक्ट्रिकल अभियांत्रिकी खरंच मोठ्या प्रमाणातील पॉवर यंत्रणा आणि लहान प्रमाणातील इलेक्ट्रॉनिक्स दोन्हींपर्यंत पसरलेली आहे."} },
+              { text:{en:"India's ongoing 5G expansion genuinely requires many skilled telecom engineers.",hi:"भारत का चल रहा 5G विस्तार वाकई कई कुशल टेलीकॉम इंजीनियरों को चाहता है।",mr:"भारताचा सुरू असलेला 5G विस्तार खरंच अनेक कुशल टेलिकॉम इंजिनियरना मागतो."}, answer:true, explain:{en:"True! 5G network expansion genuinely creates strong demand for telecom engineering skills.",hi:"सच! 5G नेटवर्क विस्तार वाकई टेलीकॉम इंजीनियरिंग कौशल की मज़बूत मांग पैदा करता है।",mr:"खरं! 5G नेटवर्क विस्तार खरंच टेलिकॉम अभियांत्रिकी कौशल्यांची मजबूत मागणी निर्माण करतो."} },
+              { text:{en:"Medical devices like pacemakers have no real connection to electrical engineering.",hi:"पेसमेकर जैसे मेडिकल डिवाइस का इलेक्ट्रिकल इंजीनियरिंग से कोई असली संबंध नहीं है।",mr:"पेसमेकरसारख्या वैद्यकीय उपकरणांचा इलेक्ट्रिकल अभियांत्रिकीशी कोणताही खरा संबंध नाही."}, answer:false, explain:{en:"Myth! Devices like pacemakers genuinely rely heavily on precise electrical engineering.",hi:"मिथक! पेसमेकर जैसे डिवाइस वाकई सटीक इलेक्ट्रिकल इंजीनियरिंग पर बहुत निर्भर करते हैं।",mr:"मिथक! पेसमेकरसारखी उपकरणं खरंच अचूक इलेक्ट्रिकल अभियांत्रिकीवर खूप अवलंबून असतात."} }
+            ]}}
+          ]},
+        ]
+      }
+    }
+  },
+
+
   "engineer-technologist": {
     title: "Engineer & Technologist",
     icon: "⚙️",
