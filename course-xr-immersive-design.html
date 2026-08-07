@@ -5,185 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XR & Immersive Design — Waves4Youth</title>
 <meta name="description" content="Learn XR & Immersive Design with Rey, your AI mentor. A 4-week short course, Std 8-12, from your first 3D scene to an interactive AR/VR experience.">
+<link rel="icon" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg-0:#13101B;
-    --bg-1:#1D1626;
-    --bg-2:#241C30;
-    --amber:#D99A5B;
-    --rose:#C97B72;
-    --plum:#8B6FA8;
-    --cream:#F2EAD9;
-    --text-dim:rgba(242,234,217,0.62);
-    --glass:rgba(255,255,255,0.045);
-    --glass-border:rgba(255,255,255,0.09);
-    --glass-strong:rgba(255,255,255,0.07);
-  }
+  :root{--bg-0:#13101B;--bg-1:#1D1626;--bg-2:#241C30;--amber:#D99A5B;--rose:#C97B72;--plum:#8B6FA8;--cream:#F2EAD9;--text-dim:rgba(242,234,217,0.62);--glass:rgba(255,255,255,0.045);--glass-border:rgba(255,255,255,0.09);--glass-strong:rgba(255,255,255,0.07);}
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:'Poppins','Segoe UI',sans-serif;
-    background:
-      radial-gradient(circle at 15% 8%, rgba(201,123,114,0.16) 0%, transparent 38%),
-      radial-gradient(circle at 90% 5%, rgba(217,154,91,0.13) 0%, transparent 35%),
-      linear-gradient(165deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);
-    background-attachment:fixed;
-    color:var(--cream);
-    min-height:100vh;
-    line-height:1.5;
-  }
+  html { scroll-behavior: smooth; }
+  @keyframes darkFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+  @keyframes nodePulse { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.1); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1;transform:none;transition:none} }
+  body{font-family:'Poppins','Segoe UI',sans-serif;background:radial-gradient(circle at 15% 8%, rgba(201,123,114,0.16) 0%, transparent 38%),radial-gradient(circle at 90% 5%, rgba(217,154,91,0.13) 0%, transparent 35%),linear-gradient(165deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);background-size: 200% 200%;background-attachment:fixed;color:var(--cream);min-height:100vh;line-height:1.5;}
+  @media (prefers-reduced-motion: no-preference){ body{ animation: darkFlow 24s ease infinite; } }
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
-
-  /* Header */
-  header{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:16px 20px;
-    background:rgba(19,16,27,0.75);
-    backdrop-filter:blur(14px);
-    position:sticky;top:0;z-index:50;
-    border-bottom:1px solid var(--glass-border);
-  }
+  header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(19,16,27,0.75);backdrop-filter:blur(14px);position:sticky;top:0;z-index:50;border-bottom:1px solid var(--glass-border);}
   .logo{font-weight:700;font-size:15px;letter-spacing:0.5px;display:flex;gap:8px;align-items:center;color:var(--cream);}
   nav{display:none;}
   .header-cta{display:flex;gap:10px;}
-  .btn-ghost{padding:8px 14px;border:1px solid var(--glass-border);border-radius:20px;font-size:13px;color:var(--text-dim);}
-  .btn-solid{
-    padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;
-    background:linear-gradient(90deg,var(--amber),var(--rose));
-    color:#1B1420;
-  }
-
-  /* Hero */
+  .btn-ghost{padding:8px 14px;border:1px solid var(--glass-border);border-radius:20px;font-size:13px;color:var(--text-dim); transition:color 0.3s;}
+  .btn-ghost:hover { color:var(--cream); }
+  .btn-solid{padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;background:linear-gradient(90deg,var(--amber),var(--rose));color:#1B1420; transition: transform 0.3s;}
+  .btn-solid:hover { transform: translateY(-2px); }
   .hero{padding:52px 20px 36px;text-align:left;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    background:var(--glass-strong);border:1px solid var(--glass-border);
-    padding:6px 14px;border-radius:20px;font-size:12px;color:var(--text-dim);
-    backdrop-filter:blur(10px);margin-bottom:16px;
-  }
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--glass-strong);border:1px solid var(--glass-border);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--text-dim);backdrop-filter:blur(10px);margin-bottom:16px;box-shadow: 0 4px 15px rgba(0,0,0,0.2);}
   .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);}
   .track-label{font-size:13px;color:var(--amber);font-weight:600;letter-spacing:0.6px;text-transform:uppercase;margin-bottom:12px;}
   h1{font-size:clamp(30px,7vw,44px);font-weight:700;line-height:1.32;margin-bottom:18px;color:var(--cream);}
   h1 .accent{color:var(--rose);}
   .hero p{font-size:15px;color:var(--text-dim);max-width:520px;margin-bottom:28px;}
-
   .stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:28px;}
-  .stat-card{
-    background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;
-    padding:16px 12px;text-align:center;backdrop-filter:blur(10px);
-  }
+  .stat-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:14px;padding:16px 12px;text-align:center;backdrop-filter:blur(10px);transition: transform 0.3s, background 0.3s;}
+  .stat-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
   .stat-card .num{font-size:21px;font-weight:700;color:var(--amber);}
   .stat-card .lbl{font-size:11px;color:var(--text-dim);margin-top:4px;}
-
   .hero-ctas{display:flex;flex-direction:column;gap:10px;}
-  .cta-primary{
-    text-align:center;padding:14px;border-radius:14px;font-weight:600;font-size:14px;
-    background:linear-gradient(90deg,var(--amber),var(--rose));
-    color:#1B1420;
-  }
-  .cta-secondary{
-    text-align:center;padding:14px;border-radius:14px;font-weight:600;font-size:14px;
-    border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(10px);
-    color:var(--cream);
-  }
-
-  .price-badge{
-    margin-top:24px;background:var(--glass);border:1px solid var(--glass-border);
-    border-radius:16px;padding:18px;backdrop-filter:blur(10px);
-  }
+  .cta-primary{text-align:center;padding:14px;border-radius:14px;font-weight:600;font-size:14px;background:linear-gradient(90deg,var(--amber),var(--rose));color:#1B1420; transition: transform 0.3s;}
+  .cta-secondary{text-align:center;padding:14px;border-radius:14px;font-weight:600;font-size:14px;border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(10px);color:var(--cream); transition: transform 0.3s;}
+  .cta-primary:hover, .cta-secondary:hover { transform: translateY(-2px); }
+  .price-badge{margin-top:24px;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:18px;backdrop-filter:blur(10px);transition:transform .3s ease,box-shadow .3s ease;}
+  .price-badge:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.3)}
   .price-badge .price{font-size:26px;font-weight:700;color:var(--amber);}
   .price-badge .sub{font-size:12px;color:var(--text-dim);margin-top:2px;}
-
-  /* Section headers */
   .section{padding:44px 20px;}
   .section-label{font-size:13px;color:var(--amber);font-weight:600;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:8px;}
   .section h2{font-size:23px;font-weight:700;margin-bottom:26px;color:var(--cream);}
-
-  /* Curriculum */
-  .week-card{
-    display:flex;gap:16px;
-    background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;
-    padding:18px;margin-bottom:14px;backdrop-filter:blur(10px);
-  }
-  .week-num{
-    flex-shrink:0;width:40px;height:40px;border-radius:12px;
-    background:linear-gradient(135deg,var(--amber),var(--rose));
-    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#1B1420;
-  }
+  .week-card{display:flex;gap:16px;background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:18px;margin-bottom:14px;backdrop-filter:blur(10px);transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;}
+  .week-card:hover { transform: translateY(-5px); border-color: var(--amber); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  .week-num{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--amber),var(--rose));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#1B1420;transition: transform 0.4s;}
+  .week-card:hover .week-num { transform: scale(1.1) rotate(8deg); }
   .week-card h3{font-size:16px;margin-bottom:5px;color:var(--cream);}
   .week-card .tag{font-size:11px;color:var(--amber);font-weight:600;margin-bottom:6px;display:block;}
   .week-card p{font-size:13px;color:var(--text-dim);}
-
-  .ext-note{
-    background:rgba(139,111,168,0.14);border:1px solid var(--glass-border);
-    border-radius:16px;padding:18px;margin-top:12px;font-size:13px;color:var(--text-dim);
+  .design-nodes { display: flex; gap: 6px; margin-top: 12px; }
+  .node { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); opacity:0.85; }
+  .node:nth-child(2) { background: var(--rose); }
+  .node:nth-child(3) { background: var(--plum); }
+  @media (prefers-reduced-motion: no-preference){
+    .node{ opacity:0.3; animation: nodePulse 2.4s infinite; }
+    .node:nth-child(2){ animation-delay:0.3s; }
+    .node:nth-child(3){ animation-delay:0.6s; }
   }
+  .ext-note{background:rgba(139,111,168,0.14);border:1px solid var(--glass-border);border-radius:16px;padding:18px;margin-top:12px;font-size:13px;color:var(--text-dim);}
   .ext-note strong{color:var(--cream);}
-
-  /* Mentor */
-  .mentor-card{
-    display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;
-    background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;
-    padding:30px 20px;backdrop-filter:blur(10px);
-  }
-  .mentor-avatar{
-    width:84px;height:84px;border-radius:50%;
-    background:linear-gradient(135deg,var(--rose),var(--plum));
-    display:flex;align-items:center;justify-content:center;font-size:30px;
-    border:2px solid var(--glass-border);
-  }
+  .mentor-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:30px 20px;backdrop-filter:blur(10px);transition: transform 0.4s;}
+  .mentor-card:hover { transform: translateY(-5px); }
+  .mentor-avatar{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--plum));display:flex;align-items:center;justify-content:center;font-size:30px;border:2px solid var(--glass-border);transition: transform 0.4s ease;}
+  .mentor-card:hover .mentor-avatar { transform: scale(1.1) rotate(-5deg); }
   .mentor-card h3{font-size:18px;color:var(--cream);}
   .mentor-card p{font-size:13px;color:var(--text-dim);max-width:400px;}
-
-  /* Free teasers */
   .teaser-grid{display:grid;grid-template-columns:1fr;gap:14px;}
-  .teaser-card{
-    background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;
-    padding:18px;backdrop-filter:blur(10px);
-  }
-  .teaser-card .free-tag{
-    display:inline-block;background:rgba(217,154,91,0.14);color:var(--amber);
-    font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:9px;
-  }
+  .teaser-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:18px;backdrop-filter:blur(10px); transition: transform 0.3s, border-color 0.3s;}
+  .teaser-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); }
+  .teaser-card .free-tag{display:inline-block;background:rgba(217,154,91,0.14);color:var(--amber);font-size:11px;font-weight:700;padding:3px 10px;border-radius:12px;margin-bottom:9px;}
   .teaser-card h4{font-size:15px;margin-bottom:6px;color:var(--cream);}
   .teaser-card p{font-size:13px;color:var(--text-dim);}
-
-  /* Pricing */
   .price-grid{display:grid;grid-template-columns:1fr;gap:16px;}
-  .price-card{
-    background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;
-    padding:22px;backdrop-filter:blur(10px);position:relative;
-  }
+  .price-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;padding:22px;backdrop-filter:blur(10px);position:relative;transition: transform 0.4s, box-shadow 0.4s;}
+  .price-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
   .price-card.popular{border:1px solid rgba(217,154,91,0.5);}
-  .popular-badge{
-    position:absolute;top:-11px;left:20px;
-    background:linear-gradient(90deg,var(--amber),var(--rose));
-    color:#1B1420;font-size:11px;font-weight:700;padding:4px 12px;border-radius:12px;
-  }
+  .price-card.popular:hover { box-shadow: 0 15px 40px rgba(217,154,91,0.15); }
+  .popular-badge{position:absolute;top:-11px;left:20px;background:linear-gradient(90deg,var(--amber),var(--rose));color:#1B1420;font-size:11px;font-weight:700;padding:4px 12px;border-radius:12px;}
   .price-card .tier{font-size:13px;color:var(--amber);font-weight:600;text-transform:uppercase;margin-bottom:8px;}
   .price-card .amount{font-size:27px;font-weight:700;margin-bottom:14px;color:var(--cream);}
   .price-card ul{list-style:none;margin-bottom:18px;}
   .price-card li{font-size:13px;color:var(--text-dim);margin-bottom:7px;padding-left:18px;position:relative;}
   .price-card li::before{content:"✓";position:absolute;left:0;color:var(--amber);}
-  .price-card .cta{
-    display:block;text-align:center;padding:12px;border-radius:12px;font-weight:600;font-size:13px;
-    background:var(--glass);border:1px solid var(--glass-border);color:var(--cream);
-  }
+  .price-card .cta{display:block;text-align:center;padding:12px;border-radius:12px;font-weight:600;font-size:13px;background:var(--glass);border:1px solid var(--glass-border);color:var(--cream);transition: transform 0.3s;}
   .price-card.popular .cta{background:linear-gradient(90deg,var(--amber),var(--rose));color:#1B1420;border:none;}
-
-  footer{
-    padding:34px 20px;text-align:center;font-size:12px;color:var(--text-dim);
-    border-top:1px solid var(--glass-border);margin-top:24px;
-  }
-
-  @media(min-width:720px){
-    nav{display:flex;gap:22px;font-size:13px;color:var(--text-dim);}
-    .stats-row{grid-template-columns:repeat(4,1fr);}
-    .hero-ctas{flex-direction:row;}
-    .cta-primary,.cta-secondary{flex:1;}
-    .teaser-grid{grid-template-columns:1fr 1fr;}
-    .price-grid{grid-template-columns:repeat(3,1fr);}
-  }
+  .price-card:hover .cta { transform: translateY(-2px); }
+  footer{padding:34px 20px;text-align:center;font-size:12px;color:var(--text-dim);border-top:1px solid var(--glass-border);margin-top:24px;}
+  @media(min-width:720px){nav{display:flex;gap:22px;font-size:13px;color:var(--text-dim);}.stats-row{grid-template-columns:repeat(4,1fr);}.hero-ctas{flex-direction:row;}.cta-primary,.cta-secondary{flex:1;}.teaser-grid{grid-template-columns:1fr 1fr;}.price-grid{grid-template-columns:repeat(3,1fr);}}
 </style>
 </head>
 <body>
@@ -191,105 +105,112 @@
 <header>
   <div class="logo">WAVES4YOUTH</div>
   <nav>
-    <a href="https://waves4youth.in/index.html#schools">Programs</a>
-    <a href="https://waves4youth.in/Future-Studio/">Future Studio</a>
-    <a href="https://waves4youth.in/learn.html">My Learning</a>
-    <a href="https://waves4youth.in/mentors.html">Student Life</a>
+    <a href="index.html#schools">Programs</a>
+    <a href="Future-Studio/">Future Studio</a>
+    <a href="learn.html">My Learning</a>
+    <a href="mentors.html">W4Y Mentors</a>
   </nav>
   <div class="header-cta">
-    <a class="btn-ghost" href="https://waves4youth.in/login.html">Login</a>
+    <a class="btn-ghost" href="login.html">Login</a>
     <a class="btn-solid" href="#pricing">Apply Now</a>
   </div>
 </header>
 
 <section class="hero wrap">
-  <div class="eyebrow"><span class="dot"></span> AI Mentor: Rey</div>
-  <div class="track-label">Short Course · Immersive Tech Electives</div>
-  <h1>XR & <span class="accent">Immersive Design</span></h1>
-  <p>Build in AR, VR and XR — the exact frontier India's new AVGC-XR school labs are being built around. 4 weeks, from your first 3D scene to an interactive experience, with Rey guiding every step.</p>
-
-  <div class="stats-row">
+  <div class="reveal">
+    <div class="eyebrow"><span class="dot"></span> AI Mentor: Rey</div>
+    <div class="track-label">Short Course · Immersive Tech Electives</div>
+    <h1>XR &amp; <span class="accent">Immersive Design</span></h1>
+    <p>Build in AR, VR and XR — the exact frontier India's new AVGC-XR school labs are being built around. 4 weeks, from your first 3D scene to an interactive experience, with Rey guiding every step.</p>
+  </div>
+  <div class="stats-row reveal" style="transition-delay: 0.1s;">
     <div class="stat-card"><div class="num">4</div><div class="lbl">Weeks</div></div>
     <div class="stat-card"><div class="num">4</div><div class="lbl">Phases</div></div>
     <div class="stat-card"><div class="num">1</div><div class="lbl">Capstone</div></div>
     <div class="stat-card"><div class="num">Std 8–12</div><div class="lbl">Grade Band</div></div>
   </div>
-
-  <div class="hero-ctas">
+  <div class="hero-ctas reveal" style="transition-delay: 0.2s;">
     <a class="cta-primary" href="#pricing">Explore Pricing →</a>
     <a class="cta-secondary" href="#teasers">Try a Free Lesson</a>
   </div>
-
-  <div class="price-badge">
+  <div class="price-badge reveal" style="transition-delay: 0.3s;">
     <div class="price">₹199</div>
     <div class="sub">Trial tier — full Week 1 · Free preview lesson available, no card needed</div>
   </div>
 </section>
 
 <section class="section wrap" id="curriculum">
-  <div class="section-label">Curriculum</div>
-  <h2>Four weeks, one real XR experience</h2>
+  <div class="reveal">
+    <div class="section-label">Curriculum</div>
+    <h2>Four weeks, one real XR experience</h2>
+  </div>
 
-  <div class="week-card">
+  <div class="week-card reveal">
     <div class="week-num">1</div>
-    <div>
+    <div style="flex:1;">
       <span class="tag">Week 1 · XR Fundamentals</span>
       <h3>Think in 3D space</h3>
       <p>What AR, VR and XR actually are, spatial thinking, and real examples from gaming and film. Map your own room as a potential AR scene idea.</p>
+      <div class="design-nodes"><div class="node"></div></div>
     </div>
   </div>
 
-  <div class="week-card">
+  <div class="week-card reveal" style="transition-delay: 0.1s;">
     <div class="week-num">2</div>
-    <div>
+    <div style="flex:1;">
       <span class="tag">Week 2 · Building with AI</span>
       <h3>Create your first 3D scene</h3>
       <p>Intro to no-code, AI-assisted 3D and XR creation tools. Build a simple 3D object or scene from scratch.</p>
+      <div class="design-nodes"><div class="node"></div><div class="node"></div></div>
     </div>
   </div>
 
-  <div class="week-card">
+  <div class="week-card reveal" style="transition-delay: 0.2s;">
     <div class="week-num">3</div>
-    <div>
-      <span class="tag">Week 3 · Interactivity & Storytelling</span>
+    <div style="flex:1;">
+      <span class="tag">Week 3 · Interactivity &amp; Storytelling</span>
       <h3>Make it interactive</h3>
       <p>Add interaction and narrative to your XR scene, so it responds instead of just sitting there.</p>
+      <div class="design-nodes"><div class="node"></div><div class="node"></div><div class="node"></div></div>
     </div>
   </div>
 
-  <div class="week-card">
+  <div class="week-card reveal" style="transition-delay: 0.3s;">
     <div class="week-num">4</div>
-    <div>
+    <div style="flex:1;">
       <span class="tag">Week 4 · Capstone</span>
       <h3>Present your XR experience</h3>
       <p>Build and present a mini XR experience — an AR filter, a VR room tour, or an interactive 3D story.</p>
+      <div class="design-nodes"><div class="node"></div><div class="node"></div><div class="node"></div></div>
     </div>
   </div>
 
-  <div class="ext-note">
+  <div class="ext-note reveal">
     <strong>Std 11–12 Advanced Extension (Weeks 5–6):</strong> an advanced XR project plus a 1:1 career-mapping session with Rey — pointed toward India's AVGC-XR Content Creator Labs and game/VFX studios.
   </div>
 </section>
 
-<section class="section wrap">
+<section class="section wrap reveal">
   <div class="section-label">Your Mentor</div>
   <div class="mentor-card">
     <div class="mentor-avatar">🥽</div>
     <h3>Meet Rey, your AI mentor</h3>
-    <p>Rey explains 3D space and interactivity like a level designer would — practical, visual, and patient with anyone picking up XR for the first time. Available in Hindi, Tamil, Bengali and 8 more languages — Rey teaches every lesson in whichever language you think best in.</p>
+    <p>Rey explains 3D space and interactivity like a level designer would — practical, visual, and patient with anyone picking up XR for the first time. Available in Hindi, Tamil, Bengali and 8 more languages.</p>
   </div>
 </section>
 
 <section class="section wrap" id="teasers">
-  <div class="section-label">Start Free</div>
-  <h2>Try it before you commit</h2>
+  <div class="reveal">
+    <div class="section-label">Start Free</div>
+    <h2>Try it before you commit</h2>
+  </div>
   <div class="teaser-grid">
-    <div class="teaser-card">
+    <div class="teaser-card reveal">
       <span class="free-tag">FREE</span>
       <h4>Build Your First AR Filter in 20 Minutes</h4>
       <p>One guided mini-session with Rey — go from idea to a working AR filter concept. No sign-up friction beyond email.</p>
     </div>
-    <div class="teaser-card">
+    <div class="teaser-card reveal" style="transition-delay: 0.1s;">
       <span class="free-tag">FREE</span>
       <h4>Explore a Virtual World</h4>
       <p>A free guided walkthrough of an existing VR/3D space — see what's possible before you build your own.</p>
@@ -298,60 +219,42 @@
 </section>
 
 <section class="section wrap" id="pricing">
-  <div class="section-label">Pricing</div>
-  <h2>Choose your plan</h2>
+  <div class="reveal">
+    <div class="section-label">Pricing</div>
+    <h2>Choose your plan</h2>
+  </div>
   <div class="price-grid">
-    <div class="price-card">
-      <div class="tier">Free Teaser</div>
+    <div class="price-card reveal">
+      <div class="tier">W4Y Access</div>
       <div class="amount">₹0</div>
-      <ul>
-        <li>One free mini-lesson</li>
-        <li>Meet Rey, your AI mentor</li>
-        <li>No card required</li>
-      </ul>
+      <ul><li>One free mini-lesson</li><li>Meet Rey, your AI mentor</li><li>No card required</li></ul>
       <a class="cta" href="#teasers">Start Free</a>
     </div>
-    <div class="price-card popular">
+    <div class="price-card popular reveal" style="transition-delay: 0.1s;">
       <div class="popular-badge">Most Popular</div>
       <div class="tier">Trial</div>
       <div class="amount">₹199</div>
-      <ul>
-        <li>Full Week 1 (Foundations)</li>
-        <li>Mentor intro with Rey</li>
-        <li>Low-commitment single week</li>
-      </ul>
+      <ul><li>Full Week 1 (Foundations)</li><li>Mentor intro with Rey</li><li>Low-commitment single week</li></ul>
       <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'XR & Immersive Design',courseSlug:'xr-immersive-design',tier:'Trial',price:'₹199',merch:''})">Enroll Now</button>
     </div>
-    <div class="price-card">
-      <div class="tier">Starter</div>
+    <div class="price-card reveal" style="transition-delay: 0.2s;">
+      <div class="tier">W4Y Creator</div>
       <div class="amount">₹999</div>
-      <ul>
-        <li>Weeks 2–4 + capstone</li>
-        <li>AI-graded feedback</li>
-        <li>No certificate</li>
-      </ul>
+      <ul><li>Weeks 2–4 + capstone</li><li>AI-graded feedback</li><li>No certificate</li></ul>
       <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'XR & Immersive Design',courseSlug:'xr-immersive-design',tier:'Starter',price:'₹999',merch:''})">Enroll Now</button>
     </div>
-    <div class="price-card">
-      <div class="tier">Diploma</div>
+    <div class="price-card reveal" style="transition-delay: 0.3s;">
+      <div class="tier">W4Y Sprint</div>
       <div class="amount">₹4,999</div>
-      <ul>
-        <li>Full 4-week course</li>
-        <li>1:1 mentor feedback on capstone</li>
-        <li>Certificate</li>
-      </ul>
-<div class="merch-line" style="background:linear-gradient(135deg,rgba(255,179,71,.2),rgba(255,107,107,.15));border:1px solid rgba(255,179,71,.4);border-radius:10px;padding:8px 10px;font-size:.74rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.4">🎁 Free merchandise worth ₹1,499</div>
+      <ul><li>Full 4-week course</li><li>1:1 mentor feedback on capstone</li><li>Certificate</li></ul>
+      <div class="merch-line" style="background:linear-gradient(135deg,rgba(255,179,71,.2),rgba(255,107,107,.15));border:1px solid rgba(255,179,71,.4);border-radius:10px;padding:8px 10px;font-size:.74rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.4">🎁 Free merchandise worth ₹1,499</div>
       <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'XR & Immersive Design',courseSlug:'xr-immersive-design',tier:'Diploma',price:'₹4,999',merch:'🎁 Free merchandise worth ₹1,499'})">Enroll Now</button>
     </div>
-    <div class="price-card">
-      <div class="tier">Masterclass</div>
+    <div class="price-card reveal" style="transition-delay: 0.4s;">
+      <div class="tier">W4Y Certified</div>
       <div class="amount">₹9,999</div>
-      <ul>
-        <li>Diploma + Std 11–12 Extension</li>
-        <li>Live portfolio review</li>
-        <li>Career mapping session</li>
-      </ul>
-<div class="merch-line" style="background:linear-gradient(135deg,rgba(255,179,71,.2),rgba(255,107,107,.15));border:1px solid rgba(255,179,71,.4);border-radius:10px;padding:8px 10px;font-size:.74rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.4">🎁 Free merchandise worth ₹2,999</div>
+      <ul><li>Sprint + Std 11–12 Extension</li><li>Live portfolio review</li><li>Career mapping session</li></ul>
+      <div class="merch-line" style="background:linear-gradient(135deg,rgba(255,179,71,.2),rgba(255,107,107,.15));border:1px solid rgba(255,179,71,.4);border-radius:10px;padding:8px 10px;font-size:.74rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.4">🎁 Free merchandise worth ₹2,999</div>
       <button class="cta" style="width:100%;border:none;cursor:pointer" onclick="openEnrollModal({course:'XR & Immersive Design',courseSlug:'xr-immersive-design',tier:'Masterclass',price:'₹9,999',merch:'🎁 Free merchandise worth ₹2,999'})">Enroll Now</button>
     </div>
   </div>
@@ -363,168 +266,101 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-emailjs.init("rb-XZqTETko14iPVN");
-</script>
-<!-- ============================================================
-     W4Y ENROLL NOW WIDGET
-     ============================================================
-     Paste this whole block once, right before </body>, on every
-     course page. It replaces plain "Enroll Now" / "Start Free" links
-     with a proper interest form — matching your existing Apply Now
-     modal pattern, with merchandise messaging built in.
+<script>emailjs.init("rb-XZqTETko14iPVN");</script>
 
-     HOW TO WIRE UP EACH PRICING CARD BUTTON:
-     Replace the existing <a href="learn-xxx.html" class="btn ...">Enroll Now</a>
-     with a button that calls openEnrollModal(), like this:
-
-       <button class="btn btn-outline" onclick="openEnrollModal({
-         course: 'Game Design & Development',
-         courseSlug: 'game-design',
-         tier: 'Diploma',
-         price: '₹4,999',
-         merch: '🎁 Free merchandise worth ₹1,499 (hoodie, notebook, sticker pack)'
-       })">Enroll Now</button>
-
-     For Free Preview and Starter tiers, just omit "merch" entirely (or set it to ""):
-
-       <button class="btn btn-outline" onclick="openEnrollModal({
-         course: 'Game Design & Development',
-         courseSlug: 'game-design',
-         tier: 'Starter',
-         price: '₹999',
-         merch: ''
-       })">Enroll Now</button>
-
-     Masterclass example:
-       merch: '🎁 Free merchandise worth ₹2,999 (premium hoodie, tote/backpack, notebook, stickers, certificate frame)'
-
-     The "Start Free" button on Free Preview can either open this same modal
-     (merch: '') or keep linking straight to the learn-xxx.html page — your call,
-     since Free tier has no payment step to confirm anyway.
-     ============================================================ -->
+<style>
+.enroll-overlay{position:fixed;inset:0;background:rgba(19,16,27,.7);backdrop-filter:blur(4px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.enroll-overlay.open{display:flex}
+.enroll-modal{background:var(--bg-1);border:1px solid var(--glass-border);border-radius:20px;padding:28px 24px;max-width:400px;width:100%;position:relative;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.enroll-close{position:absolute;top:14px;right:14px;background:var(--glass);border:1px solid var(--glass-border);color:var(--cream);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px}
+.enroll-modal h3{color:var(--cream);font-size:18px;margin-bottom:6px}
+.enroll-sub{color:var(--text-dim);font-size:13px;margin-bottom:16px}
+.enroll-merch{background:rgba(217,154,91,.14);border:1px solid rgba(217,154,91,.3);border-radius:10px;padding:8px 10px;font-size:12px;color:var(--cream);margin-bottom:14px}
+.enroll-modal label{display:block;color:var(--text-dim);font-size:12px;font-weight:600;margin:12px 0 5px}
+.enroll-modal input{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--glass-border);background:var(--glass);color:var(--cream);font-size:14px;font-family:inherit}
+.enroll-modal input:focus{outline:2px solid var(--amber);outline-offset:1px}
+</style>
 
 <div class="enroll-overlay" id="enrollOverlay">
 <div class="enroll-modal">
-<button class="enroll-close" onclick="closeEnrollModal()">✕</button>
-
+<button class="enroll-close" onclick="closeEnrollModal()" aria-label="Close">✕</button>
 <div id="enrollFormWrap">
 <h3 id="enrollTitle">Enroll in this program</h3>
 <p class="enroll-sub" id="enrollSub"></p>
 <div class="enroll-merch" id="enrollMerch" style="display:none"></div>
-
 <form id="enrollForm" onsubmit="submitEnrollment(event)">
-<label>Student's Name</label>
-<input type="text" name="studentName" required>
-<label>Parent/Guardian Phone</label>
-<input type="tel" name="parentPhone" required>
-<label>Parent/Guardian Email</label>
-<input type="email" name="parentEmail" required>
-<button type="submit" class="btn btn-primary btn-block" style="margin-top:16px">Confirm Interest →</button>
+<label>Student's Name</label><input type="text" name="studentName" required>
+<label>Parent/Guardian Phone</label><input type="tel" name="parentPhone" required>
+<label>Parent/Guardian Email</label><input type="email" name="parentEmail" required>
+<button type="submit" class="cta-primary" style="width:100%;border:none;cursor:pointer;margin-top:18px">Confirm Interest →</button>
 </form>
 </div>
-
-<div id="enrollSuccess" style="display:none;text-align:center;padding:20px 0">
-<div style="font-size:44px;margin-bottom:10px">🎉</div>
+<div id="enrollSuccess" style="display:none;text-align:center;padding:10px 0">
+<div style="font-size:40px;margin-bottom:10px">🎉</div>
 <h3>Got it!</h3>
 <p class="enroll-sub">We'll reach out within 24 hours to confirm payment<span id="enrollSuccessMerch"></span>.</p>
-<button class="btn btn-outline" onclick="closeEnrollModal()">Close</button>
-</div>
-
+<button class="cta-secondary" style="width:100%;border:none;cursor:pointer" onclick="closeEnrollModal()">Close</button>
 </div>
 </div>
-
-<style>
-.enroll-overlay{position:fixed;inset:0;background:rgba(36,18,51,.55);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
-.enroll-overlay.active{display:flex}
-.enroll-modal{background:#fff;border-radius:20px;padding:28px 24px;max-width:440px;width:100%;max-height:90vh;overflow-y:auto;position:relative}
-.enroll-close{position:absolute;top:14px;right:14px;background:none;border:0;font-size:18px;cursor:pointer;color:var(--muted,#6B5A72)}
-.enroll-modal h3{font:800 1.3rem Poppins,sans-serif;margin-bottom:6px;color:var(--ink,#241233)}
-.enroll-sub{color:var(--muted,#6B5A72);font-size:.85rem;margin-bottom:14px}
-.enroll-merch{
-  background:linear-gradient(135deg,rgba(255,179,71,.15),rgba(255,107,107,.12));
-  border:1px solid #FFD9A0;border-radius:12px;padding:12px 14px;font-size:.85rem;
-  color:var(--ink,#241233);font-weight:600;margin-bottom:16px;line-height:1.5;
-}
-.enroll-modal label{display:block;font-weight:700;font-size:.8rem;margin:12px 0 5px;color:var(--ink,#241233)}
-.enroll-modal input{width:100%;border:2px solid var(--border,#F0E0D0);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:.9rem}
-</style>
+</div>
 
 <script>
-let _enrollCurrent = null;
-
+let currentEnroll = {};
 function openEnrollModal(opts){
-_enrollCurrent = opts;
-document.getElementById('enrollTitle').textContent = `Enroll — ${opts.tier} (${opts.price})`;
-document.getElementById('enrollSub').textContent = `${opts.course} · We'll confirm payment details with your parent/guardian before anything is charged.`;
-const merchEl = document.getElementById('enrollMerch');
-if (opts.merch) {
-  merchEl.textContent = opts.merch;
-  merchEl.style.display = 'block';
-} else {
-  merchEl.style.display = 'none';
+  currentEnroll = opts || {};
+  document.getElementById('enrollTitle').textContent = 'Enroll — ' + (opts.tier || '') ;
+  document.getElementById('enrollSub').textContent = (opts.course || '') + ' · ' + (opts.price || '');
+  const merchEl = document.getElementById('enrollMerch');
+  if (opts.merch) { merchEl.textContent = opts.merch; merchEl.style.display = 'block'; }
+  else { merchEl.style.display = 'none'; }
+  document.getElementById('enrollFormWrap').style.display = 'block';
+  document.getElementById('enrollSuccess').style.display = 'none';
+  document.getElementById('enrollForm').reset();
+  document.getElementById('enrollOverlay').classList.add('open');
 }
-document.getElementById('enrollOverlay').classList.add('active');
-}
-
 function closeEnrollModal(){
-document.getElementById('enrollOverlay').classList.remove('active');
-document.getElementById('enrollForm').style.display = '';
-document.getElementById('enrollFormWrap').style.display = '';
-document.getElementById('enrollSuccess').style.display = 'none';
-document.getElementById('enrollForm').reset();
+  document.getElementById('enrollOverlay').classList.remove('open');
 }
-
 async function submitEnrollment(e){
-e.preventDefault();
-const form = e.target;
-const payload = Object.fromEntries(new FormData(form).entries());
-const opts = _enrollCurrent || {};
-
-try{
-const { initializeApp, getApps } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-const { getFirestore, collection, addDoc, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
-const firebaseConfig = {
-apiKey: "AIzaSyDiT99vqJkMZ2Td81YVDTYT5W9HWz2M54o",
-authDomain: "waves4youth-4f239.firebaseapp.com",
-projectId: "waves4youth-4f239",
-storageBucket: "waves4youth-4f239.firebasestorage.app",
-messagingSenderId: "828101805925",
-appId: "1:828101805925:web:f4cd245254aed07ec9438c"
-};
-const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
-const db = getFirestore(app);
-await addDoc(collection(db, "enrollmentInterest"), {
-  ...payload,
-  course: opts.course || "",
-  courseSlug: opts.courseSlug || "",
-  tier: opts.tier || "",
-  price: opts.price || "",
-  merch: opts.merch || "",
-  status: "new",
-  submittedAt: serverTimestamp()
-});
-
-if (window.emailjs) {
-  emailjs.send("service_k75nhha", "template_1mddaec", {
-    form_type: "Enrollment Interest — " + (opts.tier || ""),
-    name: payload.studentName,
-    email: payload.parentEmail,
-    phone: payload.parentPhone,
-    track: opts.courseSlug || "",
-    grade: "",
-    extra: `Tier: ${opts.tier} (${opts.price})` + (opts.merch ? ` · ${opts.merch}` : "")
-  }).catch(err => console.error("EmailJS error:", err));
+  e.preventDefault();
+  const form = e.target;
+  const payload = {
+    studentName: form.studentName.value,
+    parentPhone: form.parentPhone.value,
+    parentEmail: form.parentEmail.value
+  };
+  try{
+    if (window.emailjs) {
+      await emailjs.send("service_k75nhha", "template_1mddaec", {
+        form_type: "Enrollment Interest — " + (currentEnroll.tier || ""),
+        name: payload.studentName,
+        email: payload.parentEmail,
+        phone: payload.parentPhone,
+        track: currentEnroll.courseSlug || "",
+        grade: "",
+        extra: `Tier: ${currentEnroll.tier} (${currentEnroll.price})` + (currentEnroll.merch ? ` · ${currentEnroll.merch}` : "")
+      });
+    }
+  } catch(err){ console.error("EmailJS error:", err); }
+  document.getElementById('enrollFormWrap').style.display = 'none';
+  const merchNote = currentEnroll.merch ? " and merchandise shipping" : "";
+  document.getElementById('enrollSuccessMerch').textContent = merchNote;
+  document.getElementById('enrollSuccess').style.display = 'block';
 }
-}catch(err){
-console.error("Could not save enrollment interest to Firestore:", err);
-}
+</script>
 
-document.getElementById('enrollFormWrap').style.display = 'none';
-const merchNote = opts.merch ? " and merchandise shipping" : "";
-document.getElementById('enrollSuccessMerch').textContent = merchNote;
-document.getElementById('enrollSuccess').style.display = 'block';
-}
+<script>
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+  if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('active'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) { entry.target.classList.add('active'); io.unobserve(entry.target); }
+    });
+  }, { threshold: .12 });
+  items.forEach(function(el){ io.observe(el); });
+})();
 </script>
 </body>
 </html>
