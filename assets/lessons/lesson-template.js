@@ -38,5 +38,12 @@ const LESSON = {
     "en-US": "",
     "hi-IN": "",
     "mr-IN": ""
-  }
+  },
+
+  // Plain-text summary of what THIS lesson covers, used only by
+  // MentorQA to keep the post-lesson Q&A scoped to this topic —
+  // the mentor is instructed to answer from this text only, and
+  // redirect back to the topic if asked something unrelated.
+  // A few sentences is enough; doesn't need to be the full lesson.
+  qaContext: ""
 };
