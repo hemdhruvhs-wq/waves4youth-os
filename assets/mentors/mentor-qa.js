@@ -24,7 +24,7 @@ const MentorQA = (function () {
      security setup. Only the prompt changes: it's constrained
      to lesson.qaContext instead of open-ended chat.
      -------------------------------------------------------- */
-  const MENTOR_API_ENDPOINT = "https://solar-armadillo-4814.waves4youth.deno.net/mentor-qa";
+  const MENTOR_API_ENDPOINT = "https://clear-oriole-3523.waves4youth.deno.net/mentor-qa";
   // ^ Replace with your actual endpoint if this differs from mentor-chat.js's.
 
   async function askMentor(lesson, question, langCode) {
