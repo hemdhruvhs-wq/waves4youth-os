@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="assets/mentor-visuals.css">
 <style>
 /* ---- Self-contained styles for the Learning Portal (safe if css/learn.css doesn't exist yet) ---- */
 :root{--purple:#D63AFF;--pink:#FF6B6B;--orange:#FF9F5A;--amber:#FFB347;--dark:#1A0B2E;--light:#FDF3E7;--ink:#241233;--muted:#6B5A72;--border:#F0E0D0;--grad:linear-gradient(90deg,#FF6B6B,#D63AFF)}
@@ -114,6 +115,8 @@
     <p class="portal-sub">Work through each phase at your own pace, with Neel as your AI mentor. Your progress is saved automatically on this device.</p>
   </div>
 
+  <div id="mentorChatContainer"></div>
+
   <div class="portal-grid">
     <!-- SIDEBAR -->
     <aside class="sidebar">
@@ -126,8 +129,6 @@
     <!-- CONTENT PANE -->
     <main class="content-pane" id="contentPane"></main>
   </div>
-
-  <div id="mentorChatContainer"></div>
 </div>
 
 
@@ -185,6 +186,7 @@ window.W4Y_AUTH_READY = new Promise((resolve) => {
 
 <script src="js/script.js"></script>
 <script src="mentor-chat.js"></script>
+<script src="assets/mentor-visuals.js"></script>
 <script>
 /* ===================== CURRICULUM DATA (Track 6: Video Editing) ===================== */
 const TRACK = {
@@ -472,11 +474,28 @@ async function renderModule(mod, phase){
       : `<div class="video-slot">🎬 Video / screen-recording goes here<br><small>(embed a YouTube-unlisted video via its ID once produced)</small></div>`
     }
     <p>${content.desc}</p>
+    <div id="mentorVisualMount"></div>
     <div class="task-box"><b>Your task:</b> ${content.task}</div>
     <div class="actions-row">
       <button class="btn btn-primary" onclick="markComplete('${mod.id}')">Mark Complete</button>
     </div>
   `;
+
+  // Renders the pacing-scrubber / timeline / before-after / build-up visual
+  // for this lesson, IF its Firestore content document includes visualType.
+  // Lessons without these fields simply show no visual — nothing breaks.
+  const visualMount = document.getElementById("mentorVisualMount");
+  if (content.visualType && window.MentorVisuals) {
+    window.MentorVisuals.mount(visualMount, {
+      mentor: TRACK.mentor,
+      mentorGender: content.mentorGender,
+      visualType: content.visualType,
+      visualParams: content.visualParams,
+      narration: content.narration
+    });
+  } else if (visualMount) {
+    visualMount.remove();
+  }
 
   window.W4Y_initMentorChat(document.getElementById("mentorChatContainer"), () => ({
     mentorName: TRACK.mentor,
